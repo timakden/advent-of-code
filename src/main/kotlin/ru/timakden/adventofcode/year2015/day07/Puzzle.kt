@@ -22,10 +22,7 @@ fun solve(input: List<String>): Int? {
                     if (leftPart[0].matches("\\d+".toRegex())) {
                         map.put(expressions[1], leftPart[0].toInt())
                     } else if (leftPart[0].matches("[a-zA-Z]+".toRegex())) {
-                        val i = map[leftPart[0]]
-                        if (i != null) {
-                            map.put(expressions[1], i)
-                        }
+                        map[leftPart[0]]?.let { map.put(expressions[1], it) }
                     }
                 }
                 2 -> {
@@ -33,10 +30,7 @@ fun solve(input: List<String>): Int? {
                     if (leftPart[1].matches("\\d+".toRegex())) {
                         map.put(expressions[1], leftPart[1].toInt().inv())
                     } else if (leftPart[1].matches(("[a-zA-Z]+").toRegex())) {
-                        val i = map[leftPart[1]]
-                        if (i != null) {
-                            map.put(expressions[1], i.inv())
-                        }
+                        map[leftPart[1]]?.let { map.put(expressions[1], it.inv()) }
                     }
                 }
                 3 -> {
