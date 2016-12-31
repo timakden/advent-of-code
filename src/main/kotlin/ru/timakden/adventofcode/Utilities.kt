@@ -1,21 +1,16 @@
 package ru.timakden.adventofcode
 
-fun <T> listPermutations(list: MutableList<T>): List<List<T>> {
-    if (list.size == 0) {
-        val result = mutableListOf<List<T>>()
-        result.add(mutableListOf<T>())
-        return result
-    }
+fun <T> MutableList<T>.permutations(): List<List<T>> {
+    if (size == 0) return listOf(emptyList<T>())
 
     val returnMe = mutableListOf<List<T>>()
-    val firstElement = list.removeAt(0)
 
-    val recursiveReturn = listPermutations(list)
-    recursiveReturn.forEach { li ->
-        (0..li.size).forEach { index ->
-            val temp = li.toMutableList()
-            temp.add(index, firstElement)
-            returnMe.add(temp)
+    val firstElement = removeAt(0)
+
+    val recursiveReturn = permutations()
+    recursiveReturn.forEach { list ->
+        (0..list.size).forEach {
+            returnMe.add(list.toMutableList().apply { add(it, firstElement) })
         }
     }
 
