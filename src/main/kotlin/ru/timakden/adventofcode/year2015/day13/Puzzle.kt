@@ -8,7 +8,6 @@ fun main(args: Array<String>) {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-
     println("Elapsed time: $elapsedTime ms")
 }
 
