@@ -38,7 +38,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
         when {
             partTwo -> if (length > result) result = length
-            !partTwo -> if (length < result) result = length
+            else -> if (length < result) result = length
         }
     }
     return result

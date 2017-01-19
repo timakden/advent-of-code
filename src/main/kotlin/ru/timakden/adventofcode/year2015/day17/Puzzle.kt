@@ -7,11 +7,7 @@ fun main(args: Array<String>) {
     val containers = mutableListOf<List<Int>>()
 
     val elapsedTime = measureTimeMillis {
-        input.powerSet().forEach {
-            if (it.sum() == 150) {
-                containers.add(it)
-            }
-        }
+        input.powerSet().forEach { if (it.sum() == 150) containers.add(it) }
 
         val minSize = containers.minBy { it.size }?.size
 

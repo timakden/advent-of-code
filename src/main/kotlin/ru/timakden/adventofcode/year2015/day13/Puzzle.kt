@@ -16,9 +16,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
     var optimalHappinessChange = Int.MIN_VALUE
     val names = sortedSetOf<String>()
 
-    if (partTwo) {
-        names.add("me")
-    }
+    if (partTwo) names.add("me")
 
     input.forEach {
         val split = it.split("\\s".toRegex())
@@ -27,9 +25,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
         val name2 = split[10].substring(0, split[10].lastIndex)
         var happinessUnits = split[3].toInt()
 
-        if (split[2] == "lose") {
-            happinessUnits = -happinessUnits
-        }
+        if (split[2] == "lose") happinessUnits = -happinessUnits
 
         with(names) {
             add(name1)
@@ -55,9 +51,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
         happinessChange += (happiness[it[0] + it[it.lastIndex]] ?: 0) + (happiness[it[it.lastIndex] + it[0]] ?: 0)
 
-        if (happinessChange > optimalHappinessChange) {
-            optimalHappinessChange = happinessChange
-        }
+        if (happinessChange > optimalHappinessChange) optimalHappinessChange = happinessChange
     }
 
     return optimalHappinessChange

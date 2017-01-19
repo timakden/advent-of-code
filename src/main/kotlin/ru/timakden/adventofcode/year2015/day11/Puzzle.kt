@@ -31,8 +31,8 @@ fun checkPassword(password: String): Boolean {
                 charArray[it + 1] == charArray[it] + 1 &&
                 charArray[it + 2] == charArray[it] + 2
     }
-    val secondRequirement = !"[iol]".toRegex().containsMatchIn(password)
-    val thirdRequirement = "(\\w)\\1\\w*(\\w)\\2".toRegex().containsMatchIn(password)
+    val secondRequirement = "[^iol]".toRegex().containsMatchIn(password)
+    val thirdRequirement = "(.)\\1.*(.)\\2".toRegex().containsMatchIn(password)
 
     return firstRequirement && secondRequirement && thirdRequirement
 }
@@ -48,9 +48,7 @@ private fun incrementPassword(oldPassword: String): String {
     (startIndex..charArray.lastIndex).forEach {
         charArray[it] = charArray[it] + 1
 
-        if (!charArray[it].isLetter()) {
-            charArray[it] = 'a'
-        }
+        if (!charArray[it].isLetter()) charArray[it] = 'a'
     }
 
     return String(charArray)

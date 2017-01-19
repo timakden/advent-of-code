@@ -20,9 +20,7 @@ fun solve(input: Int, partTwo: Boolean): Int {
         var i = it
         while (i <= houses.lastIndex) {
             houses[i] += presentsPerElf * it
-            if (partTwo && ++count == 50) {
-                break
-            }
+            if (partTwo && ++count == 50) break
 
             i += it
         }
@@ -30,9 +28,7 @@ fun solve(input: Int, partTwo: Boolean): Int {
 
     var index = houses.indexOfFirst { it == input }
 
-    if (index == -1) {
-        index = houses.indexOfFirst { it > input }
-    }
+    if (index == -1) index = houses.indexOfFirst { it > input }
 
     return index
 }

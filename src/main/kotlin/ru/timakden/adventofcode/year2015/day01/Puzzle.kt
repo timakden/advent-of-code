@@ -21,9 +21,7 @@ fun solvePartTwo(input: String): Int {
             ')' -> floor--
         }
 
-        if (floor == -1) {
-            return i + 1
-        }
+        if (floor == -1) return i + 1
     }
 
     return 0

@@ -53,22 +53,13 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
                         if (capacity > 0 && durability > 0 && flavor > 0 && texture > 0) {
                             total = capacity * durability * flavor * texture
-                        } else {
-                            total = 0
-                        }
+                        } else total = 0
 
-                        if (partTwo) {
-                            if (total > highest && calories == 500) {
-                                highest = total
-                            }
-                        } else {
-                            if (total > highest) {
-                                highest = total
-                            }
+                        when {
+                            partTwo -> if (total > highest && calories == 500) highest = total
+                            else -> if (total > highest) highest = total
                         }
-                    } else if (i + j + k + l > 100) {
-                        break
-                    }
+                    } else if (i + j + k + l > 100) break
                 }
             }
         }

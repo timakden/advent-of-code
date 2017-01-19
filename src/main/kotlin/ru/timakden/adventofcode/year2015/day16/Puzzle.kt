@@ -87,9 +87,7 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
             }
         }
 
-        if (auntFound) {
-            return aunt
-        }
+        if (auntFound) return aunt
     }
 
     return null

@@ -18,21 +18,15 @@ private fun sumNumbers(any: Any, partTwo: Boolean): Int {
 
     if (any is Map<*, *>) {
         any.forEach {
-            if (partTwo && it.value == "red") {
-                return 0
-            }
+            if (partTwo && it.value == "red") return 0
 
-            it.value?.let {
-                sum += sumNumbers(it, partTwo)
-            }
+            it.value?.let { sum += sumNumbers(it, partTwo) }
         }
         return sum
     } else if (any is List<*>) {
         any.filterNotNull().forEach { sum += sumNumbers(it, partTwo) }
         return sum
-    } else if (any is Number) {
-        return any.toInt()
-    }
+    } else if (any is Number) return any.toInt()
 
     return 0
 }

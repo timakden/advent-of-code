@@ -14,18 +14,12 @@ private fun generateNewSequence(s: String): String {
     val regex = "(\\d)\\1*".toRegex()
     val stringBuilder = StringBuilder()
 
-    regex.findAll(s).forEach { result ->
-        stringBuilder.append(result.value.length)
-                .append(result.value[0])
-    }
+    regex.findAll(s).forEach { stringBuilder.append(it.value.length).append(it.value[0]) }
 
     return stringBuilder.toString()
 }
 
 fun solve(s: String, numberOfRuns: Int): String {
-    if (numberOfRuns > 1) {
-        return solve(generateNewSequence(s), numberOfRuns - 1)
-    }
-
+    if (numberOfRuns > 1) return solve(generateNewSequence(s), numberOfRuns - 1)
     return generateNewSequence(s)
 }

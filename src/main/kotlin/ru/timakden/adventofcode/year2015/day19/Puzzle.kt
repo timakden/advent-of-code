@@ -21,9 +21,7 @@ fun solvePartOne(replacements: List<String>, molecule: String): Int {
 
         do {
             index = molecule.indexOf(it.value, index + 1)
-            if (index != -1) {
-                distinctMolecules.add(molecule.replaceRange(index, index + it.value.length, it.key))
-            }
+            if (index != -1) distinctMolecules.add(molecule.replaceRange(index, index + it.value.length, it.key))
         } while (index != -1)
     }
 
@@ -58,9 +56,7 @@ private fun findMolecule(depth: Int, molecule: String, reversedReplacements: Map
                 originalMolecule = before + reversedReplacements[toReplace] + after
                 replaced = true
             }
-            if (keys.isEmpty()) {
-                return -1
-            }
+            if (keys.isEmpty()) return -1
         }
         return findMolecule(depth + 1, originalMolecule, reversedReplacements)
     }

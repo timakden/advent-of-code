@@ -32,11 +32,7 @@ fun main(args: Array<String>) {
 
             val currentLeadingDistance = deers.maxBy { it.totalDistance }?.totalDistance
 
-            deers.forEach {
-                if (it.totalDistance == currentLeadingDistance) {
-                    it.scores++
-                }
-            }
+            deers.forEach { if (it.totalDistance == currentLeadingDistance) it.scores++ }
         }
     }
 

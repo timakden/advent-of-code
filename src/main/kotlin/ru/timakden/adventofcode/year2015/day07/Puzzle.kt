@@ -29,7 +29,7 @@ fun solve(input: List<String>): Int? {
                     // example: NOT di -> dj
                     if (leftPart[1].matches("\\d+".toRegex())) {
                         map.put(expressions[1], leftPart[1].toInt().inv())
-                    } else if (leftPart[1].matches(("[a-zA-Z]+").toRegex())) {
+                    } else if (leftPart[1].matches("[a-zA-Z]+".toRegex())) {
                         map[leftPart[1]]?.let { map.put(expressions[1], it.inv()) }
                     }
                 }

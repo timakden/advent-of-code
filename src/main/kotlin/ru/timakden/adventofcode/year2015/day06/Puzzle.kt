@@ -17,11 +17,9 @@ fun solvePartOne(input: List<String>): Int {
 
     val lightsGrid = Array(1000, { BooleanArray(1000) })
 
-    lightsGrid.forEach { booleans ->
-        booleans.indices.forEach { it -> booleans[it] = false }
-    }
+    lightsGrid.forEach { booleans -> booleans.indices.forEach { booleans[it] = false } }
 
-    input.forEach { it ->
+    input.forEach {
         val list = it.split(regex)
         val action = list[0]
 
@@ -48,9 +46,7 @@ fun solvePartOne(input: List<String>): Int {
         }
     }
 
-    lightsGrid.forEach { booleans ->
-        lights += booleans.count { it -> it == true }
-    }
+    lightsGrid.forEach { booleans -> lights += booleans.count { it == true } }
 
     return lights
 }
@@ -62,11 +58,9 @@ fun solvePartTwo(input: List<String>): Int {
 
     val brightnessGrid = Array(1000, { IntArray(1000) })
 
-    brightnessGrid.forEach { ints ->
-        ints.indices.forEach { it -> ints[it] = 0 }
-    }
+    brightnessGrid.forEach { ints -> ints.indices.forEach { ints[it] = 0 } }
 
-    input.forEach { it ->
+    input.forEach {
         val list = it.split(regex)
         val action = list[0]
 
@@ -93,9 +87,7 @@ fun solvePartTwo(input: List<String>): Int {
         }
     }
 
-    brightnessGrid.forEach { ints ->
-        ints.forEach { it -> brightness += it }
-    }
+    brightnessGrid.forEach { ints -> ints.forEach { brightness += it } }
 
     return brightness
 }

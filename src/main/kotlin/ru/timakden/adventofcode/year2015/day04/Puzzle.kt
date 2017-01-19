@@ -20,9 +20,7 @@ fun solve(input: String, length: Int): Long {
     while (true) {
         messageDigest.update((input + count.toString()).toByteArray())
         encoded = BigInteger(1, messageDigest.digest()).toString(16)
-        if (encoded.length == length) {
-            break
-        }
+        if (encoded.length == length) break
         count++
     }
 

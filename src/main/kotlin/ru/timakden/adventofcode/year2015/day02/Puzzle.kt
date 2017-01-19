@@ -12,9 +12,9 @@ fun main(args: Array<String>) {
 
 fun solvePartOne(input: List<String>): Int {
     var wrappingPaper = 0
-    input.forEach { s ->
+    input.forEach {
         val dimensions = mutableListOf<Int>()
-        s.split("x").forEach { dimensions.add(it.toInt()) }
+        it.split("x").forEach { dimensions.add(it.toInt()) }
         val areas = listOf(2 * dimensions[0] * dimensions[1], 2 * dimensions[1] * dimensions[2],
                 2 * dimensions[0] * dimensions[2])
 
@@ -26,9 +26,9 @@ fun solvePartOne(input: List<String>): Int {
 
 fun solvePartTwo(input: List<String>): Int {
     var ribbon = 0
-    input.forEach { s ->
+    input.forEach {
         val dimensions = mutableListOf<Int>()
-        s.split("x").forEach { dimensions.add(it.toInt()) }
+        it.split("x").forEach { dimensions.add(it.toInt()) }
         dimensions.sort()
 
         ribbon += 2 * dimensions[0] + 2 * dimensions[1] + dimensions[0] * dimensions[1] * dimensions[2]

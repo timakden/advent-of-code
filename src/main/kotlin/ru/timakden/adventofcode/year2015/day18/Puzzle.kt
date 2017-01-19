@@ -114,22 +114,12 @@ private fun performStep(matrix: Array<CharArray>, partTwo: Boolean): Array<CharA
             val sharpCount = neighbours.count { it == '#' }
 
             if (matrix[i][j] == '#') {
-                if (sharpCount == 2 || sharpCount == 3) {
-                    newMatrix[i][j] = '#'
-                } else {
-                    newMatrix[i][j] = '.'
-                }
+                if (sharpCount == 2 || sharpCount == 3) newMatrix[i][j] = '#' else newMatrix[i][j] = '.'
             } else {
-                if (sharpCount == 3) {
-                    newMatrix[i][j] = '#'
-                } else {
-                    newMatrix[i][j] = '.'
-                }
+                if (sharpCount == 3) newMatrix[i][j] = '#' else newMatrix[i][j] = '.'
             }
 
-            if (partTwo && (i == 0 || i == 99) && (j == 0 || j == 99)) {
-                newMatrix[i][j] = '#'
-            }
+            if (partTwo && (i == 0 || i == 99) && (j == 0 || j == 99)) newMatrix[i][j] = '#'
         }
     }
     return newMatrix

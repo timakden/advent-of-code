@@ -11,16 +11,16 @@ fun main(args: Array<String>) {
 }
 
 fun isNicePartOne(s: String): Boolean {
-    val regex1 = ".*[aeiou].*[aeiou].*[aeiou].*".toRegex()
-    val regex2 = "(\\w)\\1".toRegex()
+    val regex1 = "(.*[aeiou]){3}".toRegex()
+    val regex2 = "(.)\\1".toRegex()
     val regex3 = "ab|cd|pq|xy".toRegex()
 
     return regex1.containsMatchIn(s) && regex2.containsMatchIn(s) && !regex3.containsMatchIn(s)
 }
 
 fun isNicePartTwo(s: String): Boolean {
-    val regex1 = "(\\w{2})\\w*\\1".toRegex()
-    val regex2 = "(\\w)\\w\\1".toRegex()
+    val regex1 = "(.{2}).*\\1".toRegex()
+    val regex2 = "(.).\\1".toRegex()
 
     return regex1.containsMatchIn(s) && regex2.containsMatchIn(s)
 }

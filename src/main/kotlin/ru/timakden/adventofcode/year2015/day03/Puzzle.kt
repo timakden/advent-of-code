@@ -15,7 +15,7 @@ fun solvePartOne(input: String): Int {
     var y = 0
     val coordinates = mutableSetOf(Pair(0, 0))
 
-    input.forEach { it ->
+    input.forEach {
         when (it) {
             '^' -> y++
             'v' -> y--
@@ -37,34 +37,14 @@ fun solvePartTwo(input: String): Int {
     var counter = 0
     val coordinates = mutableSetOf(Pair(0, 0))
 
-    input.forEach { it ->
+    input.forEach {
+        val isCounterEven = counter % 2 == 0
+
         when (it) {
-            '^' -> {
-                if (counter % 2 == 0) {
-                    santaY++
-                } else robotY++
-            }
-            'v' -> {
-                if (counter % 2 == 0) {
-                    santaY--
-                } else {
-                    robotY--
-                }
-            }
-            '<' -> {
-                if (counter % 2 == 0) {
-                    santaX--
-                } else {
-                    robotX--
-                }
-            }
-            '>' -> {
-                if (counter % 2 == 0) {
-                    santaX++
-                } else {
-                    robotX++
-                }
-            }
+            '^' -> if (isCounterEven) santaY++ else robotY++
+            'v' -> if (isCounterEven) santaY-- else robotY--
+            '<' -> if (isCounterEven) santaX-- else robotX--
+            '>' -> if (isCounterEven) santaX++ else robotX++
         }
 
         when {
