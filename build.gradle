@@ -12,6 +12,7 @@ buildscript {
     }
 }
 
+apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
@@ -23,6 +24,18 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version", 'ch.qos.logback:logback-classic:1.2.1',
             'com.google.code.gson:gson:2.8.0'
     testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+    test.kotlin.srcDirs += 'src/test/kotlin'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
 
 task wrapper(type: Wrapper) {
