@@ -1,7 +1,6 @@
 package ru.timakden.adventofcode.year2015.day22
 
 import java.util.*
-import java.util.concurrent.atomic.AtomicInteger
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
@@ -13,7 +12,7 @@ fun main(args: Array<String>) {
 }
 
 fun solve(partTwo: Boolean): Int {
-    val minMana = AtomicInteger(Integer.MAX_VALUE)
+    var minMana = Int.MAX_VALUE
     val boss = Boss(71, 10)
     val wizards = PriorityQueue<Wizard> { a, b -> Integer.compare(b.manaSpent, a.manaSpent) }
     wizards.add(Wizard(50, 500, boss))
@@ -35,17 +34,17 @@ fun solve(partTwo: Boolean): Int {
                 nextWizard.applyEffect()
 
                 if (nextWizard.boss.hitpoints <= 0) {
-                    minMana.set(Math.min(minMana.get(), nextWizard.manaSpent))
-                    wizards.removeAll { w -> w.manaSpent > minMana.get() }
+                    minMana = Math.min(minMana, nextWizard.manaSpent)
+                    wizards.removeAll { it.manaSpent > minMana }
                 } else {
                     nextWizard.hitpoints -= Math.max(1, nextWizard.boss.damage - nextWizard.armor)
-                    if (nextWizard.hitpoints > 0 && nextWizard.mana > 0 && nextWizard.manaSpent < minMana.get())
+                    if (nextWizard.hitpoints > 0 && nextWizard.mana > 0 && nextWizard.manaSpent < minMana)
                         wizards.add(nextWizard)
                 }
             }
         }
     }
-    return minMana.get()
+    return minMana
 }
 
 data class Boss(var hitpoints: Int, var damage: Int) : Cloneable {
