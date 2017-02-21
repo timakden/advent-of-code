@@ -6,13 +6,13 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solvePartOne() {
-        assertEquals(solvePartOne("(()(()("), 3)
-        assertEquals(solvePartOne(")())())"), -3)
+        assertEquals(3, solvePartOne("(()(()("))
+        assertEquals(-3, solvePartOne(")())())"))
     }
 
     @Test
     fun solvePartTwo() {
-        assertEquals(solvePartTwo(")"), 1)
-        assertEquals(solvePartTwo("()())"), 5)
+        assertEquals(1, solvePartTwo(")"))
+        assertEquals(5, solvePartTwo("()())"))
     }
 }

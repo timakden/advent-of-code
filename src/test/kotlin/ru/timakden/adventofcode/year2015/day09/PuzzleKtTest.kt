@@ -7,7 +7,7 @@ class PuzzleKtTest {
     @Test
     fun solve() {
         val input = listOf("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141")
-        assertEquals(solve(input, false), 605)
-        assertEquals(solve(input, true), 982)
+        assertEquals(605, solve(input, false))
+        assertEquals(982, solve(input, true))
     }
 }

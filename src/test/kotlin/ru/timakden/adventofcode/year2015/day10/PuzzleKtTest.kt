@@ -6,6 +6,6 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solve() {
-        assertEquals(solve("1", 5), "312211")
+        assertEquals("312211", solve("1", 5))
     }
 }

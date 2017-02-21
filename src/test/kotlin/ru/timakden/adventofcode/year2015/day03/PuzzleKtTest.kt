@@ -6,15 +6,15 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solvePartOne() {
-        assertEquals(solvePartOne(">"), 2)
-        assertEquals(solvePartOne("^>v<"), 4)
-        assertEquals(solvePartOne("^v^v^v^v^v"), 2)
+        assertEquals(2, solvePartOne(">"))
+        assertEquals(4, solvePartOne("^>v<"))
+        assertEquals(2, solvePartOne("^v^v^v^v^v"))
     }
 
     @Test
     fun solvePartTwo() {
-        assertEquals(solvePartTwo("^v"), 3)
-        assertEquals(solvePartTwo("^>v<"), 3)
-        assertEquals(solvePartTwo("^v^v^v^v^v"), 11)
+        assertEquals(3, solvePartTwo("^v"))
+        assertEquals(3, solvePartTwo("^>v<"))
+        assertEquals(11, solvePartTwo("^v^v^v^v^v"))
     }
 }

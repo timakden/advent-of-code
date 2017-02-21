@@ -4,13 +4,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class PuzzleKtTest {
+    val input = listOf("""""""", """"abc"""", """"aaa\"aaa"""", """"\x27"""")
+
     @Test
     fun solvePartOne() {
-        assertEquals(solvePartOne(listOf("""""""", """"abc"""", """"aaa\"aaa"""", """"\x27"""")), 12)
+        assertEquals(12, solvePartOne(input))
     }
 
     @Test
     fun solvePartTwo() {
-        assertEquals(solvePartTwo(listOf("""""""", """"abc"""", """"aaa\"aaa"""", """"\x27"""")), 19)
+        assertEquals(19, solvePartTwo(input))
     }
 }

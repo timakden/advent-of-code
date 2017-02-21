@@ -8,13 +8,13 @@ class PuzzleKtTest {
     fun solvePartOne() {
         val replacements = listOf("H => HO", "H => OH", "O => HH")
         val molecule = "HOH"
-        assertEquals(solvePartOne(replacements, molecule), 4)
+        assertEquals(4, solvePartOne(replacements, molecule))
     }
 
     @Test
     fun solvePartTwo() {
         val replacements = listOf("e => H", "e => O", "H => HO", "H => OH", "O => HH")
         val molecule = "HOHOHO"
-        assertEquals(solvePartTwo(replacements, molecule), 6)
+        assertEquals(6, solvePartTwo(replacements, molecule))
     }
 }

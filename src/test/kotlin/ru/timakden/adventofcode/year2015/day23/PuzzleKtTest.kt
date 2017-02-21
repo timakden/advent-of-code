@@ -6,7 +6,7 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solve() {
-        val list = listOf("inc a", "jio a, +2", "tpl a", "inc a")
-        assertEquals(solve(list, false)[0], 2)
+        val input = listOf("inc a", "jio a, +2", "tpl a", "inc a")
+        assertEquals(2, solve(input, false)[0])
     }
 }

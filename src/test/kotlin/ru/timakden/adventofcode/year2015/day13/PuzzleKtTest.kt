@@ -6,7 +6,7 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solve() {
-        val list = listOf("Alice would gain 54 happiness units by sitting next to Bob.",
+        val input = listOf("Alice would gain 54 happiness units by sitting next to Bob.",
                 "Alice would lose 79 happiness units by sitting next to Carol.",
                 "Alice would lose 2 happiness units by sitting next to David.",
                 "Bob would gain 83 happiness units by sitting next to Alice.",
@@ -19,6 +19,6 @@ class PuzzleKtTest {
                 "David would lose 7 happiness units by sitting next to Bob.",
                 "David would gain 41 happiness units by sitting next to Carol.")
 
-        assertEquals(solve(list, false), 330)
+        assertEquals(330, solve(input, false))
     }
 }

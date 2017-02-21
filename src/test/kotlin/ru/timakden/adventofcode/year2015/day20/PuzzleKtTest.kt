@@ -6,14 +6,14 @@ import org.junit.Test
 class PuzzleKtTest {
     @Test
     fun solve() {
-        assertEquals(solve(10, false), 1)
-        assertEquals(solve(30, false), 2)
-        assertEquals(solve(40, false), 3)
-        assertEquals(solve(70, false), 4)
-        assertEquals(solve(60, false), 5)
-        assertEquals(solve(120, false), 6)
-        assertEquals(solve(80, false), 7)
-        assertEquals(solve(150, false), 8)
-        assertEquals(solve(130, false), 9)
+        assertEquals(1, solve(10, false))
+        assertEquals(2, solve(30, false))
+        assertEquals(3, solve(40, false))
+        assertEquals(4, solve(70, false))
+        assertEquals(5, solve(60, false))
+        assertEquals(6, solve(120, false))
+        assertEquals(7, solve(80, false))
+        assertEquals(8, solve(150, false))
+        assertEquals(9, solve(130, false))
     }
 }
