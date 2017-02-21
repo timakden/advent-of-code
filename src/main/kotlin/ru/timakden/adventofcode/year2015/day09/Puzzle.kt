@@ -1,6 +1,6 @@
 package ru.timakden.adventofcode.year2015.day09
 
-import ru.timakden.adventofcode.permutations
+import com.google.common.collect.Collections2
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
@@ -29,7 +29,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
                 { it.substringAfter(" = ").toInt() })
     }
 
-    val routes = locations.toMutableList().permutations()
+    val routes = Collections2.permutations(locations)
 
     routes.forEach { route ->
         val length = route.indices

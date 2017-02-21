@@ -1,6 +1,6 @@
 package ru.timakden.adventofcode.year2015.day21
 
-import ru.timakden.adventofcode.powerSet
+import com.google.common.collect.Sets
 import ru.timakden.adventofcode.year2015.day21.ItemType.*
 import kotlin.system.measureTimeMillis
 
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
             addAll(rings)
         }
 
-        val validItems = items.powerSet().filter(::isValid).toMutableList()
+        val validItems = Sets.powerSet(items.toSet()).filter(::isValid).toMutableList()
 
         println("Part One: ${solvePartOne(validItems)}")
         println("Part Two: ${solvePartTwo(validItems)}")
@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
     println("Elapsed time: $elapsedTime ms")
 }
 
-fun solvePartOne(items: MutableList<List<Item>>): Int {
+fun solvePartOne(items: MutableList<Set<Item>>): Int {
     items.sortBy { it.sumBy(Item::cost) }
     var bossDefeated = false
 
@@ -73,7 +73,7 @@ fun solvePartOne(items: MutableList<List<Item>>): Int {
     return 0
 }
 
-fun solvePartTwo(items: MutableList<List<Item>>): Int {
+fun solvePartTwo(items: MutableList<Set<Item>>): Int {
     items.sortByDescending { it.sumBy(Item::cost) }
     var playerDefeated = false
 
@@ -100,7 +100,7 @@ fun solvePartTwo(items: MutableList<List<Item>>): Int {
     return 0
 }
 
-fun isValid(items: List<Item>) = !(items.isEmpty() || items.size > 4 || items.count { it.type == WEAPON } != 1 ||
+fun isValid(items: Set<Item>) = !(items.isEmpty() || items.size > 4 || items.count { it.type == WEAPON } != 1 ||
         items.count { it.type == ARMOR } > 1 || items.count { it.type == RING } > 2)
 
 data class Item(val type: ItemType, val cost: Int, val damage: Int = 0, val armor: Int = 0)

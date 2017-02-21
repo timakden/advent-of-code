@@ -1,6 +1,6 @@
 package ru.timakden.adventofcode.year2015.day13
 
-import ru.timakden.adventofcode.permutations
+import com.google.common.collect.Collections2
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
@@ -42,7 +42,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
         }
     }
 
-    val seatingArrangements = names.toMutableList().permutations()
+    val seatingArrangements = Collections2.permutations(names)
 
     seatingArrangements.forEach {
         var happinessChange = it.indices
