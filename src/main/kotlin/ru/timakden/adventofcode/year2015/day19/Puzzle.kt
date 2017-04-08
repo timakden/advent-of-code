@@ -33,18 +33,18 @@ fun solvePartTwo(replacements: List<String>, molecule: String): Int {
     val regex = "\\s=>\\s".toRegex()
     val reversedReplacements = replacements.associateBy({ it.split(regex)[1] }, { it.split(regex)[0] })
 
-    do {
+    do
         count = findMolecule(0, molecule, reversedReplacements)
-    } while (count == -1)
+    while (count == -1)
 
 
     return count
 }
 
 private fun findMolecule(depth: Int, molecule: String, reversedReplacements: Map<String, String>): Int {
-    if (molecule == "e") {
+    if (molecule == "e")
         return depth
-    } else {
+    else {
         var originalMolecule = molecule
         val keys = reversedReplacements.keys.toMutableList()
         var replaced = false

@@ -7,7 +7,6 @@ fun main(args: Array<String>) {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-
     println("Elapsed time: $elapsedTime ms")
 }
 
@@ -28,7 +27,7 @@ private fun performStep(matrix: Array<CharArray>, partTwo: Boolean): Array<CharA
         (0..99).forEach { j ->
             val neighbours = CharArray(8)
 
-            if (i > 0 && i < 99 && j > 0 && j < 99) {
+            if (i in 1..98 && j > 0 && j < 99) {
                 neighbours[0] = matrix[i - 1][j - 1]
                 neighbours[1] = matrix[i - 1][j]
                 neighbours[2] = matrix[i - 1][j + 1]
@@ -91,7 +90,7 @@ private fun performStep(matrix: Array<CharArray>, partTwo: Boolean): Array<CharA
                 neighbours[5] = '.'
                 neighbours[6] = '.'
                 neighbours[7] = '.'
-            } else if (i > 0 && i < 99 && j == 0) {
+            } else if (i in 1..98 && j == 0) {
                 neighbours[0] = '.'
                 neighbours[1] = matrix[i - 1][j]
                 neighbours[2] = matrix[i - 1][j + 1]
@@ -100,7 +99,7 @@ private fun performStep(matrix: Array<CharArray>, partTwo: Boolean): Array<CharA
                 neighbours[5] = '.'
                 neighbours[6] = matrix[i + 1][j]
                 neighbours[7] = matrix[i + 1][j + 1]
-            } else if (i > 0 && i < 99 && j == 99) {
+            } else if (i in 1..98 && j == 99) {
                 neighbours[0] = matrix[i - 1][j - 1]
                 neighbours[1] = matrix[i - 1][j]
                 neighbours[2] = '.'

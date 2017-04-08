@@ -100,12 +100,12 @@ fun solvePartTwo(items: MutableList<Set<Item>>): Int {
     return 0
 }
 
-fun isValid(items: Set<Item>) = !(items.isEmpty() || items.size > 4 || items.count { it.type == WEAPON } != 1 ||
+private fun isValid(items: Set<Item>) = !(items.isEmpty() || items.size > 4 || items.count { it.type == WEAPON } != 1 ||
         items.count { it.type == ARMOR } > 1 || items.count { it.type == RING } > 2)
 
 data class Item(val type: ItemType, val cost: Int, val damage: Int = 0, val armor: Int = 0)
 
-data class Character(var hitpoints: Int = 0, var damage: Int = 0, var armor: Int = 0) {
+private data class Character(var hitpoints: Int = 0, var damage: Int = 0, var armor: Int = 0) {
     fun attack(other: Character) {
         other.hitpoints -= if (damage - other.armor < 1) 1 else damage - other.armor
     }

@@ -4,13 +4,16 @@ import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
     val elapsedTime = measureTimeMillis {
-        println("Part One: ${input.count(::isNicePartOne)}")
-        println("Part Two: ${input.count(::isNicePartTwo)}")
+        println("Part One: ${solvePartOne(input)}")
+        println("Part Two: ${solvePartTwo(input)}")
     }
     println("Elapsed time: $elapsedTime ms")
 }
 
-fun isNicePartOne(s: String): Boolean {
+fun solvePartOne(input: List<String>) = input.count(::isStringNicePartOne)
+fun solvePartTwo(input: List<String>) = input.count(::isStringNicePartTwo)
+
+private fun isStringNicePartOne(s: String): Boolean {
     val regex1 = "(.*[aeiou]){3}".toRegex()
     val regex2 = "(.)\\1".toRegex()
     val regex3 = "ab|cd|pq|xy".toRegex()
@@ -18,7 +21,7 @@ fun isNicePartOne(s: String): Boolean {
     return regex1.containsMatchIn(s) && regex2.containsMatchIn(s) && !regex3.containsMatchIn(s)
 }
 
-fun isNicePartTwo(s: String): Boolean {
+private fun isStringNicePartTwo(s: String): Boolean {
     val regex1 = "(.{2}).*\\1".toRegex()
     val regex2 = "(.).\\1".toRegex()
 

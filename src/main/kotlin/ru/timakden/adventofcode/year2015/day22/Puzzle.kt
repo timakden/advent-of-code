@@ -20,10 +20,7 @@ fun solve(partTwo: Boolean): Int {
     while (wizards.size > 0) {
         val currentWizard = wizards.poll()
 
-        if (partTwo) {
-            if (currentWizard.hitpoints-- <= 0)
-                continue
-        }
+        if (partTwo && currentWizard.hitpoints-- <= 0) continue
 
         currentWizard.applyEffect()
 
@@ -47,13 +44,13 @@ fun solve(partTwo: Boolean): Int {
     return minMana
 }
 
-data class Boss(var hitpoints: Int, var damage: Int) : Cloneable {
+private data class Boss(var hitpoints: Int, var damage: Int) : Cloneable {
     public override fun clone(): Boss {
         return Boss(hitpoints, damage)
     }
 }
 
-data class Wizard(var hitpoints: Int, var mana: Int, var boss: Boss) : Cloneable {
+private data class Wizard(var hitpoints: Int, var mana: Int, var boss: Boss) : Cloneable {
     var armor: Int = 0
     var manaSpent: Int = 0
     var activeEffects = IntArray(3)

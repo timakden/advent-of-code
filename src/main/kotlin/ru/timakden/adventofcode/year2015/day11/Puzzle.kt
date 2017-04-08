@@ -16,9 +16,8 @@ fun main(args: Array<String>) {
 fun solve(input: String): String {
     var newPassword = incrementPassword(input)
 
-    while (!checkPassword(newPassword)) {
+    while (!checkPassword(newPassword))
         newPassword = incrementPassword(newPassword)
-    }
 
     return newPassword
 }

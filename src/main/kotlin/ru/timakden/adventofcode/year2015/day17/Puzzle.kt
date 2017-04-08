@@ -15,9 +15,8 @@ fun solve(containers: List<List<Int>>, partTwo: Boolean): Int {
     if (partTwo) {
         val minSize = containers.minBy { it.size }?.size
         return containers.count { it.size == minSize }
-    } else {
-        return containers.size
     }
+    return containers.size
 }
 
 fun getContainers(input: List<Int>, litersToStore: Int): List<List<Int>> {
@@ -26,9 +25,7 @@ fun getContainers(input: List<Int>, litersToStore: Int): List<List<Int>> {
     for (i in 1..1.shl(input.size)) {
         val list = mutableListOf<Int>()
 
-        input.indices.forEach {
-            if (i.shr(it).and(1) > 0) list.add(input[it])
-        }
+        input.indices.forEach { if (i.shr(it).and(1) > 0) list.add(input[it]) }
 
         if (list.sum() == litersToStore) containers.add(list)
     }

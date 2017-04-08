@@ -1,24 +1,18 @@
 package ru.timakden.adventofcode.year2015.day05
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class PuzzleKtTest {
     @Test
-    fun isNicePartOne() {
-        assertTrue(isNicePartOne("ugknbfddgicrmopn"))
-        assertTrue(isNicePartOne("aaa"))
-        assertFalse(isNicePartOne("jchzalrnumimnmhp"))
-        assertFalse(isNicePartOne("haegwjzuvuyypxyu"))
-        assertFalse(isNicePartOne("dvszwmarrgswjxmb"))
+    fun solvePartOne() {
+        val input = listOf("ugknbfddgicrmopn", "aaa", "jchzalrnumimnmhp", "haegwjzuvuyypxyu", "dvszwmarrgswjxmb")
+        assertEquals(2, solvePartOne(input))
     }
 
     @Test
-    fun isNicePartTwo() {
-        assertTrue(isNicePartTwo("qjhvhtzxzqqjkmpb"))
-        assertTrue(isNicePartTwo("xxyxx"))
-        assertFalse(isNicePartTwo("uurcxstgmygtbstg"))
-        assertFalse(isNicePartTwo("ieodomkazucvgmuy"))
+    fun solvePartTwo() {
+        val input = listOf("qjhvhtzxzqqjkmpb", "xxyxx", "uurcxstgmygtbstg", "ieodomkazucvgmuy")
+        assertEquals(2, solvePartTwo(input))
     }
 }

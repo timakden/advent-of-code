@@ -19,36 +19,32 @@ fun solve(input: List<String>): Int? {
             when (leftPart.size) {
                 1 -> {
                     // example: 44430 -> b
-                    if (leftPart[0].matches("\\d+".toRegex())) {
+                    if (leftPart[0].matches("\\d+".toRegex()))
                         map.put(expressions[1], leftPart[0].toInt())
-                    } else if (leftPart[0].matches("[a-zA-Z]+".toRegex())) {
+                    else if (leftPart[0].matches("[a-zA-Z]+".toRegex()))
                         map[leftPart[0]]?.let { map.put(expressions[1], it) }
-                    }
                 }
                 2 -> {
                     // example: NOT di -> dj
-                    if (leftPart[1].matches("\\d+".toRegex())) {
+                    if (leftPart[1].matches("\\d+".toRegex()))
                         map.put(expressions[1], leftPart[1].toInt().inv())
-                    } else if (leftPart[1].matches("[a-zA-Z]+".toRegex())) {
+                    else if (leftPart[1].matches("[a-zA-Z]+".toRegex()))
                         map[leftPart[1]]?.let { map.put(expressions[1], it.inv()) }
-                    }
                 }
                 3 -> {
                     // example: dd OR do -> dp
                     var val1: Int? = null
                     var val2: Int? = null
 
-                    if (leftPart[0].matches("\\d+".toRegex())) {
+                    if (leftPart[0].matches("\\d+".toRegex()))
                         val1 = leftPart[0].toInt()
-                    } else if (leftPart[0].matches("[a-zA-Z]+".toRegex())) {
+                    else if (leftPart[0].matches("[a-zA-Z]+".toRegex()))
                         val1 = map[leftPart[0]]
-                    }
 
-                    if (leftPart[2].matches("\\d+".toRegex())) {
+                    if (leftPart[2].matches("\\d+".toRegex()))
                         val2 = leftPart[2].toInt()
-                    } else if (leftPart[2].matches("[a-zA-Z]+".toRegex())) {
+                    else if (leftPart[2].matches("[a-zA-Z]+".toRegex()))
                         val2 = map[leftPart[2]]
-                    }
 
                     if (val1 != null && val2 != null) {
                         when (leftPart[1]) {
