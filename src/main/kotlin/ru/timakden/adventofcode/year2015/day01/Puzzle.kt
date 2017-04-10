@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     println("Elapsed time: $elapsedTime ms")
 }
 
-fun solvePartOne(input: String): Int = input.count { it == '(' } - input.count { it == ')' }
+fun solvePartOne(input: String) = input.count { it == '(' } - input.count { it == ')' }
 
 fun solvePartTwo(input: String): Int {
     var floor = 0
