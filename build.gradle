@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version", 'ch.qos.logback:logback-classic:1.2.3',
-            'com.google.code.gson:gson:2.8.0', 'com.google.guava:guava:21.0'
+            'com.google.code.gson:gson:2.8.0', 'com.google.guava:guava:21.0', 'commons-codec:commons-codec:1.10'
     testCompile 'junit:junit:4.12'
 }
 
