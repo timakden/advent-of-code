@@ -5,7 +5,7 @@ import kotlin.system.measureTimeMillis
 fun main(args: Array<String>) {
     val elapsedTime = measureTimeMillis {
         println("Part One: ${solvePartOne(input)}")
-        println("Part One: ${solvePartTwo(input)}")
+        println("Part Two: ${solvePartTwo(input)}")
     }
     println("Elapsed time: $elapsedTime ms")
 }
