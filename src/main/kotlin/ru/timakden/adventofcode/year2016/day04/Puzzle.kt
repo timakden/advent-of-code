@@ -73,10 +73,10 @@ private fun decryptRoomName(encryptedName: String, id: Int): String {
 }
 
 private fun getNextLetter(char: Char): Char {
-    when (char) {
-        ' ' -> return ' '
-        '-' -> return ' '
-        'z' -> return 'a'
-        else -> return char + 1
+    return when (char) {
+        ' ' -> ' '
+        '-' -> ' '
+        'z' -> 'a'
+        else -> char + 1
     }
 }

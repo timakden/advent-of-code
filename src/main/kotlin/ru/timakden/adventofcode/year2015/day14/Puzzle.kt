@@ -35,9 +35,8 @@ fun main(args: Array<String>) {
             deers.forEach { if (it.totalDistance == currentLeadingDistance) it.scores++ }
         }
     }
-
-    System.out.println("Part One: ${deers.maxBy { it.totalDistance }?.totalDistance}")
-    System.out.println("Part Two: ${deers.maxBy { it.scores }?.scores}")
+    println("Part One: ${deers.maxBy { it.totalDistance }?.totalDistance}")
+    println("Part Two: ${deers.maxBy { it.scores }?.scores}")
     println("Elapsed time: $elapsedTime ms")
 }
 

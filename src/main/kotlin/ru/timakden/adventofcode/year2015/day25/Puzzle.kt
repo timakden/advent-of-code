@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 fun solve(input: Pair<Int, Int>): Long {
     val iterations = (1..input.second).sum() + 0.until(input.first - 1).sumBy { input.second + it }
     var code = 20151125L
-    1.until(iterations).forEach { code = generateNextCode(code) }
+    (1 until iterations).forEach { code = generateNextCode(code) }
     return code
 }
 

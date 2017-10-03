@@ -16,17 +16,21 @@ fun solve(input: String, partTwo: Boolean) = sumNumbers(Gson().fromJson(input, A
 private fun sumNumbers(any: Any, partTwo: Boolean): Int {
     var sum = 0
 
-    if (any is Map<*, *>) {
-        any.forEach {
-            if (partTwo && it.value == "red") return 0
+    when (any) {
+        is Map<*, *> -> {
+            any.forEach {
+                if (partTwo && it.value == "red") return 0
 
-            it.value?.let { sum += sumNumbers(it, partTwo) }
+                it.value?.let { sum += sumNumbers(it, partTwo) }
+            }
+            return sum
         }
-        return sum
-    } else if (any is List<*>) {
-        any.filterNotNull().forEach { sum += sumNumbers(it, partTwo) }
-        return sum
-    } else if (any is Number) return any.toInt()
+        is List<*> -> {
+            any.filterNotNull().forEach { sum += sumNumbers(it, partTwo) }
+            return sum
+        }
+        is Number -> return any.toInt()
+        else -> return 0
+    }
 
-    return 0
 }

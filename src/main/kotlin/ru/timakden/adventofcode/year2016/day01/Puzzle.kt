@@ -73,19 +73,19 @@ private fun Direction.turnRight(): Direction {
 }
 
 private fun Direction.turn(turnTo: Char): Direction {
-    if (turnTo == 'L') {
+    return if (turnTo == 'L') {
         when {
-            this == Direction.NORTH -> return Direction.WEST
-            this == Direction.SOUTH -> return Direction.EAST
-            this == Direction.EAST -> return Direction.NORTH
-            else -> return Direction.SOUTH
+            this == Direction.NORTH -> Direction.WEST
+            this == Direction.SOUTH -> Direction.EAST
+            this == Direction.EAST -> Direction.NORTH
+            else -> Direction.SOUTH
         }
     } else {
         when {
-            this == Direction.NORTH -> return Direction.EAST
-            this == Direction.SOUTH -> return Direction.WEST
-            this == Direction.EAST -> return Direction.SOUTH
-            else -> return Direction.NORTH
+            this == Direction.NORTH -> Direction.EAST
+            this == Direction.SOUTH -> Direction.WEST
+            this == Direction.EAST -> Direction.SOUTH
+            else -> Direction.NORTH
         }
     }
 }
