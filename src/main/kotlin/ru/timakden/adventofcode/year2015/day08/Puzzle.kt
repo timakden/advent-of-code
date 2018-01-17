@@ -16,5 +16,5 @@ fun solvePartOne(input: List<String>) = input.sumBy {
 
 fun solvePartTwo(input: List<String>) = input.sumBy {
     it.replace("^\"|\"$".toRegex(), "***").replace("\\\\{2}|\\\\\"".toRegex(), "****")
-            .replace("\\\\x".toRegex(), "***").length - it.length
+        .replace("\\\\x".toRegex(), "***").length - it.length
 }

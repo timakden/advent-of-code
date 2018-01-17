@@ -10,7 +10,8 @@ fun main(args: Array<String>) {
     println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Int = input.count { if (partTwo) isSupportSsl(it) else isSupportTls(it) }
+fun solve(input: List<String>, partTwo: Boolean): Int =
+    input.count { if (partTwo) isSupportSsl(it) else isSupportTls(it) }
 
 private fun isSupportTls(ip: String): Boolean {
     val firstRequirement = "(\\w)(?!\\1)(\\w)\\2\\1".toRegex().containsMatchIn(ip)

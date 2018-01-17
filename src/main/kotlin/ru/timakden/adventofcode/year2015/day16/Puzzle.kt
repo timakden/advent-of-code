@@ -11,8 +11,10 @@ fun main(args: Array<String>) {
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Aunt? {
-    val auntToFind = Aunt(children = 3, cats = 7, samoyeds = 2, pomeranians = 3, akitas = 0, vizslas = 0,
-            goldfish = 5, trees = 3, cars = 2, perfumes = 1)
+    val auntToFind = Aunt(
+        children = 3, cats = 7, samoyeds = 2, pomeranians = 3, akitas = 0, vizslas = 0,
+        goldfish = 5, trees = 3, cars = 2, perfumes = 1
+    )
 
     val aunts = mutableListOf<Aunt>()
 
@@ -71,7 +73,8 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
             }
 
             pomeranians?.let {
-                auntFound = auntFound && (if (partTwo) it < auntToFind.pomeranians!! else it == auntToFind.pomeranians!!)
+                auntFound = auntFound &&
+                        (if (partTwo) it < auntToFind.pomeranians!! else it == auntToFind.pomeranians!!)
             }
 
             samoyeds?.let {
@@ -93,7 +96,9 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
     return null
 }
 
-data class Aunt(var name: String? = null, var children: Int? = null, var cats: Int? = null,
-                var samoyeds: Int? = null, var pomeranians: Int? = null, var akitas: Int? = null,
-                var vizslas: Int? = null, var goldfish: Int? = null, var trees: Int? = null,
-                var cars: Int? = null, var perfumes: Int? = null)
+data class Aunt(
+    var name: String? = null, var children: Int? = null, var cats: Int? = null,
+    var samoyeds: Int? = null, var pomeranians: Int? = null, var akitas: Int? = null,
+    var vizslas: Int? = null, var goldfish: Int? = null, var trees: Int? = null,
+    var cars: Int? = null, var perfumes: Int? = null
+)

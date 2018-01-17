@@ -26,16 +26,18 @@ fun solve(input: List<String>, partTwo: Boolean): String {
 }
 
 private val keypadPartOne = arrayOf(
-        charArrayOf('1', '2', '3'),
-        charArrayOf('4', '5', '6'),
-        charArrayOf('7', '8', '9'))
+    charArrayOf('1', '2', '3'),
+    charArrayOf('4', '5', '6'),
+    charArrayOf('7', '8', '9')
+)
 
 private val keypadPartTwo = arrayOf(
-        charArrayOf(' ', ' ', '1', ' ', ' '),
-        charArrayOf(' ', '2', '3', '4', ' '),
-        charArrayOf('5', '6', '7', '8', '9'),
-        charArrayOf(' ', 'A', 'B', 'C', ' '),
-        charArrayOf(' ', ' ', 'D', ' ', ' '))
+    charArrayOf(' ', ' ', '1', ' ', ' '),
+    charArrayOf(' ', '2', '3', '4', ' '),
+    charArrayOf('5', '6', '7', '8', '9'),
+    charArrayOf(' ', 'A', 'B', 'C', ' '),
+    charArrayOf(' ', ' ', 'D', ' ', ' ')
+)
 
 private fun goToTheNextPoint(point: Pair<Int, Int>, instruction: String, partTwo: Boolean): Pair<Int, Int> {
     var x = point.second

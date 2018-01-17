@@ -46,8 +46,8 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
     seatingArrangements.forEach {
         var happinessChange = it.indices
-                .filter { i -> i != it.lastIndex }
-                .sumBy { i -> (happiness[it[i] + it[i + 1]] ?: 0) + (happiness[it[i + 1] + it[i]] ?: 0) }
+            .filter { i -> i != it.lastIndex }
+            .sumBy { i -> (happiness[it[i] + it[i + 1]] ?: 0) + (happiness[it[i + 1] + it[i]] ?: 0) }
 
         happinessChange += (happiness[it[0] + it[it.lastIndex]] ?: 0) + (happiness[it[it.lastIndex] + it[0]] ?: 0)
 

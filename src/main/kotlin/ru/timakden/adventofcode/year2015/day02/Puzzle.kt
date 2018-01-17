@@ -15,8 +15,10 @@ fun solvePartOne(input: List<String>): Int {
     input.forEach {
         val dimensions = mutableListOf<Int>()
         it.split("x").forEach { dimensions.add(it.toInt()) }
-        val areas = listOf(2 * dimensions[0] * dimensions[1], 2 * dimensions[1] * dimensions[2],
-                2 * dimensions[0] * dimensions[2])
+        val areas = listOf(
+            2 * dimensions[0] * dimensions[1], 2 * dimensions[1] * dimensions[2],
+            2 * dimensions[0] * dimensions[2]
+        )
 
         wrappingPaper += areas.sum() + (areas.min() ?: 0) / 2
     }

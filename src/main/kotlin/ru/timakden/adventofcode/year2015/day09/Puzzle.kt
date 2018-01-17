@@ -21,20 +21,20 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
         mapTo(locations, { it.substringAfter(" to ").substringBefore(" = ") })
 
         associateByTo(distances,
-                { it.substringBefore(" = ").replace(" to ", "") },
-                { it.substringAfter(" = ").toInt() })
+            { it.substringBefore(" = ").replace(" to ", "") },
+            { it.substringAfter(" = ").toInt() })
 
         associateByTo(distances,
-                { it.substringAfter(" to ").substringBefore(" = ") + it.substringBefore(" to ") },
-                { it.substringAfter(" = ").toInt() })
+            { it.substringAfter(" to ").substringBefore(" = ") + it.substringBefore(" to ") },
+            { it.substringAfter(" = ").toInt() })
     }
 
     val routes = Collections2.permutations(locations)
 
     routes.forEach { route ->
         val length = route.indices
-                .filter { it != route.size - 1 }
-                .sumBy { distances[route[it] + route[it + 1]] ?: 0 }
+            .filter { it != route.size - 1 }
+            .sumBy { distances[route[it] + route[it + 1]] ?: 0 }
 
         when {
             partTwo -> if (length > result) result = length

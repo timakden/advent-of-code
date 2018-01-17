@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Int {
-    val ingredients = mutableListOf <Ingredient>()
+    val ingredients = mutableListOf<Ingredient>()
     var highest = Int.MIN_VALUE
 
     input.forEach {
@@ -20,8 +20,12 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
         regex.findAll(it).forEach { split.add(it.value) }
 
-        ingredients.add(Ingredient(split[0].removeSuffix(":"), split[1].toInt(), split[2].toInt(), split[3].toInt(),
-                split[4].toInt(), split[5].toInt()))
+        ingredients.add(
+            Ingredient(
+                split[0].removeSuffix(":"), split[1].toInt(), split[2].toInt(), split[3].toInt(),
+                split[4].toInt(), split[5].toInt()
+            )
+        )
     }
 
     var capacity: Int
@@ -68,5 +72,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
     return highest
 }
 
-data class Ingredient(var name: String, var capacity: Int, var durability: Int, var flavor: Int,
-                      var texture: Int, var calories: Int)
+data class Ingredient(
+    var name: String, var capacity: Int, var durability: Int, var flavor: Int,
+    var texture: Int, var calories: Int
+)

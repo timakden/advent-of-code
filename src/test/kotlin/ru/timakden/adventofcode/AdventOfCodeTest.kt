@@ -155,18 +155,20 @@ class AdventOfCodeTest {
     @Test
     @DisplayName("year 2015, day 13")
     fun year2015day13() {
-        val input = listOf("Alice would gain 54 happiness units by sitting next to Bob.",
-                "Alice would lose 79 happiness units by sitting next to Carol.",
-                "Alice would lose 2 happiness units by sitting next to David.",
-                "Bob would gain 83 happiness units by sitting next to Alice.",
-                "Bob would lose 7 happiness units by sitting next to Carol.",
-                "Bob would lose 63 happiness units by sitting next to David.",
-                "Carol would lose 62 happiness units by sitting next to Alice.",
-                "Carol would gain 60 happiness units by sitting next to Bob.",
-                "Carol would gain 55 happiness units by sitting next to David.",
-                "David would gain 46 happiness units by sitting next to Alice.",
-                "David would lose 7 happiness units by sitting next to Bob.",
-                "David would gain 41 happiness units by sitting next to Carol.")
+        val input = listOf(
+            "Alice would gain 54 happiness units by sitting next to Bob.",
+            "Alice would lose 79 happiness units by sitting next to Carol.",
+            "Alice would lose 2 happiness units by sitting next to David.",
+            "Bob would gain 83 happiness units by sitting next to Alice.",
+            "Bob would lose 7 happiness units by sitting next to Carol.",
+            "Bob would lose 63 happiness units by sitting next to David.",
+            "Carol would lose 62 happiness units by sitting next to Alice.",
+            "Carol would gain 60 happiness units by sitting next to Bob.",
+            "Carol would gain 55 happiness units by sitting next to David.",
+            "David would gain 46 happiness units by sitting next to Alice.",
+            "David would lose 7 happiness units by sitting next to Bob.",
+            "David would gain 41 happiness units by sitting next to Carol."
+        )
 
         assertEquals(330, y15d13(input, false))
     }
@@ -224,9 +226,11 @@ class AdventOfCodeTest {
     @Test
     @DisplayName("year 2015, day 25")
     fun year2015day25() {
-        val codes = longArrayOf(31916031L, 18749137L, 16080970L, 21629792L, 17289845L, 24592653L, 8057251L,
-                16929656L, 30943339L, 77061L, 32451966L, 1601130L, 7726640L, 10071777L, 33071741L, 17552253L,
-                21345942L, 7981243L, 15514188L, 33511524L)
+        val codes = longArrayOf(
+            31916031L, 18749137L, 16080970L, 21629792L, 17289845L, 24592653L, 8057251L,
+            16929656L, 30943339L, 77061L, 32451966L, 1601130L, 7726640L, 10071777L, 33071741L, 17552253L,
+            21345942L, 7981243L, 15514188L, 33511524L
+        )
 
         var code = 20151125L
         codes.forEach {
@@ -271,8 +275,10 @@ class AdventOfCodeTest {
     @Test
     @DisplayName("year 2016, day 04")
     fun year2016day04() {
-        val input = listOf("aaaaa-bbb-z-y-x-123[abxyz]", "a-b-c-d-e-f-g-h-987[abcde]",
-                "not-a-real-room-404[oarel]", "totally-real-room-200[decoy]")
+        val input = listOf(
+            "aaaaa-bbb-z-y-x-123[abxyz]", "a-b-c-d-e-f-g-h-987[abcde]",
+            "not-a-real-room-404[oarel]", "totally-real-room-200[decoy]"
+        )
         assertEquals(1514, y16d04p01(input))
     }
 
@@ -287,8 +293,10 @@ class AdventOfCodeTest {
     @Test
     @DisplayName("year 2016, day 06")
     fun year2016day06() {
-        val input = listOf("eedadn", "drvtee", "eandsr", "raavrd", "atevrs", "tsrnev", "sdttsa", "rasrtv",
-                "nssdts", "ntnada", "svetve", "tesnvt", "vntsnd", "vrdear", "dvrsen", "enarar")
+        val input = listOf(
+            "eedadn", "drvtee", "eandsr", "raavrd", "atevrs", "tsrnev", "sdttsa", "rasrtv",
+            "nssdts", "ntnada", "svetve", "tesnvt", "vntsnd", "vrdear", "dvrsen", "enarar"
+        )
         assertEquals("easter", y16d06(input, false))
         assertEquals("advent", y16d06(input, true))
     }
@@ -330,9 +338,11 @@ class AdventOfCodeTest {
     @Test
     @DisplayName("year 2016, day 10")
     fun year2016day10() {
-        val input = listOf("value 5 goes to bot 2", "bot 2 gives low to bot 1 and high to bot 0",
-                "value 3 goes to bot 1", "bot 1 gives low to output 1 and high to bot 0",
-                "bot 0 gives low to output 2 and high to output 0", "value 2 goes to bot 2").toMutableList()
+        val input = listOf(
+            "value 5 goes to bot 2", "bot 2 gives low to bot 1 and high to bot 0",
+            "value 3 goes to bot 1", "bot 1 gives low to output 1 and high to bot 0",
+            "bot 0 gives low to output 2 and high to output 0", "value 2 goes to bot 2"
+        ).toMutableList()
         val valuesToCompare = listOf(2, 5)
         assertEquals(2, y16d10(input, valuesToCompare, false))
     }

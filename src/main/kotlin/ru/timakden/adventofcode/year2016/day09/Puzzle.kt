@@ -28,7 +28,9 @@ fun solvePartTwo(input: String, count: Long = 0L): Long {
         val marker = input.substring(1, markerIndex)
         val length = marker.substringBefore('x').toInt()
         val times = marker.substringAfter('x').toInt()
-        solvePartTwo(input.substring(markerIndex + length + 1),
-                count + times * solvePartTwo(input.substring(markerIndex + 1, markerIndex + length + 1)))
+        solvePartTwo(
+            input.substring(markerIndex + length + 1),
+            count + times * solvePartTwo(input.substring(markerIndex + 1, markerIndex + length + 1))
+        )
     } else solvePartTwo(input.substring(1), count + 1)
 }

@@ -2,7 +2,7 @@ group 'ru.timakden'
 version '1.0'
 
 buildscript {
-    ext.kotlin_version = '1.2.0'
+    ext.kotlin_version = '1.2.20'
 
     repositories {
         mavenCentral()

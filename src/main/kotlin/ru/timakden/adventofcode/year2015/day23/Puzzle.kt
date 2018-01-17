@@ -46,4 +46,5 @@ fun solve(input: List<String>, partTwo: Boolean): IntArray {
     return intArrayOf(a, b)
 }
 
-private fun getOffset(instruction: String) = instruction.substring(instruction.indexOfAny(charArrayOf('+', '-'))).toInt()
+private fun getOffset(instruction: String) =
+    instruction.substring(instruction.indexOfAny(charArrayOf('+', '-'))).toInt()

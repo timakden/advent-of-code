@@ -9,8 +9,12 @@ fun main(args: Array<String>) {
     val elapsedTime = measureTimeMillis {
         input.forEach {
             val split = it.split("\\s".toRegex())
-            deers.add(Reindeer(name = split[0], distancePerSecond = split[3].toInt(),
-                    moveTime = split[6].toInt(), restTime = split[13].toInt()))
+            deers.add(
+                Reindeer(
+                    name = split[0], distancePerSecond = split[3].toInt(),
+                    moveTime = split[6].toInt(), restTime = split[13].toInt()
+                )
+            )
         }
 
         (1..raceTime).forEach {
@@ -40,6 +44,8 @@ fun main(args: Array<String>) {
     println("Elapsed time: $elapsedTime ms")
 }
 
-data class Reindeer(var name: String, var distancePerSecond: Int, var moveTime: Int, var restTime: Int,
-                    var totalDistance: Int = 0, var currentMoveTime: Int = 0, var currentRestTime: Int = 0,
-                    var moving: Boolean = true, var scores: Int = 0)
+data class Reindeer(
+    var name: String, var distancePerSecond: Int, var moveTime: Int, var restTime: Int,
+    var totalDistance: Int = 0, var currentMoveTime: Int = 0, var currentRestTime: Int = 0,
+    var moving: Boolean = true, var scores: Int = 0
+)
