@@ -1,14 +1,13 @@
 package ru.timakden.adventofcode.year2015.day17
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         val containers = getContainers(input, 150)
         println("Part One: ${solve(containers, false)}")
         println("Part Two: ${solve(containers, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(containers: List<List<Int>>, partTwo: Boolean): Int {
@@ -22,12 +21,12 @@ fun solve(containers: List<List<Int>>, partTwo: Boolean): Int {
 fun getContainers(input: List<Int>, litersToStore: Int): List<List<Int>> {
     val containers = mutableListOf<List<Int>>()
 
-    for (i in 1..1.shl(input.size)) {
+    for (i in 1..(1 shl input.size)) {
         val list = mutableListOf<Int>()
 
-        input.indices.forEach { if (i.shr(it).and(1) > 0) list.add(input[it]) }
+        input.indices.forEach { if (i shr it and 1 > 0) list += input[it] }
 
-        if (list.sum() == litersToStore) containers.add(list)
+        if (list.sum() == litersToStore) containers += list
     }
 
     return containers

@@ -1,124 +1,52 @@
 package ru.timakden.adventofcode.year2015.day18
 
-import kotlin.system.measureTimeMillis
+import arrow.core.Failure
+import arrow.core.Success
+import arrow.core.Try
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
-        println("Part One: ${solve(input, false)}")
-        println("Part Two: ${solve(input, true)}")
+fun main() {
+    measure {
+        println("Part One: ${solve(input, 100, false)}")
+        println("Part Two: ${solve(input, 100, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Int {
-    var matrix = Array(100, { CharArray(100) })
+fun solve(input: List<String>, numberOfSteps: Int, partTwo: Boolean): Int {
+    var matrix = input.map { it.toCharArray() }.toTypedArray()
 
-    input.indices.forEach { matrix[it] = input[it].toCharArray() }
+    repeat(numberOfSteps) { matrix = performStep(matrix, partTwo) }
 
-    (1..100).forEach { matrix = performStep(matrix, partTwo) }
-
-    return matrix.sumBy { it.count { it == '#' } }
+    return matrix.sumBy { it.count { ch -> ch == '#' } }
 }
 
 private fun performStep(matrix: Array<CharArray>, partTwo: Boolean): Array<CharArray> {
-    val newMatrix = Array(100, { CharArray(100) })
+    val size = matrix.size
+    val newMatrix = Array(size) { CharArray(size) }
 
-    (0..99).forEach { i ->
-        (0..99).forEach { j ->
-            val neighbours = CharArray(8)
+    matrix.forEachIndexed { i, chars ->
+        chars.forEachIndexed { j, c ->
+            val neighbours = mutableListOf<Char>()
 
-            if (i in 1..98 && j > 0 && j < 99) {
-                neighbours[0] = matrix[i - 1][j - 1]
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = matrix[i - 1][j + 1]
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = matrix[i + 1][j - 1]
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = matrix[i + 1][j + 1]
-            } else if (i == 0 && j == 0) {
-                neighbours[0] = '.'
-                neighbours[1] = '.'
-                neighbours[2] = '.'
-                neighbours[3] = '.'
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = '.'
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = matrix[i + 1][j + 1]
-            } else if (i == 0 && j == 99) {
-                neighbours[0] = '.'
-                neighbours[1] = '.'
-                neighbours[2] = '.'
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = '.'
-                neighbours[5] = matrix[i + 1][j - 1]
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = '.'
-            } else if (i == 99 && j == 0) {
-                neighbours[0] = '.'
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = matrix[i - 1][j + 1]
-                neighbours[3] = '.'
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = '.'
-                neighbours[6] = '.'
-                neighbours[7] = '.'
-            } else if (i == 99 && j == 99) {
-                neighbours[0] = matrix[i - 1][j - 1]
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = '.'
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = '.'
-                neighbours[5] = '.'
-                neighbours[6] = '.'
-                neighbours[7] = '.'
-            } else if (i == 0 && j > 0 && j < 99) {
-                neighbours[0] = '.'
-                neighbours[1] = '.'
-                neighbours[2] = '.'
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = matrix[i + 1][j - 1]
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = matrix[i + 1][j + 1]
-            } else if (i == 99 && j > 0 && j < 99) {
-                neighbours[0] = matrix[i - 1][j - 1]
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = matrix[i - 1][j + 1]
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = '.'
-                neighbours[6] = '.'
-                neighbours[7] = '.'
-            } else if (i in 1..98 && j == 0) {
-                neighbours[0] = '.'
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = matrix[i - 1][j + 1]
-                neighbours[3] = '.'
-                neighbours[4] = matrix[i][j + 1]
-                neighbours[5] = '.'
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = matrix[i + 1][j + 1]
-            } else if (i in 1..98 && j == 99) {
-                neighbours[0] = matrix[i - 1][j - 1]
-                neighbours[1] = matrix[i - 1][j]
-                neighbours[2] = '.'
-                neighbours[3] = matrix[i][j - 1]
-                neighbours[4] = '.'
-                neighbours[5] = matrix[i + 1][j - 1]
-                neighbours[6] = matrix[i + 1][j]
-                neighbours[7] = '.'
+            for (k in (i - 1)..(i + 1)) {
+                for (l in (j - 1)..(j + 1)) {
+                    if (k == i && l == j) continue // skip the current "cell"
+
+                    neighbours += when (val t = Try { matrix[k][l] }) {
+                        is Success -> t.value
+                        is Failure -> '.'
+                    }
+                }
             }
 
-            val sharpCount = neighbours.count { it == '#' }
+            val count = neighbours.count { it == '#' }
 
-            if (matrix[i][j] == '#') {
-                if (sharpCount == 2 || sharpCount == 3) newMatrix[i][j] = '#' else newMatrix[i][j] = '.'
-            } else {
-                if (sharpCount == 3) newMatrix[i][j] = '#' else newMatrix[i][j] = '.'
+            newMatrix[i][j] = when (c) {
+                '#' -> if (count in 2..3) '#' else '.'
+                else -> if (count == 3) '#' else '.'
             }
 
-            if (partTwo && (i == 0 || i == 99) && (j == 0 || j == 99)) newMatrix[i][j] = '#'
+            if (partTwo && (i == 0 || i == matrix.lastIndex) && (j == 0 || j == chars.lastIndex)) newMatrix[i][j] = '#'
         }
     }
     return newMatrix

@@ -1,13 +1,12 @@
 package ru.timakden.adventofcode.year2015.day01
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: String) = input.count { it == '(' } - input.count { it == ')' }

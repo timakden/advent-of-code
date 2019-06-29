@@ -1,16 +1,16 @@
 package ru.timakden.adventofcode.year2015.day12
 
 import com.google.gson.Gson
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
+// TODO: Remove Gson dependency
 fun solve(input: String, partTwo: Boolean) = sumNumbers(Gson().fromJson(input, Any::class.java), partTwo)
 
 private fun sumNumbers(any: Any, partTwo: Boolean): Int {
@@ -18,10 +18,10 @@ private fun sumNumbers(any: Any, partTwo: Boolean): Int {
 
     when (any) {
         is Map<*, *> -> {
-            any.forEach {
-                if (partTwo && it.value == "red") return 0
+            any.values.forEach { value ->
+                if (partTwo && value == "red") return 0
 
-                it.value?.let { sum += sumNumbers(it, partTwo) }
+                value?.let { sum += sumNumbers(it, partTwo) }
             }
             return sum
         }
@@ -32,5 +32,4 @@ private fun sumNumbers(any: Any, partTwo: Boolean): Int {
         is Number -> return any.toInt()
         else -> return 0
     }
-
 }

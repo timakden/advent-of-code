@@ -2,5 +2,8 @@ build/
 
 .gradle/
 .idea/
+.kotlintest/
 
 *.iml
+*.ipr
+*.iws

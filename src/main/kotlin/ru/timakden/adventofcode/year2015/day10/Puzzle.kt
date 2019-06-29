@@ -1,25 +1,25 @@
 package ru.timakden.adventofcode.year2015.day10
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, 40).length}")
         println("Part Two: ${solve(input, 50).length}")
     }
-    println("Elapsed time: $elapsedTime ms")
-}
-
-private fun generateNewSequence(s: String): String {
-    val regex = "(\\d)\\1*".toRegex()
-    val stringBuilder = StringBuilder()
-
-    regex.findAll(s).forEach { stringBuilder.append(it.value.length).append(it.value[0]) }
-
-    return stringBuilder.toString()
 }
 
 fun solve(s: String, numberOfRuns: Int): String {
-    if (numberOfRuns > 1) return solve(generateNewSequence(s), numberOfRuns - 1)
-    return generateNewSequence(s)
+    val regex = "(\\d)\\1*".toRegex()
+
+    val sequence = generateSequence(s) {
+        buildString {
+            regex.findAll(it).forEach { matchResult ->
+                append(matchResult.value.length)
+                append(matchResult.value[0])
+            }
+        }
+    }
+
+    return sequence.elementAt(numberOfRuns)
 }

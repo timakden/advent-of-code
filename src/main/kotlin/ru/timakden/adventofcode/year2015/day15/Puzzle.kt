@@ -1,31 +1,21 @@
 package ru.timakden.adventofcode.year2015.day15
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Int {
-    val ingredients = mutableListOf<Ingredient>()
     var highest = Int.MIN_VALUE
 
-    input.forEach {
-        val split = mutableListOf<String>()
+    val ingredients = input.map {
         val regex = "\\w+:|-?\\d".toRegex()
-
-        regex.findAll(it).forEach { split.add(it.value) }
-
-        ingredients.add(
-            Ingredient(
-                split[0].removeSuffix(":"), split[1].toInt(), split[2].toInt(), split[3].toInt(),
-                split[4].toInt(), split[5].toInt()
-            )
-        )
+        val split = regex.findAll(it).map { matchResult -> matchResult.value }.toList()
+        Ingredient(split)
     }
 
     var capacity: Int
@@ -35,29 +25,42 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
     var calories: Int
     var total: Int
 
+    // TODO: Переделать
+
     (1..100).forEach { i ->
         (1..100 - i).forEach { j ->
             (1..100 - i - j).forEach { k ->
                 for (l in 1..100 - i - j - k) {
                     if (i + j + k + l == 100) {
-                        capacity = ingredients[0].capacity * i + ingredients[1].capacity * j +
-                                ingredients[2].capacity * k + ingredients[3].capacity * l
+                        capacity = ingredients.map { it.capacity }
+                            .zip(listOf(i, j, k, l))
+                            .map { it.first * it.second }
+                            .sum()
 
-                        durability = ingredients[0].durability * i + ingredients[1].durability * j +
-                                ingredients[2].durability * k + ingredients[3].durability * l
+                        durability = ingredients.map { it.durability }
+                            .zip(listOf(i, j, k, l))
+                            .map { it.first * it.second }
+                            .sum()
 
-                        flavor = ingredients[0].flavor * i + ingredients[1].flavor * j +
-                                ingredients[2].flavor * k + ingredients[3].flavor * l
+                        flavor = ingredients.map { it.flavor }
+                            .zip(listOf(i, j, k, l))
+                            .map { it.first * it.second }
+                            .sum()
 
-                        texture = ingredients[0].texture * i + ingredients[1].texture * j +
-                                ingredients[2].texture * k + ingredients[3].texture * l
+                        texture = ingredients.map { it.texture }
+                            .zip(listOf(i, j, k, l))
+                            .map { it.first * it.second }
+                            .sum()
 
-                        calories = ingredients[0].calories * i + ingredients[1].calories * j +
-                                ingredients[2].calories * k + ingredients[3].calories * l
+                        calories = ingredients.map { it.calories }
+                            .zip(listOf(i, j, k, l))
+                            .map { it.first * it.second }
+                            .sum()
 
-                        if (capacity > 0 && durability > 0 && flavor > 0 && texture > 0) {
-                            total = capacity * durability * flavor * texture
-                        } else total = 0
+
+                        total = if (listOf(capacity, durability, flavor, texture).all { it > 0 })
+                            listOf(capacity, durability, flavor, texture).fold(1) { acc, i -> acc * i }
+                        else 0
 
                         when {
                             partTwo -> if (total > highest && calories == 500) highest = total
@@ -72,7 +75,21 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
     return highest
 }
 
+
 data class Ingredient(
-    var name: String, var capacity: Int, var durability: Int, var flavor: Int,
-    var texture: Int, var calories: Int
-)
+    var name: String,
+    var capacity: Int,
+    var durability: Int,
+    var flavor: Int,
+    var texture: Int,
+    var calories: Int
+) {
+    constructor(split: List<String>) : this(
+        split[0].removeSuffix(":"),
+        split[1].toInt(),
+        split[2].toInt(),
+        split[3].toInt(),
+        split[4].toInt(),
+        split[5].toInt()
+    )
+}

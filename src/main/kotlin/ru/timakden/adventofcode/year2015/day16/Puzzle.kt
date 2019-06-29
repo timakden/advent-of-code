@@ -1,29 +1,21 @@
 package ru.timakden.adventofcode.year2015.day16
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)?.name}")
         println("Part Two: ${solve(input, true)?.name}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Aunt? {
-    val auntToFind = Aunt(
-        children = 3, cats = 7, samoyeds = 2, pomeranians = 3, akitas = 0, vizslas = 0,
-        goldfish = 5, trees = 3, cars = 2, perfumes = 1
-    )
+    val auntToFind = Aunt("Sue", 3, 7, 2, 3, 0, 0, 5, 3, 2, 1)
 
-    val aunts = mutableListOf<Aunt>()
+    val aunts = input.map { inputString ->
+        val split = inputString.split(":\\s|,\\s".toRegex())
 
-    input.forEach {
-        val split = it.split(":\\s|,\\s".toRegex())
-
-        val aunt = Aunt(name = split[0])
-
-        with(aunt) {
+        Aunt(name = split[0]).apply {
             (1..5 step 2).forEach {
                 val value = split[it + 1].toInt()
                 when (split[it]) {
@@ -40,8 +32,6 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
                 }
             }
         }
-
-        aunts.add(aunt)
     }
 
     aunts.forEach { aunt ->

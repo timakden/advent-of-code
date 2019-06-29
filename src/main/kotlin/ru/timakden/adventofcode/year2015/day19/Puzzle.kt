@@ -1,14 +1,13 @@
 package ru.timakden.adventofcode.year2015.day19
 
+import ru.timakden.adventofcode.measure
 import java.util.*
-import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(replacements, molecule)}")
         println("Part Two: ${solvePartTwo(replacements, molecule)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(replacements: List<String>, molecule: String): Int {
@@ -16,12 +15,14 @@ fun solvePartOne(replacements: List<String>, molecule: String): Int {
     val distinctMolecules = mutableSetOf<String>()
     val reversedReplacements = replacements.associateBy({ it.split(regex)[1] }, { it.split(regex)[0] })
 
-    reversedReplacements.forEach {
+    reversedReplacements.forEach { (key, value) ->
         var index = -1
 
         do {
-            index = molecule.indexOf(it.value, index + 1)
-            if (index != -1) distinctMolecules.add(molecule.replaceRange(index, index + it.value.length, it.key))
+            index = molecule.indexOf(value, index + 1)
+            if (index != -1) {
+                distinctMolecules.add(molecule.replaceRange(index, index + value.length, key))
+            }
         } while (index != -1)
     }
 
@@ -33,17 +34,15 @@ fun solvePartTwo(replacements: List<String>, molecule: String): Int {
     val regex = "\\s=>\\s".toRegex()
     val reversedReplacements = replacements.associateBy({ it.split(regex)[1] }, { it.split(regex)[0] })
 
-    do
+    do {
         count = findMolecule(0, molecule, reversedReplacements)
-    while (count == -1)
-
+    } while (count == -1)
 
     return count
 }
 
-private fun findMolecule(depth: Int, molecule: String, reversedReplacements: Map<String, String>): Int {
-    if (molecule == "e")
-        return depth
+private tailrec fun findMolecule(depth: Int, molecule: String, reversedReplacements: Map<String, String>): Int {
+    if (molecule == "e") return depth
     else {
         var originalMolecule = molecule
         val keys = reversedReplacements.keys.toMutableList()

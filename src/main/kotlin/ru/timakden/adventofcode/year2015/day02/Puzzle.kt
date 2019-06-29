@@ -1,40 +1,33 @@
 package ru.timakden.adventofcode.year2015.day02
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: List<String>): Int {
-    var wrappingPaper = 0
-    input.forEach {
+    return input.map {
         val dimensions = mutableListOf<Int>()
-        it.split("x").forEach { dimensions.add(it.toInt()) }
+        it.split("x").mapTo(dimensions) { s -> s.toInt() }
         val areas = listOf(
-            2 * dimensions[0] * dimensions[1], 2 * dimensions[1] * dimensions[2],
+            2 * dimensions[0] * dimensions[1],
+            2 * dimensions[1] * dimensions[2],
             2 * dimensions[0] * dimensions[2]
         )
 
-        wrappingPaper += areas.sum() + (areas.min() ?: 0) / 2
-    }
-
-    return wrappingPaper
+        areas.sum() + (areas.min() ?: 0) / 2
+    }.sum()
 }
 
 fun solvePartTwo(input: List<String>): Int {
-    var ribbon = 0
-    input.forEach {
+    return input.map {
         val dimensions = mutableListOf<Int>()
-        it.split("x").forEach { dimensions.add(it.toInt()) }
-        dimensions.sort()
+        it.split('x').mapTo(dimensions) { s -> s.toInt() }.sort()
 
-        ribbon += 2 * dimensions[0] + 2 * dimensions[1] + dimensions[0] * dimensions[1] * dimensions[2]
-    }
-
-    return ribbon
+        2 * dimensions[0] + 2 * dimensions[1] + dimensions[0] * dimensions[1] * dimensions[2]
+    }.sum()
 }

@@ -1,14 +1,15 @@
 package ru.timakden.adventofcode.year2015.day22
 
+import ru.timakden.adventofcode.measure
 import java.util.*
-import kotlin.system.measureTimeMillis
+import kotlin.math.max
+import kotlin.math.min
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(false)}")
         println("Part Two: ${solve(true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(partTwo: Boolean): Int {
@@ -24,19 +25,20 @@ fun solve(partTwo: Boolean): Int {
 
         currentWizard.applyEffect()
 
-        Wizard.spells.forEach {
-            if (currentWizard.canCast(it)) {
+        Wizard.spells.forEach { spell ->
+            if (currentWizard.canCast(spell)) {
                 val nextWizard = currentWizard.clone()
-                nextWizard.castSpell(it)
+                nextWizard.castSpell(spell)
                 nextWizard.applyEffect()
 
                 if (nextWizard.boss.hitpoints <= 0) {
-                    minMana = Math.min(minMana, nextWizard.manaSpent)
-                    wizards.removeAll { it.manaSpent > minMana }
+                    minMana = min(minMana, nextWizard.manaSpent)
+                    wizards.removeAll { wizard -> wizard.manaSpent > minMana }
                 } else {
-                    nextWizard.hitpoints -= Math.max(1, nextWizard.boss.damage - nextWizard.armor)
-                    if (nextWizard.hitpoints > 0 && nextWizard.mana > 0 && nextWizard.manaSpent < minMana)
+                    nextWizard.hitpoints -= max(1, nextWizard.boss.damage - nextWizard.armor)
+                    if (nextWizard.hitpoints > 0 && nextWizard.mana > 0 && nextWizard.manaSpent < minMana) {
                         wizards.add(nextWizard)
+                    }
                 }
             }
         }
@@ -56,7 +58,13 @@ private data class Wizard(var hitpoints: Int, var mana: Int, var boss: Boss) : C
     var activeEffects = IntArray(3)
 
     companion object {
-        var spells = listOf(Spell(53, 0), Spell(73, 0), Spell(113, 6), Spell(173, 6), Spell(229, 5))
+        var spells = listOf(
+            Spell(53, 0),
+            Spell(73, 0),
+            Spell(113, 6),
+            Spell(173, 6),
+            Spell(229, 5)
+        )
     }
 
     fun canCast(spell: Spell): Boolean {
@@ -68,8 +76,7 @@ private data class Wizard(var hitpoints: Int, var mana: Int, var boss: Boss) : C
         mana -= spell.cost
         manaSpent += spell.cost
 
-        val spellIndex = spells.indexOf(spell)
-        when (spellIndex) {
+        when (val spellIndex = spells.indexOf(spell)) {
             0 -> boss.hitpoints -= 4
             1 -> {
                 hitpoints += 2

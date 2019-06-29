@@ -1,13 +1,12 @@
 package ru.timakden.adventofcode.year2015.day20
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: Int, partTwo: Boolean): Int {
@@ -26,9 +25,5 @@ fun solve(input: Int, partTwo: Boolean): Int {
         }
     }
 
-    var index = houses.indexOfFirst { it == input }
-
-    if (index == -1) index = houses.indexOfFirst { it > input }
-
-    return index
+    return houses.indexOfFirst { it >= input }
 }

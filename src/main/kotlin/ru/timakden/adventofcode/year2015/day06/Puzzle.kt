@@ -1,13 +1,12 @@
 package ru.timakden.adventofcode.year2015.day06
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: List<String>): Int {
@@ -15,7 +14,7 @@ fun solvePartOne(input: List<String>): Int {
 
     val regex = "\\s(?!on|off)".toRegex()
 
-    val lightsGrid = Array(1000, { BooleanArray(1000) })
+    val lightsGrid = Array(1000) { BooleanArray(1000) }
 
     lightsGrid.forEach { booleans -> booleans.indices.forEach { booleans[it] = false } }
 
@@ -46,7 +45,7 @@ fun solvePartOne(input: List<String>): Int {
         }
     }
 
-    lightsGrid.forEach { booleans -> lights += booleans.count { it == true } }
+    lightsGrid.forEach { booleans -> lights += booleans.count { it } }
 
     return lights
 }
@@ -56,7 +55,7 @@ fun solvePartTwo(input: List<String>): Int {
 
     val regex = "\\s(?!on|off)".toRegex()
 
-    val brightnessGrid = Array(1000, { IntArray(1000) })
+    val brightnessGrid = Array(1000) { IntArray(1000) }
 
     brightnessGrid.forEach { ints -> ints.indices.forEach { ints[it] = 0 } }
 

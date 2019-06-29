@@ -1,23 +1,23 @@
 package ru.timakden.adventofcode.year2015.day11
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         var newPassword = solve(input)
         println("Part One: $newPassword")
 
         newPassword = solve(newPassword)
         println("Part Two: $newPassword")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: String): String {
     var newPassword = incrementPassword(input)
 
-    while (!checkPassword(newPassword))
+    while (!checkPassword(newPassword)) {
         newPassword = incrementPassword(newPassword)
+    }
 
     return newPassword
 }
@@ -47,7 +47,9 @@ private fun incrementPassword(oldPassword: String): String {
     (startIndex..charArray.lastIndex).forEach {
         charArray[it] = charArray[it] + 1
 
-        if (!charArray[it].isLetter()) charArray[it] = 'a'
+        if (!charArray[it].isLetter()) {
+            charArray[it] = 'a'
+        }
     }
 
     return String(charArray)

@@ -1,14 +1,13 @@
 package ru.timakden.adventofcode.year2015.day09
 
-import com.google.common.collect.Collections2
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.Permutations
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Int {
@@ -17,8 +16,8 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
     val distances = mutableMapOf<String, Int>()
 
     input.apply {
-        mapTo(locations, { it.substringBefore(" to ") })
-        mapTo(locations, { it.substringAfter(" to ").substringBefore(" = ") })
+        mapTo(locations) { it.substringBefore(" to ") }
+        mapTo(locations) { it.substringAfter(" to ").substringBefore(" = ") }
 
         associateByTo(distances,
             { it.substringBefore(" = ").replace(" to ", "") },
@@ -29,12 +28,13 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
             { it.substringAfter(" = ").toInt() })
     }
 
-    val routes = Collections2.permutations(locations)
+    val routes = Permutations.of(locations)
 
     routes.forEach { route ->
-        val length = route.indices
-            .filter { it != route.size - 1 }
-            .sumBy { distances[route[it] + route[it + 1]] ?: 0 }
+        val list = route.toList()
+        val length = list.indices
+            .filter { it != list.size - 1 }
+            .sumBy { distances[list[it] + list[it + 1]] ?: 0 }
 
         when {
             partTwo -> if (length > result) result = length

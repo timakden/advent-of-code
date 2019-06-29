@@ -1,62 +1,76 @@
 package ru.timakden.adventofcode.year2015.day07
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.isLetter
+import ru.timakden.adventofcode.isNumber
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
-        println("a = ${solve(input)}")
+@ExperimentalUnsignedTypes
+fun main() {
+    measure {
+        println("a = ${solve(input, listOf("a"))["a"]}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: List<String>): Int? {
-    val map = mutableMapOf<String, Int>()
+@ExperimentalUnsignedTypes
+fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort> {
+    val map = mutableMapOf<String, UShort>()
     while (map.size != input.size) {
-        input.forEach { it ->
+        input.forEach {
             val expressions = it.split("\\s->\\s".toRegex())
             val leftPart = expressions[0].split("\\s(?!or|and|lshift|rshift)".toRegex())
 
             when (leftPart.size) {
                 1 -> {
                     // example: 44430 -> b
-                    if (leftPart[0].matches("\\d+".toRegex()))
-                        map.put(expressions[1], leftPart[0].toInt())
-                    else if (leftPart[0].matches("[a-zA-Z]+".toRegex()))
-                        map[leftPart[0]]?.let { map.put(expressions[1], it) }
+                    if (leftPart[0].isNumber()) {
+                        map[expressions[1]] = leftPart[0].toUShort()
+                    } else if (leftPart[0].isLetter()) {
+                        map[leftPart[0]]?.let { value -> map[expressions[1]] = value }
+                    }
                 }
                 2 -> {
                     // example: NOT di -> dj
-                    if (leftPart[1].matches("\\d+".toRegex()))
-                        map.put(expressions[1], leftPart[1].toInt().inv())
-                    else if (leftPart[1].matches("[a-zA-Z]+".toRegex()))
-                        map[leftPart[1]]?.let { map.put(expressions[1], it.inv()) }
+                    if (leftPart[1].isNumber()) {
+                        map[expressions[1]] = leftPart[1].toUShort().inv()
+                    } else if (leftPart[1].isLetter()) {
+                        map[leftPart[1]]?.let { value -> map[expressions[1]] = value.inv() }
+                    }
                 }
                 3 -> {
                     // example: dd OR do -> dp
-                    var val1: Int? = null
-                    var val2: Int? = null
+                    var val1: UShort? = null
+                    var val2: UShort? = null
 
-                    if (leftPart[0].matches("\\d+".toRegex()))
-                        val1 = leftPart[0].toInt()
-                    else if (leftPart[0].matches("[a-zA-Z]+".toRegex()))
+                    if (leftPart[0].isNumber()) {
+                        val1 = leftPart[0].toUShort()
+                    } else if (leftPart[0].isLetter()) {
                         val1 = map[leftPart[0]]
+                    }
 
-                    if (leftPart[2].matches("\\d+".toRegex()))
-                        val2 = leftPart[2].toInt()
-                    else if (leftPart[2].matches("[a-zA-Z]+".toRegex()))
+                    if (leftPart[2].isNumber()) {
+                        val2 = leftPart[2].toUShort()
+                    } else if (leftPart[2].isLetter()) {
                         val2 = map[leftPart[2]]
+                    }
 
                     if (val1 != null && val2 != null) {
                         when (leftPart[1]) {
-                            "AND" -> map.put(expressions[1], val1 and val2)
-                            "OR" -> map.put(expressions[1], val1 or val2)
-                            "LSHIFT" -> map.put(expressions[1], val1 shl val2)
-                            "RSHIFT" -> map.put(expressions[1], val1 shr val2)
+                            "AND" -> map[expressions[1]] = val1 and val2
+                            "OR" -> map[expressions[1]] = val1 or val2
+                            "LSHIFT" -> map[expressions[1]] = val1 shl val2
+                            "RSHIFT" -> map[expressions[1]] = val1 shr val2
                         }
                     }
                 }
             }
         }
     }
-    return map["a"]
+
+    return map.filter { it.key in wiresToReturn }
 }
+
+@ExperimentalUnsignedTypes
+private infix fun UShort.shl(shift: UShort): UShort = (this.toInt() shl shift.toInt()).toUShort()
+
+@ExperimentalUnsignedTypes
+private infix fun UShort.shr(shift: UShort): UShort = (this.toInt() shr shift.toInt()).toUShort()

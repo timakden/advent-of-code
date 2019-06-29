@@ -1,13 +1,12 @@
 package ru.timakden.adventofcode.year2015.day03
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: String): Int {
@@ -48,7 +47,7 @@ fun solvePartTwo(input: String): Int {
         }
 
         when {
-            counter % 2 == 0 -> coordinates.add(Pair(santaX, santaY))
+            isCounterEven -> coordinates.add(Pair(santaX, santaY))
             else -> coordinates.add(Pair(robotX, robotY))
         }
 

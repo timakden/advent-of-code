@@ -1,14 +1,13 @@
 package ru.timakden.adventofcode.year2015.day13
 
-import com.google.common.collect.Collections2
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.Permutations
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: List<String>, partTwo: Boolean): Int {
@@ -32,26 +31,30 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
             add(name2)
         }
 
-        happiness.put(name1 + name2, happinessUnits)
+        happiness[name1 + name2] = happinessUnits
 
         if (partTwo) {
             with(happiness) {
                 put(name1 + "me", 0)
-                put("me" + name1, 0)
+                put("me$name1", 0)
             }
         }
     }
 
-    val seatingArrangements = Collections2.permutations(names)
+    val seatingArrangements = Permutations.of(names.toList())
 
     seatingArrangements.forEach {
-        var happinessChange = it.indices
-            .filter { i -> i != it.lastIndex }
-            .sumBy { i -> (happiness[it[i] + it[i + 1]] ?: 0) + (happiness[it[i + 1] + it[i]] ?: 0) }
+        val list = it.toList()
+        var happinessChange = list.indices
+            .filter { i -> i != list.lastIndex }
+            .sumBy { i -> (happiness[list[i] + list[i + 1]] ?: 0) + (happiness[list[i + 1] + list[i]] ?: 0) }
 
-        happinessChange += (happiness[it[0] + it[it.lastIndex]] ?: 0) + (happiness[it[it.lastIndex] + it[0]] ?: 0)
+        happinessChange += (happiness[list[0] + list[list.lastIndex]] ?: 0) + (happiness[list[list.lastIndex] + list[0]]
+            ?: 0)
 
-        if (happinessChange > optimalHappinessChange) optimalHappinessChange = happinessChange
+        if (happinessChange > optimalHappinessChange) {
+            optimalHappinessChange = happinessChange
+        }
     }
 
     return optimalHappinessChange

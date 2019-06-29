@@ -1,7 +1,7 @@
 package ru.timakden.adventofcode.year2015.day07
 
 val input = listOf(
-    "NOT dq -> dr", "kg OR kf -> kh", "ep OR eo -> eq", "44430 -> b", "NOT gs -> gt", "dd OR do -> dp",
+    "NOT dq -> dr", "kg OR kf -> kh", "ep OR eo -> eq", "44430 -> b" /*"3176 -> b"*/, "NOT gs -> gt", "dd OR do -> dp",
     "eg AND ei -> ej", "y AND ae -> ag", "jx AND jz -> ka", "lf RSHIFT 2 -> lg", "z AND aa -> ac",
     "dy AND ej -> el", "bj OR bi -> bk", "kk RSHIFT 3 -> km", "NOT cn -> co", "gn AND gp -> gq", "cq AND cs -> ct",
     "eo LSHIFT 15 -> es", "lg OR lm -> ln", "dy OR ej -> ek", "NOT di -> dj", "1 AND fi -> fj",

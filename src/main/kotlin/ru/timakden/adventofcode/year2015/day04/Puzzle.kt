@@ -1,14 +1,13 @@
 package ru.timakden.adventofcode.year2015.day04
 
-import org.apache.commons.codec.digest.DigestUtils
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.md5Hex
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solve(input, false)}")
         println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: String, partTwo: Boolean): Long {
@@ -16,7 +15,7 @@ fun solve(input: String, partTwo: Boolean): Long {
     var encoded: String
 
     while (true) {
-        encoded = DigestUtils.md5Hex(input + count.toString())
+        encoded = md5Hex(input + count.toString())
         if (encoded.startsWith(if (partTwo) "000000" else "00000")) break
         count++
     }
