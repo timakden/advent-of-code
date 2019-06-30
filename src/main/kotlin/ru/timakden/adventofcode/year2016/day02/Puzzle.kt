@@ -1,13 +1,12 @@
 package ru.timakden.adventofcode.year2016.day02
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
-        println("Part One: ${solve(input, partTwo = false)}")
-        println("Part Two: ${solve(input, partTwo = true)}")
+fun main() {
+    measure {
+        println("Part One: ${solve(input, false)}")
+        println("Part Two: ${solve(input, true)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solve(input: List<String>, partTwo: Boolean): String {
@@ -52,5 +51,5 @@ private fun goToTheNextPoint(point: Pair<Int, Int>, instruction: String, partTwo
         }
     }
 
-    return Pair(y, x)
+    return y to x
 }

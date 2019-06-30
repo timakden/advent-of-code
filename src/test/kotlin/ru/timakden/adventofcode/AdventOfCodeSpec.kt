@@ -423,6 +423,22 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.adventofcode.year2016.day01.solvePartTwo(input) shouldBe expected
             }
         }
+
+        "Day 2: Bathroom Security" {
+            should("solve year 2016, day 2, part 1") {
+                val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
+                val expected = "1985"
+
+                ru.timakden.adventofcode.year2016.day02.solve(input, false) shouldBe expected
+            }
+
+            should("solve year 2016, day 2, part 2") {
+                val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
+                val expected = "5DB3"
+
+                ru.timakden.adventofcode.year2016.day02.solve(input, true) shouldBe expected
+            }
+        }
     }
 
     "Utils" {
