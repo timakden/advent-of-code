@@ -439,6 +439,8 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.adventofcode.year2016.day02.solve(input, true) shouldBe expected
             }
         }
+
+        "Day 3: Squares With Three Sides" { /* TODO */ }
     }
 
     "Utils" {
