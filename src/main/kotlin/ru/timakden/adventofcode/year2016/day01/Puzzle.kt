@@ -1,13 +1,13 @@
 package ru.timakden.adventofcode.year2016.day01
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.math.abs
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: String): Int {
@@ -29,7 +29,7 @@ fun solvePartOne(input: String): Int {
         }
     }
 
-    return Math.abs(x) + Math.abs(y)
+    return abs(x) + abs(y)
 }
 
 fun solvePartTwo(input: String): Int {
@@ -45,7 +45,7 @@ fun solvePartTwo(input: String): Int {
 
         direction = if (instruction.startsWith('L')) direction.turnLeft() else direction.turnRight()
 
-        (1..numberOfBlocks).forEach {
+        repeat(numberOfBlocks) {
             when (direction) {
                 Direction.NORTH -> x++
                 Direction.SOUTH -> x--
@@ -53,39 +53,35 @@ fun solvePartTwo(input: String): Int {
                 Direction.WEST -> y++
             }
 
-            if (coordinates.contains(Pair(x, y))) return Math.abs(x) + Math.abs(y)
+            if (coordinates.contains(x to y)) return abs(x) + abs(y)
 
-            coordinates.add(Pair(x, y))
+            coordinates.add(x to y)
         }
     }
 
     return 0
 }
 
-private enum class Direction { NORTH, SOUTH, EAST, WEST }
+private enum class Direction {
+    NORTH, SOUTH, EAST, WEST;
 
-private fun Direction.turnLeft(): Direction {
-    return turn('L')
-}
-
-private fun Direction.turnRight(): Direction {
-    return turn('R')
-}
-
-private fun Direction.turn(turnTo: Char): Direction {
-    return if (turnTo == 'L') {
-        when {
-            this == Direction.NORTH -> Direction.WEST
-            this == Direction.SOUTH -> Direction.EAST
-            this == Direction.EAST -> Direction.NORTH
-            else -> Direction.SOUTH
+    fun turn(turnTo: Char) = if (turnTo.equals('L', true)) {
+        when (this) {
+            NORTH -> WEST
+            SOUTH -> EAST
+            EAST -> NORTH
+            WEST -> SOUTH
         }
     } else {
-        when {
-            this == Direction.NORTH -> Direction.EAST
-            this == Direction.SOUTH -> Direction.WEST
-            this == Direction.EAST -> Direction.SOUTH
-            else -> Direction.NORTH
+        when (this) {
+            NORTH -> EAST
+            SOUTH -> WEST
+            EAST -> SOUTH
+            WEST -> NORTH
         }
     }
+
+    fun turnLeft() = turn('L')
+
+    fun turnRight() = turn('R')
 }

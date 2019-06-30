@@ -404,7 +404,26 @@ class AdventOfCodeSpec : ShouldSpec({
         }
     }
 
-    "Year 2016" { /* TODO */ }
+    "Year 2016" {
+        "Day 1: No Time for a Taxicab" {
+            should("solve year 2016, day 1, part 1") {
+                forall(
+                    row("R2, L3", 5),
+                    row("R2, R2, R2", 2),
+                    row("R5, L5, R5, R3", 12)
+                ) { input, expected ->
+                    ru.timakden.adventofcode.year2016.day01.solvePartOne(input) shouldBe expected
+                }
+            }
+
+            should("solve year 2016, day 1, part 2") {
+                val input = "R8, R4, R4, R8"
+                val expected = 4
+
+                ru.timakden.adventofcode.year2016.day01.solvePartTwo(input) shouldBe expected
+            }
+        }
+    }
 
     "Utils" {
         "md5Hex()" {
