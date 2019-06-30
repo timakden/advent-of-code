@@ -1,6 +1,6 @@
 # Advent of Code
 
-[Advent of Code](http://adventofcode.com/) solutions in [Kotlin](https://kotlinlang.org/).
+[Advent of Code](https://adventofcode.com/) solutions in [Kotlin](https://kotlinlang.org/).
 
 ### What is Advent of Code?
 
