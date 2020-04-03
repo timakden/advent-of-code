@@ -2,7 +2,9 @@ package ru.timakden.adventofcode.year2015.day19
 
 import ru.timakden.adventofcode.measure
 import java.util.*
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
         println("Part One: ${solvePartOne(replacements, molecule)}")

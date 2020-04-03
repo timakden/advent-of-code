@@ -1,27 +1,32 @@
 package ru.timakden.adventofcode.year2015.day22
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.measure
 import java.util.*
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
-        println("Part One: ${solve(false)}")
-        println("Part Two: ${solve(true)}")
+        println("Part One: ${solve(PART_ONE)}")
+        println("Part Two: ${solve(PART_TWO)}")
     }
 }
 
-fun solve(partTwo: Boolean): Int {
+fun solve(part: Constants.Part): Int {
     var minMana = Int.MAX_VALUE
     val boss = Boss(71, 10)
-    val wizards = PriorityQueue<Wizard> { a, b -> Integer.compare(b.manaSpent, a.manaSpent) }
+    val wizards = PriorityQueue<Wizard> { a, b -> b.manaSpent.compareTo(a.manaSpent) }
     wizards.add(Wizard(50, 500, boss))
 
     while (wizards.size > 0) {
         val currentWizard = wizards.poll()
 
-        if (partTwo && currentWizard.hitpoints-- <= 0) continue
+        if (part == PART_TWO && currentWizard.hitpoints-- <= 0) continue
 
         currentWizard.applyEffect()
 

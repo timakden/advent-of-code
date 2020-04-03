@@ -1,9 +1,9 @@
 package ru.timakden.adventofcode.year2016.day05
 
-import org.apache.commons.codec.digest.DigestUtils
+import ru.timakden.adventofcode.md5Hex
 import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) {
+fun main() {
     val elapsedTime = measureTimeMillis {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
@@ -16,9 +16,9 @@ fun solvePartOne(input: String): String {
     var encoded: String
     var password = ""
 
-    (0..7).forEach {
+    repeat(8) {
         while (true) {
-            encoded = DigestUtils.md5Hex(input + count.toString())
+            encoded = md5Hex(input + count.toString())
             count++
             if (encoded.startsWith("00000")) {
                 password += encoded[5]
@@ -36,9 +36,9 @@ fun solvePartTwo(input: String): String {
     var password = "________"
     var position: Int
 
-    (0..7).forEach {
+    repeat(8) {
         while (true) {
-            encoded = DigestUtils.md5Hex(input + count.toString())
+            encoded = md5Hex(input + count.toString())
             count++
             if (encoded.startsWith("00000") && encoded[5].isDigit()) {
                 position = encoded[5].toString().toInt()

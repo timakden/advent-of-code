@@ -6,6 +6,8 @@ import io.kotlintest.matchers.maps.shouldContainAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 import io.kotlintest.tables.row
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.year2015.day17.getContainers
 
 @ExperimentalUnsignedTypes
@@ -83,7 +85,7 @@ class AdventOfCodeSpec : ShouldSpec({
                     row("abcdef", 609043),
                     row("pqrstuv", 1048970)
                 ) { input, expected ->
-                    ru.timakden.adventofcode.year2015.day04.solve(input, false) shouldBe expected
+                    ru.timakden.adventofcode.year2015.day04.solve(input, PART_ONE) shouldBe expected
                 }
             }
         }
@@ -186,14 +188,14 @@ class AdventOfCodeSpec : ShouldSpec({
 
             should("solve year 2015, day 9, part 1") {
                 val expected = 605
-                val result = ru.timakden.adventofcode.year2015.day09.solve(input, false)
+                val result = ru.timakden.adventofcode.year2015.day09.solve(input, PART_ONE)
 
                 result shouldBe expected
             }
 
             should("solve year 2015, day 9, part 2") {
                 val expected = 982
-                val result = ru.timakden.adventofcode.year2015.day09.solve(input, true)
+                val result = ru.timakden.adventofcode.year2015.day09.solve(input, PART_TWO)
 
                 result shouldBe expected
             }
@@ -241,7 +243,7 @@ class AdventOfCodeSpec : ShouldSpec({
                     row("""[]""", 0),
                     row("""{}""", 0)
                 ) { input, expected ->
-                    ru.timakden.adventofcode.year2015.day12.solve(input, false) shouldBe expected
+                    ru.timakden.adventofcode.year2015.day12.solve(input, PART_TWO) shouldBe expected
                 }
             }
             should("solve year 2015, day 12, part 2") {
@@ -251,7 +253,7 @@ class AdventOfCodeSpec : ShouldSpec({
                     row("""{"d":"red","e":[1,2,3,4],"f":5}""", 0),
                     row("""[1,"red",5]""", 6)
                 ) { input, expected ->
-                    ru.timakden.adventofcode.year2015.day12.solve(input, true) shouldBe expected
+                    ru.timakden.adventofcode.year2015.day12.solve(input, PART_TWO) shouldBe expected
                 }
             }
         }
@@ -275,7 +277,7 @@ class AdventOfCodeSpec : ShouldSpec({
 
                 val expected = 330
 
-                ru.timakden.adventofcode.year2015.day13.solve(input, false) shouldBe expected
+                ru.timakden.adventofcode.year2015.day13.solve(input, PART_ONE) shouldBe expected
             }
         }
 
@@ -306,7 +308,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 val litersToStore = 25
                 val expected = 4
                 val containers = getContainers(input, litersToStore)
-                ru.timakden.adventofcode.year2015.day17.solve(containers, false) shouldBe expected
+                ru.timakden.adventofcode.year2015.day17.solve(containers, PART_ONE) shouldBe expected
             }
 
             should("solve year 2015, day 17, part 2") {
@@ -314,7 +316,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 val litersToStore = 25
                 val expected = 3
                 val containers = getContainers(input, litersToStore)
-                ru.timakden.adventofcode.year2015.day17.solve(containers, true) shouldBe expected
+                ru.timakden.adventofcode.year2015.day17.solve(containers, PART_TWO) shouldBe expected
             }
         }
 
@@ -332,7 +334,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 val numberOfSteps = 4
                 val expected = 4
 
-                ru.timakden.adventofcode.year2015.day18.solve(input, numberOfSteps, false) shouldBe expected
+                ru.timakden.adventofcode.year2015.day18.solve(input, numberOfSteps, PART_ONE) shouldBe expected
             }
 
             should("solve year 2015, day 18, part 2") {
@@ -348,7 +350,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 val numberOfSteps = 5
                 val expected = 17
 
-                ru.timakden.adventofcode.year2015.day18.solve(input, numberOfSteps, true) shouldBe expected
+                ru.timakden.adventofcode.year2015.day18.solve(input, numberOfSteps, PART_TWO) shouldBe expected
             }
         }
 
@@ -372,7 +374,7 @@ class AdventOfCodeSpec : ShouldSpec({
             should("solve year 2015, day 20") {
                 val input = 70
                 val expected = 4
-                ru.timakden.adventofcode.year2015.day20.solve(input, false) shouldBe expected
+                ru.timakden.adventofcode.year2015.day20.solve(input, PART_ONE) shouldBe expected
             }
         }
 
@@ -384,7 +386,7 @@ class AdventOfCodeSpec : ShouldSpec({
             should("solve year 2015, day 23") {
                 val input = listOf("inc a", "jio a, +2", "tpl a", "inc a")
                 val expected = 2
-                ru.timakden.adventofcode.year2015.day23.solve(input, false)[0] shouldBe expected
+                ru.timakden.adventofcode.year2015.day23.solve(input, PART_ONE)[0] shouldBe expected
             }
         }
 

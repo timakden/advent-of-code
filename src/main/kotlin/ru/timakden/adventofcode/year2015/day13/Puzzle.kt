@@ -1,21 +1,26 @@
 package ru.timakden.adventofcode.year2015.day13
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.Permutations
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
-        println("Part One: ${solve(input, false)}")
-        println("Part Two: ${solve(input, true)}")
+        println("Part One: ${solve(input, PART_ONE)}")
+        println("Part Two: ${solve(input, PART_TWO)}")
     }
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Int {
+fun solve(input: List<String>, part: Constants.Part): Int {
     val happiness = mutableMapOf<String, Int>()
     var optimalHappinessChange = Int.MIN_VALUE
     val names = sortedSetOf<String>()
 
-    if (partTwo) names.add("me")
+    if (part == PART_TWO) names.add("me")
 
     input.forEach {
         val split = it.split("\\s".toRegex())
@@ -33,7 +38,7 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
 
         happiness[name1 + name2] = happinessUnits
 
-        if (partTwo) {
+        if (part == PART_TWO) {
             with(happiness) {
                 put(name1 + "me", 0)
                 put("me$name1", 0)

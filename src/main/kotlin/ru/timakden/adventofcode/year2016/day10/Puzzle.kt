@@ -2,7 +2,7 @@ package ru.timakden.adventofcode.year2016.day10
 
 import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) {
+fun main() {
     val elapsedTime = measureTimeMillis {
         println("Part One: ${solve(input.toMutableList(), listOf(17, 61), false)}")
         println("Part Two: ${solve(input.toMutableList(), listOf(17, 61), true)}")

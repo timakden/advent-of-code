@@ -2,7 +2,7 @@ package ru.timakden.adventofcode.year2016.day09
 
 import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) {
+fun main() {
     val elapsedTime = measureTimeMillis {
         println("Part One: ${solvePartOne(input.filterNot(Char::isWhitespace))}")
         println("Part Two: ${solvePartTwo(input.filterNot(Char::isWhitespace))}")

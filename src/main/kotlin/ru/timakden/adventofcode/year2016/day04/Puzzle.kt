@@ -1,25 +1,23 @@
 package ru.timakden.adventofcode.year2016.day04
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
-fun main(args: Array<String>) {
-    val elapsedTime = measureTimeMillis {
+@ExperimentalTime
+fun main() {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: List<String>): Int {
     val realRooms = input.filter(::isRealRoom)
-    var totalCount = 0
 
-    realRooms.forEach {
-        val id = it.substring(it.lastIndexOf('-') + 1, it.indexOf('[')).toInt()
-        totalCount += id
+    return realRooms.fold(0) { acc, s ->
+        val id = s.substring(s.lastIndexOf('-') + 1, s.indexOf('[')).toInt()
+        acc + id
     }
-
-    return totalCount
 }
 
 fun solvePartTwo(input: List<String>): Int {
@@ -66,7 +64,7 @@ private fun decryptRoomName(encryptedName: String, id: Int): String {
     var decryptedName = ""
     encryptedName.forEach {
         var nextLetter = it
-        (1..id).forEach { nextLetter = getNextLetter(nextLetter) }
+        repeat((1..id).count()) { nextLetter = getNextLetter(nextLetter) }
         decryptedName += nextLetter.toString()
     }
     return decryptedName

@@ -1,15 +1,20 @@
 package ru.timakden.adventofcode.year2015.day15
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
-        println("Part One: ${solve(input, false)}")
-        println("Part Two: ${solve(input, true)}")
+        println("Part One: ${solve(input, PART_ONE)}")
+        println("Part Two: ${solve(input, PART_TWO)}")
     }
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Int {
+fun solve(input: List<String>, part: Constants.Part): Int {
     var highest = Int.MIN_VALUE
 
     val ingredients = input.map {
@@ -62,8 +67,8 @@ fun solve(input: List<String>, partTwo: Boolean): Int {
                             listOf(capacity, durability, flavor, texture).fold(1) { acc, i -> acc * i }
                         else 0
 
-                        when {
-                            partTwo -> if (total > highest && calories == 500) highest = total
+                        when (part) {
+                            PART_TWO -> if (total > highest && calories == 500) highest = total
                             else -> if (total > highest) highest = total
                         }
                     } else if (i + j + k + l > 100) break

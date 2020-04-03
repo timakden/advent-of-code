@@ -1,15 +1,20 @@
 package ru.timakden.adventofcode.year2015.day16
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
-        println("Part One: ${solve(input, false)?.name}")
-        println("Part Two: ${solve(input, true)?.name}")
+        println("Part One: ${solve(input, PART_ONE)?.name}")
+        println("Part Two: ${solve(input, PART_TWO)?.name}")
     }
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Aunt? {
+fun solve(input: List<String>, part: Constants.Part): Aunt? {
     val auntToFind = Aunt("Sue", 3, 7, 2, 3, 0, 0, 5, 3, 2, 1)
 
     val aunts = input.map { inputString ->
@@ -47,7 +52,7 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
             }
 
             cats?.let {
-                auntFound = auntFound && (if (partTwo) it > auntToFind.cats!! else it == auntToFind.cats!!)
+                auntFound = auntFound && (if (part == PART_TWO) it > auntToFind.cats!! else it == auntToFind.cats!!)
             }
 
             children?.let {
@@ -55,7 +60,7 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
             }
 
             goldfish?.let {
-                auntFound = auntFound && (if (partTwo) it < auntToFind.goldfish!! else it == auntToFind.goldfish!!)
+                auntFound = auntFound && (if (part == PART_TWO) it < auntToFind.goldfish!! else it == auntToFind.goldfish!!)
             }
 
             perfumes?.let {
@@ -64,7 +69,7 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
 
             pomeranians?.let {
                 auntFound = auntFound &&
-                        (if (partTwo) it < auntToFind.pomeranians!! else it == auntToFind.pomeranians!!)
+                        (if (part == PART_TWO) it < auntToFind.pomeranians!! else it == auntToFind.pomeranians!!)
             }
 
             samoyeds?.let {
@@ -72,7 +77,7 @@ fun solve(input: List<String>, partTwo: Boolean): Aunt? {
             }
 
             trees?.let {
-                auntFound = auntFound and (if (partTwo) it > auntToFind.trees!! else it == auntToFind.trees!!)
+                auntFound = auntFound and (if (part == PART_TWO) it > auntToFind.trees!! else it == auntToFind.trees!!)
             }
 
             vizslas?.let {

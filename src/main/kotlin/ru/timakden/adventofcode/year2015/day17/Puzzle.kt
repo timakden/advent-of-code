@@ -1,17 +1,22 @@
 package ru.timakden.adventofcode.year2015.day17
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
         val containers = getContainers(input, 150)
-        println("Part One: ${solve(containers, false)}")
-        println("Part Two: ${solve(containers, true)}")
+        println("Part One: ${solve(containers, PART_ONE)}")
+        println("Part Two: ${solve(containers, PART_TWO)}")
     }
 }
 
-fun solve(containers: List<List<Int>>, partTwo: Boolean): Int {
-    if (partTwo) {
+fun solve(containers: List<List<Int>>, part: Constants.Part): Int {
+    if (part == PART_TWO) {
         val minSize = containers.minBy { it.size }?.size
         return containers.count { it.size == minSize }
     }

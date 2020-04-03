@@ -2,9 +2,9 @@ package ru.timakden.adventofcode
 
 import java.security.MessageDigest
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.xml.bind.DatatypeConverter
-import kotlin.system.measureNanoTime
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTime
 
 
 /**
@@ -55,9 +55,10 @@ object Permutations {
 /**
  * Executes the given [block] and prints elapsed time in milliseconds.
  */
+@ExperimentalTime
 fun measure(block: () -> Unit) {
-    val elapsedTime = measureNanoTime(block)
-    println("Elapsed time: ${TimeUnit.NANOSECONDS.toMillis(elapsedTime)} ms")
+    val duration = measureTime(block)
+    println("Elapsed time: $duration")
 }
 
 object PowerSet {
@@ -84,4 +85,8 @@ object PowerSet {
             }
         }
     }
+}
+
+object Constants {
+    enum class Part { PART_ONE, PART_TWO }
 }

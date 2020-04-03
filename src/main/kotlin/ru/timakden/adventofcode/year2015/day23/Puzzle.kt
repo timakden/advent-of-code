@@ -1,16 +1,21 @@
 package ru.timakden.adventofcode.year2015.day23
 
+import ru.timakden.adventofcode.Constants
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
-        println("Part One: ${solve(input, false)[1]}")
-        println("Part Two: ${solve(input, true)[1]}")
+        println("Part One: ${solve(input, PART_ONE)[1]}")
+        println("Part Two: ${solve(input, PART_TWO)[1]}")
     }
 }
 
-fun solve(input: List<String>, partTwo: Boolean): IntArray {
-    var a = if (partTwo) 1 else 0
+fun solve(input: List<String>, part: Constants.Part): IntArray {
+    var a = if (part == PART_TWO) 1 else 0
     var b = 0
     var currentPosition = 0
 

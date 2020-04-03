@@ -2,7 +2,9 @@ package ru.timakden.adventofcode.year2016.day01
 
 import ru.timakden.adventofcode.measure
 import kotlin.math.abs
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
         println("Part One: ${solvePartOne(input)}")

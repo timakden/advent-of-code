@@ -2,7 +2,7 @@ package ru.timakden.adventofcode.year2016.day08
 
 import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) {
+fun main() {
     val elapsedTime = measureTimeMillis {
         val screen = createScreen()
         println("Part One: ${solvePartOne(screen, input)}")
@@ -29,7 +29,7 @@ fun solvePartOne(screen: Array<CharArray>, input: List<String>): Int {
 }
 
 fun createScreen(width: Int = 50, height: Int = 6): Array<CharArray> {
-    val screen = Array(height, { CharArray(width) })
+    val screen = Array(height) { CharArray(width) }
     screen.forEach { row -> row.indices.forEach { row[it] = '.' } }
     return screen
 }
@@ -39,7 +39,7 @@ private fun rect(screen: Array<CharArray>, width: Int, height: Int) {
 }
 
 private fun rotateRow(screen: Array<CharArray>, row: Int, pixels: Int) {
-    (0 until pixels).forEach {
+    repeat(pixels) {
         screen[row] = shift(screen[row])
     }
 }
@@ -51,7 +51,7 @@ private fun rotateColumn(screen: Array<CharArray>, column: Int, pixels: Int) {
     }
 
     var array = columnStr.toCharArray()
-    (0 until pixels).forEach {
+    repeat(pixels) {
         array = shift(array)
     }
 

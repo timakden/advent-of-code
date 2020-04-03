@@ -3,7 +3,9 @@ package ru.timakden.adventofcode.year2015.day07
 import ru.timakden.adventofcode.isLetter
 import ru.timakden.adventofcode.isNumber
 import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 @ExperimentalUnsignedTypes
 fun main() {
     measure {

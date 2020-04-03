@@ -3,7 +3,9 @@ package ru.timakden.adventofcode.year2015.day21
 import ru.timakden.adventofcode.PowerSet
 import ru.timakden.adventofcode.measure
 import ru.timakden.adventofcode.year2015.day21.ItemType.*
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
     measure {
         val items = setOf(
