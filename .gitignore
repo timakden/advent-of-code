@@ -1,9 +1,6 @@
-build/
-
 .gradle/
 .idea/
-.kotlintest/
+build/
+out/
 
 *.iml
-*.ipr
-*.iws

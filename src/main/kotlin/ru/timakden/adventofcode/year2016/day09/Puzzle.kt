@@ -1,13 +1,14 @@
 package ru.timakden.adventofcode.year2016.day09
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
+    measure {
         println("Part One: ${solvePartOne(input.filterNot(Char::isWhitespace))}")
         println("Part Two: ${solvePartTwo(input.filterNot(Char::isWhitespace))}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: String, count: Long = 0L): Long {

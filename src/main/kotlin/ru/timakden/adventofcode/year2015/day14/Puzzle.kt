@@ -9,8 +9,8 @@ fun main() {
         val raceTime = 2503
         val deers = race(input, raceTime)
 
-        println("Part One: ${deers.maxBy { it.totalDistance }?.totalDistance}")
-        println("Part Two: ${deers.maxBy { it.scores }?.scores}")
+        println("Part One: ${deers.maxByOrNull { it.totalDistance }?.totalDistance}")
+        println("Part Two: ${deers.maxByOrNull { it.scores }?.scores}")
     }
 }
 
@@ -34,7 +34,7 @@ fun race(input: List<String>, raceTime: Int): List<Reindeer> {
             }
         }
 
-        val currentLeadingDistance = deers.maxBy { it.totalDistance }?.totalDistance
+        val currentLeadingDistance = deers.maxByOrNull { it.totalDistance }?.totalDistance
 
         deers.forEach { if (it.totalDistance == currentLeadingDistance) it.scores++ }
     }

@@ -1,16 +1,20 @@
 package ru.timakden.adventofcode.year2016.day06
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.Constants.Part
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
-        println("Part One: ${solve(input, false)}")
-        println("Part Two: ${solve(input, true)}")
+    measure {
+        println("Part One: ${solve(input, PART_ONE)}")
+        println("Part Two: ${solve(input, PART_TWO)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: List<String>, partTwo: Boolean): String {
+fun solve(input: List<String>, part: Part): String {
     var errorCorrectedMessage = ""
 
     (0..input[0].lastIndex).forEach { i ->
@@ -20,7 +24,7 @@ fun solve(input: List<String>, partTwo: Boolean): String {
             map[it[i]] = ++count
         }
 
-        val entry = if (partTwo) map.minBy { it.value } else map.maxBy { it.value }
+        val entry = if (part == PART_TWO) map.minByOrNull { it.value } else map.maxByOrNull { it.value }
         entry?.let {
             errorCorrectedMessage += it.key.toString()
         }

@@ -48,7 +48,7 @@ private fun calculateChecksum(encryptedName: String): String {
 
     val newMap = mutableMapOf<Char, Int>()
     for (i in 0..4) {
-        val entry = map.maxBy { it.value }
+        val entry = map.maxByOrNull { it.value }
         entry?.let {
             newMap[it.key] = it.value
             map.remove(it.key)

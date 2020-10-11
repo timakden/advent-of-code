@@ -1,9 +1,11 @@
 package ru.timakden.adventofcode.year2016.day11
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
+    measure {
         val configuration = mutableMapOf<Int, MutableList<String>>()
         input.forEachIndexed { index, s ->
             val list = mutableListOf<String>()
@@ -12,5 +14,4 @@ fun main() {
         }
         println(configuration)
     }
-    println("Elapsed time: $elapsedTime ms")
 }

@@ -27,7 +27,7 @@ fun solve(input: List<Int>, part: Constants.Part): Long {
     val groupWeight = input.sum() / if (part == PART_TWO) 4 else 3
     val powerSet = PowerSet.of(input.toSet())
     val list = powerSet.filter { it.sum() == groupWeight }
-    val minSize = list.minBy { it.size }?.size
+    val minSize = list.minByOrNull { it.size }?.size
     val filteredList = list.filter { it.size == minSize }
     val quantumEntanglementList = mutableListOf<Long>()
     filteredList.forEach { set ->
@@ -36,5 +36,5 @@ fun solve(input: List<Int>, part: Constants.Part): Long {
         quantumEntanglementList.add(quantumEntanglement)
     }
 
-    return quantumEntanglementList.min() ?: 0
+    return quantumEntanglementList.minOrNull() ?: 0
 }

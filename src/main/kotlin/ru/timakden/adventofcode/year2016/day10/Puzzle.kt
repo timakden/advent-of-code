@@ -1,16 +1,20 @@
 package ru.timakden.adventofcode.year2016.day10
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.Constants.Part
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
-        println("Part One: ${solve(input.toMutableList(), listOf(17, 61), false)}")
-        println("Part Two: ${solve(input.toMutableList(), listOf(17, 61), true)}")
+    measure {
+        println("Part One: ${solve(input.toMutableList(), listOf(17, 61), PART_ONE)}")
+        println("Part Two: ${solve(input.toMutableList(), listOf(17, 61), PART_TWO)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: MutableList<String>, valuesToCompare: List<Int>, partTwo: Boolean): Int {
+fun solve(input: MutableList<String>, valuesToCompare: List<Int>, part: Part): Int {
     val bots = mutableMapOf<Int, MutableList<Int>>()
     val outputs = mutableMapOf<Int, Int>()
 
@@ -39,8 +43,8 @@ fun solve(input: MutableList<String>, valuesToCompare: List<Int>, partTwo: Boole
                     val lowToNumber = lowTo.substringAfter(" ").toInt()
                     val highTo = instruction.substringAfter("high to ")
                     val highToNumber = highTo.substringAfter(" ").toInt()
-                    val lowValue = bots[botNumber]?.min()!!
-                    val highValue = bots[botNumber]?.max()!!
+                    val lowValue = bots[botNumber]?.minOrNull()!!
+                    val highValue = bots[botNumber]?.maxOrNull()!!
 
                     if (lowTo.contains("bot")) {
                         if (bots.contains(lowToNumber)) {
@@ -67,7 +71,7 @@ fun solve(input: MutableList<String>, valuesToCompare: List<Int>, partTwo: Boole
                 }
             }
 
-            if (!partTwo) {
+            if (part == PART_ONE) {
                 for ((key, value) in bots) {
                     if (value.size == 2 && value.containsAll(valuesToCompare)) {
                         return key
@@ -75,7 +79,7 @@ fun solve(input: MutableList<String>, valuesToCompare: List<Int>, partTwo: Boole
                 }
             }
 
-            if (partTwo && outputs.contains(0) && outputs.contains(1) && outputs.contains(2)) {
+            if (part == PART_TWO && outputs.contains(0) && outputs.contains(1) && outputs.contains(2)) {
                 return outputs[0]!! * outputs[1]!! * outputs[2]!!
             }
         }

@@ -1,21 +1,25 @@
 package ru.timakden.adventofcode.year2016.day07
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.Constants.Part
+import ru.timakden.adventofcode.Constants.Part.PART_ONE
+import ru.timakden.adventofcode.Constants.Part.PART_TWO
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
-        println("Part One: ${solve(input, false)}")
-        println("Part Two: ${solve(input, true)}")
+    measure {
+        println("Part One: ${solve(input, PART_ONE)}")
+        println("Part Two: ${solve(input, PART_TWO)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
-fun solve(input: List<String>, partTwo: Boolean): Int =
-    input.count { if (partTwo) isSupportSsl(it) else isSupportTls(it) }
+fun solve(input: List<String>, part: Part): Int =
+    input.count { if (part == PART_TWO) isSupportSsl(it) else isSupportTls(it) }
 
 private fun isSupportTls(ip: String): Boolean {
     val firstRequirement = "(\\w)(?!\\1)(\\w)\\2\\1".toRegex().containsMatchIn(ip)
-    val secondRequirement = !"\\[\\w*(\\w)(?!\\1)(\\w)\\2\\1\\w*\\]".toRegex().containsMatchIn(ip)
+    val secondRequirement = !"\\[\\w*(\\w)(?!\\1)(\\w)\\2\\1\\w*]".toRegex().containsMatchIn(ip)
     return firstRequirement && secondRequirement
 }
 

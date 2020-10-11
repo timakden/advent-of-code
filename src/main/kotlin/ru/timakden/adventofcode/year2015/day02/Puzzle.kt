@@ -21,7 +21,7 @@ fun solvePartOne(input: List<String>): Int {
             2 * dimensions[0] * dimensions[2]
         )
 
-        areas.sum() + (areas.min() ?: 0) / 2
+        areas.sum() + (areas.minOrNull() ?: 0) / 2
     }.sum()
 }
 

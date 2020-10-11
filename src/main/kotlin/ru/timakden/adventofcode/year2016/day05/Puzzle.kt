@@ -1,14 +1,15 @@
 package ru.timakden.adventofcode.year2016.day05
 
 import ru.timakden.adventofcode.md5Hex
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
+    measure {
         println("Part One: ${solvePartOne(input)}")
         println("Part Two: ${solvePartTwo(input)}")
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(input: String): String {

@@ -17,7 +17,7 @@ fun main() {
 
 fun solve(containers: List<List<Int>>, part: Constants.Part): Int {
     if (part == PART_TWO) {
-        val minSize = containers.minBy { it.size }?.size
+        val minSize = containers.minByOrNull { it.size }?.size
         return containers.count { it.size == minSize }
     }
     return containers.size

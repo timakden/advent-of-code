@@ -1,14 +1,15 @@
 package ru.timakden.adventofcode.year2016.day08
 
-import kotlin.system.measureTimeMillis
+import ru.timakden.adventofcode.measure
+import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 fun main() {
-    val elapsedTime = measureTimeMillis {
+    measure {
         val screen = createScreen()
         println("Part One: ${solvePartOne(screen, input)}")
         printScreen(screen)
     }
-    println("Elapsed time: $elapsedTime ms")
 }
 
 fun solvePartOne(screen: Array<CharArray>, input: List<String>): Int {
@@ -71,7 +72,7 @@ private fun shift(array: CharArray): CharArray {
 
 private fun countLitPixels(screen: Array<CharArray>): Int {
     var count = 0
-    screen.forEach { count += it.count { it == '#' } }
+    screen.forEach { count += it.count { c -> c == '#' } }
     return count
 }
 

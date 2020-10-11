@@ -1,21 +1,21 @@
 package ru.timakden.adventofcode
 
-import io.kotlintest.data.suspend.forall
-import io.kotlintest.matchers.collections.shouldContainExactlyInAnyOrder
-import io.kotlintest.matchers.maps.shouldContainAll
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.ShouldSpec
-import io.kotlintest.tables.row
+import io.kotest.core.spec.style.ShouldSpec
+import io.kotest.data.forAll
+import io.kotest.data.row
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.maps.shouldContainAll
+import io.kotest.matchers.shouldBe
 import ru.timakden.adventofcode.Constants.Part.PART_ONE
 import ru.timakden.adventofcode.Constants.Part.PART_TWO
 import ru.timakden.adventofcode.year2015.day17.getContainers
 
 @ExperimentalUnsignedTypes
 class AdventOfCodeSpec : ShouldSpec({
-    "Year 2015" {
-        "Day 1: Not Quite Lisp" {
+    context("Year 2015") {
+        context("Day 1: Not Quite Lisp") {
             should("solve year 2015, day 1, part 1") {
-                forall(
+                forAll(
                     row("(())", 0),
                     row("()()", 0),
                     row("(((", 3),
@@ -30,7 +30,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 1, part 2") {
-                forall(
+                forAll(
                     row(")", 1),
                     row("()())", 5)
                 ) { input, expected ->
@@ -39,9 +39,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 2: I Was Told There Would Be No Math" {
+        context("Day 2: I Was Told There Would Be No Math") {
             should("solve year 2015, day 2, part 1") {
-                forall(
+                forAll(
                     row(listOf("2x3x4"), 58),
                     row(listOf("1x1x10"), 43)
                 ) { input, expected ->
@@ -49,7 +49,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 2, part 2") {
-                forall(
+                forAll(
                     row(listOf("2x3x4"), 34),
                     row(listOf("1x1x10"), 14)
                 ) { input, expected ->
@@ -58,9 +58,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 3: Perfectly Spherical Houses in a Vacuum" {
+        context("Day 3: Perfectly Spherical Houses in a Vacuum") {
             should("solve year 2015, day 3, part 1") {
-                forall(
+                forAll(
                     row(">", 2),
                     row("^>v<", 4),
                     row("^v^v^v^v^v", 2)
@@ -69,7 +69,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 3, part 2") {
-                forall(
+                forAll(
                     row("^v", 3),
                     row("^>v<", 3),
                     row("^v^v^v^v^v", 11)
@@ -79,9 +79,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 4: The Ideal Stocking Stuffer" {
+        context("Day 4: The Ideal Stocking Stuffer") {
             should("solve year 2015, day 4") {
-                forall(
+                forAll(
                     row("abcdef", 609043),
                     row("pqrstuv", 1048970)
                 ) { input, expected ->
@@ -90,9 +90,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 5: Doesn't He Have Intern-Elves For This?" {
+        context("Day 5: Doesn't He Have Intern-Elves For This?") {
             should("solve year 2015, day 5, part 1") {
-                forall(
+                forAll(
                     row("ugknbfddgicrmopn", true),
                     row("aaa", true),
                     row("jchzalrnumimnmhp", false),
@@ -103,7 +103,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 5, part 2") {
-                forall(
+                forAll(
                     row("qjhvhtzxzqqjkmpb", true),
                     row("xxyxx", true),
                     row("uurcxstgmygtbstg", false),
@@ -114,9 +114,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 6: Probably a Fire Hazard" {
+        context("Day 6: Probably a Fire Hazard") {
             should("solve year 2015, day 6, part 1") {
-                forall(
+                forAll(
                     row(listOf("turn on 0,0 through 999,999"), 1000000),
                     row(listOf("toggle 0,0 through 999,0"), 1000),
                     row(listOf("turn off 499,499 through 500,500"), 0)
@@ -125,7 +125,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 6, part 2") {
-                forall(
+                forAll(
                     row(listOf("turn on 0,0 through 0,0"), 1),
                     row(listOf("toggle 0,0 through 999,999"), 2000000)
                 ) { input, expected ->
@@ -134,7 +134,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 7: Some Assembly Required" {
+        context("Day 7: Some Assembly Required") {
             should("solve year 2015, day 7") {
                 val input = listOf(
                     "123 -> x",
@@ -165,7 +165,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 8: Matchsticks" {
+        context("Day 8: Matchsticks") {
             val input = listOf("""""""", """"abc"""", """"aaa\"aaa"""", """"\x27"""")
 
             should("solve year 2015, day 8, part 1") {
@@ -183,7 +183,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 9: All in a Single Night" {
+        context("Day 9: All in a Single Night") {
             val input = listOf("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141")
 
             should("solve year 2015, day 9, part 1") {
@@ -201,9 +201,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 10: Elves Look, Elves Say" {
+        context("Day 10: Elves Look, Elves Say") {
             should("solve year 2015, day 10") {
-                forall(
+                forAll(
                     row("1", "11"),
                     row("11", "21"),
                     row("21", "1211"),
@@ -215,9 +215,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 11: Corporate Policy" {
+        context("Day 11: Corporate Policy") {
             should("solve year 2015, day 11") {
-                forall(
+                forAll(
                     row("hijklmmn", false),
                     row("abbceffg", false),
                     row("abbcegjk", false),
@@ -231,9 +231,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 12: JSAbacusFramework.io" {
+        context("Day 12: JSAbacusFramework.io") {
             should("solve year 2015, day 12, part 1") {
-                forall(
+                forAll(
                     row("""[1,2,3]""", 6),
                     row("""{"a":2,"b":4}""", 6),
                     row("""[[[3]]]""", 3),
@@ -247,7 +247,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 }
             }
             should("solve year 2015, day 12, part 2") {
-                forall(
+                forAll(
                     row("""[1,2,3]""", 6),
                     row("""[1,{"c":"red","b":2},3]""", 4),
                     row("""{"d":"red","e":[1,2,3,4],"f":5}""", 0),
@@ -258,7 +258,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 13: Knights of the Dinner Table" {
+        context("Day 13: Knights of the Dinner Table") {
             should("solve year 2015, day 13") {
                 val input = listOf(
                     "Alice would gain 54 happiness units by sitting next to Bob.",
@@ -281,7 +281,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 14: Reindeer Olympics" {
+        context("Day 14: Reindeer Olympics") {
             should("solve year 2015, day 14") {
                 val input = listOf(
                     "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.",
@@ -294,15 +294,15 @@ class AdventOfCodeSpec : ShouldSpec({
 
                 val deers = ru.timakden.adventofcode.year2015.day14.race(input, raceTime)
 
-                deers.maxBy { it.totalDistance }?.totalDistance shouldBe expected
+                deers.maxByOrNull { it.totalDistance }?.totalDistance shouldBe expected
             }
         }
 
-        "Day 15: Science for Hungry People" { /* TODO */ }
+        context("Day 15: Science for Hungry People") { /* TODO */ }
 
-        "Day 16: Aunt Sue" { /* TODO */ }
+        context("Day 16: Aunt Sue") { /* TODO */ }
 
-        "Day 17: No Such Thing as Too Much" {
+        context("Day 17: No Such Thing as Too Much") {
             should("solve year 2015, day 17, part 1") {
                 val input = listOf(5, 5, 10, 15, 20)
                 val litersToStore = 25
@@ -320,7 +320,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 18: Like a GIF For Your Yard" {
+        context("Day 18: Like a GIF For Your Yard") {
             should("solve year 2015, day 18, part 1") {
                 val input = listOf(
                     ".#.#.#",
@@ -354,7 +354,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 19: Medicine for Rudolph" {
+        context("Day 19: Medicine for Rudolph") {
             should("solve year 2015, day 19, part 1") {
                 val molecule = "HOH"
                 val replacements = listOf("H => HO", "H => OH", "O => HH")
@@ -370,7 +370,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 20: Infinite Elves and Infinite Houses" {
+        context("Day 20: Infinite Elves and Infinite Houses") {
             should("solve year 2015, day 20") {
                 val input = 70
                 val expected = 4
@@ -378,11 +378,11 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 21: RPG Simulator 20XX" { /* TODO */ }
+        context("Day 21: RPG Simulator 20XX") { /* TODO */ }
 
-        "Day 22: Wizard Simulator 20XX" { /* TODO */ }
+        context("Day 22: Wizard Simulator 20XX") { /* TODO */ }
 
-        "Day 23: Opening the Turing Lock" {
+        context("Day 23: Opening the Turing Lock") {
             should("solve year 2015, day 23") {
                 val input = listOf("inc a", "jio a, +2", "tpl a", "inc a")
                 val expected = 2
@@ -390,11 +390,11 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 24: It Hangs in the Balance" { /* TODO */ }
+        context("Day 24: It Hangs in the Balance") { /* TODO */ }
 
-        "Day 25: Let It Snow" {
+        context("Day 25: Let It Snow") {
             should("solve year 2015, day 25") {
-                forall(
+                forAll(
                     row(1 to 1, 20151125),
                     row(4 to 2, 32451966),
                     row(3 to 5, 11661866),
@@ -406,10 +406,10 @@ class AdventOfCodeSpec : ShouldSpec({
         }
     }
 
-    "Year 2016" {
-        "Day 1: No Time for a Taxicab" {
+    context("Year 2016") {
+        context("Day 1: No Time for a Taxicab") {
             should("solve year 2016, day 1, part 1") {
-                forall(
+                forAll(
                     row("R2, L3", 5),
                     row("R2, R2, R2", 2),
                     row("R5, L5, R5, R3", 12)
@@ -426,27 +426,27 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Day 2: Bathroom Security" {
+        context("Day 2: Bathroom Security") {
             should("solve year 2016, day 2, part 1") {
                 val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "1985"
 
-                ru.timakden.adventofcode.year2016.day02.solve(input, false) shouldBe expected
+                ru.timakden.adventofcode.year2016.day02.solve(input, PART_ONE) shouldBe expected
             }
 
             should("solve year 2016, day 2, part 2") {
                 val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "5DB3"
 
-                ru.timakden.adventofcode.year2016.day02.solve(input, true) shouldBe expected
+                ru.timakden.adventofcode.year2016.day02.solve(input, PART_TWO) shouldBe expected
             }
         }
 
-        "Day 3: Squares With Three Sides" { /* TODO */ }
+        context("Day 3: Squares With Three Sides") { /* TODO */ }
     }
 
-    "Utils" {
-        "md5Hex()" {
+    context("Utils") {
+        context("md5Hex()") {
             should("generate MD5 hash as a hex string") {
                 val expected = "35454b055cc325ea1af2126e27707052"
 
@@ -454,9 +454,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "String.isNumber()" {
+        context("String.isNumber()") {
             should("parse numbers in a string") {
-                forall(
+                forAll(
                     row("123", true),
                     row("abc", false),
                     row("123.45", true)
@@ -466,9 +466,9 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "String.isLetter()" {
+        context("String.isLetter()") {
             should("parse letters in a string") {
-                forall(
+                forAll(
                     row("abc", true),
                     row("123", false),
                     row("ab12", false)
@@ -478,7 +478,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "Permutations.of()" {
+        context("Permutations.of()") {
             should("generate all permutations of a list") {
                 val expected = listOf(
                     listOf(1, 2, 3),
@@ -493,7 +493,7 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
-        "PowerSet.of()" {
+        context("PowerSet.of()") {
             should("return the set of all possible subsets") {
                 val input = setOf(1, 2, 3, 4)
                 val powerSet = PowerSet.of(input)
