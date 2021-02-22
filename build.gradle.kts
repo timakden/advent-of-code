@@ -14,7 +14,7 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "4.4.0"
+val kotestVersion = "4.4.1"
 
 dependencies {
     implementation(kotlin("reflect"))
