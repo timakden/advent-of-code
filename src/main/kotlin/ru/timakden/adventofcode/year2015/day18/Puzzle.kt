@@ -34,11 +34,7 @@ private fun performStep(matrix: Array<CharArray>, part: Constants.Part): Array<C
                 for (l in (j - 1)..(j + 1)) {
                     if (k == i && l == j) continue // skip the current "cell"
 
-                    neighbours += try {
-                        matrix[k][l]
-                    } catch (e: Exception) {
-                        '.'
-                    }
+                    neighbours += runCatching { matrix[k][l] }.fold({ it }, { '.' })
                 }
             }
 

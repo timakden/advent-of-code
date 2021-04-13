@@ -12,7 +12,7 @@ fun main() {
 }
 
 fun solvePartOne(input: List<String>): Int {
-    return input.map {
+    return input.sumOf {
         val dimensions = mutableListOf<Int>()
         it.split("x").mapTo(dimensions) { s -> s.toInt() }
         val areas = listOf(
@@ -22,14 +22,14 @@ fun solvePartOne(input: List<String>): Int {
         )
 
         areas.sum() + (areas.minOrNull() ?: 0) / 2
-    }.sum()
+    }
 }
 
 fun solvePartTwo(input: List<String>): Int {
-    return input.map {
+    return input.sumOf {
         val dimensions = mutableListOf<Int>()
         it.split('x').mapTo(dimensions) { s -> s.toInt() }.sort()
 
         2 * dimensions[0] + 2 * dimensions[1] + dimensions[0] * dimensions[1] * dimensions[2]
-    }.sum()
+    }
 }

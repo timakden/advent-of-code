@@ -38,29 +38,19 @@ fun solve(input: List<String>, part: Constants.Part): Int {
                 for (l in 1..100 - i - j - k) {
                     if (i + j + k + l == 100) {
                         capacity = ingredients.map { it.capacity }
-                            .zip(listOf(i, j, k, l))
-                            .map { it.first * it.second }
-                            .sum()
+                            .zip(listOf(i, j, k, l)).sumOf { it.first * it.second }
 
                         durability = ingredients.map { it.durability }
-                            .zip(listOf(i, j, k, l))
-                            .map { it.first * it.second }
-                            .sum()
+                            .zip(listOf(i, j, k, l)).sumOf { it.first * it.second }
 
                         flavor = ingredients.map { it.flavor }
-                            .zip(listOf(i, j, k, l))
-                            .map { it.first * it.second }
-                            .sum()
+                            .zip(listOf(i, j, k, l)).sumOf { it.first * it.second }
 
                         texture = ingredients.map { it.texture }
-                            .zip(listOf(i, j, k, l))
-                            .map { it.first * it.second }
-                            .sum()
+                            .zip(listOf(i, j, k, l)).sumOf { it.first * it.second }
 
                         calories = ingredients.map { it.calories }
-                            .zip(listOf(i, j, k, l))
-                            .map { it.first * it.second }
-                            .sum()
+                            .zip(listOf(i, j, k, l)).sumOf { it.first * it.second }
 
 
                         total = if (listOf(capacity, durability, flavor, texture).all { it > 0 })
