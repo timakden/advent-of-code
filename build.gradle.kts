@@ -10,7 +10,6 @@ group = "ru.timakden"
 version = "1.0"
 
 repositories {
-    jcenter()
     mavenCentral()
 }
 
