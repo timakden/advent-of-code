@@ -39,7 +39,7 @@ fun solve(input: List<String>, part: Constants.Part): Int {
         val list = route.toList()
         val length = list.indices
             .filter { it != list.size - 1 }
-            .sumBy { distances[list[it] + list[it + 1]] ?: 0 }
+            .sumOf { distances[list[it] + list[it + 1]] ?: 0 }
 
         when (part) {
             PART_ONE -> if (length < result) result = length

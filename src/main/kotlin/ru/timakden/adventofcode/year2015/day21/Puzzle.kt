@@ -40,12 +40,12 @@ fun main() {
 }
 
 fun solvePartOne(itemSets: MutableList<Set<Item>>, input: Character): Int {
-    itemSets.sortBy { it.sumBy(Item::cost) }
+    itemSets.sortBy { it.sumOf(Item::cost) }
     var bossDefeated = false
 
     itemSets.forEach { items ->
         val boss = input.copy()
-        val player = Character(100, items.sumBy(Item::damage), items.sumBy(Item::armor))
+        val player = Character(100, items.sumOf(Item::damage), items.sumOf(Item::armor))
         var currentMove = 1
         while (true) {
             if (currentMove % 2 == 0) {
@@ -61,18 +61,18 @@ fun solvePartOne(itemSets: MutableList<Set<Item>>, input: Character): Int {
             currentMove++
         }
 
-        if (bossDefeated) return items.sumBy(Item::cost)
+        if (bossDefeated) return items.sumOf(Item::cost)
     }
     return 0
 }
 
 fun solvePartTwo(itemSets: MutableList<Set<Item>>, input: Character): Int {
-    itemSets.sortByDescending { it.sumBy(Item::cost) }
+    itemSets.sortByDescending { it.sumOf(Item::cost) }
     var playerDefeated = false
 
     itemSets.forEach { items ->
         val boss = input.copy()
-        val player = Character(100, items.sumBy(Item::damage), items.sumBy(Item::armor))
+        val player = Character(100, items.sumOf(Item::damage), items.sumOf(Item::armor))
         var currentMove = 1
         while (true) {
             if (currentMove % 2 == 0) {
@@ -88,7 +88,7 @@ fun solvePartTwo(itemSets: MutableList<Set<Item>>, input: Character): Int {
             currentMove++
         }
 
-        if (playerDefeated) return items.sumBy(Item::cost)
+        if (playerDefeated) return items.sumOf(Item::cost)
     }
     return 0
 }

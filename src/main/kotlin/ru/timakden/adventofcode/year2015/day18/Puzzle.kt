@@ -19,7 +19,7 @@ fun solve(input: List<String>, numberOfSteps: Int, part: Constants.Part): Int {
 
     repeat(numberOfSteps) { matrix = performStep(matrix, part) }
 
-    return matrix.sumBy { it.count { ch -> ch == '#' } }
+    return matrix.sumOf { it.count { ch -> ch == '#' } }
 }
 
 private fun performStep(matrix: Array<CharArray>, part: Constants.Part): Array<CharArray> {
@@ -34,7 +34,7 @@ private fun performStep(matrix: Array<CharArray>, part: Constants.Part): Array<C
                 for (l in (j - 1)..(j + 1)) {
                     if (k == i && l == j) continue // skip the current "cell"
 
-                    neighbours += runCatching { matrix[k][l] }.fold({ it }, { '.' })
+                    neighbours += runCatching { matrix[k][l] }.getOrDefault('.')
                 }
             }
 

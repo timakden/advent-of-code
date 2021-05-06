@@ -18,7 +18,7 @@ fun md5Hex(data: String) = DatatypeConverter.printHexBinary(
     MessageDigest.getInstance("MD5").run {
         update(data.toByteArray())
         digest()
-    }).toLowerCase()
+    }).lowercase(Locale.getDefault())
 
 /** Returns `true` if this string matches the regular expression `\d+(?:\.\d+)?`. */
 fun String.isNumber() = this.matches("\\d+(?:\\.\\d+)?".toRegex())

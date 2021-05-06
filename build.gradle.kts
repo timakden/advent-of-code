@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     idea
     id("com.github.ben-manes.versions") version "0.38.0"
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.5.0"
 }
 
 group = "ru.timakden"
@@ -13,12 +13,12 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "4.4.3"
+val kotestVersion = "4.5.0"
 
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-RC")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
 

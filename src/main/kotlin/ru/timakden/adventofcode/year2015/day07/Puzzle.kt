@@ -6,14 +6,12 @@ import ru.timakden.adventofcode.measure
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-@ExperimentalUnsignedTypes
 fun main() {
     measure {
         println("a = ${solve(input, listOf("a"))["a"]}")
     }
 }
 
-@ExperimentalUnsignedTypes
 fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort> {
     val map = mutableMapOf<String, UShort>()
     while (map.size != input.size) {
@@ -71,8 +69,6 @@ fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort>
     return map.filter { it.key in wiresToReturn }
 }
 
-@ExperimentalUnsignedTypes
 private infix fun UShort.shl(shift: UShort): UShort = (this.toInt() shl shift.toInt()).toUShort()
 
-@ExperimentalUnsignedTypes
 private infix fun UShort.shr(shift: UShort): UShort = (this.toInt() shr shift.toInt()).toUShort()

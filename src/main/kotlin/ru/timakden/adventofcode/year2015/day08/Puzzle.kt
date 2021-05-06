@@ -11,11 +11,11 @@ fun main() {
     }
 }
 
-fun solvePartOne(input: List<String>) = input.sumBy {
+fun solvePartOne(input: List<String>) = input.sumOf {
     it.length - (it.replace("\\\\\\W|\\\\x\\w{2}".toRegex(), "*").length - 2)
 }
 
-fun solvePartTwo(input: List<String>) = input.sumBy {
+fun solvePartTwo(input: List<String>) = input.sumOf {
     it.replace("^\"|\"$".toRegex(), "***")
         .replace("\\\\{2}|\\\\\"".toRegex(), "****")
         .replace("\\\\x".toRegex(), "***")

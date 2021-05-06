@@ -52,7 +52,7 @@ fun solve(input: List<String>, part: Constants.Part): Int {
         val list = it.toList()
         var happinessChange = list.indices
             .filter { i -> i != list.lastIndex }
-            .sumBy { i -> (happiness[list[i] + list[i + 1]] ?: 0) + (happiness[list[i + 1] + list[i]] ?: 0) }
+            .sumOf { i -> (happiness[list[i] + list[i + 1]] ?: 0) + (happiness[list[i + 1] + list[i]] ?: 0) }
 
         happinessChange += (happiness[list[0] + list[list.lastIndex]] ?: 0) + (happiness[list[list.lastIndex] + list[0]]
             ?: 0)
