@@ -13,12 +13,12 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "4.5.0"
+val kotestVersion = "4.6.0"
 
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
 
