@@ -1,4 +1,5 @@
 [![Java CI with Gradle](https://github.com/timakden/advent-of-code/actions/workflows/gradle.yml/badge.svg)](https://github.com/timakden/advent-of-code/actions/workflows/gradle.yml)
+![GitHub](https://img.shields.io/github/license/timakden/advent-of-code)
 
 # Advent of Code
 
