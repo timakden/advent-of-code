@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/timakden/advent-of-code/actions/workflows/gradle.yml/badge.svg)](https://github.com/timakden/advent-of-code/actions/workflows/gradle.yml)
+
 # Advent of Code
 
 [Advent of Code](https://adventofcode.com/) solutions in [Kotlin](https://kotlinlang.org/).
