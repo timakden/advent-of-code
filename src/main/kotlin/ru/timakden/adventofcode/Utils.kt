@@ -1,8 +1,8 @@
 package ru.timakden.adventofcode
 
+import jakarta.xml.bind.DatatypeConverter
 import java.security.MessageDigest
 import java.util.*
-import javax.xml.bind.DatatypeConverter
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
