@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     idea
-    id("com.github.ben-manes.versions") version "0.39.0"
+    id("com.github.ben-manes.versions") version "0.41.0"
     kotlin("jvm") version "1.6.10"
 }
 
@@ -18,7 +18,7 @@ val kotestVersion = "5.0.3"
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:3.0.1")
 
