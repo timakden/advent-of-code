@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     idea
     id("com.github.ben-manes.versions") version "0.42.0"
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
 }
 
 group = "ru.timakden"
@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "5.4.2"
+val kotestVersion = "5.5.1"
 
 dependencies {
     implementation(kotlin("reflect"))
