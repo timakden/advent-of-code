@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     idea
-    id("com.github.ben-manes.versions") version "0.42.0"
+    id("com.github.ben-manes.versions") version "0.43.0"
     kotlin("jvm") version "1.7.20"
 }
 
@@ -13,13 +13,13 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "5.5.1"
+val kotestVersion = "5.5.2"
 
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.10")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
 
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
