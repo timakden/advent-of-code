@@ -448,19 +448,19 @@ class AdventOfCodeSpec : ShouldSpec({
     context("Year 2022") {
         context("Day 1: Calorie Counting") {
             val input = """1000
-                               |2000
-                               |3000
-                               |
-                               |4000
-                               |
-                               |5000
-                               |6000
-                               |
-                               |7000
-                               |8000
-                               |9000
-                               |
-                               |10000""".trimMargin()
+                           |2000
+                           |3000
+                           |
+                           |4000
+                           |
+                           |5000
+                           |6000
+                           |
+                           |7000
+                           |8000
+                           |9000
+                           |
+                           |10000""".trimMargin()
 
             should("solve year 2022, day 1, part 1") {
                 val expected = 24000
@@ -470,6 +470,22 @@ class AdventOfCodeSpec : ShouldSpec({
             should("solve year 2022, day 1, part 2") {
                 val expected = 45000
                 ru.timakden.aoc.year2022.day01.solvePartTwo(input) shouldBe expected
+            }
+        }
+
+        context("Day 2: Rock Paper Scissors") {
+            val input = """A Y
+                           |B X
+                           |C Z""".trimMargin()
+
+            should("solve year 2022, day 2, part 1") {
+                val expected = 15
+                ru.timakden.aoc.year2022.day02.solvePartOne(input) shouldBe expected
+            }
+
+            should("solve year 2022, day 2, part 1") {
+                val expected = 12
+                ru.timakden.aoc.year2022.day02.solvePartTwo(input) shouldBe expected
             }
         }
     }
