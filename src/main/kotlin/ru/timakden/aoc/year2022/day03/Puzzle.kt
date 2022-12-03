@@ -24,7 +24,7 @@ fun solvePartTwo(input: List<String>) = input.chunked(3).sumOf {
     val second = it[1].asIterable().toSet()
     val third = it[2].asIterable().toSet()
     val sameItems = first.intersect(second).intersect(third)
-    sameItems.sumOf { priorities[it] ?: 0 }
+    sameItems.sumOf { c -> priorities[c] ?: 0 }
 }
 
 private val priorities = (('a'..'z').zip(1..27) + ('A'..'Z').zip(27..52)).toMap()
