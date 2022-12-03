@@ -470,6 +470,27 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.day02.solvePartTwo(input) shouldBe expected
             }
         }
+
+        context("Day 3: Rucksack Reorganization") {
+            val input = listOf(
+                "vJrwpWtwJgWrhcsFMMfFFhFp",
+                "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+                "PmmdzqPrVvPwwTWBwg",
+                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+                "ttgJtRGJQctTZtZT",
+                "CrZsJsPPZsGzwwsLwLmpwMDw"
+            )
+
+            should("Part One") {
+                val expected = 157
+                ru.timakden.aoc.year2022.day03.solvePartOne(input) shouldBe expected
+            }
+
+            should("Part Two") {
+                val expected = 70
+                ru.timakden.aoc.year2022.day03.solvePartTwo(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
