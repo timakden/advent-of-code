@@ -16,11 +16,13 @@ fun main() {
 
 fun solvePartOne(input: String): Int {
     return input.split("\\n".toRegex()).sumOf { round ->
-        val (opponent, player) = round.split("\\s+".toRegex()).let {
-            Pair(it.first().toShape(), it.last().toShape())
-        }
+        val (opponent, player) = round.split("\\s+".toRegex()).let { it.first().toShape() to it.last().toShape() }
 
-        player.score + if (opponent == player) DRAW else if (player.canDefeat(opponent)) WIN else DEFEAT
+        player.score + when {
+            opponent == player -> DRAW
+            player.canDefeat(opponent) -> WIN
+            else -> DEFEAT
+        }
     }
 }
 
@@ -28,10 +30,14 @@ fun solvePartTwo(input: String): Int {
     return input.split("\\n".toRegex()).sumOf { round ->
         val (opponent, player) = round.split("\\s+".toRegex()).let {
             val shape = it.first().toShape()
-            Pair(shape, shape.getShapeByCondition(it.last()))
+            shape to shape.getShapeByCondition(it.last())
         }
 
-        player.score + if (opponent == player) DRAW else if (player.canDefeat(opponent)) WIN else DEFEAT
+        player.score + when {
+            opponent == player -> DRAW
+            player.canDefeat(opponent) -> WIN
+            else -> DEFEAT
+        }
     }
 }
 

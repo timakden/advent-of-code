@@ -491,6 +491,27 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.day03.solvePartTwo(input) shouldBe expected
             }
         }
+
+        context("Day 4: Camp Cleanup") {
+            val input = listOf(
+                "2-4,6-8",
+                "2-3,4-5",
+                "5-7,7-9",
+                "2-8,3-7",
+                "6-6,4-6",
+                "2-6,4-8"
+            )
+
+            should("Part One") {
+                val expected = 2
+                ru.timakden.aoc.year2022.day04.solvePartOne(input) shouldBe expected
+            }
+
+            should("Part Two") {
+                val expected = 4
+                ru.timakden.aoc.year2022.day04.solvePartTwo(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
