@@ -512,6 +512,31 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.day04.solvePartTwo(input) shouldBe expected
             }
         }
+
+        context("Day 5: Supply Stacks") {
+            val stacks = listOf(
+                ArrayDeque(listOf('Z', 'N')),
+                ArrayDeque(listOf('M', 'C', 'D')),
+                ArrayDeque(listOf('P'))
+            )
+
+            val input = listOf(
+                "move 1 from 2 to 1",
+                "move 3 from 1 to 3",
+                "move 2 from 2 to 1",
+                "move 1 from 1 to 2"
+            )
+
+            should("Part One") {
+                val expected = "CMZ"
+                ru.timakden.aoc.year2022.day05.solvePartOne(stacks, input) shouldBe expected
+            }
+
+            should("Part Two") {
+                val expected = "MCD"
+                ru.timakden.aoc.year2022.day05.solvePartTwo(stacks, input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
