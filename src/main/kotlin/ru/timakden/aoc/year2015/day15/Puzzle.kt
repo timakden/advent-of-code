@@ -31,7 +31,6 @@ fun solve(input: List<String>, part: Constants.Part): Int {
     var total: Int
 
     // TODO: Переделать
-
     (1..100).forEach { i ->
         (1..100 - i).forEach { j ->
             (1..100 - i - j).forEach { k ->

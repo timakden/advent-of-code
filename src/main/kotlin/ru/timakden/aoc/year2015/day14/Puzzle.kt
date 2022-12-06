@@ -7,18 +7,18 @@ import kotlin.time.ExperimentalTime
 fun main() {
     measure {
         val raceTime = 2503
-        val deers = race(input, raceTime)
+        val reindeerList = race(input, raceTime)
 
-        println("Part One: ${deers.maxByOrNull { it.totalDistance }?.totalDistance}")
-        println("Part Two: ${deers.maxByOrNull { it.scores }?.scores}")
+        println("Part One: ${reindeerList.maxByOrNull { it.totalDistance }?.totalDistance}")
+        println("Part Two: ${reindeerList.maxByOrNull { it.scores }?.scores}")
     }
 }
 
 fun race(input: List<String>, raceTime: Int): List<Reindeer> {
-    val deers = input.map { Reindeer(it.split("\\s".toRegex())) }
+    val reindeerList = input.map { Reindeer(it.split("\\s".toRegex())) }
 
     repeat(raceTime) {
-        deers.forEach { deer ->
+        reindeerList.forEach { deer ->
             if (deer.isMoving && deer.currentMoveTime < deer.moveTime) {
                 deer.totalDistance += deer.distancePerSecond
                 deer.currentMoveTime++
@@ -34,12 +34,12 @@ fun race(input: List<String>, raceTime: Int): List<Reindeer> {
             }
         }
 
-        val currentLeadingDistance = deers.maxByOrNull { it.totalDistance }?.totalDistance
+        val currentLeadingDistance = reindeerList.maxByOrNull { it.totalDistance }?.totalDistance
 
-        deers.forEach { if (it.totalDistance == currentLeadingDistance) it.scores++ }
+        reindeerList.forEach { if (it.totalDistance == currentLeadingDistance) it.scores++ }
     }
 
-    return deers
+    return reindeerList
 }
 
 data class Reindeer(

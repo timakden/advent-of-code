@@ -27,19 +27,23 @@ fun solve(input: List<String>, part: Constants.Part): IntArray {
                 if (instruction.endsWith("a")) a /= 2 else b /= 2
                 currentPosition++
             }
+
             "tpl" -> {
                 if (instruction.endsWith("a")) a *= 3 else b *= 3
                 currentPosition++
             }
+
             "inc" -> {
                 if (instruction.endsWith("a")) a++ else b++
                 currentPosition++
             }
+
             "jmp" -> currentPosition += getOffset(instruction)
             "jie" -> {
                 val numberToTest = if (instruction[4] == 'a') a else b
                 currentPosition += if (numberToTest % 2 == 0) getOffset(instruction) else 1
             }
+
             "jio" -> {
                 val numberToTest = if (instruction[4] == 'a') a else b
                 currentPosition += if (numberToTest == 1) getOffset(instruction) else 1

@@ -30,10 +30,12 @@ private fun sumNumbers(any: Any, part: Constants.Part): Int {
             }
             return sum
         }
+
         is List<*> -> {
             any.filterNotNull().forEach { sum += sumNumbers(it, part) }
             return sum
         }
+
         is Number -> return any.toInt()
         else -> return 0
     }

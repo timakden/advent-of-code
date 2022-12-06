@@ -87,6 +87,7 @@ private data class Wizard(var hitpoints: Int, var mana: Int, var boss: Boss) : C
                 hitpoints += 2
                 boss.hitpoints -= 2
             }
+
             else -> activeEffects[spellIndex - 2] = spell.turns
         }
     }

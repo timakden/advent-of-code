@@ -537,6 +537,32 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.day05.solvePartTwo(stacks, input) shouldBe expected
             }
         }
+
+        context("Day 6: Tuning Trouble") {
+            should("Part One") {
+                forAll(
+                    row("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7),
+                    row("bvwbjplbgvbhsrlpgdmjqwftvncz", 5),
+                    row("nppdvjthqldpwncqszvftbrmjlhg", 6),
+                    row("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10),
+                    row("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)
+                ) { input, expected ->
+                    ru.timakden.aoc.year2022.day06.solve(input, PART_ONE) shouldBe expected
+                }
+            }
+
+            should("Part Two") {
+                forAll(
+                    row("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19),
+                    row("bvwbjplbgvbhsrlpgdmjqwftvncz", 23),
+                    row("nppdvjthqldpwncqszvftbrmjlhg", 23),
+                    row("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29),
+                    row("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)
+                ) { input, expected ->
+                    ru.timakden.aoc.year2022.day06.solve(input, PART_TWO) shouldBe expected
+                }
+            }
+        }
     }
 
     context("Utils") {

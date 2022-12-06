@@ -28,6 +28,7 @@ fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort>
                         map[leftPart[0]]?.let { value -> map[expressions[1]] = value }
                     }
                 }
+
                 2 -> {
                     // example: NOT di -> dj
                     if (leftPart[1].isNumber()) {
@@ -36,6 +37,7 @@ fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort>
                         map[leftPart[1]]?.let { value -> map[expressions[1]] = value.inv() }
                     }
                 }
+
                 3 -> {
                     // example: dd OR do -> dp
                     var val1: UShort? = null
