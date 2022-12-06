@@ -12,17 +12,13 @@ fun main() {
 }
 
 fun solvePartOne(input: List<String>) = input.sumOf { s ->
-    val chunks = s.chunked(s.length / 2)
-    val firstCompartment = chunks.first().toSet()
-    val secondCompartment = chunks.last().toSet()
+    val (firstCompartment, secondCompartment) = s.chunked(s.length / 2).map { it.toSet() }
     val sameItems = firstCompartment intersect secondCompartment
     sameItems.sumOf { priorities[it] ?: 0 }
 }
 
-fun solvePartTwo(input: List<String>) = input.chunked(3).sumOf {
-    val first = it[0].toSet()
-    val second = it[1].toSet()
-    val third = it[2].toSet()
+fun solvePartTwo(input: List<String>) = input.chunked(3).sumOf { s ->
+    val (first, second, third) = s.map { it.toSet() }
     val sameItems = first intersect second intersect third
     sameItems.sumOf { c -> priorities[c] ?: 0 }
 }

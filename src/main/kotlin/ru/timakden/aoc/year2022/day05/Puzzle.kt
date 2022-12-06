@@ -16,9 +16,7 @@ fun solvePartOne(initialStacks: List<ArrayDeque<Char>>, input: List<String>): St
     initialStacks.forEach { stacks.add(ArrayDeque(it)) }
 
     input.forEach { instruction ->
-        val count = instruction.substringAfter("move ").substringBefore(" from").toInt()
-        val source = instruction.substringAfter("from ").substringBefore(" to").toInt()
-        val destination = instruction.substringAfter("to ").toInt()
+        val (count, source, destination) = "\\d+".toRegex().findAll(instruction).toList().map { it.value.toInt() }
 
         repeat(count) {
             val char = stacks[source - 1].removeLast()
@@ -34,9 +32,7 @@ fun solvePartTwo(initialStacks: List<ArrayDeque<Char>>, input: List<String>): St
     initialStacks.forEach { stacks.add(ArrayDeque(it)) }
 
     input.forEach { instruction ->
-        val count = instruction.substringAfter("move ").substringBefore(" from").toInt()
-        val source = instruction.substringAfter("from ").substringBefore(" to").toInt()
-        val destination = instruction.substringAfter("to ").toInt()
+        val (count, source, destination) = "\\d+".toRegex().findAll(instruction).toList().map { it.value.toInt() }
 
         val chars = mutableListOf<Char>()
         repeat(count) {

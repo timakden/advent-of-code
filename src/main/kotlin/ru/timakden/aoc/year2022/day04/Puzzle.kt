@@ -12,23 +12,19 @@ fun main() {
 }
 
 fun solvePartOne(input: List<String>) = input.sumOf { str ->
-    val (first, second) = str.split(",").let { it.first() to it.last() }
+    val (first, second) = str.split(",").map { range ->
+        range.split("-").let { it.first().toInt()..it.last().toInt() }
+    }
 
-    val firstRange = first.split("-").let { IntRange(it.first().toInt(), it.last().toInt()) }
-
-    val secondRange = second.split("-").let { IntRange(it.first().toInt(), it.last().toInt()) }
-
-    if (firstRange.first <= secondRange.first && firstRange.last >= secondRange.last ||
-        secondRange.first <= firstRange.first && secondRange.last >= firstRange.last
+    if (first.first <= second.first && first.last >= second.last ||
+        second.first <= first.first && second.last >= first.last
     ) 1L else 0L
 }
 
 fun solvePartTwo(input: List<String>) = input.sumOf { str ->
-    val (first, second) = str.split(",").let { it.first() to it.last() }
+    val (first, second) = str.split(",").map { range ->
+        range.split("-").let { it.first().toInt()..it.last().toInt() }
+    }
 
-    val firstRange = first.split("-").let { IntRange(it.first().toInt(), it.last().toInt()) }
-
-    val secondRange = second.split("-").let { IntRange(it.first().toInt(), it.last().toInt()) }
-
-    if (firstRange.intersect(secondRange).isNotEmpty()) 1L else 0L
+    if ((first intersect second).isNotEmpty()) 1L else 0L
 }
