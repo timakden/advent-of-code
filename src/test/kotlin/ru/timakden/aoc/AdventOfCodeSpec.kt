@@ -370,6 +370,20 @@ class AdventOfCodeSpec : ShouldSpec({
             ru.timakden.aoc.year2015.Day23.solve(input)[0] shouldBe expected
         }
 
+        context("Day 24: It Hangs in the Balance") {
+            val input = listOf(1, 2, 3, 4, 5, 7, 8, 9, 10, 11)
+
+            should("Part One") {
+                val expected = 99
+                ru.timakden.aoc.year2015.Day24.solve(input) shouldBe expected
+            }
+
+            should("Part Two") {
+                val expected = 44
+                ru.timakden.aoc.year2015.Day24.solve(input, true) shouldBe expected
+            }
+        }
+
         should("Day 25: Let It Snow") {
             forAll(
                 row(1 to 1, 20151125),
