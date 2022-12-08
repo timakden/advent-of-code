@@ -1,6 +1,5 @@
 package ru.timakden.aoc.year2022
 
-import ru.timakden.aoc.util.Constants
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.time.ExperimentalTime
@@ -16,7 +15,7 @@ object Day06 {
         }
     }
 
-    fun part1(input: String) = countCharacters(input,4)
+    fun part1(input: String) = countCharacters(input, 4)
 
     fun part2(input: String) = countCharacters(input, 14)
 
