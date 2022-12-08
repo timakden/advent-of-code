@@ -597,6 +597,26 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.Day07.part2(input) shouldBe expected
             }
         }
+
+        context("Day 8: Treetop Tree House") {
+            val input = listOf(
+                "30373",
+                "25512",
+                "65332",
+                "33549",
+                "35390"
+            )
+
+            should("Part One") {
+                val expected = 21
+                ru.timakden.aoc.year2022.Day08.part1(input) shouldBe expected
+            }
+
+            should("Part Two") {
+                val expected = 8
+                ru.timakden.aoc.year2022.Day08.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
