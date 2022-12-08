@@ -1,6 +1,4 @@
-package ru.timakden.aoc.year2022.day02
-
-const val input = """A X
+A X
 A X
 B Y
 B Y
@@ -2499,4 +2497,4 @@ A X
 C X
 A X
 A X
-A X"""
+A X

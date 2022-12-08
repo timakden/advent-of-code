@@ -1,6 +1,4 @@
-package ru.timakden.aoc.year2022.day01
-
-const val input = """4601
+4601
 1583
 2995
 5319
@@ -2252,4 +2250,4 @@ const val input = """4601
 6611
 6489
 3794
-6089"""
+6089

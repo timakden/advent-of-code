@@ -7,8 +7,6 @@ import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.maps.shouldContainAll
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.util.*
-import ru.timakden.aoc.util.Constants.Part.PART_ONE
-import ru.timakden.aoc.util.Constants.Part.PART_TWO
 import ru.timakden.aoc.year2015.Day17.getContainers
 
 class AdventOfCodeSpec : ShouldSpec({
@@ -423,45 +421,49 @@ class AdventOfCodeSpec : ShouldSpec({
 
     context("Year 2022") {
         context("Day 1: Calorie Counting") {
-            val input = """1000
-                           |2000
-                           |3000
-                           |
-                           |4000
-                           |
-                           |5000
-                           |6000
-                           |
-                           |7000
-                           |8000
-                           |9000
-                           |
-                           |10000""".trimMargin()
+            val input = listOf(
+                "1000",
+                "2000",
+                "3000",
+                "",
+                "4000",
+                "",
+                "5000",
+                "6000",
+                "",
+                "7000",
+                "8000",
+                "9000",
+                "",
+                "10000"
+            )
 
             should("Part One") {
                 val expected = 24000
-                ru.timakden.aoc.year2022.day01.solvePartOne(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day01.part1(input) shouldBe expected
             }
 
             should("Part Two") {
                 val expected = 45000
-                ru.timakden.aoc.year2022.day01.solvePartTwo(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day01.part2(input) shouldBe expected
             }
         }
 
         context("Day 2: Rock Paper Scissors") {
-            val input = """A Y
-                           |B X
-                           |C Z""".trimMargin()
+            val input = listOf(
+                "A Y",
+                "B X",
+                "C Z"
+            )
 
             should("Part One") {
                 val expected = 15
-                ru.timakden.aoc.year2022.day02.solvePartOne(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day02.part1(input) shouldBe expected
             }
 
             should("Part Two") {
                 val expected = 12
-                ru.timakden.aoc.year2022.day02.solvePartTwo(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day02.part2(input) shouldBe expected
             }
         }
 
@@ -477,12 +479,12 @@ class AdventOfCodeSpec : ShouldSpec({
 
             should("Part One") {
                 val expected = 157
-                ru.timakden.aoc.year2022.day03.solvePartOne(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day03.part1(input) shouldBe expected
             }
 
             should("Part Two") {
                 val expected = 70
-                ru.timakden.aoc.year2022.day03.solvePartTwo(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day03.part2(input) shouldBe expected
             }
         }
 
@@ -498,12 +500,12 @@ class AdventOfCodeSpec : ShouldSpec({
 
             should("Part One") {
                 val expected = 2
-                ru.timakden.aoc.year2022.day04.solvePartOne(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day04.part1(input) shouldBe expected
             }
 
             should("Part Two") {
                 val expected = 4
-                ru.timakden.aoc.year2022.day04.solvePartTwo(input) shouldBe expected
+                ru.timakden.aoc.year2022.Day04.part2(input) shouldBe expected
             }
         }
 
@@ -523,12 +525,12 @@ class AdventOfCodeSpec : ShouldSpec({
 
             should("Part One") {
                 val expected = "CMZ"
-                ru.timakden.aoc.year2022.day05.solvePartOne(stacks, input) shouldBe expected
+                ru.timakden.aoc.year2022.Day05.part1(stacks, input) shouldBe expected
             }
 
             should("Part Two") {
                 val expected = "MCD"
-                ru.timakden.aoc.year2022.day05.solvePartTwo(stacks, input) shouldBe expected
+                ru.timakden.aoc.year2022.Day05.part2(stacks, input) shouldBe expected
             }
         }
 
@@ -541,7 +543,7 @@ class AdventOfCodeSpec : ShouldSpec({
                     row("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10),
                     row("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)
                 ) { input, expected ->
-                    ru.timakden.aoc.year2022.day06.solve(input, PART_ONE) shouldBe expected
+                    ru.timakden.aoc.year2022.Day06.part1(input) shouldBe expected
                 }
             }
 
@@ -553,7 +555,7 @@ class AdventOfCodeSpec : ShouldSpec({
                     row("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29),
                     row("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)
                 ) { input, expected ->
-                    ru.timakden.aoc.year2022.day06.solve(input, PART_TWO) shouldBe expected
+                    ru.timakden.aoc.year2022.Day06.part2(input) shouldBe expected
                 }
             }
         }
