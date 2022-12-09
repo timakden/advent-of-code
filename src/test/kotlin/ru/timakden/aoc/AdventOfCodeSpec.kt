@@ -141,7 +141,6 @@ class AdventOfCodeSpec : ShouldSpec({
                 "NOT x -> h",
                 "NOT y -> i"
             )
-
             val expected = mapOf(
                 "d" to 72.toUShort(),
                 "e" to 507.toUShort(),
@@ -152,46 +151,31 @@ class AdventOfCodeSpec : ShouldSpec({
                 "x" to 123.toUShort(),
                 "y" to 456.toUShort()
             )
-
-            val result =
-                ru.timakden.aoc.year2015.Day07.solve(input, listOf("d", "e", "f", "g", "h", "i", "x", "y"))
-
-            result shouldContainAll expected
+            val wiresToReturn = listOf("d", "e", "f", "g", "h", "i", "x", "y")
+            ru.timakden.aoc.year2015.Day07.solve(input, wiresToReturn) shouldContainAll expected
         }
 
         context("Day 8: Matchsticks") {
             val input = listOf("""""""", """"abc"""", """"aaa\"aaa"""", """"\x27"""")
-
             should("Part One") {
                 val expected = 12
-                val result = ru.timakden.aoc.year2015.Day08.part1(input)
-
-                result shouldBe expected
+                ru.timakden.aoc.year2015.Day08.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 19
-                val result = ru.timakden.aoc.year2015.Day08.part2(input)
-
-                result shouldBe expected
+                ru.timakden.aoc.year2015.Day08.part2(input) shouldBe expected
             }
         }
 
         context("Day 9: All in a Single Night") {
             val input = listOf("London to Dublin = 464", "London to Belfast = 518", "Dublin to Belfast = 141")
-
             should("Part One") {
                 val expected = 605
-                val result = ru.timakden.aoc.year2015.Day09.part1(input)
-
-                result shouldBe expected
+                ru.timakden.aoc.year2015.Day09.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 982
-                val result = ru.timakden.aoc.year2015.Day09.part2(input)
-
-                result shouldBe expected
+                ru.timakden.aoc.year2015.Day09.part2(input) shouldBe expected
             }
         }
 
@@ -263,9 +247,7 @@ class AdventOfCodeSpec : ShouldSpec({
                 "David would lose 7 happiness units by sitting next to Bob.",
                 "David would gain 41 happiness units by sitting next to Carol."
             )
-
             val expected = 330
-
             ru.timakden.aoc.year2015.Day13.part1(input) shouldBe expected
         }
 
@@ -274,18 +256,13 @@ class AdventOfCodeSpec : ShouldSpec({
                 "Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.",
                 "Dancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds."
             )
-
             val raceTime = 1000
-
             should("Part One") {
                 val expected = 1120
-
                 ru.timakden.aoc.year2015.Day14.part1(input, raceTime) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 689
-
                 ru.timakden.aoc.year2015.Day14.part2(input, raceTime) shouldBe expected
             }
         }
@@ -298,7 +275,6 @@ class AdventOfCodeSpec : ShouldSpec({
                 val containers = getContainers(input, litersToStore)
                 ru.timakden.aoc.year2015.Day17.part1(containers) shouldBe expected
             }
-
             should("Part Two") {
                 val input = listOf(5, 5, 10, 15, 20)
                 val litersToStore = 25
@@ -318,13 +294,10 @@ class AdventOfCodeSpec : ShouldSpec({
                     "#.#..#",
                     "####.."
                 )
-
                 val numberOfSteps = 4
                 val expected = 4
-
                 ru.timakden.aoc.year2015.Day18.solve(input, numberOfSteps) shouldBe expected
             }
-
             should("Part Two") {
                 val input = listOf(
                     "##.#.#",
@@ -334,10 +307,8 @@ class AdventOfCodeSpec : ShouldSpec({
                     "#.#..#",
                     "####.#"
                 )
-
                 val numberOfSteps = 5
                 val expected = 17
-
                 ru.timakden.aoc.year2015.Day18.solve(input, numberOfSteps, true) shouldBe expected
             }
         }
@@ -349,7 +320,6 @@ class AdventOfCodeSpec : ShouldSpec({
                 val expected = 4
                 ru.timakden.aoc.year2015.Day19.part1(replacements, molecule) shouldBe expected
             }
-
             should("Part Two") {
                 val molecule = "HOH"
                 val replacements = listOf("e => H", "e => O", "H => HO", "H => OH", "O => HH")
@@ -372,12 +342,10 @@ class AdventOfCodeSpec : ShouldSpec({
 
         context("Day 24: It Hangs in the Balance") {
             val input = listOf(1, 2, 3, 4, 5, 7, 8, 9, 10, 11)
-
             should("Part One") {
                 val expected = 99
                 ru.timakden.aoc.year2015.Day24.solve(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 44
                 ru.timakden.aoc.year2015.Day24.solve(input, true) shouldBe expected
@@ -407,11 +375,9 @@ class AdventOfCodeSpec : ShouldSpec({
                     ru.timakden.aoc.year2016.Day01.part1(input) shouldBe expected
                 }
             }
-
             should("Part Two") {
                 val input = "R8, R4, R4, R8"
                 val expected = 4
-
                 ru.timakden.aoc.year2016.Day01.part2(input) shouldBe expected
             }
         }
@@ -420,14 +386,11 @@ class AdventOfCodeSpec : ShouldSpec({
             should("Part One") {
                 val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "1985"
-
                 ru.timakden.aoc.year2016.Day02.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "5DB3"
-
                 ru.timakden.aoc.year2016.Day02.part2(input) shouldBe expected
             }
         }
@@ -451,12 +414,10 @@ class AdventOfCodeSpec : ShouldSpec({
                 "",
                 "10000"
             )
-
             should("Part One") {
                 val expected = 24000
                 ru.timakden.aoc.year2022.Day01.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 45000
                 ru.timakden.aoc.year2022.Day01.part2(input) shouldBe expected
@@ -469,12 +430,10 @@ class AdventOfCodeSpec : ShouldSpec({
                 "B X",
                 "C Z"
             )
-
             should("Part One") {
                 val expected = 15
                 ru.timakden.aoc.year2022.Day02.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 12
                 ru.timakden.aoc.year2022.Day02.part2(input) shouldBe expected
@@ -490,12 +449,10 @@ class AdventOfCodeSpec : ShouldSpec({
                 "ttgJtRGJQctTZtZT",
                 "CrZsJsPPZsGzwwsLwLmpwMDw"
             )
-
             should("Part One") {
                 val expected = 157
                 ru.timakden.aoc.year2022.Day03.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 70
                 ru.timakden.aoc.year2022.Day03.part2(input) shouldBe expected
@@ -511,12 +468,10 @@ class AdventOfCodeSpec : ShouldSpec({
                 "6-6,4-6",
                 "2-6,4-8"
             )
-
             should("Part One") {
                 val expected = 2
                 ru.timakden.aoc.year2022.Day04.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 4
                 ru.timakden.aoc.year2022.Day04.part2(input) shouldBe expected
@@ -529,19 +484,16 @@ class AdventOfCodeSpec : ShouldSpec({
                 ArrayDeque(listOf('M', 'C', 'D')),
                 ArrayDeque(listOf('P'))
             )
-
             val input = listOf(
                 "move 1 from 2 to 1",
                 "move 3 from 1 to 3",
                 "move 2 from 2 to 1",
                 "move 1 from 1 to 2"
             )
-
             should("Part One") {
                 val expected = "CMZ"
                 ru.timakden.aoc.year2022.Day05.part1(stacks, input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = "MCD"
                 ru.timakden.aoc.year2022.Day05.part2(stacks, input) shouldBe expected
@@ -560,7 +512,6 @@ class AdventOfCodeSpec : ShouldSpec({
                     ru.timakden.aoc.year2022.Day06.part1(input) shouldBe expected
                 }
             }
-
             should("Part Two") {
                 forAll(
                     row("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19),
@@ -600,12 +551,10 @@ class AdventOfCodeSpec : ShouldSpec({
                 "5626152 d.ext",
                 "7214296 k"
             )
-
             should("Part One") {
                 val expected = 95437
                 ru.timakden.aoc.year2022.Day07.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 24933642
                 ru.timakden.aoc.year2022.Day07.part2(input) shouldBe expected
@@ -620,15 +569,61 @@ class AdventOfCodeSpec : ShouldSpec({
                 "33549",
                 "35390"
             )
-
             should("Part One") {
                 val expected = 21
                 ru.timakden.aoc.year2022.Day08.part1(input) shouldBe expected
             }
-
             should("Part Two") {
                 val expected = 8
                 ru.timakden.aoc.year2022.Day08.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 9: Rope Bridge") {
+            should("Part One") {
+                val input = listOf(
+                    "R 4",
+                    "U 4",
+                    "L 3",
+                    "D 1",
+                    "R 4",
+                    "D 1",
+                    "L 5",
+                    "R 2"
+                )
+                val expected = 13
+                ru.timakden.aoc.year2022.Day09.part1(input) shouldBe expected
+            }
+
+            should("Part Two") {
+                forAll(
+                    row(
+                        listOf(
+                            "R 4",
+                            "U 4",
+                            "L 3",
+                            "D 1",
+                            "R 4",
+                            "D 1",
+                            "L 5",
+                            "R 2"
+                        ), 1
+                    ),
+                    row(
+                        listOf(
+                            "R 5",
+                            "U 8",
+                            "L 8",
+                            "D 3",
+                            "R 17",
+                            "D 10",
+                            "L 25",
+                            "U 20"
+                        ), 36
+                    )
+                ) { input, expected ->
+                    ru.timakden.aoc.year2022.Day09.part2(input) shouldBe expected
+                }
             }
         }
     }
@@ -668,7 +663,6 @@ class AdventOfCodeSpec : ShouldSpec({
                 listOf(3, 2, 1),
                 listOf(3, 1, 2)
             )
-
             Permutations.of(listOf(1, 2, 3)).toList().map { it.toList() } shouldContainExactlyInAnyOrder expected
         }
 
@@ -676,7 +670,6 @@ class AdventOfCodeSpec : ShouldSpec({
             val input = setOf(1, 2, 3, 4)
             val powerSet = PowerSet(input)
             val expectedSize = 1 shl input.size
-
             powerSet.toList().size shouldBe expectedSize
         }
     }
