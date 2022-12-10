@@ -11,7 +11,7 @@ object Day10 {
         measure {
             val input = readInput("year2016/Day10")
             println("Part One: ${part1(input.toMutableList(), listOf(17, 61))}")
-            println("Part One: ${part2(input.toMutableList())}")
+            println("Part Two: ${part2(input.toMutableList())}")
         }
     }
 

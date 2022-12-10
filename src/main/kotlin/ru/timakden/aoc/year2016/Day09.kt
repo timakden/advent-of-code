@@ -11,7 +11,7 @@ object Day09 {
         measure {
             val input = readInput("year2016/Day09").single().filterNot { it.isWhitespace() }
             println("Part One: ${part1(input)}")
-            println("Part One: ${part2(input)}")
+            println("Part Two: ${part2(input)}")
         }
     }
 

@@ -394,6 +394,18 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2016.Day02.part2(input) shouldBe expected
             }
         }
+
+        context("Day 14: One-Time Pad") {
+            val input = "abc"
+            should("Part One") {
+                val expected = 22728
+                ru.timakden.aoc.year2016.Day14.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 22551
+                ru.timakden.aoc.year2016.Day14.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Year 2022") {
