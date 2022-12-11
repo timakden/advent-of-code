@@ -395,6 +395,132 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
+        should("Day 4: Security Through Obscurity") {
+            val input = listOf(
+                "aaaaa-bbb-z-y-x-123[abxyz]",
+                "a-b-c-d-e-f-g-h-987[abcde]",
+                "not-a-real-room-404[oarel]",
+                "totally-real-room-200[decoy]"
+            )
+            val expected = 1514
+            ru.timakden.aoc.year2016.Day04.part1(input) shouldBe expected
+        }
+
+        context("Day 5: How About a Nice Game of Chess?") {
+            val input = "abc"
+            should("Part One") {
+                val expected = "18f47a30"
+                ru.timakden.aoc.year2016.Day05.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = "05ace8e3"
+                ru.timakden.aoc.year2016.Day05.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 6: Signals and Noise") {
+            val input = listOf(
+                "eedadn",
+                "drvtee",
+                "eandsr",
+                "raavrd",
+                "atevrs",
+                "tsrnev",
+                "sdttsa",
+                "rasrtv",
+                "nssdts",
+                "ntnada",
+                "svetve",
+                "tesnvt",
+                "vntsnd",
+                "vrdear",
+                "dvrsen",
+                "enarar"
+            )
+            should("Part One") {
+                val expected = "easter"
+                ru.timakden.aoc.year2016.Day06.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = "advent"
+                ru.timakden.aoc.year2016.Day06.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 7: Internet Protocol Version 7") {
+            should("Part One") {
+                val input = listOf(
+                    "abba[mnop]qrst",
+                    "abcd[bddb]xyyx",
+                    "aaaa[qwer]tyui",
+                    "ioxxoj[asdfgh]zxcvbn"
+                )
+                val expected = 2
+                ru.timakden.aoc.year2016.Day07.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val input = listOf(
+                    "aba[bab]xyz",
+                    "xyx[xyx]xyx",
+                    "aaa[kek]eke",
+                    "zazbz[bzb]cdb"
+                )
+                val expected = 3
+                ru.timakden.aoc.year2016.Day07.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 9: Explosives in Cyberspace") {
+            should("Part One") {
+                forAll(
+                    row("ADVENT", 6),
+                    row("A(1x5)BC", 7),
+                    row("(3x3)XYZ", 9),
+                    row("A(2x2)BCD(2x2)EFG", 11),
+                    row("(6x1)(1x3)A", 6),
+                    row("X(8x2)(3x3)ABCY", 18)
+                ) { input, expected ->
+                    ru.timakden.aoc.year2016.Day09.part1(input) shouldBe expected
+                }
+            }
+            should("Part Two") {
+                forAll(
+                    row("(3x3)XYZ", "XYZXYZXYZ".length),
+                    row("X(8x2)(3x3)ABCY", "XABCABCABCABCABCABCY".length),
+                    row("(27x12)(20x12)(13x14)(7x10)(1x12)A", 241920),
+                    row("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN", 445)
+                ) { input, expected ->
+                    ru.timakden.aoc.year2016.Day09.part2(input) shouldBe expected
+                }
+            }
+        }
+
+        should("Day 10: Balance Bots") {
+            val input = mutableListOf(
+                "value 5 goes to bot 2",
+                "bot 2 gives low to bot 1 and high to bot 0",
+                "value 3 goes to bot 1",
+                "bot 1 gives low to output 1 and high to bot 0",
+                "bot 0 gives low to output 2 and high to output 0",
+                "value 2 goes to bot 2"
+            )
+            val expected = 2
+            ru.timakden.aoc.year2016.Day10.part1(input, listOf(2, 5)) shouldBe expected
+        }
+
+        should("Day 12: Leonardo's Monorail") {
+            val input = listOf(
+                "cpy 41 a",
+                "inc a",
+                "inc a",
+                "dec a",
+                "jnz a 2",
+                "dec a"
+            )
+            val expected = 42
+            ru.timakden.aoc.year2016.Day12.part1(input) shouldBe expected
+        }
+
         context("Day 14: One-Time Pad") {
             val input = "abc"
             should("Part One") {
