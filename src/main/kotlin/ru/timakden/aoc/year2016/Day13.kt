@@ -1,10 +1,10 @@
 package ru.timakden.aoc.year2016
 
+import ru.timakden.aoc.util.Coordinate
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.time.ExperimentalTime
 
-typealias Coordinate = Pair<Int, Int>
 typealias Maze = MutableMap<Coordinate, Char>
 
 object Day13 {

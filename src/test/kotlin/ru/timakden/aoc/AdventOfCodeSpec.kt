@@ -957,6 +957,24 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.Day11.part2(input) shouldBe expected
             }
         }
+
+        context("Day 12: Hill Climbing Algorithm") {
+            val input = listOf(
+                "Sabqponm",
+                "abcryxxl",
+                "accszExk",
+                "acctuvwj",
+                "abdefghi"
+            )
+            should("Part One") {
+                val expected = 31
+                ru.timakden.aoc.year2022.Day12.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 29
+                ru.timakden.aoc.year2022.Day12.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
