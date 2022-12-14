@@ -1,11 +1,10 @@
 package ru.timakden.aoc.year2016
 
-import ru.timakden.aoc.util.Coordinate
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.time.ExperimentalTime
 
-typealias Maze = MutableMap<Coordinate, Char>
+typealias Maze = MutableMap<Pair<Int, Int>, Char>
 
 object Day13 {
     @JvmStatic
@@ -19,7 +18,7 @@ object Day13 {
     }
 
     private fun createMaze(maxCoordinate: Int, input: Int): Maze {
-        val maze = mutableMapOf<Coordinate, Char>()
+        val maze = mutableMapOf<Pair<Int, Int>, Char>()
 
         repeat(maxCoordinate) { x ->
             repeat(maxCoordinate) { y ->
@@ -32,8 +31,8 @@ object Day13 {
         return maze
     }
 
-    private fun calculateCoordinateType(coordinate: Coordinate, input: Int): Char {
-        val (x, y) = coordinate
+    private fun calculateCoordinateType(point: Pair<Int, Int>, input: Int): Char {
+        val (x, y) = point
         val number = x * x + 3 * x + 2 * x * y + y + y * y + input
         val binary = Integer.toBinaryString(number)
         val numberOfBits = binary.count { it == '1' }
