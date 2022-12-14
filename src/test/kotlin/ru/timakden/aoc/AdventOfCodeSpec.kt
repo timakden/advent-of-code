@@ -1011,6 +1011,21 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.Day13.part2(input) shouldBe expected
             }
         }
+
+        context("Day 14: Regolith Reservoir") {
+            val input = listOf(
+                "498,4 -> 498,6 -> 496,6",
+                "503,4 -> 502,4 -> 502,9 -> 494,9"
+            )
+            should("Part One") {
+                val expected = 24
+                ru.timakden.aoc.year2022.Day14.part1(input) shouldBe expected
+            }
+            should("Part One") {
+                val expected = 93
+                ru.timakden.aoc.year2022.Day14.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {

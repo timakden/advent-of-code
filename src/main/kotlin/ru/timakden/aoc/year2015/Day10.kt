@@ -10,8 +10,8 @@ object Day10 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day10").single()
-            println("Part One: ${solve(input, 40)}")
-            println("Part Two: ${solve(input, 50)}")
+            println("Part One: ${solve(input, 40).length}")
+            println("Part Two: ${solve(input, 50).length}")
         }
     }
 

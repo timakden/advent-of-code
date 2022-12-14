@@ -1,6 +1,5 @@
 package ru.timakden.aoc.year2022
 
-import ru.timakden.aoc.util.Coordinate
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import java.util.*
@@ -38,10 +37,10 @@ object Day12 {
         }
 
         return nodes.filter { it.elevation == 'a' || it.elevation == 'S' }
-            .map { it.coordinate }
+            .map { it.point }
             .map { coordinate ->
                 reset()
-                val start = checkNotNull(nodes.find { it.coordinate == coordinate })
+                val start = checkNotNull(nodes.find { it.point == coordinate })
                 val finish = checkNotNull(nodes.find { it.elevation == 'E' })
                 dijkstra(start)
 
@@ -52,16 +51,16 @@ object Day12 {
     private fun buildNodes(input: List<String>) =
         input.flatMapIndexed { i, s -> s.mapIndexed { j, c -> Node(i to j, c) } }.also { nodes ->
             nodes.forEach { node ->
-                val x = node.coordinate.first
-                val y = node.coordinate.second
+                val x = node.point.first
+                val y = node.point.second
                 (listOf(x - 1, x + 1)).forEach { i ->
-                    nodes.find { it.coordinate == i to y }?.let {
+                    nodes.find { it.point == i to y }?.let {
                         if (canMove(node, it)) node.addDestination(it, 1)
                     }
                 }
 
                 (listOf(y - 1, y + 1)).forEach { j ->
-                    nodes.find { it.coordinate == x to j }?.let {
+                    nodes.find { it.point == x to j }?.let {
                         if (canMove(node, it)) node.addDestination(it, 1)
                     }
                 }
@@ -125,7 +124,7 @@ object Day12 {
         }
     }
 
-    private data class Node(val coordinate: Coordinate, val elevation: Char) {
+    private data class Node(val point: Pair<Int, Int>, val elevation: Char) {
         var shortestPath = LinkedList<Node>()
         var distance = Int.MAX_VALUE
         val adjacentNodes = mutableMapOf<Node, Int>()
