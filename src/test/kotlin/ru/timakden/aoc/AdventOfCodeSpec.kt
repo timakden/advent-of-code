@@ -1076,6 +1076,46 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.Day16.part2(input) shouldBe expected
             }
         }
+
+        context("Day 20: Grove Positioning System") {
+            val input = listOf("1", "2", "-3", "3", "-2", "0", "4")
+            should("Part One") {
+                val expected = 3
+                ru.timakden.aoc.year2022.Day20.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 1623178306
+                ru.timakden.aoc.year2022.Day20.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 21: Monkey Math") {
+            val input = listOf(
+                "root: pppw + sjmn",
+                "dbpl: 5",
+                "cczh: sllz + lgvd",
+                "zczc: 2",
+                "ptdq: humn - dvpt",
+                "dvpt: 3",
+                "lfqf: 4",
+                "humn: 5",
+                "ljgn: 2",
+                "sjmn: drzm * dbpl",
+                "sllz: 4",
+                "pppw: cczh / lfqf",
+                "lgvd: ljgn * ptdq",
+                "drzm: hmdt - zczc",
+                "hmdt: 32"
+            )
+            should("Part One") {
+                val expected = 152
+                ru.timakden.aoc.year2022.Day21.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 301
+                ru.timakden.aoc.year2022.Day21.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
