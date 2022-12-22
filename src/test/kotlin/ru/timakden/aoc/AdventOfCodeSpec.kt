@@ -1116,6 +1116,27 @@ class AdventOfCodeSpec : ShouldSpec({
                 ru.timakden.aoc.year2022.Day21.part2(input) shouldBe expected
             }
         }
+
+        should("Day 22: Monkey Map") {
+            val input = listOf(
+                "        ...#",
+                "        .#..",
+                "        #...",
+                "        ....",
+                "...#.......#",
+                "........#...",
+                "..#....#....",
+                "..........#.",
+                "        ...#....",
+                "        .....#..",
+                "        .#......",
+                "        ......#.",
+                "",
+                "10R5L5R10L4R5L5"
+            )
+            val expected = 6032
+            ru.timakden.aoc.year2022.Day22.part1(input) shouldBe expected
+        }
     }
 
     context("Utils") {
