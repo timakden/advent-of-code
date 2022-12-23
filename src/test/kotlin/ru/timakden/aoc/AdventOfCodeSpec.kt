@@ -1137,6 +1137,31 @@ class AdventOfCodeSpec : ShouldSpec({
             val expected = 6032
             ru.timakden.aoc.year2022.Day22.part1(input) shouldBe expected
         }
+
+        context("Day 23: Unstable Diffusion") {
+            val input = listOf(
+                "..............",
+                "..............",
+                ".......#......",
+                ".....###.#....",
+                "...#...#.#....",
+                "....#...##....",
+                "...#.###......",
+                "...##.#.##....",
+                "....#..#......",
+                "..............",
+                "..............",
+                ".............."
+            )
+            should("Part One") {
+                val expected = 110
+                ru.timakden.aoc.year2022.Day23.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 20
+                ru.timakden.aoc.year2022.Day23.part2(input) shouldBe expected
+            }
+        }
     }
 
     context("Utils") {
