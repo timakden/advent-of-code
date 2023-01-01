@@ -29,9 +29,7 @@ object Day19 {
 
             do {
                 index = molecule.indexOf(value, index + 1)
-                if (index != -1) {
-                    distinctMolecules.add(molecule.replaceRange(index, index + value.length, key))
-                }
+                if (index != -1) distinctMolecules.add(molecule.replaceRange(index, index + value.length, key))
             } while (index != -1)
         }
 
@@ -58,7 +56,7 @@ object Day19 {
             var replaced = false
             while (!replaced) {
                 val toReplace = keys.removeAt(Random().nextInt(keys.size))
-                if (molecule.contains(toReplace)) {
+                if (toReplace in molecule) {
                     val before = originalMolecule.substringBefore(toReplace)
                     val after = originalMolecule.substringAfter(toReplace)
                     originalMolecule = before + reversedReplacements[toReplace] + after

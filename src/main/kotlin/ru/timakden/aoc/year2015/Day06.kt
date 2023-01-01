@@ -16,20 +16,15 @@ object Day06 {
     }
 
     fun part1(input: List<String>): Int {
-        var lights = 0
-
         val regex = "\\s(?!on|off)".toRegex()
-
-        val lightsGrid = Array(1000) { BooleanArray(1000) }
-
-        lightsGrid.forEach { booleans -> booleans.indices.forEach { booleans[it] = false } }
+        val lightsGrid = List(1000) { MutableList(1000) { false } }
 
         input.forEach {
             val list = it.split(regex)
             val action = list[0]
 
-            val coordinates1 = list[1].split(",")
-            val coordinates2 = list[3].split(",")
+            val coordinates1 = list[1].split(',')
+            val coordinates2 = list[3].split(',')
 
             val pair1 = coordinates1[0].toInt() to coordinates1[1].toInt()
             val pair2 = coordinates2[0].toInt() to coordinates2[1].toInt()
@@ -51,26 +46,19 @@ object Day06 {
             }
         }
 
-        lightsGrid.forEach { booleans -> lights += booleans.count { it } }
-
-        return lights
+        return lightsGrid.sumOf { booleans -> booleans.count { it } }
     }
 
     fun part2(input: List<String>): Int {
-        var brightness = 0
-
         val regex = "\\s(?!on|off)".toRegex()
-
-        val brightnessGrid = Array(1000) { IntArray(1000) }
-
-        brightnessGrid.forEach { ints -> ints.indices.forEach { ints[it] = 0 } }
+        val brightnessGrid = List(1000) { MutableList(1000) { 0 } }
 
         input.forEach {
             val list = it.split(regex)
             val action = list[0]
 
-            val coordinates1 = list[1].split(",")
-            val coordinates2 = list[3].split(",")
+            val coordinates1 = list[1].split(',')
+            val coordinates2 = list[3].split(',')
 
             val pair1 = coordinates1[0].toInt() to coordinates1[1].toInt()
             val pair2 = coordinates2[0].toInt() to coordinates2[1].toInt()
@@ -92,8 +80,6 @@ object Day06 {
             }
         }
 
-        brightnessGrid.forEach { ints -> ints.forEach { brightness += it } }
-
-        return brightness
+        return brightnessGrid.sumOf { ints -> ints.sum() }
     }
 }

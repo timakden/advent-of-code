@@ -10,7 +10,6 @@ object Day20 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day20").single().toInt()
-
             println("Part One: ${part1(input)}")
             println("Part Two: ${part2(input)}")
         }

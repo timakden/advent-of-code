@@ -22,11 +22,9 @@ object Day04 {
 
         while (true) {
             encoded = (input + count.toString()).md5()
-            if (encoded.startsWith("00000")) break
+            if (encoded.startsWith("00000")) return count
             count++
         }
-
-        return count
     }
 
     fun part2(input: String): Long {
@@ -34,11 +32,9 @@ object Day04 {
         var encoded: String
 
         while (true) {
-            encoded = (input + count.toString()).md5()
-            if (encoded.startsWith("000000")) break
+            encoded = "$input$count".md5()
+            if (encoded.startsWith("000000")) return count
             count++
         }
-
-        return count
     }
 }

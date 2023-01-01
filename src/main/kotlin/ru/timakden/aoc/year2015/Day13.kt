@@ -22,7 +22,7 @@ object Day13 {
         val names = sortedSetOf<String>()
 
         input.forEach {
-            val split = it.split("\\s".toRegex())
+            val split = it.split(' ')
 
             val name1 = split[0]
             val name2 = split[10].substring(0, split[10].lastIndex)
@@ -30,10 +30,8 @@ object Day13 {
 
             if (split[2] == "lose") happinessUnits = -happinessUnits
 
-            with(names) {
-                add(name1)
-                add(name2)
-            }
+            names += name1
+            names += name2
 
             happiness[name1 + name2] = happinessUnits
         }
@@ -49,9 +47,7 @@ object Day13 {
             happinessChange += (happiness[list[0] + list[list.lastIndex]] ?: 0) +
                     (happiness[list[list.lastIndex] + list[0]] ?: 0)
 
-            if (happinessChange > optimalHappinessChange) {
-                optimalHappinessChange = happinessChange
-            }
+            if (happinessChange > optimalHappinessChange) optimalHappinessChange = happinessChange
         }
 
         return optimalHappinessChange
@@ -63,7 +59,7 @@ object Day13 {
         val names = sortedSetOf<String>().apply { add("me") }
 
         input.forEach {
-            val split = it.split("\\s".toRegex())
+            val split = it.split(' ')
 
             val name1 = split[0]
             val name2 = split[10].substring(0, split[10].lastIndex)
@@ -71,17 +67,12 @@ object Day13 {
 
             if (split[2] == "lose") happinessUnits = -happinessUnits
 
-            with(names) {
-                add(name1)
-                add(name2)
-            }
+            names += name1
+            names += name2
 
             happiness[name1 + name2] = happinessUnits
-
-            with(happiness) {
-                put("${name1}me", 0)
-                put("me$name1", 0)
-            }
+            happiness["${name1}me"] = 0
+            happiness["me$name1"] = 0
         }
 
         val seatingArrangements = Permutations.of(names.toList())
@@ -95,9 +86,7 @@ object Day13 {
             happinessChange += (happiness[list[0] + list[list.lastIndex]] ?: 0) +
                     (happiness[list[list.lastIndex] + list[0]] ?: 0)
 
-            if (happinessChange > optimalHappinessChange) {
-                optimalHappinessChange = happinessChange
-            }
+            if (happinessChange > optimalHappinessChange) optimalHappinessChange = happinessChange
         }
 
         return optimalHappinessChange

@@ -12,10 +12,10 @@ object Day22 {
     @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
-            val (hitPoints, damage) = readInput("year2015/Day22")
+            val character = readInput("year2015/Day22")
                 .map { it.substringAfter(": ") }
                 .map { it.toInt() }
-            val character = Boss(hitPoints, damage)
+                .let { Boss(it.first(), it.last()) }
 
             println("Part One: ${solve(character)}")
             println("Part Two: ${solve(character, true)}")
@@ -26,7 +26,7 @@ object Day22 {
         var minMana = Int.MAX_VALUE
         val boss = input.copy()
         val wizards = PriorityQueue<Wizard> { a, b -> b.manaSpent.compareTo(a.manaSpent) }
-        wizards.add(Wizard(50, 500, boss))
+        wizards += Wizard(50, 500, boss)
 
         while (wizards.size > 0) {
             val currentWizard = wizards.poll()
@@ -47,7 +47,7 @@ object Day22 {
                     } else {
                         nextWizard.hitpoints -= max(1, nextWizard.boss.damage - nextWizard.armor)
                         if (nextWizard.hitpoints > 0 && nextWizard.mana > 0 && nextWizard.manaSpent < minMana) {
-                            wizards.add(nextWizard)
+                            wizards += nextWizard
                         }
                     }
                 }
@@ -106,8 +106,7 @@ object Day22 {
                         1 -> boss.hitpoints -= 3
                         2 -> mana += 101
                     }
-                } else if (it == 0)
-                    armor = 0
+                } else if (it == 0) armor = 0
             }
         }
 

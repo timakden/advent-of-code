@@ -1,7 +1,11 @@
 package ru.timakden.aoc.year2015
 
+import arrow.core.Option
+import arrow.core.none
+import arrow.core.some
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
+import ru.timakden.aoc.year2015.Day16.Aunt.Compound.*
 import kotlin.time.ExperimentalTime
 
 object Day16 {
@@ -11,12 +15,12 @@ object Day16 {
         measure {
             val input = readInput("year2015/Day16")
 
-            println("Part One: ${solve(input)?.name}")
-            println("Part Two: ${solve(input, true)?.name}")
+            println("Part One: ${solve(input).map { it.name }}")
+            println("Part Two: ${solve(input, true).map { it.name }}")
         }
     }
 
-    fun solve(input: List<String>, isPartTwo: Boolean = false): Aunt? {
+    fun solve(input: List<String>, isPartTwo: Boolean = false): Option<Aunt> {
         val auntToFind = Aunt(
             "Sue", mapOf(
                 "children" to 3,
@@ -31,9 +35,10 @@ object Day16 {
                 "perfumes" to 1
             )
         )
+        val regex = "\\w+:*\\s\\d+".toRegex()
 
         val aunts = input.map { inputString ->
-            val compounds = "\\w+:*\\s\\d+".toRegex().findAll(inputString).map { it.value }
+            val compounds = regex.findAll(inputString).map { it.value }
             val name = compounds.first()
             val compoundsMap = compounds.drop(1)
                 .map { compound -> compound.split(": ").let { it.first() to it.last().toInt() } }
@@ -46,84 +51,91 @@ object Day16 {
             var auntFound = true
 
             with(aunt) {
-                akitas?.let {
-                    auntFound = it == auntToFind.akitas!!
+                compounds[AKITAS]?.let { auntFound = it == checkNotNull(auntToFind.compounds[AKITAS]) }
+                compounds[CARS]?.let { auntFound = auntFound && (it == checkNotNull(auntToFind.compounds[CARS])) }
+                compounds[CATS]?.let {
+                    val cats = checkNotNull(auntToFind.compounds[CATS])
+                    val result = when {
+                        isPartTwo -> it > cats
+                        else -> it == cats
+                    }
+                    auntFound = auntFound && result
                 }
-
-                cars?.let {
-                    auntFound = auntFound && (it == auntToFind.cars!!)
+                compounds[CHILDREN]?.let {
+                    auntFound = auntFound && (it == checkNotNull(auntToFind.compounds[CHILDREN]))
                 }
-
-                cats?.let {
-                    auntFound =
-                        auntFound && (if (isPartTwo) it > auntToFind.cats!! else it == auntToFind.cats!!)
+                compounds[GOLDFISH]?.let {
+                    val goldfish = checkNotNull(auntToFind.compounds[GOLDFISH])
+                    val result = when {
+                        isPartTwo -> it < goldfish
+                        else -> it == goldfish
+                    }
+                    auntFound = auntFound && result
                 }
-
-                children?.let {
-                    auntFound = auntFound && (it == auntToFind.children!!)
+                compounds[PERFUMES]?.let {
+                    auntFound = auntFound && (it == checkNotNull(auntToFind.compounds[PERFUMES]))
                 }
-
-                goldfish?.let {
-                    auntFound =
-                        auntFound && (if (isPartTwo) it < auntToFind.goldfish!! else it == auntToFind.goldfish!!)
+                compounds[POMERANIANS]?.let {
+                    val pomeranians = checkNotNull(auntToFind.compounds[POMERANIANS])
+                    val result = when {
+                        isPartTwo -> it < pomeranians
+                        else -> it == pomeranians
+                    }
+                    auntFound = auntFound && result
                 }
-
-                perfumes?.let {
-                    auntFound = auntFound && (it == auntToFind.perfumes!!)
+                compounds[SAMOYEDS]?.let {
+                    auntFound = auntFound && (it == checkNotNull(auntToFind.compounds[SAMOYEDS]))
                 }
-
-                pomeranians?.let {
-                    auntFound = auntFound &&
-                            (if (isPartTwo) it < auntToFind.pomeranians!! else it == auntToFind.pomeranians!!)
+                compounds[TREES]?.let {
+                    val trees = checkNotNull(auntToFind.compounds[TREES])
+                    val result = when {
+                        isPartTwo -> it > trees
+                        else -> it == trees
+                    }
+                    auntFound = auntFound && result
                 }
-
-                samoyeds?.let {
-                    auntFound = auntFound && (it == auntToFind.samoyeds!!)
-                }
-
-                trees?.let {
-                    auntFound =
-                        auntFound and (if (isPartTwo) it > auntToFind.trees!! else it == auntToFind.trees!!)
-                }
-
-                vizslas?.let {
-                    auntFound = auntFound && (it == auntToFind.vizslas!!)
+                compounds[VIZSLAS]?.let {
+                    auntFound = auntFound && (it == checkNotNull(auntToFind.compounds[VIZSLAS]))
                 }
             }
 
-            if (auntFound) return aunt
+            if (auntFound) return aunt.some()
         }
 
-        return null
+        return none()
     }
 
-    data class Aunt(val name: String) {
-        var children: Int? = null
-        var cats: Int? = null
-        var samoyeds: Int? = null
-        var pomeranians: Int? = null
-        var akitas: Int? = null
-        var vizslas: Int? = null
-        var goldfish: Int? = null
-        var trees: Int? = null
-        var cars: Int? = null
-        var perfumes: Int? = null
+    class Aunt(val name: String, compounds: Map<String, Int>) {
+        val compounds: MutableMap<Compound, Int> = mutableMapOf()
 
-        constructor(name: String, compounds: Map<String, Int>) : this(name) {
+        init {
             compounds.forEach { (key, value) ->
                 when (key) {
-                    "children" -> children = value
-                    "cats" -> cats = value
-                    "samoyeds" -> samoyeds = value
-                    "pomeranians" -> pomeranians = value
-                    "akitas" -> akitas = value
-                    "vizslas" -> vizslas = value
-                    "goldfish" -> goldfish = value
-                    "trees" -> trees = value
-                    "cars" -> cars = value
-                    "perfumes" -> perfumes = value
+                    "children" -> this.compounds[CHILDREN] = value
+                    "cats" -> this.compounds[CATS] = value
+                    "samoyeds" -> this.compounds[SAMOYEDS] = value
+                    "pomeranians" -> this.compounds[POMERANIANS] = value
+                    "akitas" -> this.compounds[AKITAS] = value
+                    "vizslas" -> this.compounds[VIZSLAS] = value
+                    "goldfish" -> this.compounds[GOLDFISH] = value
+                    "trees" -> this.compounds[TREES] = value
+                    "cars" -> this.compounds[CARS] = value
+                    "perfumes" -> this.compounds[PERFUMES] = value
                 }
             }
+        }
+
+        enum class Compound {
+            AKITAS,
+            CARS,
+            CATS,
+            CHILDREN,
+            GOLDFISH,
+            PERFUMES,
+            POMERANIANS,
+            SAMOYEDS,
+            TREES,
+            VIZSLAS
         }
     }
 }

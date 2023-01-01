@@ -11,7 +11,6 @@ object Day17 {
         measure {
             val input = readInput("year2015/Day17").map { it.toInt() }
             val containers = getContainers(input, 150)
-
             println("Part One: ${part1(containers)}")
             println("Part Two: ${part2(containers)}")
         }
@@ -24,17 +23,7 @@ object Day17 {
         return containers.count { it.size == minSize }
     }
 
-    fun getContainers(input: List<Int>, litersToStore: Int): List<List<Int>> {
-        val containers = mutableListOf<List<Int>>()
-
-        (1..(1 shl input.size)).forEach { i ->
-            val list = mutableListOf<Int>()
-
-            input.indices.forEach { if (i shr it and 1 > 0) list += input[it] }
-
-            if (list.sum() == litersToStore) containers += list
-        }
-
-        return containers
-    }
+    fun getContainers(input: List<Int>, litersToStore: Int) = (1..(1 shl input.size)).map { i ->
+        input.indices.filter { (i shr it and 1 > 0) }.map { input[it] }
+    }.filter { it.sum() == litersToStore }
 }

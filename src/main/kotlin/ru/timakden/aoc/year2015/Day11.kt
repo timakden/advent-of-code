@@ -21,9 +21,7 @@ object Day11 {
     fun solve(input: String): String {
         var newPassword = incrementPassword(input)
 
-        while (!checkPassword(newPassword)) {
-            newPassword = incrementPassword(newPassword)
-        }
+        while (!checkPassword(newPassword)) newPassword = incrementPassword(newPassword)
 
         return newPassword
     }
@@ -46,16 +44,12 @@ object Day11 {
         val charArray = oldPassword.toCharArray()
         var startIndex = charArray.lastIndex
 
-        while (charArray[startIndex] == 'z') {
-            startIndex--
-        }
+        while (charArray[startIndex] == 'z') startIndex--
 
         (startIndex..charArray.lastIndex).forEach {
             charArray[it] = charArray[it] + 1
 
-            if (!charArray[it].isLetter()) {
-                charArray[it] = 'a'
-            }
+            if (!charArray[it].isLetter()) charArray[it] = 'a'
         }
 
         return String(charArray)

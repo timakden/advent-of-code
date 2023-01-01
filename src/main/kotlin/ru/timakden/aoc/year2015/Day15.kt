@@ -10,7 +10,6 @@ object Day15 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day15")
-
             println("Part One: ${solve(input)}")
             println("Part Two: ${solve(input, true)}")
         }
@@ -19,11 +18,8 @@ object Day15 {
     fun solve(input: List<String>, isPartTwo: Boolean = false): Int {
         var highest = Int.MIN_VALUE
 
-        val ingredients = input.map {
-            val regex = "\\w+:|-?\\d".toRegex()
-            val split = regex.findAll(it).map { matchResult -> matchResult.value }.toList()
-            Ingredient(split)
-        }
+        val regex = "\\w+:|-?\\d".toRegex()
+        val ingredients = input.map { Ingredient(regex.findAll(it).map { matchResult -> matchResult.value }.toList()) }
 
         var capacity: Int
         var durability: Int

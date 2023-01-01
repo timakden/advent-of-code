@@ -22,7 +22,6 @@ object Day08 {
     fun part2(input: List<String>) = input.sumOf {
         it.replace("^\"|\"$".toRegex(), "***")
             .replace("\\\\{2}|\\\\\"".toRegex(), "****")
-            .replace("\\\\x".toRegex(), "***")
-            .length - it.length
+            .replace("\\\\x".toRegex(), "***").length - it.length
     }
 }

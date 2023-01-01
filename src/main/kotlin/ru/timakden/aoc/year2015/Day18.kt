@@ -1,5 +1,7 @@
 package ru.timakden.aoc.year2015
 
+import arrow.core.Either
+import arrow.core.getOrElse
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.time.ExperimentalTime
@@ -10,7 +12,6 @@ object Day18 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day18")
-
             println("Part One: ${solve(input, 100)}")
             println("Part Two: ${solve(input, 100, true)}")
         }
@@ -36,7 +37,7 @@ object Day18 {
                     for (l in (j - 1)..(j + 1)) {
                         if (k == i && l == j) continue // skip the current "cell"
 
-                        neighbours += runCatching { matrix[k][l] }.getOrDefault('.')
+                        neighbours += Either.catch { matrix[k][l] }.getOrElse { '.' }
                     }
                 }
 

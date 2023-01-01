@@ -18,9 +18,8 @@ object Day03 {
     fun part1(input: String): Int {
         var x = 0
         var y = 0
-        val coordinates = mutableSetOf(0 to 0)
 
-        input.forEach {
+        return input.map {
             when (it) {
                 '^' -> y++
                 'v' -> y--
@@ -28,10 +27,8 @@ object Day03 {
                 '>' -> x++
             }
 
-            coordinates += x to y
-        }
-
-        return coordinates.size
+            x to y
+        }.plus(0 to 0).distinct().size
     }
 
     fun part2(input: String): Int {
@@ -40,9 +37,8 @@ object Day03 {
         var robotX = 0
         var robotY = 0
         var counter = 0
-        val coordinates = mutableSetOf(0 to 0)
 
-        input.forEach {
+        return input.map {
             val isCounterEven = counter % 2 == 0
 
             when (it) {
@@ -52,14 +48,10 @@ object Day03 {
                 '>' -> if (isCounterEven) santaX++ else robotX++
             }
 
-            coordinates += when {
-                isCounterEven -> santaX to santaY
-                else -> robotX to robotY
-            }
-
             counter++
-        }
 
-        return coordinates.size
+            if (isCounterEven) santaX to santaY
+            else robotX to robotY
+        }.plus(0 to 0).distinct().size
     }
 }

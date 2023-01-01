@@ -24,7 +24,7 @@ object Day14 {
         .maxByOrNull { it.scores }?.scores
 
     private fun race(input: List<String>, raceTime: Int): List<Reindeer> {
-        val reindeerList = input.map { Reindeer(it.split("\\s".toRegex())) }
+        val reindeerList = input.map { Reindeer(it.split(' ')) }
 
         repeat(raceTime) {
             reindeerList.forEach { deer ->
@@ -34,9 +34,9 @@ object Day14 {
                 } else if (deer.isMoving && deer.currentMoveTime == deer.moveTime) {
                     deer.currentRestTime = 1
                     deer.isMoving = false
-                } else if (!deer.isMoving && deer.currentRestTime < deer.restTime) {
+                } else if (!deer.isMoving && deer.currentRestTime < deer.restTime)
                     deer.currentRestTime++
-                } else {
+                else {
                     deer.currentMoveTime = 1
                     deer.totalDistance += deer.distancePerSecond
                     deer.isMoving = true
@@ -61,5 +61,4 @@ object Day14 {
             moveTime = split[6].toInt(), restTime = split[13].toInt()
         )
     }
-
 }

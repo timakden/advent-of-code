@@ -20,29 +20,25 @@ object Day07 {
     }
 
     fun solve(input: List<String>, wiresToReturn: List<String>): Map<String, UShort> {
+        val regex1 = "\\s->\\s".toRegex()
+        val regex2 = "\\s(?!or|and|lshift|rshift)".toRegex()
         val map = mutableMapOf<String, UShort>()
         while (map.size != input.size) {
-            input.forEach {
-                val expressions = it.split("\\s->\\s".toRegex())
-                val leftPart = expressions[0].split("\\s(?!or|and|lshift|rshift)".toRegex())
+            input.forEach { line ->
+                val expressions = line.split(regex1)
+                val leftPart = expressions[0].split(regex2)
 
                 when (leftPart.size) {
                     1 -> {
                         // example: 44430 -> b
-                        if (leftPart[0].isNumber()) {
-                            map[expressions[1]] = leftPart[0].toUShort()
-                        } else if (leftPart[0].isLetter()) {
-                            map[leftPart[0]]?.let { value -> map[expressions[1]] = value }
-                        }
+                        if (leftPart[0].isNumber()) map[expressions[1]] = leftPart[0].toUShort()
+                        else if (leftPart[0].isLetter()) map[leftPart[0]]?.let { map[expressions[1]] = it }
                     }
 
                     2 -> {
                         // example: NOT di -> dj
-                        if (leftPart[1].isNumber()) {
-                            map[expressions[1]] = leftPart[1].toUShort().inv()
-                        } else if (leftPart[1].isLetter()) {
-                            map[leftPart[1]]?.let { value -> map[expressions[1]] = value.inv() }
-                        }
+                        if (leftPart[1].isNumber()) map[expressions[1]] = leftPart[1].toUShort().inv()
+                        else if (leftPart[1].isLetter()) map[leftPart[1]]?.let { map[expressions[1]] = it.inv() }
                     }
 
                     3 -> {
@@ -50,17 +46,11 @@ object Day07 {
                         var val1: UShort? = null
                         var val2: UShort? = null
 
-                        if (leftPart[0].isNumber()) {
-                            val1 = leftPart[0].toUShort()
-                        } else if (leftPart[0].isLetter()) {
-                            val1 = map[leftPart[0]]
-                        }
+                        if (leftPart[0].isNumber()) val1 = leftPart[0].toUShort()
+                        else if (leftPart[0].isLetter()) val1 = map[leftPart[0]]
 
-                        if (leftPart[2].isNumber()) {
-                            val2 = leftPart[2].toUShort()
-                        } else if (leftPart[2].isLetter()) {
-                            val2 = map[leftPart[2]]
-                        }
+                        if (leftPart[2].isNumber()) val2 = leftPart[2].toUShort()
+                        else if (leftPart[2].isLetter()) val2 = map[leftPart[2]]
 
                         if (val1 != null && val2 != null) {
                             when (leftPart[1]) {

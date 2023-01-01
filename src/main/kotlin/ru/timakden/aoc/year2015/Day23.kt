@@ -10,21 +10,20 @@ object Day23 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day23")
-
-            println("Part One: ${solve(input)[1]}")
-            println("Part Two: ${solve(input, true)[1]}")
+            println("Part One: ${solve(input).second}")
+            println("Part Two: ${solve(input, true).second}")
         }
     }
 
-    fun solve(input: List<String>, isPartTwo: Boolean = false): LongArray {
+    fun solve(input: List<String>, isPartTwo: Boolean = false): Pair<Long, Long> {
         var a = if (isPartTwo) 1L else 0L
         var b = 0L
         var currentPosition = 0
 
-        while (currentPosition >= 0 && currentPosition <= input.lastIndex) {
+        while (currentPosition in 0..input.lastIndex) {
             val instruction = input[currentPosition]
 
-            when (instruction.substring(0..2)) {
+            when (instruction.take(3)) {
                 "hlf" -> {
                     if (instruction.endsWith("a")) a /= 2 else b /= 2
                     currentPosition++
@@ -53,7 +52,7 @@ object Day23 {
             }
         }
 
-        return longArrayOf(a, b)
+        return a to b
     }
 
     private fun getOffset(instruction: String) =
