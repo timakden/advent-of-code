@@ -337,7 +337,7 @@ class AdventOfCodeSpec : ShouldSpec({
         should("Day 23: Opening the Turing Lock") {
             val input = listOf("inc a", "jio a, +2", "tpl a", "inc a")
             val expected = 2
-            ru.timakden.aoc.year2015.Day23.solve(input)[0] shouldBe expected
+            ru.timakden.aoc.year2015.Day23.solve(input).first shouldBe expected
         }
 
         context("Day 24: It Hangs in the Balance") {
