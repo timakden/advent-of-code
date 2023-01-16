@@ -1077,6 +1077,59 @@ class AdventOfCodeSpec : ShouldSpec({
             }
         }
 
+        context("Day 17: Pyroclastic Flow") {
+            val input = ">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>"
+            should("Part One") {
+                val expected = 3068
+                ru.timakden.aoc.year2022.Day17.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 1514285714288
+                ru.timakden.aoc.year2022.Day17.part2(input, 1000000000000L) shouldBe expected
+            }
+        }
+
+        context("Day 18: Boiling Boulders") {
+            val input = listOf(
+                "2,2,2",
+                "1,2,2",
+                "3,2,2",
+                "2,1,2",
+                "2,3,2",
+                "2,2,1",
+                "2,2,3",
+                "2,2,4",
+                "2,2,6",
+                "1,2,5",
+                "3,2,5",
+                "2,1,5",
+                "2,3,5"
+            )
+            should("Part One") {
+                val expected = 64
+                ru.timakden.aoc.year2022.Day18.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 58
+                ru.timakden.aoc.year2022.Day18.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 19: Not Enough Minerals") {
+            val input = listOf(
+                "Blueprint 1: Each ore robot costs 4 ore. Each clay robot costs 2 ore. Each obsidian robot costs 3 ore and 14 clay. Each geode robot costs 2 ore and 7 obsidian.",
+                "Blueprint 2: Each ore robot costs 2 ore. Each clay robot costs 3 ore. Each obsidian robot costs 3 ore and 8 clay. Each geode robot costs 3 ore and 12 obsidian."
+            )
+            should("Part One") {
+                val expected = 33
+                ru.timakden.aoc.year2022.Day19.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 3472
+                ru.timakden.aoc.year2022.Day19.part2(input) shouldBe expected
+            }
+        }
+
         context("Day 20: Grove Positioning System") {
             val input = listOf("1", "2", "-3", "3", "-2", "0", "4")
             should("Part One") {
@@ -1161,6 +1214,45 @@ class AdventOfCodeSpec : ShouldSpec({
                 val expected = 20
                 ru.timakden.aoc.year2022.Day23.part2(input) shouldBe expected
             }
+        }
+
+        context("Day 24: Blizzard Basin") {
+            val input = listOf(
+                "#.######",
+                "#>>.<^<#",
+                "#.<..<<#",
+                "#>v.><>#",
+                "#<^v^^>#",
+                "######.#"
+            )
+            should("Part One") {
+                val expected = 18
+                ru.timakden.aoc.year2022.Day24.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val expected = 54
+                ru.timakden.aoc.year2022.Day24.part2(input) shouldBe expected
+            }
+        }
+
+        should("Day 25: Full of Hot Air") {
+            val input = listOf(
+                "1=-0-2",
+                "12111",
+                "2=0=",
+                "21",
+                "2=01",
+                "111",
+                "20012",
+                "112",
+                "1=-1=",
+                "1-12",
+                "12",
+                "1=",
+                "122"
+            )
+            val expected = "2=-1=0"
+            ru.timakden.aoc.year2022.Day25.part1(input) shouldBe expected
         }
     }
 

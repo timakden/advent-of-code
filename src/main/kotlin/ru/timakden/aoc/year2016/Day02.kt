@@ -16,28 +16,21 @@ object Day02 {
     }
 
     fun part1(input: List<String>): String {
-        var point = Pair(1, 1)
-        val list = mutableListOf<Char>()
+        var point = 1 to 1
 
-        input.forEach {
+        return input.map {
             point = goToTheNextPointPart1(point, it)
-
-            list.add(keypadPart1[point.first][point.second])
-        }
-
-        return list.joinToString("")
+            keypadPart1[point.first][point.second]
+        }.joinToString("")
     }
 
     fun part2(input: List<String>): String {
-        var point = Pair(2, 0)
-        val list = mutableListOf<Char>()
+        var point = 2 to 0
 
-        input.forEach {
+        return input.map {
             point = goToTheNextPointPart2(point, it)
-            list.add(keypadPart2[point.first][point.second])
-        }
-
-        return list.joinToString("")
+            keypadPart2[point.first][point.second]
+        }.joinToString(separator = "")
     }
 
     private val keypadPart1 = arrayOf(
@@ -55,8 +48,7 @@ object Day02 {
     )
 
     private fun goToTheNextPointPart1(point: Pair<Int, Int>, instruction: String): Pair<Int, Int> {
-        var x = point.second
-        var y = point.first
+        var (y, x) = point
 
         instruction.forEach {
             when (it) {
@@ -71,8 +63,7 @@ object Day02 {
     }
 
     private fun goToTheNextPointPart2(point: Pair<Int, Int>, instruction: String): Pair<Int, Int> {
-        var x = point.second
-        var y = point.first
+        var (y, x) = point
 
         instruction.forEach {
             when (it) {

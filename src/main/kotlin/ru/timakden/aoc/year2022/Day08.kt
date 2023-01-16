@@ -29,29 +29,21 @@ object Day08 {
                 val tree = trees[j]
                 if (i == 0 || j == 0 || i == lastRowIndex || j == lastColumnIndex) visibleTrees++
                 else {
-                    if (heights
-                            .filterKeys { it.first == i && it.second in (0 until j) }
+                    if (heights.filterKeys { it.first == i && it.second in (0 until j) }.all { it.value < tree }) {
+                        visibleTrees++
+                        continue
+                    }
+                    if (heights.filterKeys { it.first == i && it.second in (j + 1..lastColumnIndex) }
                             .all { it.value < tree }
                     ) {
                         visibleTrees++
                         continue
                     }
-                    if (heights
-                            .filterKeys { it.first == i && it.second in (j + 1..lastColumnIndex) }
-                            .all { it.value < tree }
-                    ) {
+                    if (heights.filterKeys { it.first in (0 until i) && it.second == j }.all { it.value < tree }) {
                         visibleTrees++
                         continue
                     }
-                    if (heights
-                            .filterKeys { it.first in (0 until i) && it.second == j }
-                            .all { it.value < tree }
-                    ) {
-                        visibleTrees++
-                        continue
-                    }
-                    if (heights
-                            .filterKeys { it.first in (i + 1..lastRowIndex) && it.second == j }
+                    if (heights.filterKeys { it.first in (i + 1..lastRowIndex) && it.second == j }
                             .all { it.value < tree }
                     ) {
                         visibleTrees++
@@ -80,9 +72,8 @@ object Day08 {
                     val scoreLeft = kotlin.run {
                         var count = 0
                         for (k in j - 1 downTo 0) {
-                            if (checkNotNull(heights[i to k]) < tree) {
-                                count++
-                            } else if (checkNotNull(heights[i to k]) >= tree) {
+                            if (checkNotNull(heights[i to k]) < tree) count++
+                            else if (checkNotNull(heights[i to k]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -93,9 +84,8 @@ object Day08 {
                     val scoreRight = kotlin.run {
                         var count = 0
                         for (k in j + 1..lastColumnIndex) {
-                            if (checkNotNull(heights[i to k]) < tree) {
-                                count++
-                            } else if (checkNotNull(heights[i to k]) >= tree) {
+                            if (checkNotNull(heights[i to k]) < tree) count++
+                            else if (checkNotNull(heights[i to k]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -106,9 +96,8 @@ object Day08 {
                     val scoreUp = kotlin.run {
                         var count = 0
                         for (k in i - 1 downTo 0) {
-                            if (checkNotNull(heights[k to j]) < tree) {
-                                count++
-                            } else if (checkNotNull(heights[k to j]) >= tree) {
+                            if (checkNotNull(heights[k to j]) < tree) count++
+                            else if (checkNotNull(heights[k to j]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -119,9 +108,8 @@ object Day08 {
                     val scoreDown = kotlin.run {
                         var count = 0
                         for (k in i + 1..lastRowIndex) {
-                            if (checkNotNull(heights[k to j]) < tree) {
-                                count++
-                            } else if (checkNotNull(heights[k to j]) >= tree) {
+                            if (checkNotNull(heights[k to j]) < tree) count++
+                            else if (checkNotNull(heights[k to j]) >= tree) {
                                 count++
                                 break
                             } else break

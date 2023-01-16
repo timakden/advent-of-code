@@ -1,5 +1,6 @@
 package ru.timakden.aoc.year2022
 
+import arrow.core.tail
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day07.Node.Directory
@@ -54,7 +55,7 @@ object Day07 {
     private fun buildTree(input: List<String>): Directory {
         var current = Directory("/", null)
 
-        input.drop(1).forEach { line ->
+        input.tail().forEach { line ->
             if (line.startsWith('$')) {
                 if (line.startsWith("$ cd")) {
                     val nextDirectory = line.substringAfter("cd ")

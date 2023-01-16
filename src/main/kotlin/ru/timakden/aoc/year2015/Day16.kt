@@ -3,6 +3,7 @@ package ru.timakden.aoc.year2015
 import arrow.core.Option
 import arrow.core.none
 import arrow.core.some
+import arrow.core.tail
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2015.Day16.Aunt.Compound.*
@@ -40,7 +41,7 @@ object Day16 {
         val aunts = input.map { inputString ->
             val compounds = regex.findAll(inputString).map { it.value }
             val name = compounds.first()
-            val compoundsMap = compounds.drop(1)
+            val compoundsMap = compounds.tail()
                 .map { compound -> compound.split(": ").let { it.first() to it.last().toInt() } }
                 .toMap()
 

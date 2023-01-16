@@ -60,7 +60,7 @@ object Day02 {
                     "X" -> ROCK
                     "Y" -> PAPER
                     "Z" -> SCISSORS
-                    else -> throw IllegalArgumentException()
+                    else -> error("Unsupported shape")
                 }
             }
 
@@ -72,7 +72,7 @@ object Day02 {
                 "X" -> this.getLosingShape()
                 "Y" -> this
                 "Z" -> this.getWinningShape()
-                else -> throw IllegalArgumentException()
+                else -> error("Unsupported shape")
             }
 
             private fun Shape.getWinningShape() = when (this) {

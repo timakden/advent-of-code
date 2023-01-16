@@ -20,8 +20,7 @@ object Day09 {
         return if (input.first() == '(') {
             val markerIndex = input.indexOf(')')
             val marker = input.substring(1, markerIndex)
-            val length = marker.substringBefore('x').toInt()
-            val times = marker.substringAfter('x').toInt()
+            val (length, times) = "\\d+".toRegex().findAll(marker).map { it.value }.map { it.toInt() }.toList()
             part1(input.substring(markerIndex + length + 1), count + times * length)
         } else part1(input.substring(1), count + 1)
     }
@@ -31,8 +30,7 @@ object Day09 {
         return if (input.first() == '(') {
             val markerIndex = input.indexOf(')')
             val marker = input.substring(1, markerIndex)
-            val length = marker.substringBefore('x').toInt()
-            val times = marker.substringAfter('x').toInt()
+            val (length, times) = "\\d+".toRegex().findAll(marker).map { it.value }.map { it.toInt() }.toList()
             part2(
                 input.substring(markerIndex + length + 1),
                 count + times * part2(input.substring(markerIndex + 1, markerIndex + length + 1))

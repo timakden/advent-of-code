@@ -30,7 +30,7 @@ object Day10 {
             if (instruction == "noop") finishCycle() else {
                 finishCycle()
                 finishCycle()
-                x += instruction.substringAfter(" ").toInt()
+                x += instruction.substringAfter(' ').toInt()
             }
         }
 
@@ -46,8 +46,7 @@ object Day10 {
             val row = cycle / 40
             val column = cycle - row * 40
 
-            if (column in (x - 1)..(x + 1))
-                crt[row][column] = '#'
+            if (column in (x - 1)..(x + 1)) crt[row][column] = '#'
 
             cycle++
         }
@@ -56,7 +55,7 @@ object Day10 {
             if (instruction == "noop") finishCycle() else {
                 finishCycle()
                 finishCycle()
-                x += instruction.substringAfter(" ").toInt()
+                x += instruction.substringAfter(' ').toInt()
             }
         }
 

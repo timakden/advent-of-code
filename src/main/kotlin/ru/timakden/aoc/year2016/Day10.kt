@@ -29,7 +29,7 @@ object Day10 {
                     val botNumber = instruction.substringAfter("bot ").toInt()
                     val chipValue = instruction.substringAfter("value ").substringBefore(" goes").toInt()
 
-                    if (bots.contains(botNumber)) {
+                    if (botNumber in bots) {
                         bots[botNumber]?.add(chipValue)
                     } else {
                         bots[botNumber] = mutableListOf(chipValue)
@@ -39,7 +39,7 @@ object Day10 {
                 } else {
                     val botNumber = instruction.substringAfter("bot ").substringBefore(" gives").toInt()
 
-                    if (bots.contains(botNumber) && bots[botNumber]?.size == 2) {
+                    if (botNumber in bots && bots[botNumber]?.size == 2) {
                         val lowTo = instruction.substringAfter("low to ").substringBefore(" and high")
                         val lowToNumber = lowTo.substringAfter(" ").toInt()
                         val highTo = instruction.substringAfter("high to ")
@@ -47,8 +47,8 @@ object Day10 {
                         val lowValue = bots[botNumber]?.minOrNull()!!
                         val highValue = bots[botNumber]?.maxOrNull()!!
 
-                        if (lowTo.contains("bot")) {
-                            if (bots.contains(lowToNumber)) {
+                        if ("bot" in lowTo) {
+                            if (lowToNumber in bots) {
                                 bots[lowToNumber]?.add(lowValue)
                             } else {
                                 bots[lowToNumber] = mutableListOf(lowValue)
@@ -57,8 +57,8 @@ object Day10 {
                             outputs[lowToNumber] = lowValue
                         }
 
-                        if (highTo.contains("bot")) {
-                            if (bots.contains(highToNumber)) {
+                        if ("bot" in highTo) {
+                            if (highToNumber in bots) {
                                 bots[highToNumber]?.add(highValue)
                             } else {
                                 bots[highToNumber] = mutableListOf(highValue)
@@ -97,7 +97,7 @@ object Day10 {
                     val botNumber = instruction.substringAfter("bot ").toInt()
                     val chipValue = instruction.substringAfter("value ").substringBefore(" goes").toInt()
 
-                    if (bots.contains(botNumber)) {
+                    if (botNumber in bots) {
                         bots[botNumber]?.add(chipValue)
                     } else {
                         bots[botNumber] = mutableListOf(chipValue)
@@ -107,7 +107,7 @@ object Day10 {
                 } else {
                     val botNumber = instruction.substringAfter("bot ").substringBefore(" gives").toInt()
 
-                    if (bots.contains(botNumber) && bots[botNumber]?.size == 2) {
+                    if (botNumber in bots && bots[botNumber]?.size == 2) {
                         val lowTo = instruction.substringAfter("low to ").substringBefore(" and high")
                         val lowToNumber = lowTo.substringAfter(" ").toInt()
                         val highTo = instruction.substringAfter("high to ")
@@ -115,32 +115,22 @@ object Day10 {
                         val lowValue = bots[botNumber]?.minOrNull()!!
                         val highValue = bots[botNumber]?.maxOrNull()!!
 
-                        if (lowTo.contains("bot")) {
-                            if (bots.contains(lowToNumber)) {
-                                bots[lowToNumber]?.add(lowValue)
-                            } else {
-                                bots[lowToNumber] = mutableListOf(lowValue)
-                            }
-                        } else {
-                            outputs[lowToNumber] = lowValue
-                        }
+                        if ("bot" in lowTo) {
+                            if (lowToNumber in bots) bots[lowToNumber]?.add(lowValue)
+                            else bots[lowToNumber] = mutableListOf(lowValue)
+                        } else outputs[lowToNumber] = lowValue
 
-                        if (highTo.contains("bot")) {
-                            if (bots.contains(highToNumber)) {
-                                bots[highToNumber]?.add(highValue)
-                            } else {
-                                bots[highToNumber] = mutableListOf(highValue)
-                            }
-                        } else {
-                            outputs[highToNumber] = highValue
-                        }
+                        if ("bot" in highTo) {
+                            if (highToNumber in bots) bots[highToNumber]?.add(highValue)
+                            else bots[highToNumber] = mutableListOf(highValue)
+                        } else outputs[highToNumber] = highValue
 
                         bots.remove(botNumber)
                         iterator.remove()
                     }
                 }
 
-                if (outputs.contains(0) && outputs.contains(1) && outputs.contains(2)) {
+                if (0 in outputs && 1 in outputs && 2 in outputs) {
                     return outputs[0]!! * outputs[1]!! * outputs[2]!!
                 }
             }

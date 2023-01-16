@@ -31,11 +31,10 @@ object Day14 {
             var unitOfSand = sandSource
 
             while (true) {
-                val x = unitOfSand.first
-                val y = unitOfSand.second
-                if (!cave.contains(x to (y + 1))) unitOfSand = unitOfSand.copy(second = y + 1) else {
-                    if (cave.contains((x - 1) to (y + 1))) {
-                        if (cave.contains((x + 1) to (y + 1))) {
+                val (x, y) = unitOfSand
+                if (x to (y + 1) !in cave) unitOfSand = unitOfSand.copy(second = y + 1) else {
+                    if ((x - 1) to (y + 1) in cave) {
+                        if ((x + 1) to (y + 1) in cave) {
                             counter++
                             cave += unitOfSand
                             break
@@ -60,11 +59,10 @@ object Day14 {
             var unitOfSand = sandSource
 
             while (true) {
-                val x = unitOfSand.first
-                val y = unitOfSand.second
-                if (!cave.contains(x to (y + 1))) unitOfSand = unitOfSand.copy(second = y + 1) else
-                    if (cave.contains((x - 1) to (y + 1))) {
-                        if (cave.contains((x + 1) to (y + 1))) {
+                val (x, y) = unitOfSand
+                if (x to (y + 1) !in cave) unitOfSand = unitOfSand.copy(second = y + 1) else
+                    if ((x - 1) to (y + 1) in cave) {
+                        if ((x + 1) to (y + 1) in cave) {
                             counter++
                             cave += unitOfSand
                             if (unitOfSand == sandSource)

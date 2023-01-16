@@ -15,39 +15,19 @@ object Day06 {
         }
     }
 
-    fun part1(input: List<String>): String {
-        var errorCorrectedMessage = ""
-
-        (0..input[0].lastIndex).forEach { i ->
-            val map = mutableMapOf<Char, Int>()
-            input.forEach {
-                var count = map[it[i]] ?: 0
-                map[it[i]] = ++count
-            }
-
-            map.maxByOrNull { it.value }?.let {
-                errorCorrectedMessage += it.key.toString()
-            }
+    fun part1(input: List<String>) = buildString {
+        input.first().indices.forEach { i ->
+            input.fold("") { acc, s -> acc + s[i] }
+                .associateWith { c -> input.fold("") { acc, s -> acc + s[i] }.count { it == c } }
+                .maxByOrNull { it.value }?.let { append(it.key) }
         }
-
-        return errorCorrectedMessage
     }
 
-    fun part2(input: List<String>): String {
-        var errorCorrectedMessage = ""
-
-        (0..input[0].lastIndex).forEach { i ->
-            val map = mutableMapOf<Char, Int>()
-            input.forEach {
-                var count = map[it[i]] ?: 0
-                map[it[i]] = ++count
-            }
-
-            map.minByOrNull { it.value }?.let {
-                errorCorrectedMessage += it.key.toString()
-            }
+    fun part2(input: List<String>) = buildString {
+        input.first().indices.forEach { i ->
+            input.fold("") { acc, s -> acc + s[i] }
+                .associateWith { c -> input.fold("") { acc, s -> acc + s[i] }.count { it == c } }
+                .minByOrNull { it.value }?.let { append(it.key) }
         }
-
-        return errorCorrectedMessage
     }
 }

@@ -1,5 +1,8 @@
 package ru.timakden.aoc.year2016
 
+import arrow.core.Option
+import arrow.core.none
+import arrow.core.some
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.time.ExperimentalTime
@@ -15,26 +18,20 @@ object Day04 {
         }
     }
 
-    fun part1(input: List<String>): Int {
-        val realRooms = input.filter(isRealRoom)
-
-        return realRooms.fold(0) { acc, s ->
-            val id = s.substring(s.lastIndexOf('-') + 1, s.indexOf('[')).toInt()
-            acc + id
-        }
+    fun part1(input: List<String>) = input.filter(isRealRoom).fold(0) { acc, s ->
+        val id = s.substring(s.lastIndexOf('-') + 1, s.indexOf('[')).toInt()
+        acc + id
     }
 
-    fun part2(input: List<String>): Int {
-        val realRooms = input.filter(isRealRoom)
-
-        realRooms.forEach {
+    fun part2(input: List<String>): Option<Int> {
+        input.filter(isRealRoom).forEach {
             val encryptedName = it.substringBeforeLast('-')
             val id = it.substring(it.lastIndexOf('-') + 1, it.indexOf('[')).toInt()
             val decryptedName = decryptRoomName(encryptedName, id)
-            if (decryptedName == "northpole object storage") return id
+            if (decryptedName == "northpole object storage") return id.some()
         }
 
-        return 0
+        return none()
     }
 
     private val isRealRoom: (String) -> Boolean = {
@@ -51,17 +48,14 @@ object Day04 {
         }
 
         val newMap = mutableMapOf<Char, Int>()
-        for (i in 0..4) {
-            val entry = map.maxByOrNull { it.value }
-            entry?.let {
+        repeat(5) {
+            map.maxByOrNull { it.value }?.let {
                 newMap[it.key] = it.value
                 map.remove(it.key)
             }
         }
 
-        var checksum = ""
-        newMap.forEach { checksum += it.key.toString() }
-        return checksum
+        return newMap.keys.fold("") { acc, c -> acc + c.toString() }
     }
 
     private fun decryptRoomName(encryptedName: String, id: Int): String {

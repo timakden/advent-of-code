@@ -23,12 +23,10 @@ object Day09 {
     fun part2(input: List<String>) = performMotions(MutableList(10) { 0 to 0 }, input)
 
     private fun performMotions(rope: MutableList<Pair<Int, Int>>, input: List<String>): Int {
-        val visitedPositions = mutableSetOf<Pair<Int, Int>>().apply {
-            add(0 to 0)
-        }
+        val visitedPositions = mutableSetOf<Pair<Int, Int>>().apply { add(0 to 0) }
 
         input.forEach { instruction ->
-            val (direction, steps) = instruction.split(" ").let { it.first().toDirection() to it.last().toInt() }
+            val (direction, steps) = instruction.split(' ').let { it.first().toDirection() to it.last().toInt() }
 
             repeat(steps) {
                 rope[0] = moveHead(direction, rope.first())
@@ -80,7 +78,7 @@ object Day09 {
                 "L" -> LEFT
                 "R" -> RIGHT
                 "U" -> UP
-                else -> throw IllegalArgumentException()
+                else -> error("Unsupported direction")
             }
         }
     }

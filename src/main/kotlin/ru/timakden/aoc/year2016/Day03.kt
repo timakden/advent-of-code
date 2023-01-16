@@ -24,7 +24,7 @@ object Day03 {
         (0..input.lastIndex step 3).forEach { i ->
             val list = mutableListOf<List<String>>()
 
-            (0..2).forEach { j -> list.add("\\d+".toRegex().findAll(input[i + j]).map { it.value }.toList()) }
+            (0..2).forEach { j -> list += "\\d+".toRegex().findAll(input[i + j]).map { it.value }.toList() }
 
             repeat((0..2).filter { isTrianglePossible(listOf(list[0][it], list[1][it], list[2][it])) }.size) {
                 triangles++

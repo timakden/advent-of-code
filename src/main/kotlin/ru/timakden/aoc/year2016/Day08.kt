@@ -17,14 +17,14 @@ object Day08 {
     }
 
     fun part1(screen: Array<CharArray>, input: List<String>): Int {
-        input.forEach {
-            if (it.startsWith("rect")) {
-                val (width, height) = it.substringAfter(" ").split("x").map { it.toInt() }
+        input.forEach { line ->
+            if (line.startsWith("rect")) {
+                val (width, height) = line.substringAfter(' ').split('x').map { it.toInt() }
                 rect(screen, width, height)
             } else {
-                val index = it.substringAfter("=").substringBefore(" ").toInt()
-                val pixels = it.substringAfterLast(" ").toInt()
-                if (it.contains("row")) rotateRow(screen, index, pixels) else rotateColumn(screen, index, pixels)
+                val index = line.substringAfter('=').substringBefore(' ').toInt()
+                val pixels = line.substringAfterLast(' ').toInt()
+                if ("row" in line) rotateRow(screen, index, pixels) else rotateColumn(screen, index, pixels)
             }
         }
 
@@ -64,10 +64,8 @@ object Day08 {
         return newArray
     }
 
-    private fun countLitPixels(screen: Array<CharArray>): Int {
-        var count = 0
-        screen.forEach { count += it.count { c -> c == '#' } }
-        return count
+    private fun countLitPixels(screen: Array<CharArray>) = screen.fold(0) { acc, chars ->
+        acc + chars.count { it == '#' }
     }
 
     private fun printScreen(screen: Array<CharArray>) {

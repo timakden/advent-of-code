@@ -40,7 +40,7 @@ object Day11 {
                         "-" -> number1 - number2
                         "/" -> number1 / number2
                         "*" -> number1 * number2
-                        else -> throw IllegalArgumentException()
+                        else -> error("Unsupported operand")
                     }.div(3)
 
                     val newMonkey =

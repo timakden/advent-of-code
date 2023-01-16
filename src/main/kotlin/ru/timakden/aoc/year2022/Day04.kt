@@ -16,8 +16,8 @@ object Day04 {
     }
 
     fun part1(input: List<String>) = input.sumOf { str ->
-        val (first, second) = str.split(",").map { range ->
-            range.split("-").let { it.first().toInt()..it.last().toInt() }
+        val (first, second) = str.split(',').map { range ->
+            range.split('-').let { it.first().toInt()..it.last().toInt() }
         }
 
         if (first.first <= second.first && first.last >= second.last ||
@@ -26,8 +26,8 @@ object Day04 {
     }
 
     fun part2(input: List<String>) = input.sumOf { str ->
-        val (first, second) = str.split(",").map { range ->
-            range.split("-").let { it.first().toInt()..it.last().toInt() }
+        val (first, second) = str.split(',').map { range ->
+            range.split('-').let { it.first().toInt()..it.last().toInt() }
         }
 
         if ((first intersect second).isNotEmpty()) 1L else 0L

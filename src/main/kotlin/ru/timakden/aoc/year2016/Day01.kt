@@ -22,12 +22,10 @@ object Day01 {
         var y = 0
         var direction = NORTH
 
-        val instructions = input.split(", ")
-
-        instructions.forEach { instruction ->
+        input.split(", ").forEach { instruction ->
             val numberOfBlocks = instruction.substring(1).toInt()
 
-            direction = if (instruction.startsWith('L')) direction.turnLeft() else direction.turnRight()
+            direction = direction.turn(instruction.first())
             when (direction) {
                 NORTH -> x += numberOfBlocks
                 SOUTH -> x -= numberOfBlocks
@@ -45,12 +43,10 @@ object Day01 {
         var direction = NORTH
         val coordinates = mutableListOf<Pair<Int, Int>>()
 
-        val instructions = input.split(", ")
-
-        instructions.forEach { instruction ->
+        input.split(", ").forEach { instruction ->
             val numberOfBlocks = instruction.substring(1).toInt()
 
-            direction = if (instruction.startsWith('L')) direction.turnLeft() else direction.turnRight()
+            direction = direction.turn(instruction.first())
 
             repeat(numberOfBlocks) {
                 when (direction) {
@@ -60,9 +56,9 @@ object Day01 {
                     WEST -> y++
                 }
 
-                if (coordinates.contains(x to y)) return abs(x) + abs(y)
+                if (x to y in coordinates) return abs(x) + abs(y)
 
-                coordinates.add(x to y)
+                coordinates += x to y
             }
         }
 
@@ -72,24 +68,26 @@ object Day01 {
     private enum class Direction {
         NORTH, SOUTH, EAST, WEST;
 
-        private fun turn(turnTo: Char) = if (turnTo.equals('L', true)) {
-            when (this) {
-                NORTH -> WEST
-                SOUTH -> EAST
-                EAST -> NORTH
-                WEST -> SOUTH
+        fun turn(turnTo: Char) = when (turnTo) {
+            'L' -> {
+                when (this) {
+                    NORTH -> WEST
+                    SOUTH -> EAST
+                    EAST -> NORTH
+                    WEST -> SOUTH
+                }
             }
-        } else {
-            when (this) {
-                NORTH -> EAST
-                SOUTH -> WEST
-                EAST -> SOUTH
-                WEST -> NORTH
+
+            'R' -> {
+                when (this) {
+                    NORTH -> EAST
+                    SOUTH -> WEST
+                    EAST -> SOUTH
+                    WEST -> NORTH
+                }
             }
+
+            else -> error("Unsupported direction")
         }
-
-        fun turnLeft() = turn('L')
-
-        fun turnRight() = turn('R')
     }
 }

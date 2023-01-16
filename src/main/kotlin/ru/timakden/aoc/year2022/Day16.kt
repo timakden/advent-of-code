@@ -1,7 +1,12 @@
 package ru.timakden.aoc.year2022
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
+import java.util.concurrent.atomic.AtomicInteger
 import kotlin.time.ExperimentalTime
 
 object Day16 {
@@ -16,130 +21,132 @@ object Day16 {
     }
 
     fun part1(input: List<String>): Int {
-        val valves = input.toValves()
-        val maxOpenValves = valves.count { it.flowRate > 0 }
-        val start = checkNotNull(valves.find { it.name == "AA" })
-        val startPath = Path1(listOf(start), mutableMapOf())
-        var allPaths = listOf(startPath)
-        var bestPath = startPath
+        val spaces = input.map { Space.from(it) }
 
-        for (time in 1..30) {
-            allPaths = buildList {
-                for (it in allPaths) {
-                    if (it.open.size == maxOpenValves) listOf<Path1>()
+        val distanceMap = spaces.map { it.name to it.getOtherDistances(spaces) }
+        val startingSpace = checkNotNull(spaces.find { it.name == "AA" })
+        val valveOptions = spaces.filter { it.flowRate > 0 }
 
-                    val currentLast = it.last()
-                    val currentValves = it.valves
+        val paths = getPathPermutations(startingSpace, valveOptions, distanceMap, 30)
 
-                    if (currentLast.flowRate > 0 && !it.open.containsKey(currentLast)) {
-                        val open = it.open.toMutableMap()
-                        open[currentLast] = time
-                        val possibleValves = currentValves + currentLast
-                        this.add(Path1(possibleValves, open))
-
-                    }
-
-                    currentLast.connectedValves.mapTo(this) { valve ->
-                        Path1(currentValves + checkNotNull(valves.find { it.name == valve }), it.open)
-                    }
-                }
-            }.sortedByDescending { it.total() }.take(10_000)
-
-            if (allPaths.first().total() > bestPath.total()) bestPath = allPaths.first()
-        }
-
-        return bestPath.total()
+        return paths.maxOf { it.second }
     }
 
     fun part2(input: List<String>): Int {
-        val valves = input.toValves()
-        val maxOpenValves = valves.count { it.flowRate > 0 }
-        val start = checkNotNull(valves.find { it.name == "AA" })
-        val startPath = Path2(listOf(start), listOf(start), mutableMapOf())
-        var allPaths = listOf(startPath)
-        var bestPath = startPath
+        val spaces = input.map { Space.from(it) }
 
-        for (time in 1..26) {
-            allPaths = buildList {
-                for (currentPath in allPaths) {
-                    if (currentPath.open.size == maxOpenValves) continue
+        val distanceMap = spaces.map { it.name to it.getOtherDistances(spaces) }
+        val startingSpace = checkNotNull(spaces.find { it.name == "AA" })
+        val valveOptions = spaces.filter { it.flowRate > 0 }
 
-                    val currentLastMe = currentPath.lastMe()
-                    val currentLastElephant = currentPath.lastElephant()
-                    val currentValvesMe = currentPath.valvesMe
-                    val currentValvesElephant = currentPath.valvesElephant
+        val myPaths = getPathPermutations(startingSpace, valveOptions, distanceMap, 26)
 
-                    val openMe = currentLastMe.flowRate > 0 && !currentPath.open.containsKey(currentLastMe)
-                    val openElephant =
-                        currentLastElephant.flowRate > 0 && !currentPath.open.containsKey(currentLastElephant)
+        val bestScore = AtomicInteger()
 
-                    if (openMe || openElephant) {
-                        val open = currentPath.open.toMutableMap()
-
-                        val possibleValvesMe =
-                            findPossibleValves(openMe, currentLastMe, currentValvesMe, open, time, valves)
-
-                        val possibleValvesElephants =
-                            findPossibleValves(
-                                openElephant,
-                                currentLastElephant,
-                                currentValvesElephant,
-                                open,
-                                time,
-                                valves
-                            )
-
-                        possibleValvesMe.flatMapTo(this) { a -> possibleValvesElephants.map { b -> Path2(a, b, open) } }
-                    }
-                    currentLastMe.connectedValves
-                        .flatMap { a -> currentLastElephant.connectedValves.map { b -> a to b } }
-                        .filter { (a, b) -> a != b }
-                        .mapTo(this) { (leadMe, leadElephant) ->
-                            Path2(
-                                currentValvesMe + checkNotNull(valves.find { it.name == leadMe }),
-                                currentValvesElephant + checkNotNull(valves.find { it.name == leadElephant }),
-                                currentPath.open
-                            )
+        runBlocking {
+            withContext(Dispatchers.Default) {
+                myPaths.forEach { path ->
+                    launch {
+                        getPathPermutations(startingSpace, valveOptions, distanceMap, 26, path.first).forEach {
+                            if (path.second + it.second > bestScore.get()) bestScore.set(path.second + it.second)
                         }
+                    }
                 }
-            }.sortedByDescending { it.total() }.take(100_000)
-
-            if (allPaths.first().total() > bestPath.total()) bestPath = allPaths.first()
+            }
         }
 
-        return bestPath.total()
+        return bestScore.get()
     }
 
-    private fun findPossibleValves(
-        open: Boolean,
-        currentLast: Valve,
-        currentValves: List<Valve>,
-        opened: MutableMap<Valve, Int>,
+    private fun getPathPermutations(
+        startingSpace: Space,
+        spaces: List<Space>,
+        distanceMap: List<Pair<String, List<Pair<String, Int>>>>,
         time: Int,
-        allValves: Set<Valve>
-    ) = if (open) {
-        opened[currentLast] = time
-        listOf(currentValves + currentLast)
-    } else currentLast.connectedValves.map { valve -> currentValves + checkNotNull(allValves.find { it.name == valve }) }
+        visitedSpaces: List<String> = listOf()
+    ): List<Pair<List<String>, Int>> {
+        val permutations = mutableListOf<Pair<List<String>, Int>>()
 
-    private fun List<String>.toValves() = this.map { line ->
-        val valveNames = "[A-Z]{2}".toRegex().findAll(line).map { it.value }.toList()
-        val name = valveNames.first()
-        val flowRate = checkNotNull("\\d+".toRegex().find(line)?.value?.toInt())
-        val connectedValveNames = valveNames.drop(1)
-        Valve(name, flowRate, connectedValveNames)
-    }.toSet()
+        fun getAllPaths(
+            pathHead: Space,
+            currentPath: Pair<List<String>, Int>,
+            minutesRemaining: Int
+        ): Set<Pair<List<String>, Int>> {
+            val remainingSpaces = spaces.filter {
+                !visitedSpaces.contains(it.name) && !currentPath.first.contains(it.name) && minutesRemaining >= (distanceMap.distanceBetween(
+                    pathHead.name,
+                    it.name
+                ) + 1)
+            }
 
-    data class Valve(val name: String, val flowRate: Int, val connectedValves: List<String>)
+            return if (remainingSpaces.isNotEmpty()) {
+                remainingSpaces.flatMap {
+                    getAllPaths(
+                        it,
+                        Pair(
+                            currentPath.first.plus(it.name),
+                            currentPath.second + ((minutesRemaining - (distanceMap.distanceBetween(
+                                pathHead.name,
+                                it.name
+                            ) + 1)) * it.flowRate)
+                        ),
+                        minutesRemaining - (distanceMap.distanceBetween(pathHead.name, it.name) + 1)
+                    ).plus(setOf(currentPath))
+                }.toSet()
+            } else setOf(currentPath)
+        }
 
-    data class Path1(val valves: List<Valve>, val open: Map<Valve, Int>) {
-        fun last() = valves.last()
-        fun total() = open.map { (valve, time) -> (30 - time) * valve.flowRate }.sum()
+        val allPaths = getAllPaths(startingSpace, emptyList<String>() to 0, time)
+        permutations.addAll(allPaths)
+
+        return permutations
     }
 
-    data class Path2(val valvesMe: List<Valve>, val valvesElephant: List<Valve>, val open: Map<Valve, Int>) {
-        fun lastMe() = valvesMe.last()
-        fun lastElephant() = valvesElephant.last()
-        fun total() = open.map { (valve, time) -> (26 - time) * valve.flowRate }.sum()
+    private fun List<Pair<String, List<Pair<String, Int>>>>.distanceBetween(source: String, destination: String) =
+        checkNotNull(find { key -> key.first == source }?.second?.find { it.first == destination }?.second)
+
+    private data class Space(
+        val name: String,
+        val flowRate: Int,
+        val connections: List<String>
+    ) {
+        fun getOtherDistances(spaces: List<Space>): List<Pair<String, Int>> {
+            val currentSpace = name to 0
+            val otherDistances = mutableListOf(currentSpace)
+
+            fun getNestedDistances(key: String, distance: Int): List<Pair<String, Int>> {
+                val space = checkNotNull(spaces.find { it.name == key })
+
+                space.connections.forEach { connection ->
+                    val x = otherDistances.find { connection == it.first }
+                    x?.let {
+                        if (distance < it.second) otherDistances.remove(it)
+                    }
+                }
+
+                val unmappedDistances = space.connections.filter { connection ->
+                    otherDistances.none { connection == it.first }
+                }
+
+                return if (unmappedDistances.isNotEmpty()) {
+                    otherDistances.addAll(unmappedDistances.map { it to distance })
+                    unmappedDistances.flatMap { getNestedDistances(it, distance + 1) }
+                } else emptyList()
+            }
+
+            otherDistances.addAll(getNestedDistances(this.name, 1))
+
+            return otherDistances.minus(currentSpace)
+        }
+
+        companion object {
+            fun from(line: String): Space {
+                val (part1, part2) = line.split(';')
+                val name = part1.split(' ')[1]
+                val rate = part1.split('=')[1].toInt()
+                val connections = part2.split("valves", "valve")[1].split(',').map { it.trim() }
+                return Space(name, rate, connections)
+            }
+        }
     }
 }

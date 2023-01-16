@@ -33,7 +33,7 @@ object Day07 {
                 val aba = ip.substring(outer, outer + 3)
                 val expectedBab = aba[1].toString() + aba[0].toString() + aba[1].toString()
 
-                if (ip.contains(expectedBab)) {
+                if (expectedBab in ip) {
                     (0..ip.lastIndex - 2).forEach { inner ->
                         val bab = ip.substring(inner, inner + 3)
                         if (bab == expectedBab) {
@@ -60,15 +60,10 @@ object Day07 {
         val closingBrackets = mutableListOf<Int>()
 
         ip.forEachIndexed { index, c ->
-            if (c == '[') openingBrackets.add(index)
-            if (c == ']') closingBrackets.add(index)
+            if (c == '[') openingBrackets += index
+            if (c == ']') closingBrackets += index
         }
 
-        val bracketRanges = mutableListOf<IntRange>()
-        openingBrackets.forEachIndexed { index, i ->
-            bracketRanges.add(IntRange(i, closingBrackets[index]))
-        }
-
-        return bracketRanges
+        return openingBrackets.mapIndexed { index, i -> i..closingBrackets[index] }
     }
 }
