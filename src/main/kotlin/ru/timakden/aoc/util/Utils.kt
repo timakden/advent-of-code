@@ -22,13 +22,10 @@ fun String.isNumber() = this.matches("\\d+(?:\\.\\d+)?".toRegex())
 fun String.isLetter() = this.matches("[a-zA-Z]+".toRegex())
 
 /**
- * Executes the given [block] and prints elapsed time in milliseconds.
+ * Executes the given [block] and prints elapsed time.
  */
 @ExperimentalTime
-fun measure(block: () -> Unit) {
-    val duration = measureTime(block)
-    println("Elapsed time: $duration")
-}
+fun measure(block: () -> Unit) = println("Elapsed time: ${measureTime(block)}")
 
 /**
  * Reads lines from the given input txt file.
