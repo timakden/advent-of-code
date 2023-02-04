@@ -43,14 +43,13 @@ object Day07 {
 
                     3 -> {
                         // example: dd OR do -> dp
-                        var val1: UShort? = null
-                        var val2: UShort? = null
+                        val val1 = if (leftPart[0].isNumber()) leftPart[0].toUShort()
+                        else if (leftPart[0].isLetter()) map[leftPart[0]]
+                        else null
 
-                        if (leftPart[0].isNumber()) val1 = leftPart[0].toUShort()
-                        else if (leftPart[0].isLetter()) val1 = map[leftPart[0]]
-
-                        if (leftPart[2].isNumber()) val2 = leftPart[2].toUShort()
-                        else if (leftPart[2].isLetter()) val2 = map[leftPart[2]]
+                        val val2 = if (leftPart[2].isNumber()) leftPart[2].toUShort()
+                        else if (leftPart[2].isLetter()) map[leftPart[2]]
+                        else null
 
                         if (val1 != null && val2 != null) {
                             when (leftPart[1]) {

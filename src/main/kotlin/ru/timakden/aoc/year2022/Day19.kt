@@ -49,7 +49,7 @@ object Day19 {
     }
 
     suspend fun part2(input: List<String>): Int = withContext(Dispatchers.Default) {
-        blueprints(input).take(3).map { (id, blueprint) ->
+        blueprints(input).take(3).map { (_, blueprint) ->
             async {
                 geodes(blueprint, 32)
             }
