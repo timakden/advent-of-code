@@ -25,10 +25,11 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
 
-      - name: Setup Gradle
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 8.0.2
-
-      - name: Execute Gradle build
-        run: gradle build
+          gradle-version: 8.1.1
+          arguments: build
