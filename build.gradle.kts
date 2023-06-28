@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     idea
-    id("com.github.ben-manes.versions") version "0.46.0"
-    kotlin("jvm") version "1.8.21"
-    kotlin("plugin.serialization") version "1.8.21"
+    id("com.github.ben-manes.versions") version "0.47.0"
+    kotlin("jvm") version "1.8.22"
+    kotlin("plugin.serialization") version "1.8.22"
 }
 
 group = "ru.timakden"
@@ -14,13 +14,13 @@ repositories {
     mavenCentral()
 }
 
-val kotestVersion = "5.6.1"
+val kotestVersion = "5.6.2"
 
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0-RC")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("io.arrow-kt:arrow-core:1.2.0-RC")
 
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
@@ -29,14 +29,14 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(19)
+    jvmToolchain(17)
 }
 
 tasks {
     compileKotlin {
         compilerOptions {
             freeCompilerArgs.add("-Xjsr305=strict")
-            jvmTarget.set(JvmTarget.JVM_19)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     test {
