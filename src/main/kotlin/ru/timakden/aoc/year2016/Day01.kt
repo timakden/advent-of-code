@@ -4,11 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2016.Day01.Direction.*
 import kotlin.math.abs
-import kotlin.time.ExperimentalTime
 
 object Day01 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2016/Day01").single()

@@ -5,12 +5,10 @@ import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day22.Facing.*
 import ru.timakden.aoc.year2022.Day22.Side.*
 import ru.timakden.aoc.year2022.Day22.Side.Companion.toSide
-import kotlin.time.ExperimentalTime
 
 
 object Day22 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day22")
@@ -26,7 +24,7 @@ object Day22 {
             when (it) {
                 "L" -> map.turnCounterclockwise()
                 "R" -> map.turnClockwise()
-                else -> for (i in 0 until it.toInt()) if (!map.move()) break
+                else -> for (i in 0..<it.toInt()) if (!map.move()) break
             }
         }
         return map.password
@@ -39,7 +37,7 @@ object Day22 {
             when (it) {
                 "L" -> map.turnCounterclockwise()
                 "R" -> map.turnClockwise()
-                else -> for (i in 0 until it.toInt()) if (!map.moveCube()) break
+                else -> for (i in 0..<it.toInt()) if (!map.moveCube()) break
             }
         }
         return map.password

@@ -2,11 +2,9 @@ package ru.timakden.aoc.year2022
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 object Day17 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day17").single()
@@ -40,7 +38,7 @@ object Day17 {
         val shapes = shapeIterator()
         val occupied = hashSetOf<Point>()
         val diffs = StringBuilder()
-        for (i in 0 until lastShape) {
+        for (i in 0..<lastShape) {
             val currentTop = occupied.top
             var cur = shapes.next().relTo(currentTop).tryMove(occupied, Point(2, 0))
             while (true) {
@@ -64,10 +62,10 @@ object Day17 {
                                     )
                                     it.first().index to (foundIndex - it.first().index)
                                 }.firstOrNull { it.second >= 0 } ?: break
-                            val periodicSequence = diffs.substring(start until start + period)
+                            val periodicSequence = diffs.substring(start..<start + period)
                             val numberOfRepetitions = (lastShape - start) / period
                             val repetitionIncrement = periodicSequence.map(Char::digitToInt).sum()
-                            val startIncrement = diffs.substring(0 until start).map(Char::digitToInt).sum()
+                            val startIncrement = diffs.substring(0..<start).map(Char::digitToInt).sum()
                             val remainder = lastShape - (start - 1) - (numberOfRepetitions * period) - 1
                             val tailIncrement =
                                 periodicSequence.take(remainder.toInt()).map(Char::digitToInt).sum()

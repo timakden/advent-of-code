@@ -7,11 +7,9 @@ import kotlinx.coroutines.withContext
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import java.util.concurrent.atomic.AtomicInteger
-import kotlin.time.ExperimentalTime
 
 object Day16 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day16")

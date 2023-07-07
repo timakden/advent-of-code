@@ -2,11 +2,9 @@ package ru.timakden.aoc.year2015
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 object Day11 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day11").single()

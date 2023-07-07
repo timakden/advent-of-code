@@ -6,12 +6,10 @@ import ru.timakden.aoc.year2022.Day23.Direction.*
 import ru.timakden.aoc.year2022.Day23.Elf.Companion.fillProposedPositions
 import ru.timakden.aoc.year2022.Day23.Elf.Companion.move
 import ru.timakden.aoc.year2022.Day23.Elf.Companion.toElves
-import kotlin.time.ExperimentalTime
 
 
 object Day23 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day23")

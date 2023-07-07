@@ -2,11 +2,9 @@ package ru.timakden.aoc.year2022
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 object Day08 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day08")
@@ -29,7 +27,7 @@ object Day08 {
                 val tree = trees[j]
                 if (i == 0 || j == 0 || i == lastRowIndex || j == lastColumnIndex) visibleTrees++
                 else {
-                    if (heights.filterKeys { it.first == i && it.second in (0 until j) }.all { it.value < tree }) {
+                    if (heights.filterKeys { it.first == i && it.second in (0..<j) }.all { it.value < tree }) {
                         visibleTrees++
                         continue
                     }
@@ -39,7 +37,7 @@ object Day08 {
                         visibleTrees++
                         continue
                     }
-                    if (heights.filterKeys { it.first in (0 until i) && it.second == j }.all { it.value < tree }) {
+                    if (heights.filterKeys { it.first in (0..<i) && it.second == j }.all { it.value < tree }) {
                         visibleTrees++
                         continue
                     }

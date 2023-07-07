@@ -2,12 +2,10 @@ package ru.timakden.aoc.year2022
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 
 object Day20 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day20")

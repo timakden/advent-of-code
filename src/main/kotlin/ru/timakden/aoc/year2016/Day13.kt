@@ -2,13 +2,11 @@ package ru.timakden.aoc.year2016
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 typealias Maze = MutableMap<Pair<Int, Int>, Char>
 
 object Day13 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2016/Day13").single().toInt()

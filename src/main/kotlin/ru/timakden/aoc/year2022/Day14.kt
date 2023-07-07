@@ -4,11 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.time.ExperimentalTime
 
 object Day14 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day14")

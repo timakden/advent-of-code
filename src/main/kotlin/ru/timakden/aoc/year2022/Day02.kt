@@ -6,11 +6,9 @@ import ru.timakden.aoc.year2022.Day02.Outcome.*
 import ru.timakden.aoc.year2022.Day02.Shape.Companion.canDefeat
 import ru.timakden.aoc.year2022.Day02.Shape.Companion.getShapeByCondition
 import ru.timakden.aoc.year2022.Day02.Shape.Companion.toShape
-import kotlin.time.ExperimentalTime
 
 object Day02 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2022/Day02")

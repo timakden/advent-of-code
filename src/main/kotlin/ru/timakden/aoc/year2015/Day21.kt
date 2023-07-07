@@ -4,11 +4,9 @@ import ru.timakden.aoc.util.PowerSet
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2015.Day21.Item.*
-import kotlin.time.ExperimentalTime
 
 object Day21 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val (hitPoints, damage, armor) = readInput("year2015/Day21")

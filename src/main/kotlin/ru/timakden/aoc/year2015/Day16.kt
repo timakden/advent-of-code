@@ -7,11 +7,9 @@ import arrow.core.tail
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2015.Day16.Aunt.Compound.*
-import kotlin.time.ExperimentalTime
 
 object Day16 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2015/Day16")

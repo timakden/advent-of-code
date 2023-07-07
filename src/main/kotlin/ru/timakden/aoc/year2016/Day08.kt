@@ -2,11 +2,9 @@ package ru.timakden.aoc.year2016
 
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
-import kotlin.time.ExperimentalTime
 
 object Day08 {
     @JvmStatic
-    @ExperimentalTime
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2016/Day08")
@@ -38,7 +36,7 @@ object Day08 {
     }
 
     private fun rect(screen: Array<CharArray>, width: Int, height: Int) {
-        (0 until height).forEach { row -> (0 until width).forEach { column -> screen[row][column] = '#' } }
+        (0..<height).forEach { row -> (0..<width).forEach { column -> screen[row][column] = '#' } }
     }
 
     private fun rotateRow(screen: Array<CharArray>, row: Int, pixels: Int) {
@@ -58,7 +56,7 @@ object Day08 {
     private fun shift(array: CharArray): CharArray {
         val newArray = array.clone()
         newArray[0] = array[array.lastIndex]
-        (0 until array.lastIndex).forEach {
+        (0..<array.lastIndex).forEach {
             newArray[it + 1] = array[it]
         }
         return newArray

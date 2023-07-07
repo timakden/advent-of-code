@@ -3,7 +3,6 @@ package ru.timakden.aoc.util
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
-import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 
 /**
@@ -24,7 +23,6 @@ fun String.isLetter() = this.matches("[a-zA-Z]+".toRegex())
 /**
  * Executes the given [block] and prints elapsed time.
  */
-@ExperimentalTime
 fun measure(block: () -> Unit) = println("Elapsed time: ${measureTime(block)}")
 
 /**
