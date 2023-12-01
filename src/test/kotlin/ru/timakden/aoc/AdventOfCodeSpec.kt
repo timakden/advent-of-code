@@ -1256,6 +1256,34 @@ class AdventOfCodeSpec : ShouldSpec({
         }
     }
 
+    context("Year 2023") {
+        context("Day 1: Trebuchet?!") {
+            should("Part One") {
+                val input = listOf(
+                    "1abc2",
+                    "pqr3stu8vwx",
+                    "a1b2c3d4e5f",
+                    "treb7uchet"
+                )
+                val expected = 142
+                ru.timakden.aoc.year2023.Day01.part1(input) shouldBe expected
+            }
+            should("Part Two") {
+                val input = listOf(
+                    "two1nine",
+                    "eightwothree",
+                    "abcone2threexyz",
+                    "xtwone3four",
+                    "4nineeightseven2",
+                    "zoneight234",
+                    "7pqrstsixteen"
+                )
+                val expected = 281
+                ru.timakden.aoc.year2023.Day01.part2(input) shouldBe expected
+            }
+        }
+    }
+
     context("Utils") {
         should("String.md5() generates MD5 hash as a hex string") {
             val expected = "35454b055cc325ea1af2126e27707052"
