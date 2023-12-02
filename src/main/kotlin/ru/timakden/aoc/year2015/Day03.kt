@@ -48,8 +48,7 @@ object Day03 {
 
             counter++
 
-            if (isCounterEven) santaX to santaY
-            else robotX to robotY
+            if (isCounterEven) santaX to santaY else robotX to robotY
         }.plus(0 to 0).distinct().size
     }
 }

@@ -19,7 +19,7 @@ object Day04 {
         var encoded: String
 
         while (true) {
-            encoded = (input + count.toString()).md5()
+            encoded = "$input$count".md5()
             if (encoded.startsWith("00000")) return count
             count++
         }
