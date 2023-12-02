@@ -17,7 +17,6 @@ object Day02 {
     fun part1(input: List<String>): Int {
         val limits = mapOf("blue" to 14, "green" to 13, "red" to 12)
         return input.filter { s ->
-            val gameId = s.substringAfter("Game ").substringBefore(":").toInt()
             s.substringAfter(": ").split("; ").forEach { result ->
                 result.split(", ").forEach { cube ->
                     val color = cube.substringAfter(" ")
