@@ -1,23 +1,26 @@
 package ru.timakden.aoc.util
 
-import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
+import kotlin.io.path.Path
+import kotlin.io.path.readLines
 import kotlin.time.measureTime
 
 /**
- * Calculates the MD5 digest and returns the value as a 32 character hex string.
- *
- * @return MD5 digest as a hex string
+ * Converts string to md5 hash.
  */
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
 
-/** Returns `true` if this string matches the regular expression `\d+(?:\.\d+)?`. */
+/**
+ * Returns `true` if this string matches the regular expression `\d+(?:\.\d+)?`.
+ */
 fun String.isNumber() = this.matches("\\d+(?:\\.\\d+)?".toRegex())
 
-/** Returns `true` if this string matches the regular expression `[a-zA-Z]+`. */
+/**
+ * Returns `true` if this string matches the regular expression `[a-zA-Z]+`.
+ */
 fun String.isLetter() = this.matches("[a-zA-Z]+".toRegex())
 
 /**
@@ -28,4 +31,9 @@ fun measure(block: () -> Unit) = println("Elapsed time: ${measureTime(block)}")
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = File("src/main/kotlin/ru/timakden/aoc", "$name.txt").readLines()
+fun readInput(name: String) = Path("src/$name.txt").readLines()
+
+/**
+ * The cleaner shorthand for printing output.
+ */
+fun Any?.println() = println(this)

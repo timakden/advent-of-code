@@ -47,6 +47,9 @@ tasks {
     test {
         useJUnitPlatform()
     }
+    wrapper {
+        gradleVersion = "8.5"
+    }
 }
 
 idea {
