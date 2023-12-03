@@ -5,7 +5,7 @@ import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2022.*
 
-class AdventOfCode2022 : FunSpec({
+class AdventOfCode2022Test : FunSpec({
     context("Year 2022") {
         context("Day 1: Calorie Counting") {
             val input = listOf(
@@ -35,11 +35,7 @@ class AdventOfCode2022 : FunSpec({
         }
 
         context("Day 2: Rock Paper Scissors") {
-            val input = listOf(
-                "A Y",
-                "B X",
-                "C Z"
-            )
+            val input = listOf("A Y", "B X", "C Z")
             test("Part One") {
                 val expected = 15
                 Day02.part1(input) shouldBe expected
@@ -178,13 +174,7 @@ class AdventOfCode2022 : FunSpec({
         }
 
         context("Day 8: Treetop Tree House") {
-            val input = listOf(
-                "30373",
-                "25512",
-                "65332",
-                "33549",
-                "35390"
-            )
+            val input = listOf("30373", "25512", "65332", "33549", "35390")
             test("Part One") {
                 val expected = 21
                 Day08.part1(input) shouldBe expected
@@ -197,16 +187,7 @@ class AdventOfCode2022 : FunSpec({
 
         context("Day 9: Rope Bridge") {
             test("Part One") {
-                val input = listOf(
-                    "R 4",
-                    "U 4",
-                    "L 3",
-                    "D 1",
-                    "R 4",
-                    "D 1",
-                    "L 5",
-                    "R 2"
-                )
+                val input = listOf("R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2")
                 val expected = 13
                 Day09.part1(input) shouldBe expected
             }
@@ -419,13 +400,7 @@ class AdventOfCode2022 : FunSpec({
         }
 
         context("Day 12: Hill Climbing Algorithm") {
-            val input = listOf(
-                "Sabqponm",
-                "abcryxxl",
-                "accszExk",
-                "acctuvwj",
-                "abdefghi"
-            )
+            val input = listOf("Sabqponm", "abcryxxl", "accszExk", "acctuvwj", "abdefghi")
             test("Part One") {
                 val expected = 31
                 Day12.part1(input) shouldBe expected

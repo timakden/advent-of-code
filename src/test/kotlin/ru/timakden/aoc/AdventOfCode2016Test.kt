@@ -5,17 +5,13 @@ import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2016.*
 
-class AdventOfCode2016 : FunSpec({
+class AdventOfCode2016Test : FunSpec({
     context("Year 2016") {
         context("Day 1: No Time for a Taxicab") {
             context("Part One") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        "R2, L3" to 5,
-                        "R2, R2, R2" to 2,
-                        "R5, L5, R5, R3" to 12
-                    )
+                    ts = listOf("R2, L3" to 5, "R2, R2, R2" to 2, "R5, L5, R5, R3" to 12)
                 ) { (input, expected) ->
                     Day01.part1(input) shouldBe expected
                 }
@@ -160,14 +156,7 @@ class AdventOfCode2016 : FunSpec({
         }
 
         test("Day 12: Leonardo's Monorail") {
-            val input = listOf(
-                "cpy 41 a",
-                "inc a",
-                "inc a",
-                "dec a",
-                "jnz a 2",
-                "dec a"
-            )
+            val input = listOf("cpy 41 a", "inc a", "inc a", "dec a", "jnz a 2", "dec a")
             val expected = 42
             Day12.part1(input) shouldBe expected
         }

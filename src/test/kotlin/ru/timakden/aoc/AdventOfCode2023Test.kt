@@ -2,9 +2,11 @@ package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import ru.timakden.aoc.year2023.*
+import ru.timakden.aoc.year2023.Day01
+import ru.timakden.aoc.year2023.Day02
+import ru.timakden.aoc.year2023.Day03
 
-class AdventOfCode2023 : FunSpec({
+class AdventOfCode2023Test : FunSpec({
     context("Year 2023") {
         context("Day 1: Trebuchet?!") {
             test("Part One") {
@@ -50,9 +52,27 @@ class AdventOfCode2023 : FunSpec({
             }
         }
 
-        context("Day 3:") {
-            test("Part One") {}
-            test("Part Two") {}
+        context("Day 3: Gear Ratios") {
+            val input = listOf(
+                "467..114..",
+                "...*......",
+                "..35..633.",
+                "......#...",
+                "617*......",
+                ".....+.58.",
+                "..592.....",
+                "......755.",
+                "...$.*....",
+                ".664.598.."
+            )
+            test("Part One") {
+                val expected = 4361
+                Day03.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 467835
+                Day03.part2(input) shouldBe expected
+            }
         }
     }
 })

@@ -6,7 +6,7 @@ import io.kotest.matchers.maps.shouldContainAll
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2015.*
 
-class AdventOfCode2015 : FunSpec({
+class AdventOfCode2015Test : FunSpec({
     context("Year 2015") {
         context("Day 1: Not Quite Lisp") {
             context("Part One") {
@@ -30,10 +30,7 @@ class AdventOfCode2015 : FunSpec({
             context("Part Two") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        ")" to 1,
-                        "()())" to 5
-                    )
+                    ts = listOf(")" to 1, "()())" to 5)
                 ) { (input, expected) ->
                     Day01.part2(input) shouldBe expected
                 }
@@ -44,10 +41,7 @@ class AdventOfCode2015 : FunSpec({
             context("Part One") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        listOf("2x3x4") to 58,
-                        listOf("1x1x10") to 43
-                    )
+                    ts = listOf(listOf("2x3x4") to 58, listOf("1x1x10") to 43)
                 ) { (input, expected) ->
                     Day02.part1(input) shouldBe expected
                 }
@@ -55,10 +49,7 @@ class AdventOfCode2015 : FunSpec({
             context("Part Two") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        listOf("2x3x4") to 34,
-                        listOf("1x1x10") to 14
-                    )
+                    ts = listOf(listOf("2x3x4") to 34, listOf("1x1x10") to 14)
                 ) { (input, expected) ->
                     Day02.part2(input) shouldBe expected
                 }
@@ -69,11 +60,7 @@ class AdventOfCode2015 : FunSpec({
             context("Part One") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        ">" to 2,
-                        "^>v<" to 4,
-                        "^v^v^v^v^v" to 2
-                    )
+                    ts = listOf(">" to 2, "^>v<" to 4, "^v^v^v^v^v" to 2)
                 ) { (input, expected) ->
                     Day03.part1(input) shouldBe expected
                 }
@@ -81,11 +68,7 @@ class AdventOfCode2015 : FunSpec({
             context("Part Two") {
                 withData(
                     nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(
-                        "^v" to 3,
-                        "^>v<" to 3,
-                        "^v^v^v^v^v" to 11
-                    )
+                    ts = listOf("^v" to 3, "^>v<" to 3, "^v^v^v^v^v" to 11)
                 ) { (input, expected) ->
                     Day03.part2(input) shouldBe expected
                 }
@@ -95,10 +78,7 @@ class AdventOfCode2015 : FunSpec({
         context("Day 4: The Ideal Stocking Stuffer") {
             withData(
                 nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                ts = listOf(
-                    "abcdef" to 609043,
-                    "pqrstuv" to 1048970
-                )
+                ts = listOf("abcdef" to 609043, "pqrstuv" to 1048970)
             ) { (input, expected) ->
                 Day04.part1(input) shouldBe expected
             }
