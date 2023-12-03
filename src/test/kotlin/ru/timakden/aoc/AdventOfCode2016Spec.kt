@@ -5,7 +5,7 @@ import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2016.*
 
-class AdventOfCode2016Test : FunSpec({
+class AdventOfCode2016Spec : FunSpec({
     context("Year 2016") {
         context("Day 1: No Time for a Taxicab") {
             context("Part One") {

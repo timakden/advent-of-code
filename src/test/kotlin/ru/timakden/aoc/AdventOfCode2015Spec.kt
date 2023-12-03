@@ -6,7 +6,7 @@ import io.kotest.matchers.maps.shouldContainAll
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2015.*
 
-class AdventOfCode2015Test : FunSpec({
+class AdventOfCode2015Spec : FunSpec({
     context("Year 2015") {
         context("Day 1: Not Quite Lisp") {
             context("Part One") {

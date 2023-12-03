@@ -5,7 +5,7 @@ import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2022.*
 
-class AdventOfCode2022Test : FunSpec({
+class AdventOfCode2022Spec : FunSpec({
     context("Year 2022") {
         context("Day 1: Calorie Counting") {
             val input = listOf(

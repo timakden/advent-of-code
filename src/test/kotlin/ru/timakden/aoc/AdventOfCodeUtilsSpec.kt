@@ -6,7 +6,7 @@ import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.util.*
 
-class AdventOfCodeUtilsTest : FunSpec({
+class AdventOfCodeUtilsSpec : FunSpec({
     context("Utils") {
         test("String.md5() generates MD5 hash as a hex string") {
             val input = "ILoveJava"

@@ -6,7 +6,7 @@ import ru.timakden.aoc.year2023.Day01
 import ru.timakden.aoc.year2023.Day02
 import ru.timakden.aoc.year2023.Day03
 
-class AdventOfCode2023Test : FunSpec({
+class AdventOfCode2023Spec : FunSpec({
     context("Year 2023") {
         context("Day 1: Trebuchet?!") {
             test("Part One") {
