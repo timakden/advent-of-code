@@ -31,7 +31,7 @@ fun measure(block: () -> Unit) = println("Elapsed time: ${measureTime(block)}")
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = Path("src/$name.txt").readLines()
+fun readInput(name: String) = Path("src/main/kotlin/ru/timakden/aoc/$name.txt").readLines()
 
 /**
  * The cleaner shorthand for printing output.
