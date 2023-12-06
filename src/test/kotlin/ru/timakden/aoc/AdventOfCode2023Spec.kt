@@ -137,5 +137,20 @@ class AdventOfCode2023Spec : FunSpec({
                 Day05.part2(input) shouldBe expected
             }
         }
+
+        context("Day 6: Wait For It") {
+            val input = listOf(
+                "Time:      7  15   30",
+                "Distance:  9  40  200"
+            )
+            test("Part One") {
+                val expected = 288
+                Day06.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 71503
+                Day06.part2(input) shouldBe expected
+            }
+        }
     }
 })
