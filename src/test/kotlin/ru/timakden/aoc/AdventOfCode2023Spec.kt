@@ -2,10 +2,7 @@ package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import ru.timakden.aoc.year2023.Day01
-import ru.timakden.aoc.year2023.Day02
-import ru.timakden.aoc.year2023.Day03
-import ru.timakden.aoc.year2023.Day04
+import ru.timakden.aoc.year2023.*
 
 class AdventOfCode2023Spec : FunSpec({
     context("Year 2023") {
@@ -92,6 +89,52 @@ class AdventOfCode2023Spec : FunSpec({
             test("Part Two") {
                 val expected = 30
                 Day04.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 5: If You Give A Seed A Fertilizer") {
+            val input = listOf(
+                "seeds: 79 14 55 13",
+                "",
+                "seed-to-soil map:",
+                "50 98 2",
+                "52 50 48",
+                "",
+                "soil-to-fertilizer map:",
+                "0 15 37",
+                "37 52 2",
+                "39 0 15",
+                "",
+                "fertilizer-to-water map:",
+                "49 53 8",
+                "0 11 42",
+                "42 0 7",
+                "57 7 4",
+                "",
+                "water-to-light map:",
+                "88 18 7",
+                "18 25 70",
+                "",
+                "light-to-temperature map:",
+                "45 77 23",
+                "81 45 19",
+                "68 64 13",
+                "",
+                "temperature-to-humidity map:",
+                "0 69 1",
+                "1 0 69",
+                "",
+                "humidity-to-location map:",
+                "60 56 37",
+                "56 93 4"
+            )
+            test("Part One") {
+                val expected = 35
+                Day05.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 46
+                Day05.part2(input) shouldBe expected
             }
         }
     }
