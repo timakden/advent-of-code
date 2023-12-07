@@ -26,7 +26,6 @@ object Day06 {
             }
             waysToWin
         }.fold(1) { acc, i -> acc * i }
-
     }
 
     fun part2(input: List<String>): Int {

@@ -152,5 +152,23 @@ class AdventOfCode2023Spec : FunSpec({
                 Day06.part2(input) shouldBe expected
             }
         }
+
+        context("Day 7: Camel Cards") {
+            val input = listOf(
+                "32T3K 765",
+                "T55J5 684",
+                "KK677 28",
+                "KTJJT 220",
+                "QQQJA 483"
+            )
+            test("Part One") {
+                val expected = 6440
+                Day07.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 5905
+                Day07.part2(input) shouldBe expected
+            }
+        }
     }
 })
