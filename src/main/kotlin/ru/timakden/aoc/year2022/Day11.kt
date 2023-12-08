@@ -1,5 +1,6 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.lcm
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day11.Monkey.Companion.toMonkey
@@ -125,8 +126,4 @@ object Day11 {
             }
         }
     }
-
-    private tailrec fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
-
-    private fun lcm(a: Long, b: Long) = a / gcd(a, b) * b
 }

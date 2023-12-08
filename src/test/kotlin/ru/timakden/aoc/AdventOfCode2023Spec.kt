@@ -1,6 +1,7 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2023.*
 
@@ -168,6 +169,52 @@ class AdventOfCode2023Spec : FunSpec({
             test("Part Two") {
                 val expected = 5905
                 Day07.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 8: Haunted Wasteland") {
+            context("Part One") {
+                withData(
+                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    ts = listOf(
+                        listOf(
+                            "RL",
+                            "",
+                            "AAA = (BBB, CCC)",
+                            "BBB = (DDD, EEE)",
+                            "CCC = (ZZZ, GGG)",
+                            "DDD = (DDD, DDD)",
+                            "EEE = (EEE, EEE)",
+                            "GGG = (GGG, GGG)",
+                            "ZZZ = (ZZZ, ZZZ)"
+                        ) to 2,
+                        listOf(
+                            "LLR",
+                            "",
+                            "AAA = (BBB, BBB)",
+                            "BBB = (AAA, ZZZ)",
+                            "ZZZ = (ZZZ, ZZZ)"
+                        ) to 6
+                    )
+                ) { (input, expected) ->
+                    Day08.part1(input) shouldBe expected
+                }
+            }
+            test("Part Two") {
+                val input = listOf(
+                    "LR",
+                    "",
+                    "11A = (11B, XXX)",
+                    "11B = (XXX, 11Z)",
+                    "11Z = (11B, XXX)",
+                    "22A = (22B, XXX)",
+                    "22B = (22C, 22C)",
+                    "22C = (22Z, 22Z)",
+                    "22Z = (22B, 22B)",
+                    "XXX = (XXX, XXX)"
+                )
+                val expected = 6
+                Day08.part2(input) shouldBe expected
             }
         }
     }
