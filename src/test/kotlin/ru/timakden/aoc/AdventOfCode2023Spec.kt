@@ -217,5 +217,21 @@ class AdventOfCode2023Spec : FunSpec({
                 Day08.part2(input) shouldBe expected
             }
         }
+
+        context("Day 9: Mirage Maintenance") {
+            val input = listOf(
+                "0 3 6 9 12 15",
+                "1 3 6 10 15 21",
+                "10 13 16 21 30 45"
+            )
+            test("Part One") {
+                val expected = 114
+                Day09.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 2
+                Day09.part2(input) shouldBe expected
+            }
+        }
     }
 })
