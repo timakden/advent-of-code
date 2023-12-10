@@ -174,7 +174,7 @@ object Day05 {
         return locations.minOf { it.first }
     }
 
-    data class Range(val first: Long, val last: Long)
+    private data class Range(val first: Long, val last: Long)
 
     private fun getDestination(source: Long, map: Map<Range, Range>): Long {
         return map.filterKeys { source >= it.first && source <= it.last }.map { it.key to it.value }.singleOrNull()

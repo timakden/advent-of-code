@@ -36,7 +36,7 @@ object Day07 {
         }.sum()
     }
 
-    data class HandP1(val hand: String) : Comparable<HandP1> {
+    private data class HandP1(val hand: String) : Comparable<HandP1> {
         private val type: HandType
             get() {
                 val labels = hand.groupingBy { it }.eachCount()
@@ -85,7 +85,7 @@ object Day07 {
         }
     }
 
-    data class HandP2(val hand: String) : Comparable<HandP2> {
+    private data class HandP2(val hand: String) : Comparable<HandP2> {
         private val type: HandType
             get() {
                 val labels = hand.groupingBy { it }.eachCount()

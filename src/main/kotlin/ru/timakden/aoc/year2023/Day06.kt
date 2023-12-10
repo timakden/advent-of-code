@@ -42,5 +42,5 @@ object Day06 {
         return waysToWin
     }
 
-    data class Race(val time: Long, val recordDistance: Long)
+    private data class Race(val time: Long, val recordDistance: Long)
 }
