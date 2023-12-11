@@ -4,6 +4,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
+import kotlin.math.abs
 import kotlin.time.measureTime
 
 /**
@@ -67,3 +68,15 @@ tailrec fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
  * @return The LCM of the two numbers.
  */
 fun lcm(a: Long, b: Long) = a / gcd(a, b) * b
+
+/**
+ * Calculates the Manhattan distance between two points.
+ *
+ * The Manhattan distance is the sum of the absolute differences of the x-coordinates and y-coordinates
+ * of two points in a grid-like pattern.
+ *
+ * @param p1 the coordinates of the first point as a Pair of Ints (x, y)
+ * @param p2 the coordinates of the second point as a Pair of Ints (x, y)
+ * @return the Manhattan distance between the two points
+ */
+fun manhattanDistance(p1: Pair<Int, Int>, p2: Pair<Int, Int>) = abs(p1.first - p2.first) + abs(p1.second - p2.second)

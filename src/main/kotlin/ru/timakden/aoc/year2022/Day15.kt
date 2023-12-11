@@ -1,5 +1,6 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.manhattanDistance
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.abs
@@ -71,9 +72,6 @@ object Day15 {
 
         fun coveredBySensor(cell: Pair<Int, Int>) = sensorMap.values.find { it.covers(cell) }
     }
-
-    private fun manhattanDistance(p1: Pair<Int, Int>, p2: Pair<Int, Int>) =
-        abs(p1.first - p2.first) + abs(p1.second - p2.second)
 
     private fun notCoveredCell(input: List<String>, maxCoordinate: Int): Pair<Int, Int>? {
         val sensors = Sensors(input)

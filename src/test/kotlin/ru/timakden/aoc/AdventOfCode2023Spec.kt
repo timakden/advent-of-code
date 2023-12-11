@@ -303,5 +303,28 @@ class AdventOfCode2023Spec : FunSpec({
                 }
             }
         }
+
+        context("Day 11: Cosmic Expansion") {
+            val input = listOf(
+                "...#......",
+                ".......#..",
+                "#.........",
+                "..........",
+                "......#...",
+                ".#........",
+                ".........#",
+                "..........",
+                ".......#..",
+                "#...#....."
+            )
+            test("Part One") {
+                val expected = 374L
+                Day11.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 82000210L
+                Day11.part2(input) shouldBe expected
+            }
+        }
     }
 })
