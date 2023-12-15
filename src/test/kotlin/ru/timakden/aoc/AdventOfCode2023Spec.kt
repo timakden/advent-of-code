@@ -326,5 +326,17 @@ class AdventOfCode2023Spec : FunSpec({
                 Day11.part2(input) shouldBe expected
             }
         }
+
+        context("Day 15: Lens Library") {
+            val input = "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7"
+            test("Part One") {
+                val expected = 1320
+                Day15.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 145
+                Day15.part2(input) shouldBe expected
+            }
+        }
     }
 })
