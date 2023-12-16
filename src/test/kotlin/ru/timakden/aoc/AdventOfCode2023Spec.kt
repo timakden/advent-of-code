@@ -327,6 +327,25 @@ class AdventOfCode2023Spec : FunSpec({
             }
         }
 
+        context("Day 12: Hot Springs") {
+            val input = listOf(
+                "???.### 1,1,3",
+                ".??..??...?##. 1,1,3",
+                "?#?#?#?#?#?#?#? 1,3,1,6",
+                "????.#...#... 4,1,1",
+                "????.######..#####. 1,6,5",
+                "?###???????? 3,2,1"
+            )
+            test("Part One") {
+                val expected = 21
+                Day12.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 525152
+                Day12.part2(input) shouldBe expected
+            }
+        }
+
         context("Day 15: Lens Library") {
             val input = "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7"
             test("Part One") {
