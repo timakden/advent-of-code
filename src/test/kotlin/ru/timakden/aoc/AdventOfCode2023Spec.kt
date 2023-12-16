@@ -346,6 +346,29 @@ class AdventOfCode2023Spec : FunSpec({
             }
         }
 
+        context("Day 14: Parabolic Reflector Dish") {
+            val input = listOf(
+                "O....#....",
+                "O.OO#....#",
+                ".....##...",
+                "OO.#O....O",
+                ".O.....O#.",
+                "O.#..O.#.#",
+                "..O..#O..O",
+                ".......O..",
+                "#....###..",
+                "#OO..#...."
+            )
+            test("Part One") {
+                val expected = 136
+                Day14.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 64
+                Day14.part2(input) shouldBe expected
+            }
+        }
+
         context("Day 15: Lens Library") {
             val input = "rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7"
             test("Part One") {
