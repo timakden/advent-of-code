@@ -6,6 +6,9 @@ import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day07.Node.Directory
 import ru.timakden.aoc.year2022.Day07.Node.File
 
+/**
+ * [Day 7: No Space Left On Device](https://adventofcode.com/2022/day/7).
+ */
 object Day07 {
     @JvmStatic
     fun main(args: Array<String>) {

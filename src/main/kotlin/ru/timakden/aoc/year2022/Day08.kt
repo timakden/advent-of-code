@@ -1,8 +1,12 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 8: Treetop Tree House](https://adventofcode.com/2022/day/8).
+ */
 object Day08 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -18,30 +22,30 @@ object Day08 {
         val treeGrid = input.map { row -> row.map { it.digitToInt() } }
         val lastColumnIndex = treeGrid.first().lastIndex
         val lastRowIndex = treeGrid.lastIndex
-        val heights = mutableMapOf<Pair<Int, Int>, Int>()
+        val heights = mutableMapOf<Point, Int>()
 
-        treeGrid.forEachIndexed { i, trees -> trees.forEachIndexed { j, tree -> heights[i to j] = tree } }
+        treeGrid.forEachIndexed { i, trees -> trees.forEachIndexed { j, tree -> heights[Point(i, j)] = tree } }
 
         treeGrid.forEachIndexed { i, trees ->
             for (j in trees.indices) {
                 val tree = trees[j]
                 if (i == 0 || j == 0 || i == lastRowIndex || j == lastColumnIndex) visibleTrees++
                 else {
-                    if (heights.filterKeys { it.first == i && it.second in (0..<j) }.all { it.value < tree }) {
+                    if (heights.filterKeys { it.x == i && it.y in (0..<j) }.all { it.value < tree }) {
                         visibleTrees++
                         continue
                     }
-                    if (heights.filterKeys { it.first == i && it.second in (j + 1..lastColumnIndex) }
+                    if (heights.filterKeys { it.x == i && it.y in (j + 1..lastColumnIndex) }
                             .all { it.value < tree }
                     ) {
                         visibleTrees++
                         continue
                     }
-                    if (heights.filterKeys { it.first in (0..<i) && it.second == j }.all { it.value < tree }) {
+                    if (heights.filterKeys { it.x in (0..<i) && it.y == j }.all { it.value < tree }) {
                         visibleTrees++
                         continue
                     }
-                    if (heights.filterKeys { it.first in (i + 1..lastRowIndex) && it.second == j }
+                    if (heights.filterKeys { it.x in (i + 1..lastRowIndex) && it.y == j }
                             .all { it.value < tree }
                     ) {
                         visibleTrees++
@@ -58,20 +62,20 @@ object Day08 {
         val treeGrid = input.map { row -> row.map { it.digitToInt() } }
         val lastColumnIndex = treeGrid.first().lastIndex
         val lastRowIndex = treeGrid.lastIndex
-        val heights = mutableMapOf<Pair<Int, Int>, Int>()
-        val scenicScores = mutableMapOf<Pair<Int, Int>, Int>()
+        val heights = mutableMapOf<Point, Int>()
+        val scenicScores = mutableMapOf<Point, Int>()
 
-        treeGrid.forEachIndexed { i, trees -> trees.forEachIndexed { j, tree -> heights[i to j] = tree } }
+        treeGrid.forEachIndexed { i, trees -> trees.forEachIndexed { j, tree -> heights[Point(i, j)] = tree } }
 
         treeGrid.forEachIndexed { i, trees ->
             trees.forEachIndexed { j, tree ->
-                if (i == 0 || j == 0 || i == lastRowIndex || j == lastColumnIndex) scenicScores[i to j] = 0
+                if (i == 0 || j == 0 || i == lastRowIndex || j == lastColumnIndex) scenicScores[Point(i, j)] = 0
                 else {
                     val scoreLeft = kotlin.run {
                         var count = 0
                         for (k in j - 1 downTo 0) {
-                            if (checkNotNull(heights[i to k]) < tree) count++
-                            else if (checkNotNull(heights[i to k]) >= tree) {
+                            if (checkNotNull(heights[Point(i, k)]) < tree) count++
+                            else if (checkNotNull(heights[Point(i, k)]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -82,8 +86,8 @@ object Day08 {
                     val scoreRight = kotlin.run {
                         var count = 0
                         for (k in j + 1..lastColumnIndex) {
-                            if (checkNotNull(heights[i to k]) < tree) count++
-                            else if (checkNotNull(heights[i to k]) >= tree) {
+                            if (checkNotNull(heights[Point(i, k)]) < tree) count++
+                            else if (checkNotNull(heights[Point(i, k)]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -94,8 +98,8 @@ object Day08 {
                     val scoreUp = kotlin.run {
                         var count = 0
                         for (k in i - 1 downTo 0) {
-                            if (checkNotNull(heights[k to j]) < tree) count++
-                            else if (checkNotNull(heights[k to j]) >= tree) {
+                            if (checkNotNull(heights[Point(k, j)]) < tree) count++
+                            else if (checkNotNull(heights[Point(k, j)]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -106,8 +110,8 @@ object Day08 {
                     val scoreDown = kotlin.run {
                         var count = 0
                         for (k in i + 1..lastRowIndex) {
-                            if (checkNotNull(heights[k to j]) < tree) count++
-                            else if (checkNotNull(heights[k to j]) >= tree) {
+                            if (checkNotNull(heights[Point(k, j)]) < tree) count++
+                            else if (checkNotNull(heights[Point(k, j)]) >= tree) {
                                 count++
                                 break
                             } else break
@@ -115,7 +119,7 @@ object Day08 {
                         count
                     }
 
-                    scenicScores[i to j] = scoreLeft * scoreRight * scoreUp * scoreDown
+                    scenicScores[Point(i, j)] = scoreLeft * scoreRight * scoreUp * scoreDown
                 }
             }
         }

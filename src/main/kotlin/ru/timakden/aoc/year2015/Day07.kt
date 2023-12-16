@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.isNumber
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7).
+ */
 object Day07 {
     @JvmStatic
     fun main(args: Array<String>) {

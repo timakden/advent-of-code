@@ -1,5 +1,6 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day23.Direction.*
@@ -7,7 +8,9 @@ import ru.timakden.aoc.year2022.Day23.Elf.Companion.fillProposedPositions
 import ru.timakden.aoc.year2022.Day23.Elf.Companion.move
 import ru.timakden.aoc.year2022.Day23.Elf.Companion.toElves
 
-
+/**
+ * [Day 23: Unstable Diffusion](https://adventofcode.com/2022/day/23).
+ */
 object Day23 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -26,8 +29,8 @@ object Day23 {
             elves.move()
         }
 
-        val height = (elves.minOf { it.position.first }..elves.maxOf { it.position.first }).count()
-        val width = (elves.minOf { it.position.second }..elves.maxOf { it.position.second }).count()
+        val height = (elves.minOf { it.position.y }..elves.maxOf { it.position.y }).count()
+        val width = (elves.minOf { it.position.x }..elves.maxOf { it.position.x }).count()
 
         return height * width - elves.count()
     }
@@ -62,48 +65,48 @@ object Day23 {
         }
     }
 
-    private data class Elf(var position: Pair<Int, Int>) {
-        var proposedPositions: MutableList<Pair<Int, Int>> = mutableListOf()
+    private data class Elf(var position: Point) {
+        var proposedPositions: MutableList<Point> = mutableListOf()
 
         fun proposePosition(elves: List<Elf>, direction: Direction) = when (direction) {
             EAST -> {
                 val adjacentPositions = listOf(
-                    position.first to position.second + 1,
-                    position.first - 1 to position.second + 1,
-                    position.first + 1 to position.second + 1,
+                    Point(position.x + 1, position.y),
+                    Point(position.x + 1, position.y - 1),
+                    Point(position.x + 1, position.y + 1),
                 )
                 if (elves.any { it.position in adjacentPositions }) null
-                else position.first to position.second + 1
+                else Point(position.x + 1, position.y)
             }
 
             NORTH -> {
                 val adjacentPositions = listOf(
-                    position.first - 1 to position.second,
-                    position.first - 1 to position.second - 1,
-                    position.first - 1 to position.second + 1
+                    Point(position.x, position.y - 1),
+                    Point(position.x - 1, position.y - 1),
+                    Point(position.x + 1, position.y - 1)
                 )
                 if (elves.any { it.position in adjacentPositions }) null
-                else position.first - 1 to position.second
+                else Point(position.x, position.y - 1)
             }
 
             SOUTH -> {
                 val adjacentPositions = listOf(
-                    position.first + 1 to position.second,
-                    position.first + 1 to position.second - 1,
-                    position.first + 1 to position.second + 1
+                    Point(position.x, position.y + 1),
+                    Point(position.x - 1, position.y + 1),
+                    Point(position.x + 1, position.y + 1)
                 )
                 if (elves.any { it.position in adjacentPositions }) null
-                else position.first + 1 to position.second
+                else Point(position.x, position.y + 1)
             }
 
             WEST -> {
                 val adjacentPositions = listOf(
-                    position.first to position.second - 1,
-                    position.first - 1 to position.second - 1,
-                    position.first + 1 to position.second - 1,
+                    Point(position.x - 1, position.y),
+                    Point(position.x - 1, position.y - 1),
+                    Point(position.x - 1, position.y + 1),
                 )
                 if (elves.any { it.position in adjacentPositions }) null
-                else position.first to position.second - 1
+                else Point(position.x - 1, position.y)
             }
         }
 
@@ -112,7 +115,7 @@ object Day23 {
                 val elves = mutableListOf<Elf>()
                 this.forEachIndexed { row, s ->
                     s.forEachIndexed { column, c ->
-                        if (c == '#') elves += Elf(row to column)
+                        if (c == '#') elves += Elf(Point(column, row))
                     }
                 }
                 return elves

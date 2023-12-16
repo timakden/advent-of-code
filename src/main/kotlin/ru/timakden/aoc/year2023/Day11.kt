@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 11: Cosmic Expansion](https://adventofcode.com/2023/day/11).
+ */
 object Day11 {
     @JvmStatic
     fun main(args: Array<String>) {

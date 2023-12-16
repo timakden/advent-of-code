@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 3: Rucksack Reorganization](https://adventofcode.com/2022/day/3).
+ */
 object Day03 {
     @JvmStatic
     fun main(args: Array<String>) {

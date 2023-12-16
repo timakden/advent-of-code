@@ -8,6 +8,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2015.Day16.Aunt.Compound.*
 
+/**
+ * [Day 16: Aunt Sue](https://adventofcode.com/2015/day/16).
+ */
 object Day16 {
     @JvmStatic
     fun main(args: Array<String>) {

@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.Permutations
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13).
+ */
 object Day13 {
     @JvmStatic
     fun main(args: Array<String>) {

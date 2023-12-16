@@ -24,13 +24,12 @@ class AdventOfCode2016Spec : FunSpec({
         }
 
         context("Day 2: Bathroom Security") {
+            val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
             test("Part One") {
-                val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "1985"
                 Day02.part1(input) shouldBe expected
             }
             test("Part Two") {
-                val input = listOf("ULL", "RRDDD", "LURDL", "UUUUD")
                 val expected = "5DB3"
                 Day02.part2(input) shouldBe expected
             }

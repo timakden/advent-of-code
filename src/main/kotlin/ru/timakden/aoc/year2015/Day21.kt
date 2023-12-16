@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2015.Day21.Item.*
 
+/**
+ * [Day 21: RPG Simulator 20XX](https://adventofcode.com/2015/day/21).
+ */
 object Day21 {
     @JvmStatic
     fun main(args: Array<String>) {

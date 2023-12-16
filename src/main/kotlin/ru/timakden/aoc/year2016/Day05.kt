@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.md5
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 5: How About a Nice Game of Chess?](https://adventofcode.com/2016/day/5).
+ */
 object Day05 {
     @JvmStatic
     fun main(args: Array<String>) {

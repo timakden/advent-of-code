@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day11.Monkey.Companion.toMonkey
 
+/**
+ * [Day 11: Monkey in the Middle](https://adventofcode.com/2022/day/11).
+ */
 object Day11 {
     @JvmStatic
     fun main(args: Array<String>) {

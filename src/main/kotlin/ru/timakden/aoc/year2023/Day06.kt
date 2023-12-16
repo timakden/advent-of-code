@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2023
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 6: Wait For It](https://adventofcode.com/2023/day/6).
+ */
 object Day06 {
     @JvmStatic
     fun main(args: Array<String>) {

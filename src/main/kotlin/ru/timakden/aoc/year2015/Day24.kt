@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.PowerSet
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 24: It Hangs in the Balance](https://adventofcode.com/2015/day/24).
+ */
 object Day24 {
     @JvmStatic
     fun main(args: Array<String>) {

@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2023.Day09.Direction.BACKWARDS
 import ru.timakden.aoc.year2023.Day09.Direction.FORWARDS
 
+/**
+ * [Day 9: Mirage Maintenance](https://adventofcode.com/2023/day/9).
+ */
 object Day09 {
     @JvmStatic
     fun main(args: Array<String>) {

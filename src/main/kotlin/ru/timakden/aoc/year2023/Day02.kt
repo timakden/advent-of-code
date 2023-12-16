@@ -4,6 +4,9 @@ import arrow.core.fold
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2).
+ */
 object Day02 {
     @JvmStatic
     fun main(args: Array<String>) {

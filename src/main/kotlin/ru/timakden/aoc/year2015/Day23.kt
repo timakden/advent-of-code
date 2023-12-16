@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 23: Opening the Turing Lock](https://adventofcode.com/2015/day/23).
+ */
 object Day23 {
     @JvmStatic
     fun main(args: Array<String>) {

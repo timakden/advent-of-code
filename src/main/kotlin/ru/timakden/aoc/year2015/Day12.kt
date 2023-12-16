@@ -4,6 +4,9 @@ import kotlinx.serialization.json.*
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12).
+ */
 object Day12 {
     @JvmStatic
     fun main(args: Array<String>) {

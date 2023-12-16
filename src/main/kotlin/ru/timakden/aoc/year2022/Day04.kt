@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 4: Camp Cleanup](https://adventofcode.com/2022/day/4).
+ */
 object Day04 {
     @JvmStatic
     fun main(args: Array<String>) {

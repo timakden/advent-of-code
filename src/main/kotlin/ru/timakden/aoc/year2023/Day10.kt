@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.properties.Delegates
 
+/**
+ * [Day 10: Pipe Maze](https://adventofcode.com/2023/day/10).
+ */
 object Day10 {
     @JvmStatic
     fun main(args: Array<String>) {

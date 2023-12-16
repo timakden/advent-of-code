@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10).
+ */
 object Day10 {
     @JvmStatic
     fun main(args: Array<String>) {

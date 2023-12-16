@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2016
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 3: Squares With Three Sides](https://adventofcode.com/2016/day/3).
+ */
 object Day03 {
     @JvmStatic
     fun main(args: Array<String>) {

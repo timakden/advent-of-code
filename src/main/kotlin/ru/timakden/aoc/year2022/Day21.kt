@@ -3,7 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
-
+/**
+ * [Day 21: Monkey Math](https://adventofcode.com/2022/day/21).
+ */
 object Day21 {
     @JvmStatic
     fun main(args: Array<String>) {

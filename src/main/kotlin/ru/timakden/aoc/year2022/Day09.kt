@@ -1,11 +1,15 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day09.Direction.*
 import ru.timakden.aoc.year2022.Day09.Direction.Companion.toDirection
 import kotlin.math.absoluteValue
 
+/**
+ * [Day 9: Rope Bridge](https://adventofcode.com/2022/day/9).
+ */
 object Day09 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -16,12 +20,12 @@ object Day09 {
         }
     }
 
-    fun part1(input: List<String>) = performMotions(MutableList(2) { 0 to 0 }, input)
+    fun part1(input: List<String>) = performMotions(MutableList(2) { Point(0, 0) }, input)
 
-    fun part2(input: List<String>) = performMotions(MutableList(10) { 0 to 0 }, input)
+    fun part2(input: List<String>) = performMotions(MutableList(10) { Point(0, 0) }, input)
 
-    private fun performMotions(rope: MutableList<Pair<Int, Int>>, input: List<String>): Int {
-        val visitedPositions = mutableSetOf<Pair<Int, Int>>().apply { add(0 to 0) }
+    private fun performMotions(rope: MutableList<Point>, input: List<String>): Int {
+        val visitedPositions = mutableSetOf<Point>().apply { add(Point(0, 0)) }
 
         input.forEach { instruction ->
             val (direction, steps) = instruction.split(' ').let { it.first().toDirection() to it.last().toInt() }
@@ -41,30 +45,30 @@ object Day09 {
         return visitedPositions.count()
     }
 
-    private fun moveHead(direction: Direction, position: Pair<Int, Int>) = when (direction) {
-        DOWN -> position.first to (position.second - 1)
-        LEFT -> (position.first - 1) to position.second
-        RIGHT -> (position.first + 1) to position.second
-        UP -> position.first to (position.second + 1)
+    private fun moveHead(direction: Direction, position: Point) = when (direction) {
+        DOWN -> Point(position.x, position.y - 1)
+        LEFT -> Point(position.x - 1, position.y)
+        RIGHT -> Point(position.x + 1, position.y)
+        UP -> Point(position.x, position.y + 1)
     }
 
-    private fun needMoveTail(tail: Pair<Int, Int>, head: Pair<Int, Int>) =
-        (tail.first - head.first).absoluteValue > 1 || (tail.second - head.second).absoluteValue > 1
+    private fun needMoveTail(tail: Point, head: Point) =
+        (tail.x - head.x).absoluteValue > 1 || (tail.y - head.y).absoluteValue > 1
 
-    private fun moveTail(tail: Pair<Int, Int>, head: Pair<Int, Int>): Pair<Int, Int> {
+    private fun moveTail(tail: Point, head: Point): Point {
         val x = when {
-            tail.first == head.first -> tail.first
-            tail.first < head.first -> tail.first + 1
-            else -> tail.first - 1
+            tail.x == head.x -> tail.x
+            tail.x < head.x -> tail.x + 1
+            else -> tail.x - 1
         }
 
         val y = when {
-            tail.second == head.second -> tail.second
-            tail.second < head.second -> tail.second + 1
-            else -> tail.second - 1
+            tail.y == head.y -> tail.y
+            tail.y < head.y -> tail.y + 1
+            else -> tail.y - 1
         }
 
-        return x to y
+        return Point(x, y)
     }
 
     private enum class Direction {

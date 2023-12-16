@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2016
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 9: Explosives in Cyberspace](https://adventofcode.com/2016/day/9).
+ */
 object Day09 {
     @JvmStatic
     fun main(args: Array<String>) {

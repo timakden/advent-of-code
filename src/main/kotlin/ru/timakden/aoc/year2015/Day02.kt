@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 2: I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2).
+ */
 object Day02 {
     @JvmStatic
     fun main(args: Array<String>) {

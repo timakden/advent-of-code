@@ -7,6 +7,9 @@ import ru.timakden.aoc.year2022.Day02.Shape.Companion.canDefeat
 import ru.timakden.aoc.year2022.Day02.Shape.Companion.getShapeByCondition
 import ru.timakden.aoc.year2022.Day02.Shape.Companion.toShape
 
+/**
+ * [Day 2: Rock Paper Scissors](https://adventofcode.com/2022/day/2).
+ */
 object Day02 {
     @JvmStatic
     fun main(args: Array<String>) {

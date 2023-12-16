@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2023
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1).
+ */
 object Day01 {
     @JvmStatic
     fun main(args: Array<String>) {

@@ -1,10 +1,14 @@
 package ru.timakden.aoc.year2016
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2016.Day01.Direction.*
 import kotlin.math.abs
 
+/**
+ * [Day 1: No Time for a Taxicab](https://adventofcode.com/2016/day/1).
+ */
 object Day01 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -39,7 +43,7 @@ object Day01 {
         var x = 0
         var y = 0
         var direction = NORTH
-        val coordinates = mutableListOf<Pair<Int, Int>>()
+        val coordinates = mutableListOf<Point>()
 
         input.split(", ").forEach { instruction ->
             val numberOfBlocks = instruction.substring(1).toInt()
@@ -54,9 +58,9 @@ object Day01 {
                     WEST -> y++
                 }
 
-                if (x to y in coordinates) return abs(x) + abs(y)
+                if (Point(x, y) in coordinates) return abs(x) + abs(y)
 
-                coordinates += x to y
+                coordinates += Point(x, y)
             }
         }
 

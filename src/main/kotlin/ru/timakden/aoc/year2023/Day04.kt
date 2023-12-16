@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.pow
 
+/**
+ * [Day 4: Scratchcards](https://adventofcode.com/2023/day/4).
+ */
 object Day04 {
     @JvmStatic
     fun main(args: Array<String>) {

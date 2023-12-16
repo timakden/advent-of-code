@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.Permutations
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9).
+ */
 object Day09 {
     @JvmStatic
     fun main(args: Array<String>) {

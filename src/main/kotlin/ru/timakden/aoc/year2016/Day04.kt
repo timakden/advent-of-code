@@ -6,6 +6,9 @@ import arrow.core.some
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 4: Security Through Obscurity](https://adventofcode.com/2016/day/4).
+ */
 object Day04 {
     @JvmStatic
     fun main(args: Array<String>) {

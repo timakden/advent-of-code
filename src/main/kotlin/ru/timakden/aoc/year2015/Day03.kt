@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 3: Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3).
+ */
 object Day03 {
     @JvmStatic
     fun main(args: Array<String>) {

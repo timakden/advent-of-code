@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2023
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 15: Lens Library](https://adventofcode.com/2023/day/15).
+ */
 object Day15 {
     @JvmStatic
     fun main(args: Array<String>) {

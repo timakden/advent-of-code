@@ -3,7 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
-
+/**
+ * [Day 20: Grove Positioning System](https://adventofcode.com/2022/day/20).
+ */
 object Day20 {
     @JvmStatic
     fun main(args: Array<String>) {

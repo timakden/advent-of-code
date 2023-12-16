@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2016
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 7: Internet Protocol Version 7](https://adventofcode.com/2016/day/7).
+ */
 object Day07 {
     @JvmStatic
     fun main(args: Array<String>) {

@@ -4,7 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.abs
 
-
+/**
+ * [Day 24: Blizzard Basin](https://adventofcode.com/2022/day/24).
+ */
 object Day24 {
     @JvmStatic
     fun main(args: Array<String>) {

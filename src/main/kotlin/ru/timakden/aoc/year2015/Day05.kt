@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 5: Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5).
+ */
 object Day05 {
     @JvmStatic
     fun main(args: Array<String>) {

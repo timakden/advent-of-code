@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.md5
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 14: One-Time Pad](https://adventofcode.com/2016/day/14).
+ */
 object Day14 {
     @JvmStatic
     fun main(args: Array<String>) {

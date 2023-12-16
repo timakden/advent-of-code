@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 20: Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20).
+ */
 object Day20 {
     @JvmStatic
     fun main(args: Array<String>) {

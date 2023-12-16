@@ -1,12 +1,15 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day22.Facing.*
 import ru.timakden.aoc.year2022.Day22.Side.*
 import ru.timakden.aoc.year2022.Day22.Side.Companion.toSide
 
-
+/**
+ * [Day 22: Monkey Map](https://adventofcode.com/2022/day/22).
+ */
 object Day22 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -46,7 +49,7 @@ object Day22 {
     private data class BoardMap(val map: List<String>) {
         val height = map.size
         val width = map.maxOf { it.length }
-        var position = 0 to map.first().indexOfFirst { it == '.' }
+        var position = Point(map.first().indexOfFirst { it == '.' }, 0)
         var facing = RIGHT
         private val allowedTiles = listOf('.', '#')
 
@@ -68,55 +71,55 @@ object Day22 {
             }
         }
 
-        private fun wrap(): Pair<Int, Int> {
+        private fun wrap(): Point {
             when (facing) {
                 DOWN -> {
-                    var row = position.first
+                    var row = position.y
                     while (true) {
-                        if (row == 0) return 0 to position.second
+                        if (row == 0) return Point(position.x, 0)
 
-                        map[row].getOrNull(position.second)?.let {
-                            if (it !in allowedTiles) return row + 1 to position.second
-                        } ?: return row + 1 to position.second
+                        map[row].getOrNull(position.x)?.let {
+                            if (it !in allowedTiles) return Point(position.x, row + 1)
+                        } ?: return Point(position.x, row + 1)
 
                         row--
                     }
                 }
 
                 LEFT -> {
-                    var column = position.second
+                    var column = position.x
                     while (true) {
-                        if (column == width - 1) return position.first to width - 1
+                        if (column == width - 1) return Point(width - 1, position.y)
 
-                        map[position.first].getOrNull(column)?.let {
-                            if (it !in allowedTiles) return position.first to column - 1
-                        } ?: return position.first to column - 1
+                        map[position.y].getOrNull(column)?.let {
+                            if (it !in allowedTiles) return Point(column - 1, position.y)
+                        } ?: return Point(column - 1, position.y)
 
                         column++
                     }
                 }
 
                 RIGHT -> {
-                    var column = position.second
+                    var column = position.x
                     while (true) {
-                        if (column == 0) return position.first to 0
+                        if (column == 0) return Point(0, position.y)
 
-                        map[position.first].getOrNull(column)?.let {
-                            if (it !in allowedTiles) return position.first to column + 1
-                        } ?: return position.first to column + 1
+                        map[position.y].getOrNull(column)?.let {
+                            if (it !in allowedTiles) return Point(column + 1, position.y)
+                        } ?: return Point(column + 1, position.y)
 
                         column--
                     }
                 }
 
                 UP -> {
-                    var row = position.first
+                    var row = position.y
                     while (true) {
-                        if (row == height - 1) return height - 1 to position.second
+                        if (row == height - 1) return Point(position.x, height - 1)
 
-                        map[row].getOrNull(position.second)?.let {
-                            if (it !in allowedTiles) return row - 1 to position.second
-                        } ?: return row - 1 to position.second
+                        map[row].getOrNull(position.x)?.let {
+                            if (it !in allowedTiles) return Point(position.x, row - 1)
+                        } ?: return Point(position.x, row - 1)
 
                         row++
                     }
@@ -124,53 +127,53 @@ object Day22 {
             }
         }
 
-        fun wrapCube(): Pair<Pair<Int, Int>, Facing> {
+        fun wrapCube(): Pair<Point, Facing> {
             var nextFacing = facing
             val side = position.toSide()
             var nextPosition = position
 
             if (side == A && facing == UP) {
                 nextFacing = RIGHT
-                nextPosition = 3 * 50 + position.second - 50 to 0
+                nextPosition = Point(0, 3 * 50 + position.x - 50)
             } else if (side == A && facing == LEFT) {
                 nextFacing = RIGHT
-                nextPosition = 2 * 50 + (50 - position.first - 1) to 0
+                nextPosition = Point(0, 2 * 50 + (50 - position.y - 1))
             } else if (side == B && facing == UP) {
                 nextFacing = UP
-                nextPosition = 199 to position.second - 100
+                nextPosition = Point(position.x - 100, 199)
             } else if (side == B && facing == RIGHT) {
                 nextFacing = LEFT
-                nextPosition = (50 - position.first) + 2 * 50 - 1 to 99
+                nextPosition = Point(99, (50 - position.y) + 2 * 50 - 1)
             } else if (side == B && facing == DOWN) {
                 nextFacing = LEFT
-                nextPosition = 50 + (position.second - 2 * 50) to 99
+                nextPosition = Point(99, 50 + (position.x - 2 * 50))
             } else if (side == C && facing == RIGHT) {
                 nextFacing = UP
-                nextPosition = 49 to (position.first - 50) + 2 * 50
+                nextPosition = Point((position.y - 50) + 2 * 50, 49)
             } else if (side == C && facing == LEFT) {
                 nextFacing = DOWN
-                nextPosition = 100 to position.first - 50
+                nextPosition = Point(position.y - 50, 100)
             } else if (side == E && facing == LEFT) {
                 nextFacing = RIGHT
-                nextPosition = 50 - (position.first - 2 * 50) - 1 to 50
+                nextPosition = Point(50, 50 - (position.y - 2 * 50) - 1)
             } else if (side == E && facing == UP) {
                 nextFacing = RIGHT
-                nextPosition = 50 + position.second to 50
+                nextPosition = Point(50, 50 + position.x)
             } else if (side == D && facing == DOWN) {
                 nextFacing = LEFT
-                nextPosition = 3 * 50 + (position.second - 50) to 49
+                nextPosition = Point(49, 3 * 50 + (position.x - 50))
             } else if (side == D && facing == RIGHT) {
                 nextFacing = LEFT
-                nextPosition = 50 - (position.first - 50 * 2) - 1 to 149
+                nextPosition = Point(149, 50 - (position.y - 50 * 2) - 1)
             } else if (side == F && facing == RIGHT) {
                 nextFacing = UP
-                nextPosition = 149 to (position.first - 3 * 50) + 50
+                nextPosition = Point((position.y - 3 * 50) + 50, 149)
             } else if (side == F && facing == LEFT) {
                 nextFacing = DOWN
-                nextPosition = 0 to 50 + (position.first - 3 * 50)
+                nextPosition = Point(50 + (position.y - 3 * 50), 0)
             } else if (side == F && facing == DOWN) {
                 nextFacing = DOWN
-                nextPosition = 0 to position.second + 100
+                nextPosition = Point(position.x + 100, 0)
             }
 
             return nextPosition to nextFacing
@@ -178,59 +181,59 @@ object Day22 {
 
         private fun nextPosition() = when (facing) {
             DOWN -> kotlin.runCatching {
-                if (map[position.first + 1][position.second] in allowedTiles)
-                    position.first + 1 to position.second
+                if (map[position.y + 1][position.x] in allowedTiles)
+                    Point(position.x, position.y + 1)
                 else wrap()
             }.getOrDefault(wrap())
 
             LEFT -> kotlin.runCatching {
-                if (map[position.first][position.second - 1] in allowedTiles)
-                    position.first to position.second - 1
+                if (map[position.y][position.x - 1] in allowedTiles)
+                    Point(position.x - 1, position.y)
                 else wrap()
             }.getOrDefault(wrap())
 
             RIGHT -> kotlin.runCatching {
-                if (map[position.first][position.second + 1] in allowedTiles)
-                    position.first to position.second + 1
+                if (map[position.y][position.x + 1] in allowedTiles)
+                    Point(position.x + 1, position.y)
                 else wrap()
             }.getOrDefault(wrap())
 
             UP -> kotlin.runCatching {
-                if (map[position.first - 1][position.second] in allowedTiles)
-                    position.first - 1 to position.second
+                if (map[position.y - 1][position.x] in allowedTiles)
+                    Point(position.x, position.y - 1)
                 else wrap()
             }.getOrDefault(wrap())
         }
 
         private fun nextPositionCube() = when (facing) {
             DOWN -> kotlin.runCatching {
-                if (map[position.first + 1][position.second] in allowedTiles)
-                    (position.first + 1 to position.second) to facing
+                if (map[position.y + 1][position.x] in allowedTiles)
+                    Point(position.x, position.y + 1) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
             LEFT -> kotlin.runCatching {
-                if (map[position.first][position.second - 1] in allowedTiles)
-                    (position.first to position.second - 1) to facing
+                if (map[position.y][position.x - 1] in allowedTiles)
+                    Point(position.x - 1, position.y) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
             RIGHT -> kotlin.runCatching {
-                if (map[position.first][position.second + 1] in allowedTiles)
-                    (position.first to position.second + 1) to facing
+                if (map[position.y][position.x + 1] in allowedTiles)
+                    Point(position.x + 1, position.y) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
             UP -> kotlin.runCatching {
-                if (map[position.first - 1][position.second] in allowedTiles)
-                    (position.first - 1 to position.second) to facing
+                if (map[position.y - 1][position.x] in allowedTiles)
+                    Point(position.x, position.y - 1) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
         }
 
         fun move(): Boolean {
             val nextPosition = nextPosition()
-            if (map[nextPosition.first][nextPosition.second] == '.') {
+            if (map[nextPosition.y][nextPosition.x] == '.') {
                 position = nextPosition
                 return true
             }
@@ -239,7 +242,7 @@ object Day22 {
 
         fun moveCube(): Boolean {
             val (nextPosition, nextFacing) = nextPositionCube()
-            if (map[nextPosition.first][nextPosition.second] == '.') {
+            if (map[nextPosition.y][nextPosition.x] == '.') {
                 position = nextPosition
                 facing = nextFacing
                 return true
@@ -248,7 +251,7 @@ object Day22 {
         }
 
         val password
-            get() = (position.first + 1) * 1000 + (position.second + 1) * 4 + facing.value
+            get() = (position.y + 1) * 1000 + (position.x + 1) * 4 + facing.value
     }
 
     private enum class Facing(val value: Int) { DOWN(1), LEFT(2), RIGHT(0), UP(3) }
@@ -257,9 +260,9 @@ object Day22 {
         A, B, C, D, E, F;
 
         companion object {
-            fun Pair<Int, Int>.toSide(): Side {
-                val row = this.first
-                val column = this.second
+            fun Point.toSide(): Side {
+                val row = this.y
+                val column = this.x
                 return if (row in 0..49 && column in 50..99) A
                 else if (row in 0..49 && column in 100..149) B
                 else if (row in 50..99 && column in 50..99) C

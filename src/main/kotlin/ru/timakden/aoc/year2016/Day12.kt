@@ -6,6 +6,9 @@ import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2016.Day12.Command.*
 import ru.timakden.aoc.year2016.Day12.Command.Companion.toCommand
 
+/**
+ * [Day 12: Leonardo's Monorail](https://adventofcode.com/2016/day/12).
+ */
 object Day12 {
     @JvmStatic
     fun main(args: Array<String>) {

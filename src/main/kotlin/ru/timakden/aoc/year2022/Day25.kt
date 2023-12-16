@@ -3,7 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
-
+/**
+ * [Day 25: Full of Hot Air](https://adventofcode.com/2022/day/25).
+ */
 object Day25 {
     @JvmStatic
     fun main(args: Array<String>) {

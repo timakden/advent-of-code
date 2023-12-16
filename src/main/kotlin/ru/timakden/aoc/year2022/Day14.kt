@@ -1,10 +1,14 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * [Day 14: Regolith Reservoir](https://adventofcode.com/2022/day/14).
+ */
 object Day14 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -17,11 +21,11 @@ object Day14 {
 
     fun part1(input: List<String>): Int {
         val cave = buildCave(input)
-        val sandSource = 500 to 0
+        val sandSource = Point(500, 0)
         val caveLimits = listOf(
-            cave.minOf { it.first },
-            cave.maxOf { it.first },
-            cave.maxOf { it.second }
+            cave.minOf { it.x },
+            cave.maxOf { it.x },
+            cave.maxOf { it.y }
         )
         var counter = 0
 
@@ -30,16 +34,16 @@ object Day14 {
 
             while (true) {
                 val (x, y) = unitOfSand
-                if (x to (y + 1) !in cave) unitOfSand = unitOfSand.copy(second = y + 1) else {
-                    if ((x - 1) to (y + 1) in cave) {
-                        if ((x + 1) to (y + 1) in cave) {
+                if (Point(x, y + 1) !in cave) unitOfSand = unitOfSand.copy(y = y + 1) else {
+                    if (Point(x - 1, y + 1) in cave) {
+                        if (Point(x + 1, y + 1) in cave) {
                             counter++
                             cave += unitOfSand
                             break
-                        } else unitOfSand = (x + 1) to (y + 1)
-                    } else unitOfSand = (x - 1) to (y + 1)
+                        } else unitOfSand = Point(x + 1, y + 1)
+                    } else unitOfSand = Point(x - 1, y + 1)
 
-                    if (unitOfSand.first in caveLimits || unitOfSand.second in caveLimits) break@outer
+                    if (unitOfSand.x in caveLimits || unitOfSand.y in caveLimits) break@outer
                 }
             }
         }
@@ -49,8 +53,8 @@ object Day14 {
 
     fun part2(input: List<String>): Int {
         val cave = buildCave(input)
-        val sandSource = 500 to 0
-        val caveLimit = cave.maxOf { it.second + 1 }
+        val sandSource = Point(500, 0)
+        val caveLimit = cave.maxOf { it.y + 1 }
         var counter = 0
 
         outer@ while (true) {
@@ -58,19 +62,19 @@ object Day14 {
 
             while (true) {
                 val (x, y) = unitOfSand
-                if (x to (y + 1) !in cave) unitOfSand = unitOfSand.copy(second = y + 1) else
-                    if ((x - 1) to (y + 1) in cave) {
-                        if ((x + 1) to (y + 1) in cave) {
+                if (Point(x, y + 1) !in cave) unitOfSand = unitOfSand.copy(y = y + 1) else
+                    if (Point(x - 1, y + 1) in cave) {
+                        if (Point(x + 1, y + 1) in cave) {
                             counter++
                             cave += unitOfSand
                             if (unitOfSand == sandSource)
                                 break@outer
                             break
-                        } else unitOfSand = (x + 1) to (y + 1)
-                    } else unitOfSand = (x - 1) to (y + 1)
+                        } else unitOfSand = Point(x + 1, y + 1)
+                    } else unitOfSand = Point(x - 1, y + 1)
 
 
-                if (unitOfSand.second == caveLimit) {
+                if (unitOfSand.y == caveLimit) {
                     counter++
                     cave += unitOfSand
                     if (unitOfSand == sandSource) break@outer
@@ -82,22 +86,23 @@ object Day14 {
         return counter
     }
 
-    private fun buildCave(input: List<String>): MutableSet<Pair<Int, Int>> {
-        val cave = mutableSetOf<Pair<Int, Int>>()
+    private fun buildCave(input: List<String>): MutableSet<Point> {
+        val cave = mutableSetOf<Point>()
         input.forEach { line ->
-            val points = line.split(" -> ")
-                .map { point -> point.split(',').let { it.first().toInt() to it.last().toInt() } }
+            val points = line.split(" -> ").map { point ->
+                point.split(',').let { Point(it.first().toInt(), it.last().toInt()) }
+            }
 
             (1..points.lastIndex).forEach { index ->
                 val point1 = points[index - 1]
                 val point2 = points[index]
 
-                (min(point1.first, point2.first)..max(point1.first, point2.first)).forEach {
-                    cave += it to point1.second
+                (min(point1.x, point2.x)..max(point1.x, point2.x)).forEach {
+                    cave += Point(it, point1.y)
                 }
 
-                (min(point1.second, point2.second)..max(point1.second, point2.second)).forEach {
-                    cave += point1.first to it
+                (min(point1.y, point2.y)..max(point1.y, point2.y)).forEach {
+                    cave += Point(point1.x, it)
                 }
             }
         }

@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.lcm
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 8: Haunted Wasteland](https://adventofcode.com/2023/day/8).
+ */
 object Day08 {
     @JvmStatic
     fun main(args: Array<String>) {

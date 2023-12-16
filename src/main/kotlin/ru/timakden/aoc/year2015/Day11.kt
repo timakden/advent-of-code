@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11).
+ */
 object Day11 {
     @JvmStatic
     fun main(args: Array<String>) {

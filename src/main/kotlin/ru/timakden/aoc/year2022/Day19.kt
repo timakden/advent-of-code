@@ -10,6 +10,9 @@ import kotlinx.coroutines.withContext
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 19: Not Enough Minerals](https://adventofcode.com/2022/day/19).
+ */
 object Day19 {
     @JvmStatic
     fun main(args: Array<String>) {

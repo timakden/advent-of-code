@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 6: Tuning Trouble](https://adventofcode.com/2022/day/6).
+ */
 object Day06 {
     @JvmStatic
     fun main(args: Array<String>) {

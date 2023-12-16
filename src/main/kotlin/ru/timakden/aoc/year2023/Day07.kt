@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2023.Day07.HandType.*
 
+/**
+ * [Day 7: Camel Cards](https://adventofcode.com/2023/day/7).
+ */
 object Day07 {
     @JvmStatic
     fun main(args: Array<String>) {

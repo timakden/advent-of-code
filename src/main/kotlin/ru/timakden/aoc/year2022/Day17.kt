@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 17: Pyroclastic Flow](https://adventofcode.com/2022/day/17).
+ */
 object Day17 {
     @JvmStatic
     fun main(args: Array<String>) {

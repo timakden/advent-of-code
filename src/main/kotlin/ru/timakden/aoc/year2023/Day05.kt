@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.readInput
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * [Day 5: If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5).
+ */
 object Day05 {
     @JvmStatic
     fun main(args: Array<String>) {

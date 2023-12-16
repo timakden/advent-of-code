@@ -5,6 +5,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.abs
 
+/**
+ * [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15).
+ */
 object Day15 {
     @JvmStatic
     fun main(args: Array<String>) {

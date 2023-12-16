@@ -9,6 +9,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2023.Day16.Direction.*
 
+/**
+ * [Day 16: The Floor Will Be Lava](https://adventofcode.com/2023/day/16).
+ */
 object Day16 {
     @JvmStatic
     fun main(args: Array<String>) {

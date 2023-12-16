@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import java.util.*
 
+/**
+ * [Day 19: Medicine for Rudolph](https://adventofcode.com/2015/day/19).
+ */
 object Day19 {
     @JvmStatic
     fun main(args: Array<String>) {

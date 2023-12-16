@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 5: Supply Stacks](https://adventofcode.com/2022/day/5).
+ */
 object Day05 {
     @JvmStatic
     fun main(args: Array<String>) {

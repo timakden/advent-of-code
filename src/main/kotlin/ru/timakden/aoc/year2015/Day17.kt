@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2015
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 17: No Such Thing as Too Much](https://adventofcode.com/2015/day/17).
+ */
 object Day17 {
     @JvmStatic
     fun main(args: Array<String>) {

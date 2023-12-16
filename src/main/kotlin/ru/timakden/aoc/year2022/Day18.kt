@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import ru.timakden.aoc.year2022.Day18.VoxelWorld.Voxel
 
+/**
+ * [Day 18: Boiling Boulders](https://adventofcode.com/2022/day/18).
+ */
 object Day18 {
     @JvmStatic
     fun main(args: Array<String>) {

@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2016
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 10: Balance Bots](https://adventofcode.com/2016/day/10).
+ */
 object Day10 {
     @JvmStatic
     fun main(args: Array<String>) {

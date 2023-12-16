@@ -4,6 +4,9 @@ import ru.timakden.aoc.util.md5
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 4: The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4).
+ */
 object Day04 {
     @JvmStatic
     fun main(args: Array<String>) {

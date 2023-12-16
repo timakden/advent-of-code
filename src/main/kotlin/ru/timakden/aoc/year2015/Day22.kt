@@ -6,6 +6,9 @@ import java.util.*
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * [Day 22: Wizard Simulator 20XX](https://adventofcode.com/2015/day/22).
+ */
 object Day22 {
     @JvmStatic
     fun main(args: Array<String>) {

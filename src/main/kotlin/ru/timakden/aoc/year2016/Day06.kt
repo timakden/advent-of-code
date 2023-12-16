@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2016
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 6: Signals and Noise](https://adventofcode.com/2016/day/6).
+ */
 object Day06 {
     @JvmStatic
     fun main(args: Array<String>) {

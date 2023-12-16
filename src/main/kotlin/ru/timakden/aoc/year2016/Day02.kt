@@ -1,8 +1,12 @@
 package ru.timakden.aoc.year2016
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 2: Bathroom Security](https://adventofcode.com/2016/day/2).
+ */
 object Day02 {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -14,20 +18,20 @@ object Day02 {
     }
 
     fun part1(input: List<String>): String {
-        var point = 1 to 1
+        var point = Point(1, 1)
 
         return input.map {
             point = goToTheNextPointPart1(point, it)
-            keypadPart1[point.first][point.second]
+            keypadPart1[point.y][point.x]
         }.joinToString("")
     }
 
     fun part2(input: List<String>): String {
-        var point = 2 to 0
+        var point = Point(0, 2)
 
         return input.map {
             point = goToTheNextPointPart2(point, it)
-            keypadPart2[point.first][point.second]
+            keypadPart2[point.y][point.x]
         }.joinToString(separator = "")
     }
 
@@ -45,8 +49,8 @@ object Day02 {
         charArrayOf(' ', ' ', 'D', ' ', ' ')
     )
 
-    private fun goToTheNextPointPart1(point: Pair<Int, Int>, instruction: String): Pair<Int, Int> {
-        var (y, x) = point
+    private fun goToTheNextPointPart1(point: Point, instruction: String): Point {
+        var (x, y) = point
 
         instruction.forEach {
             when (it) {
@@ -57,11 +61,11 @@ object Day02 {
             }
         }
 
-        return y to x
+        return Point(x, y)
     }
 
-    private fun goToTheNextPointPart2(point: Pair<Int, Int>, instruction: String): Pair<Int, Int> {
-        var (y, x) = point
+    private fun goToTheNextPointPart2(point: Point, instruction: String): Point {
+        var (x, y) = point
 
         instruction.forEach {
             when (it) {
@@ -72,6 +76,6 @@ object Day02 {
             }
         }
 
-        return y to x
+        return Point(x, y)
     }
 }

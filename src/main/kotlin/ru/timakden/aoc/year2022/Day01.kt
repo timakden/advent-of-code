@@ -3,6 +3,9 @@ package ru.timakden.aoc.year2022
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
+/**
+ * [Day 1: Calorie Counting](https://adventofcode.com/2022/day/1).
+ */
 object Day01 {
     @JvmStatic
     fun main(args: Array<String>) {

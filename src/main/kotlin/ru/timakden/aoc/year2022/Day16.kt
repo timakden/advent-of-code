@@ -8,6 +8,9 @@ import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ * [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16).
+ */
 object Day16 {
     @JvmStatic
     fun main(args: Array<String>) {
