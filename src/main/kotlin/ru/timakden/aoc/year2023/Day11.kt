@@ -1,6 +1,6 @@
 package ru.timakden.aoc.year2023
 
-import ru.timakden.aoc.util.manhattanDistance
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
@@ -25,7 +25,7 @@ object Day11 {
         var sum = 0L
         galaxies.forEachIndexed { i, point ->
             for (j in i..galaxies.lastIndex) {
-                sum += manhattanDistance(point, galaxies[j])
+                sum += point.manhattanDistanceTo(galaxies[j])
             }
         }
         return sum
@@ -48,14 +48,14 @@ object Day11 {
         emptyRowIndices: List<Int>,
         emptyColumnIndices: List<Int>,
         multiplier: Int
-    ): List<Pair<Int, Int>> {
-        val galaxies = mutableListOf<Pair<Int, Int>>()
+    ): List<Point> {
+        val galaxies = mutableListOf<Point>()
         input.forEachIndexed { row, s ->
             s.forEachIndexed { column, c ->
                 if (c == '#') {
                     val rowOffset = (multiplier - 1) * emptyRowIndices.count { it < row }
                     val columnOffset = (multiplier - 1) * emptyColumnIndices.count { it < column }
-                    galaxies += (row + rowOffset) to (column + columnOffset)
+                    galaxies += Point(column + columnOffset, row + rowOffset)
                 }
             }
         }

@@ -1,5 +1,6 @@
 package ru.timakden.aoc.year2022
 
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
@@ -106,10 +107,6 @@ object Day17 {
 
     private val Set<Point>.top
         get() = if (isEmpty()) -1 else maxOf(Point::y)
-
-    data class Point(val x: Int, val y: Int) {
-        fun move(vector: Point) = Point(x + vector.x, y + vector.y)
-    }
 
     data class Shape(val points: List<Point>) {
         constructor(vararg points: Int) : this(points.asSequence().chunked(2) { (a, b) -> Point(a, b) }.toList())

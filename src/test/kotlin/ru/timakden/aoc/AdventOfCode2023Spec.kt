@@ -338,5 +338,28 @@ class AdventOfCode2023Spec : FunSpec({
                 Day15.part2(input) shouldBe expected
             }
         }
+
+        context("Day 16: The Floor Will Be Lava") {
+            val input = listOf(
+                ".|...\\....",
+                "|.-.\\.....",
+                ".....|-...",
+                "........|.",
+                "..........",
+                ".........\\",
+                "..../.\\\\..",
+                ".-.-/..|..",
+                ".|....-|.\\",
+                "..//.|...."
+            )
+            test("Part One") {
+                val expected = 46
+                Day16.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 51
+                Day16.part2(input) shouldBe expected
+            }
+        }
     }
 })

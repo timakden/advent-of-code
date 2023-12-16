@@ -1,6 +1,6 @@
 package ru.timakden.aoc.year2022
 
-import ru.timakden.aoc.util.manhattanDistance
+import ru.timakden.aoc.util.Point
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.math.abs
@@ -17,71 +17,71 @@ object Day15 {
 
     fun part1(input: List<String>, row: Int): Int {
         val sensors = Sensors(input)
-        val minColumn = sensors.sensorMap.values.map { it.minColumnCovered(row) }.minOf { it.second }
-        val maxColumn = sensors.sensorMap.values.map { it.maxColumnCovered(row) }.maxOf { it.second }
-        var currentCell = row to minColumn
+        val minColumn = sensors.sensorMap.values.map { it.minColumnCovered(row) }.minOf { it.x }
+        val maxColumn = sensors.sensorMap.values.map { it.maxColumnCovered(row) }.maxOf { it.x }
+        var currentCell = Point(minColumn, row)
         var count = 0
-        while (currentCell.second <= maxColumn) {
+        while (currentCell.x <= maxColumn) {
             val coveredBySensor = sensors.coveredBySensor(currentCell)
             if (coveredBySensor != null) {
-                val maxColumnCovered = coveredBySensor.maxColumnCovered(currentCell.first)
-                count += maxColumnCovered.second - currentCell.second + 1
-                count -= sensors.sensorsOnRow(currentCell.first, currentCell.second, maxColumnCovered.second).size
-                count -= sensors.beaconsOnRow(currentCell.first, currentCell.second, maxColumnCovered.second).size
+                val maxColumnCovered = coveredBySensor.maxColumnCovered(currentCell.y)
+                count += maxColumnCovered.x - currentCell.x + 1
+                count -= sensors.sensorsOnRow(currentCell.y, currentCell.x, maxColumnCovered.x).size
+                count -= sensors.beaconsOnRow(currentCell.y, currentCell.x, maxColumnCovered.x).size
                 currentCell = maxColumnCovered
             }
-            currentCell = currentCell.first to (currentCell.second + 1)
+            currentCell = Point((currentCell.x + 1), currentCell.y)
         }
         return count
     }
 
     fun part2(input: List<String>, maxCoordinate: Int): Long {
         val notCoveredCell = checkNotNull(notCoveredCell(input, maxCoordinate))
-        return notCoveredCell.second.toLong() * 4000000 + notCoveredCell.first.toLong()
+        return notCoveredCell.x.toLong() * 4000000 + notCoveredCell.y.toLong()
     }
 
-    class Sensor(val coordinates: Pair<Int, Int>, val beacon: Pair<Int, Int>) {
-        private val beaconDistance: Int by lazy { manhattanDistance(coordinates, beacon) }
-        private fun distanceTo(cell: Pair<Int, Int>) = manhattanDistance(coordinates, cell)
+    class Sensor(val point: Point, val beacon: Point) {
+        private val beaconDistance: Int by lazy { point.manhattanDistanceTo(beacon) }
+        private fun distanceTo(cell: Point) = point.manhattanDistanceTo(cell)
 
-        fun covers(cell: Pair<Int, Int>) = beaconDistance >= distanceTo(cell)
+        fun covers(cell: Point) = beaconDistance >= distanceTo(cell)
 
         fun maxColumnCovered(row: Int) =
-            row to coordinates.second + abs(beaconDistance - abs(row - coordinates.first))
+            Point(point.x + abs(beaconDistance - abs(row - point.y)), row)
 
         fun minColumnCovered(row: Int) =
-            row to coordinates.second - abs(beaconDistance - abs(row - coordinates.first))
+            Point(point.x - abs(beaconDistance - abs(row - point.y)), row)
     }
 
     class Sensors(input: List<String>) {
-        private val beacons: Set<Pair<Int, Int>>
-        val sensorMap: Map<Pair<Int, Int>, Sensor>
+        private val beacons: Set<Point>
+        val sensorMap: Map<Point, Sensor>
 
         fun sensorsOnRow(row: Int, minColumn: Int, maxColumn: Int) =
-            sensorMap.values.filter { it.coordinates.first == row && it.coordinates.second >= minColumn && it.coordinates.second <= maxColumn }
+            sensorMap.values.filter { it.point.y == row && it.point.x >= minColumn && it.point.x <= maxColumn }
 
         fun beaconsOnRow(row: Int, minColumn: Int, maxColumn: Int) =
-            beacons.filter { it.first == row && it.second >= minColumn && it.second <= maxColumn }
+            beacons.filter { it.y == row && it.x >= minColumn && it.x <= maxColumn }
 
         init {
             val regex = "-?\\d+".toRegex()
             sensorMap = input.map { line -> regex.findAll(line).map { it.value.toInt() }.toList() }
-                .map { Sensor(it[1] to it[0], it[3] to it[2]) }.associateBy { it.coordinates }
+                .map { Sensor(Point(it[0], it[1]), Point(it[2], it[3])) }.associateBy { it.point }
             beacons = sensorMap.values.map { it.beacon }.toSet()
         }
 
-        fun coveredBySensor(cell: Pair<Int, Int>) = sensorMap.values.find { it.covers(cell) }
+        fun coveredBySensor(cell: Point) = sensorMap.values.find { it.covers(cell) }
     }
 
-    private fun notCoveredCell(input: List<String>, maxCoordinate: Int): Pair<Int, Int>? {
+    private fun notCoveredCell(input: List<String>, maxCoordinate: Int): Point? {
         val sensors = Sensors(input)
         (0..maxCoordinate).forEach { row ->
-            var currentCell = row to 0
-            while (currentCell.second <= maxCoordinate) {
+            var currentCell = Point(0, row)
+            while (currentCell.x <= maxCoordinate) {
                 val coveredBySensor = sensors.coveredBySensor(currentCell)
                 if (coveredBySensor != null) {
-                    val cell = coveredBySensor.maxColumnCovered(currentCell.first)
-                    currentCell = cell.first to (cell.second + 1)
+                    val cell = coveredBySensor.maxColumnCovered(currentCell.y)
+                    currentCell = Point((cell.x + 1), cell.y)
                 } else return currentCell
             }
         }
