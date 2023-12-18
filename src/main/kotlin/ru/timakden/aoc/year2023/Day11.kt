@@ -28,7 +28,7 @@ object Day11 {
         var sum = 0L
         galaxies.forEachIndexed { i, point ->
             for (j in i..galaxies.lastIndex) {
-                sum += point.manhattanDistanceTo(galaxies[j])
+                sum += point.distanceTo(galaxies[j])
             }
         }
         return sum

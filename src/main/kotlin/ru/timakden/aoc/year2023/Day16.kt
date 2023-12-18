@@ -74,10 +74,10 @@ object Day16 {
                 when (grid[p.y][p.x]) {
                     '\\' -> {
                         val nextVisited = when (d) {
-                            DOWN -> RIGHT to p.move(Point(1, 0))
-                            LEFT -> UP to p.move(Point(0, -1))
-                            RIGHT -> DOWN to p.move(Point(0, 1))
-                            UP -> LEFT to p.move(Point(-1, 0))
+                            DOWN -> RIGHT to (p + Point(1, 0))
+                            LEFT -> UP to (p + Point(0, -1))
+                            RIGHT -> DOWN to (p + Point(0, 1))
+                            UP -> LEFT to (p + Point(-1, 0))
                         }
                         val (nextDirection, nextPoint) = nextVisited
 
@@ -91,10 +91,10 @@ object Day16 {
 
                     '/' -> {
                         val nextVisited = when (d) {
-                            DOWN -> LEFT to p.move(Point(-1, 0))
-                            LEFT -> DOWN to p.move(Point(0, 1))
-                            RIGHT -> UP to p.move(Point(0, -1))
-                            UP -> RIGHT to p.move(Point(1, 0))
+                            DOWN -> LEFT to (p + Point(-1, 0))
+                            LEFT -> DOWN to (p + Point(0, 1))
+                            RIGHT -> UP to (p + Point(0, -1))
+                            UP -> RIGHT to (p + Point(1, 0))
                         }
                         val (nextDirection, nextPoint) = nextVisited
 
@@ -109,7 +109,7 @@ object Day16 {
                     '|' -> {
                         if (d == DOWN || d == UP) {
                             val vector = if (d == DOWN) Point(0, 1) else Point(0, -1)
-                            val nextPoint = p.move(vector)
+                            val nextPoint = p + vector
                             val nextVisited = d to nextPoint
 
                             if (nextPoint.isValid(grid) && nextVisited !in visited) {
@@ -128,7 +128,7 @@ object Day16 {
                     '-' -> {
                         if (d == LEFT || d == RIGHT) {
                             val vector = if (d == LEFT) Point(-1, 0) else Point(1, 0)
-                            val nextPoint = p.move(vector)
+                            val nextPoint = p + vector
                             val nextVisited = d to nextPoint
 
                             if (nextPoint.isValid(grid) && nextVisited !in visited) {
@@ -146,10 +146,10 @@ object Day16 {
 
                     else -> {
                         val nextPoint = when (d) {
-                            DOWN -> p.move(Point(0, 1))
-                            LEFT -> p.move(Point(-1, 0))
-                            RIGHT -> p.move(Point(1, 0))
-                            UP -> p.move(Point(0, -1))
+                            DOWN -> p + Point(0, 1)
+                            LEFT -> p + Point(-1, 0)
+                            RIGHT -> p + Point(1, 0)
+                            UP -> p + Point(0, -1)
                         }
                         val nextVisited = d to nextPoint
 

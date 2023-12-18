@@ -117,7 +117,7 @@ object Day17 {
         fun relTo(currentTop: Int) = Shape(points.map { it.copy(y = currentTop + it.y + 4) })
 
         fun tryMove(occupied: Set<Point>, vector: Point): Shape {
-            val nextPos = points.map { it.move(vector) }
+            val nextPos = points.map { it + vector }
             for (point in nextPos) {
                 if (occupied.contains(point) || point.x < 0 || point.x > 6 || point.y < 0) return this
             }

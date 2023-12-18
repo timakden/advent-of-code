@@ -1,6 +1,7 @@
 package ru.timakden.aoc.year2023
 
 import ru.timakden.aoc.util.Point
+import ru.timakden.aoc.util.Polygon
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 import kotlin.properties.Delegates
@@ -147,7 +148,7 @@ object Day10 {
             currentTile = nextTile
         }
 
-        val polygon = loop.map { it.point }
+        val polygon = Polygon(loop.map { it.point })
 
         return tiles.keys.count { it !in polygon && it.isInPolygon(polygon) }
     }

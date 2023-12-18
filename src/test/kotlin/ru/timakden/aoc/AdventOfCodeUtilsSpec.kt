@@ -128,7 +128,7 @@ class AdventOfCodeUtilsSpec : FunSpec({
         }
 
         context("Point") {
-            context("move") {
+            context("p1 + p2") {
                 withData(
                     nameFn = { "p1 = ${it.first}, p2 = ${it.second}, expected = ${it.third}" },
                     listOf(
@@ -139,7 +139,22 @@ class AdventOfCodeUtilsSpec : FunSpec({
                         Triple(Point(8, 2), Point(-2, -5), Point(6, -3))
                     )
                 ) { (p1, p2, expected) ->
-                    p1.move(p2) shouldBe expected
+                    p1 + p2 shouldBe expected
+                }
+            }
+
+            context("p1 - p2") {
+                withData(
+                    nameFn = { "p1 = ${it.first}, p2 = ${it.second}, expected = ${it.third}" },
+                    listOf(
+                        Triple(Point(1, 1), Point(2, 2), Point(-1, -1)),
+                        Triple(Point(3, 4), Point(-1, -2), Point(4, 6)),
+                        Triple(Point(5, -5), Point(-5, 5), Point(10, -10)),
+                        Triple(Point(6, -7), Point(3, 3), Point(3, -10)),
+                        Triple(Point(8, 2), Point(-2, -5), Point(10, 7))
+                    )
+                ) { (p1, p2, expected) ->
+                    p1 - p2 shouldBe expected
                 }
             }
 
@@ -147,19 +162,19 @@ class AdventOfCodeUtilsSpec : FunSpec({
                 withData(
                     nameFn = { "point = ${it.first}, polygon = ${it.second}, expected = ${it.third}" },
                     ts = listOf(
-                        Triple(Point(1, 1), listOf(Point(0, 0), Point(2, 0), Point(1, 2)), true),
-                        Triple(Point(3, 1), listOf(Point(0, 0), Point(2, 0), Point(1, 2)), false),
-                        Triple(Point(1, 1), listOf(Point(0, 0), Point(2, 0), Point(2, 2), Point(0, 2)), true),
-                        Triple(Point(3, 1), listOf(Point(0, 0), Point(2, 0), Point(2, 2), Point(0, 2)), false),
-                        Triple(Point(2, 2), listOf(Point(1, 1), Point(3, 1), Point(3, 3), Point(1, 3)), true),
-                        Triple(Point(0, 0), listOf(Point(1, 1), Point(3, 1), Point(3, 3), Point(1, 3)), false)
+                        Triple(Point(1, 1), Polygon(listOf(Point(0, 0), Point(2, 0), Point(1, 2))), true),
+                        Triple(Point(3, 1), Polygon(listOf(Point(0, 0), Point(2, 0), Point(1, 2))), false),
+                        Triple(Point(1, 1), Polygon(listOf(Point(0, 0), Point(2, 0), Point(2, 2), Point(0, 2))), true),
+                        Triple(Point(3, 1), Polygon(listOf(Point(0, 0), Point(2, 0), Point(2, 2), Point(0, 2))), false),
+                        Triple(Point(2, 2), Polygon(listOf(Point(1, 1), Point(3, 1), Point(3, 3), Point(1, 3))), true),
+                        Triple(Point(0, 0), Polygon(listOf(Point(1, 1), Point(3, 1), Point(3, 3), Point(1, 3))), false)
                     )
                 ) { (point, polygon, expected) ->
                     point.isInPolygon(polygon) shouldBe expected
                 }
             }
 
-            context("manhattanDistanceTo") {
+            context("distanceTo") {
                 withData(
                     nameFn = { "p1 = ${it.first}, p2 = ${it.second}, expected = ${it.third}" },
                     ts = listOf(
@@ -170,7 +185,95 @@ class AdventOfCodeUtilsSpec : FunSpec({
                         Triple(Point(8, 2), Point(-2, -5), 17)
                     )
                 ) { (p1, p2, expected) ->
-                    p1.manhattanDistanceTo(p2) shouldBe expected
+                    p1.distanceTo(p2) shouldBe expected
+                }
+            }
+        }
+
+        context("Polygon") {
+            context("area") {
+                withData(
+                    nameFn = { "${it.first}.area = ${it.second}" },
+                    ts = listOf(
+                        Polygon(
+                            listOf(
+                                Point(1, 6),
+                                Point(3, 1),
+                                Point(7, 2),
+                                Point(4, 4),
+                                Point(8, 5)
+                            )
+                        ) to 16.5,
+                        Polygon(
+                            listOf(
+                                Point(2, 7),
+                                Point(4, 2),
+                                Point(5, 5),
+                                Point(8, 3),
+                                Point(9, 6)
+                            )
+                        ) to 16.5,
+                        Polygon(
+                            listOf(
+                                Point(0, 10),
+                                Point(0, 0),
+                                Point(5, -5),
+                                Point(20, 8)
+                            )
+                        ) to 170.0,
+                        Polygon(
+                            listOf(
+                                Point(0, 0),
+                                Point(2, 0),
+                                Point(2, 2),
+                                Point(0, 2)
+                            )
+                        ) to 4.0
+                    )
+                ) { (polygon, expected) ->
+                    polygon.area shouldBe expected
+                }
+            }
+
+            context("perimeter") {
+                withData(
+                    nameFn = { "${it.first}.perimeter = ${it.second}" },
+                    ts = listOf(
+                        Polygon(
+                            listOf(
+                                Point(1, 1),
+                                Point(5, 1),
+                                Point(5, 5),
+                                Point(1, 5)
+                            )
+                        ) to 16,
+                        Polygon(
+                            listOf(
+                                Point(0, 0),
+                                Point(3, 0),
+                                Point(3, 3),
+                                Point(0, 3)
+                            )
+                        ) to 12,
+                        Polygon(
+                            listOf(
+                                Point(-1, -1),
+                                Point(1, -1),
+                                Point(1, 1),
+                                Point(-1, 1)
+                            )
+                        ) to 8,
+                        Polygon(
+                            listOf(
+                                Point(-2, -2),
+                                Point(2, -2),
+                                Point(2, 2),
+                                Point(-2, 2)
+                            )
+                        ) to 16
+                    )
+                ) { (polygon, expected) ->
+                    polygon.perimeter shouldBe expected
                 }
             }
         }

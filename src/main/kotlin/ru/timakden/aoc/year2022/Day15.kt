@@ -44,8 +44,8 @@ object Day15 {
     }
 
     class Sensor(val point: Point, val beacon: Point) {
-        private val beaconDistance: Int by lazy { point.manhattanDistanceTo(beacon) }
-        private fun distanceTo(cell: Point) = point.manhattanDistanceTo(cell)
+        private val beaconDistance: Int by lazy { point.distanceTo(beacon) }
+        private fun distanceTo(cell: Point) = point.distanceTo(cell)
 
         fun covers(cell: Point) = beaconDistance >= distanceTo(cell)
 
