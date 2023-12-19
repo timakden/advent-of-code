@@ -107,4 +107,20 @@ data class Point(val x: Int = 0, val y: Int = 0) {
     fun distanceTo(other: Point) = abs(x - other.x) + abs(y - other.y)
 
     override fun toString() = "($x, $y)"
+
+    companion object {
+        val DOWN = Point(0, -1)
+        val LEFT = Point(-1, 0)
+        /**
+         * Represents a constant Point object with coordinates (1, 0).
+         */
+        val RIGHT = Point(1, 0)
+        /**
+         * Represents a point in a two-dimensional space.
+         *
+         * @property x The x-coordinate of the point.
+         * @property y The y-coordinate of the point.
+         */
+        val UP = Point(0, 1)
+    }
 }

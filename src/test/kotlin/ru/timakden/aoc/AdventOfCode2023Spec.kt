@@ -432,6 +432,32 @@ class AdventOfCode2023Spec : FunSpec({
             }
         }
 
+        context("Day 17: Clumsy Crucible") {
+            val input = listOf(
+                "2413432311323",
+                "3215453535623",
+                "3255245654254",
+                "3446585845452",
+                "4546657867536",
+                "1438598798454",
+                "4457876987766",
+                "3637877979653",
+                "4654967986887",
+                "4564679986453",
+                "1224686865563",
+                "2546548887735",
+                "4322674655533"
+            )
+            test("Part One") {
+                val expected = 102
+                Day17.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 94
+                Day17.part2(input) shouldBe expected
+            }
+        }
+
         context("Day 18: Lavaduct Lagoon") {
             val input = listOf(
                 "R 6 (#70c710)",

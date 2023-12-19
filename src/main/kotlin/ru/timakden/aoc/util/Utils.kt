@@ -2,6 +2,7 @@ package ru.timakden.aoc.util
 
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.*
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 import kotlin.time.measureTime
@@ -62,3 +63,37 @@ tailrec fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
  * @return The LCM of the two numbers.
  */
 fun lcm(a: Long, b: Long) = a / gcd(a, b) * b
+
+/**
+ * Calculates the shortest distances from the starting points to all reachable nodes using the Dijkstra algorithm.
+ *
+ * @param startingPoints The list of starting points.
+ * @param neighbors A function that returns the neighbors of a given node.
+ * @param distanceBetween A function that calculates the distance between two nodes.
+ * @return A map containing the shortest distances from the starting points to all reachable nodes.
+ */
+fun <T> dijkstra(
+    startingPoints: List<T>,
+    neighbors: T.() -> List<T>,
+    distanceBetween: (currentNode: T, nextNode: T) -> UInt,
+): Map<T, UInt> {
+    data class State(val node: T, val distance: UInt)
+
+    val bestDistance = hashMapOf<T, UInt>()
+    val boundary = PriorityQueue<State>(compareBy { it.distance })
+
+    for (start in startingPoints) boundary += State(start, 0u)
+
+    while (boundary.isNotEmpty()) {
+        val (currentNode, currentDistance) = boundary.poll()
+        if (currentNode in bestDistance) continue
+
+        bestDistance[currentNode] = currentDistance
+
+        for (nextNode in neighbors(currentNode))
+            if (nextNode !in bestDistance)
+                boundary += State(nextNode, currentDistance + distanceBetween(currentNode, nextNode))
+    }
+
+    return bestDistance
+}
