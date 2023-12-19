@@ -346,6 +346,34 @@ class AdventOfCode2023Spec : FunSpec({
             }
         }
 
+        context("Day 13: Point of Incidence") {
+            val input = listOf(
+                "#.##..##.",
+                "..#.##.#.",
+                "##......#",
+                "##......#",
+                "..#.##.#.",
+                "..##..##.",
+                "#.#.##.#.",
+                "",
+                "#...##..#",
+                "#....#..#",
+                "..##..###",
+                "#####.##.",
+                "#####.##.",
+                "..##..###",
+                "#....#..#"
+            )
+            test("Part One") {
+                val expected = 405
+                Day13.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 400
+                Day13.part2(input) shouldBe expected
+            }
+        }
+
         context("Day 14: Parabolic Reflector Dish") {
             val input = listOf(
                 "O....#....",
