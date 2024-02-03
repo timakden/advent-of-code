@@ -449,11 +449,11 @@ class AdventOfCode2023Spec : FunSpec({
                 "4322674655533"
             )
             test("Part One") {
-                val expected = 102
+                val expected = 102.toUInt()
                 Day17.part1(input) shouldBe expected
             }
             test("Part Two") {
-                val expected = 94
+                val expected = 94.toUInt()
                 Day17.part2(input) shouldBe expected
             }
         }
