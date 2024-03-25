@@ -1,6 +1,7 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.tuple
 import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2022.*
@@ -109,13 +110,13 @@ class AdventOfCode2022Spec : FunSpec({
         context("Day 6: Tuning Trouble") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "mjqjpqmgbljsphdztnvjfqwrcgsmlb" to 7,
-                        "bvwbjplbgvbhsrlpgdmjqwftvncz" to 5,
-                        "nppdvjthqldpwncqszvftbrmjlhg" to 6,
-                        "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg" to 10,
-                        "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" to 11
+                        tuple("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7),
+                        tuple("bvwbjplbgvbhsrlpgdmjqwftvncz", 5),
+                        tuple("nppdvjthqldpwncqszvftbrmjlhg", 6),
+                        tuple("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10),
+                        tuple("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)
                     )
                 ) { (input, expected) ->
                     Day06.part1(input) shouldBe expected
@@ -123,13 +124,13 @@ class AdventOfCode2022Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "mjqjpqmgbljsphdztnvjfqwrcgsmlb" to 19,
-                        "bvwbjplbgvbhsrlpgdmjqwftvncz" to 23,
-                        "nppdvjthqldpwncqszvftbrmjlhg" to 23,
-                        "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg" to 29,
-                        "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" to 26
+                        tuple("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19),
+                        tuple("bvwbjplbgvbhsrlpgdmjqwftvncz", 23),
+                        tuple("nppdvjthqldpwncqszvftbrmjlhg", 23),
+                        tuple("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29),
+                        tuple("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)
                     )
                 ) { (input, expected) ->
                     Day06.part2(input) shouldBe expected
@@ -194,10 +195,10 @@ class AdventOfCode2022Spec : FunSpec({
 
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf("R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2") to 1,
-                        listOf("R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20") to 36
+                        tuple(listOf("R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"), 1),
+                        tuple(listOf("R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20"), 36)
                     )
 
                 ) { (input, expected) ->
