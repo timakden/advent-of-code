@@ -1,6 +1,7 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.tuple
 import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2023.*
@@ -175,26 +176,30 @@ class AdventOfCode2023Spec : FunSpec({
         context("Day 8: Haunted Wasteland") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf(
-                            "RL",
-                            "",
-                            "AAA = (BBB, CCC)",
-                            "BBB = (DDD, EEE)",
-                            "CCC = (ZZZ, GGG)",
-                            "DDD = (DDD, DDD)",
-                            "EEE = (EEE, EEE)",
-                            "GGG = (GGG, GGG)",
-                            "ZZZ = (ZZZ, ZZZ)"
-                        ) to 2,
-                        listOf(
-                            "LLR",
-                            "",
-                            "AAA = (BBB, BBB)",
-                            "BBB = (AAA, ZZZ)",
-                            "ZZZ = (ZZZ, ZZZ)"
-                        ) to 6
+                        tuple(
+                            listOf(
+                                "RL",
+                                "",
+                                "AAA = (BBB, CCC)",
+                                "BBB = (DDD, EEE)",
+                                "CCC = (ZZZ, GGG)",
+                                "DDD = (DDD, DDD)",
+                                "EEE = (EEE, EEE)",
+                                "GGG = (GGG, GGG)",
+                                "ZZZ = (ZZZ, ZZZ)"
+                            ), 2
+                        ),
+                        tuple(
+                            listOf(
+                                "LLR",
+                                "",
+                                "AAA = (BBB, BBB)",
+                                "BBB = (AAA, ZZZ)",
+                                "ZZZ = (ZZZ, ZZZ)"
+                            ), 6
+                        )
                     )
                 ) { (input, expected) ->
                     Day08.part1(input) shouldBe expected
@@ -237,22 +242,26 @@ class AdventOfCode2023Spec : FunSpec({
         context("Day 10: Pipe Maze") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf(
-                            ".....",
-                            ".S-7.",
-                            ".|.|.",
-                            ".L-J.",
-                            "....."
-                        ) to 4,
-                        listOf(
-                            "..F7.",
-                            ".FJ|.",
-                            "SJ.L7",
-                            "|F--J",
-                            "LJ..."
-                        ) to 8
+                        tuple(
+                            listOf(
+                                ".....",
+                                ".S-7.",
+                                ".|.|.",
+                                ".L-J.",
+                                "....."
+                            ), 4
+                        ),
+                        tuple(
+                            listOf(
+                                "..F7.",
+                                ".FJ|.",
+                                "SJ.L7",
+                                "|F--J",
+                                "LJ..."
+                            ), 8
+                        )
                     )
                 ) { (input, expected) ->
                     Day10.part1(input) shouldBe expected
@@ -260,43 +269,49 @@ class AdventOfCode2023Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf(
-                            "...........",
-                            ".S-------7.",
-                            ".|F-----7|.",
-                            ".||.....||.",
-                            ".||.....||.",
-                            ".|L-7.F-J|.",
-                            ".|..|.|..|.",
-                            ".L--J.L--J.",
-                            "..........."
-                        ) to 4,
-                        listOf(
-                            ".F----7F7F7F7F-7....",
-                            ".|F--7||||||||FJ....",
-                            ".||.FJ||||||||L7....",
-                            "FJL7L7LJLJ||LJ.L-7..",
-                            "L--J.L7...LJS7F-7L7.",
-                            "....F-J..F7FJ|L7L7L7",
-                            "....L7.F7||L7|.L7L7|",
-                            ".....|FJLJ|FJ|F7|.LJ",
-                            "....FJL-7.||.||||...",
-                            "....L---J.LJ.LJLJ..."
-                        ) to 8,
-                        listOf(
-                            "FF7FSF7F7F7F7F7F---7",
-                            "L|LJ||||||||||||F--J",
-                            "FL-7LJLJ||||||LJL-77",
-                            "F--JF--7||LJLJ7F7FJ-",
-                            "L---JF-JLJ.||-FJLJJ7",
-                            "|F|F-JF---7F7-L7L|7|",
-                            "|FFJF7L7F-JF7|JL---7",
-                            "7-L-JL7||F7|L7F-7F7|",
-                            "L.L7LFJ|||||FJL7||LJ",
-                            "L7JLJL-JLJLJL--JLJ.L"
-                        ) to 10
+                        tuple(
+                            listOf(
+                                "...........",
+                                ".S-------7.",
+                                ".|F-----7|.",
+                                ".||.....||.",
+                                ".||.....||.",
+                                ".|L-7.F-J|.",
+                                ".|..|.|..|.",
+                                ".L--J.L--J.",
+                                "..........."
+                            ), 4
+                        ),
+                        tuple(
+                            listOf(
+                                ".F----7F7F7F7F-7....",
+                                ".|F--7||||||||FJ....",
+                                ".||.FJ||||||||L7....",
+                                "FJL7L7LJLJ||LJ.L-7..",
+                                "L--J.L7...LJS7F-7L7.",
+                                "....F-J..F7FJ|L7L7L7",
+                                "....L7.F7||L7|.L7L7|",
+                                ".....|FJLJ|FJ|F7|.LJ",
+                                "....FJL-7.||.||||...",
+                                "....L---J.LJ.LJLJ..."
+                            ), 8
+                        ),
+                        tuple(
+                            listOf(
+                                "FF7FSF7F7F7F7F7F---7",
+                                "L|LJ||||||||||||F--J",
+                                "FL-7LJLJ||||||LJL-77",
+                                "F--JF--7||LJLJ7F7FJ-",
+                                "L---JF-JLJ.||-FJLJJ7",
+                                "|F|F-JF---7F7-L7L|7|",
+                                "|FFJF7L7F-JF7|JL---7",
+                                "7-L-JL7||F7|L7F-7F7|",
+                                "L.L7LFJ|||||FJL7||LJ",
+                                "L7JLJL-JLJLJL--JLJ.L"
+                            ), 10
+                        )
                     )
                 ) { (input, expected) ->
                     Day10.part2(input) shouldBe expected
