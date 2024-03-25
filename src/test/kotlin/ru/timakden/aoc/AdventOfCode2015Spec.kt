@@ -382,7 +382,7 @@ class AdventOfCode2015Spec : FunSpec({
                     tuple((1 to 1), 20151125),
                     tuple((4 to 2), 32451966),
                     tuple((3 to 5), 11661866),
-                    tuple((6 to 6), 2799500)
+                    tuple((6 to 6), 27995004)
                 )
             ) { (input, expected) ->
                 Day25.solve(input) shouldBe expected

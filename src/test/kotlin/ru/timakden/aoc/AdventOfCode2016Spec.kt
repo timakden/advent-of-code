@@ -1,6 +1,7 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.tuple
 import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2016.*
@@ -10,8 +11,8 @@ class AdventOfCode2016Spec : FunSpec({
         context("Day 1: No Time for a Taxicab") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf("R2, L3" to 5, "R2, R2, R2" to 2, "R5, L5, R5, R3" to 12)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple("R2, L3", 5), tuple("R2, R2, R2", 2), tuple("R5, L5, R5, R3", 12))
                 ) { (input, expected) ->
                     Day01.part1(input) shouldBe expected
                 }
@@ -113,14 +114,14 @@ class AdventOfCode2016Spec : FunSpec({
         context("Day 9: Explosives in Cyberspace") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "ADVENT" to 6,
-                        "A(1x5)BC" to 7,
-                        "(3x3)XYZ" to 9,
-                        "A(2x2)BCD(2x2)EFG" to 11,
-                        "(6x1)(1x3)A" to 6,
-                        "X(8x2)(3x3)ABCY" to 18
+                        tuple("ADVENT", 6),
+                        tuple("A(1x5)BC", 7),
+                        tuple("(3x3)XYZ", 9),
+                        tuple("A(2x2)BCD(2x2)EFG", 11),
+                        tuple("(6x1)(1x3)A", 6),
+                        tuple("X(8x2)(3x3)ABCY", 18)
                     )
                 ) { (input, expected) ->
                     Day09.part1(input) shouldBe expected
@@ -128,12 +129,12 @@ class AdventOfCode2016Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "(3x3)XYZ" to "XYZXYZXYZ".length,
-                        "X(8x2)(3x3)ABCY" to "XABCABCABCABCABCABCY".length,
-                        "(27x12)(20x12)(13x14)(7x10)(1x12)A" to 241920,
-                        "(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN" to 445
+                        tuple("(3x3)XYZ", "XYZXYZXYZ".length),
+                        tuple("X(8x2)(3x3)ABCY", "XABCABCABCABCABCABCY".length),
+                        tuple("(27x12)(20x12)(13x14)(7x10)(1x12)A", 241920),
+                        tuple("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN", 445)
                     )
                 ) { (input, expected) ->
                     Day09.part2(input) shouldBe expected
