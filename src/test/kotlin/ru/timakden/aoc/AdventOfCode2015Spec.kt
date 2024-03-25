@@ -1,6 +1,7 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.tuple
 import io.kotest.datatest.withData
 import io.kotest.matchers.maps.shouldContainAll
 import io.kotest.matchers.shouldBe
@@ -11,17 +12,17 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 1: Not Quite Lisp") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "(())" to 0,
-                        "()()" to 0,
-                        "(((" to 3,
-                        "(()(()(" to 3,
-                        "))(((((" to 3,
-                        "())" to -1,
-                        "))(" to -1,
-                        ")))" to -3,
-                        ")())())" to -3
+                        tuple("(())", 0),
+                        tuple("()()", 0),
+                        tuple("(((", 3),
+                        tuple("(()(()(", 3),
+                        tuple("))(((((", 3),
+                        tuple("())", -1),
+                        tuple("))(", -1),
+                        tuple(")))", -3),
+                        tuple(")())())", -3)
                     )
                 ) { (input, expected) ->
                     Day01.part1(input) shouldBe expected
@@ -29,8 +30,8 @@ class AdventOfCode2015Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(")" to 1, "()())" to 5)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple(")", 1), tuple("()())", 5))
                 ) { (input, expected) ->
                     Day01.part2(input) shouldBe expected
                 }
@@ -40,16 +41,16 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 2: I Was Told There Would Be No Math") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(listOf("2x3x4") to 58, listOf("1x1x10") to 43)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple(listOf("2x3x4"), 58), tuple(listOf("1x1x10"), 43))
                 ) { (input, expected) ->
                     Day02.part1(input) shouldBe expected
                 }
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(listOf("2x3x4") to 34, listOf("1x1x10") to 14)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple(listOf("2x3x4"), 34), tuple(listOf("1x1x10"), 14))
                 ) { (input, expected) ->
                     Day02.part2(input) shouldBe expected
                 }
@@ -59,16 +60,16 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 3: Perfectly Spherical Houses in a Vacuum") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf(">" to 2, "^>v<" to 4, "^v^v^v^v^v" to 2)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple(">", 2), tuple("^>v<", 4), tuple("^v^v^v^v^v", 2))
                 ) { (input, expected) ->
                     Day03.part1(input) shouldBe expected
                 }
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                    ts = listOf("^v" to 3, "^>v<" to 3, "^v^v^v^v^v" to 11)
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(tuple("^v", 3), tuple("^>v<", 3), tuple("^v^v^v^v^v", 11))
                 ) { (input, expected) ->
                     Day03.part2(input) shouldBe expected
                 }
@@ -77,8 +78,8 @@ class AdventOfCode2015Spec : FunSpec({
 
         context("Day 4: The Ideal Stocking Stuffer") {
             withData(
-                nameFn = { "input = ${it.first}, expected = ${it.second}" },
-                ts = listOf("abcdef" to 609043, "pqrstuv" to 1048970)
+                nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                ts = listOf(tuple("abcdef", 609043), tuple("pqrstuv", 1048970))
             ) { (input, expected) ->
                 Day04.part1(input) shouldBe expected
             }
@@ -87,13 +88,13 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 5: Doesn't He Have Intern-Elves For This?") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "ugknbfddgicrmopn" to true,
-                        "aaa" to true,
-                        "jchzalrnumimnmhp" to false,
-                        "haegwjzuvuyypxyu" to false,
-                        "dvszwmarrgswjxmb" to false
+                        tuple("ugknbfddgicrmopn", true),
+                        tuple("aaa", true),
+                        tuple("jchzalrnumimnmhp", false),
+                        tuple("haegwjzuvuyypxyu", false),
+                        tuple("dvszwmarrgswjxmb", false)
                     )
                 ) { (input, expected) ->
                     Day05.isStringNicePartOne(input) shouldBe expected
@@ -101,12 +102,12 @@ class AdventOfCode2015Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        "qjhvhtzxzqqjkmpb" to true,
-                        "xxyxx" to true,
-                        "uurcxstgmygtbstg" to false,
-                        "ieodomkazucvgmuy" to false
+                        tuple("qjhvhtzxzqqjkmpb", true),
+                        tuple("xxyxx", true),
+                        tuple("uurcxstgmygtbstg", false),
+                        tuple("ieodomkazucvgmuy", false)
                     )
                 ) { (input, expected) ->
                     Day05.isStringNicePartTwo(input) shouldBe expected
@@ -117,11 +118,11 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 6: Probably a Fire Hazard") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf("turn on 0,0 through 999,999") to 1000000,
-                        listOf("toggle 0,0 through 999,0") to 1000,
-                        listOf("turn off 499,499 through 500,500") to 0
+                        tuple(listOf("turn on 0,0 through 999,999"), 1000000),
+                        tuple(listOf("toggle 0,0 through 999,0"), 1000),
+                        tuple(listOf("turn off 499,499 through 500,500"), 0)
                     )
                 ) { (input, expected) ->
                     Day06.part1(input) shouldBe expected
@@ -129,10 +130,10 @@ class AdventOfCode2015Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        listOf("turn on 0,0 through 0,0") to 1,
-                        listOf("toggle 0,0 through 999,999") to 2000000
+                        tuple(listOf("turn on 0,0 through 0,0"), 1),
+                        tuple(listOf("toggle 0,0 through 999,999"), 2000000)
                     )
                 ) { (input, expected) ->
                     Day06.part2(input) shouldBe expected
@@ -191,13 +192,13 @@ class AdventOfCode2015Spec : FunSpec({
 
         context("Day 10: Elves Look, Elves Say") {
             withData(
-                nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                nameFn = { "input = ${it.a}, expected = ${it.b}" },
                 ts = listOf(
-                    "1" to "11",
-                    "11" to "21",
-                    "21" to "1211",
-                    "1211" to "111221",
-                    "111221" to "312211"
+                    tuple("1", "11"),
+                    tuple("11", "21"),
+                    tuple("21", "1211"),
+                    tuple("1211", "111221"),
+                    tuple("111221", "312211")
                 )
             ) { (input, expected) ->
                 Day10.solve(input, 1) shouldBe expected
@@ -206,15 +207,15 @@ class AdventOfCode2015Spec : FunSpec({
 
         context("Day 11: Corporate Policy") {
             withData(
-                nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                nameFn = { "input = ${it.a}, expected = ${it.b}" },
                 ts = listOf(
-                    "hijklmmn" to false,
-                    "abbceffg" to false,
-                    "abbcegjk" to false,
-                    "abcdefgh" to false,
-                    "abcdffaa" to true,
-                    "ghijklmn" to false,
-                    "ghjaabcc" to true
+                    tuple("hijklmmn", false),
+                    tuple("abbceffg", false),
+                    tuple("abbcegjk", false),
+                    tuple("abcdefgh", false),
+                    tuple("abcdffaa", true),
+                    tuple("ghijklmn", false),
+                    tuple("ghjaabcc", true)
                 )
             ) { (input, expected) ->
                 Day11.checkPassword(input) shouldBe expected
@@ -224,16 +225,16 @@ class AdventOfCode2015Spec : FunSpec({
         context("Day 12: JSAbacusFramework.io") {
             context("Part One") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        """[1,2,3]""" to 6,
-                        """{"a":2,"b":4}""" to 6,
-                        """[[[3]]]""" to 3,
-                        """{"a":{"b":4},"c":-1}""" to 3,
-                        """{"a":[-1,1]}""" to 0,
-                        """[-1,{"a":1}]""" to 0,
-                        """[]""" to 0,
-                        """{}""" to 0
+                        tuple("""[1,2,3]""", 6),
+                        tuple("""{"a":2,"b":4}""", 6),
+                        tuple("""[[[3]]]""", 3),
+                        tuple("""{"a":{"b":4},"c":-1}""", 3),
+                        tuple("""{"a":[-1,1]}""", 0),
+                        tuple("""[-1,{"a":1}]""", 0),
+                        tuple("""[]""", 0),
+                        tuple("""{}""", 0)
                     )
                 ) { (input, expected) ->
                     Day12.part1(input) shouldBe expected
@@ -241,12 +242,12 @@ class AdventOfCode2015Spec : FunSpec({
             }
             context("Part Two") {
                 withData(
-                    nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
                     ts = listOf(
-                        """[1,2,3]""" to 6,
-                        """[1,{"c":"red","b":2},3]""" to 4,
-                        """{"d":"red","e":[1,2,3,4],"f":5}""" to 0,
-                        """[1,"red",5]""" to 6
+                        tuple("""[1,2,3]""", 6),
+                        tuple("""[1,{"c":"red","b":2},3]""", 4),
+                        tuple("""{"d":"red","e":[1,2,3,4],"f":5}""", 0),
+                        tuple("""[1,"red",5]""", 6)
                     )
                 ) { (input, expected) ->
                     Day12.part2(input) shouldBe expected
@@ -376,12 +377,12 @@ class AdventOfCode2015Spec : FunSpec({
 
         context("Day 25: Let It Snow") {
             withData(
-                nameFn = { "input = ${it.first}, expected = ${it.second}" },
+                nameFn = { "input = ${it.a}, expected = ${it.b}" },
                 ts = listOf(
-                    (1 to 1) to 20151125,
-                    (4 to 2) to 32451966,
-                    (3 to 5) to 11661866,
-                    (6 to 6) to 27995004
+                    tuple((1 to 1), 20151125),
+                    tuple((4 to 2), 32451966),
+                    tuple((3 to 5), 11661866),
+                    tuple((6 to 6), 2799500)
                 )
             ) { (input, expected) ->
                 Day25.solve(input) shouldBe expected
