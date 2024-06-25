@@ -1,11 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 
-val arrowVersion: String by project
-val coroutinesVersion: String by project
-val kotestVersion: String by project
-val kotlinVersion: String by project
-val serializationVersion: String by project
-
 plugins {
     idea
     id("com.github.ben-manes.versions") version "0.51.0"
@@ -23,14 +17,15 @@ repositories {
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-    implementation("io.arrow-kt:arrow-core:$arrowVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
+    implementation("io.arrow-kt:arrow-core:1.2.4")
 
-    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-    testImplementation("io.kotest:kotest-framework-datatest:$kotestVersion")
-    testImplementation("io.kotest:kotest-property:$kotestVersion")
-    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation(platform("io.kotest:kotest-bom:5.9.1"))
+    testImplementation("io.kotest:kotest-assertions-core")
+    testImplementation("io.kotest:kotest-framework-datatest")
+    testImplementation("io.kotest:kotest-property")
+    testImplementation("io.kotest:kotest-runner-junit5")
 }
 
 kotlin {
