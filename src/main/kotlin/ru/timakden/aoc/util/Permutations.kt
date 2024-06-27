@@ -23,7 +23,7 @@ object Permutations {
         output
     } else {
         val factorial = factorial(input.size - 1)
-        output.add(input.removeAt(count / factorial))
+        output += input.removeAt(count / factorial)
         permutationHelper(count % factorial, input, output)
     }
 }
