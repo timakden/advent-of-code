@@ -25,11 +25,8 @@ jobs:
           java-version: '21'
           distribution: 'liberica'
 
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v2
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          gradle-version: 8.9
-          arguments: build
+      - name: Run the tests
+        run: ./gradlew check
