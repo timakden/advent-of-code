@@ -1,0 +1,29 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <JavaCodeStyleSettings>
+      <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="35" />
+      <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="35" />
+    </JavaCodeStyleSettings>
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
+    <XML>
+      <option name="XML_ATTRIBUTE_WRAP" value="0" />
+      <option name="XML_TEXT_WRAP" value="0" />
+    </XML>
+    <codeStyleSettings language="JAVA">
+      <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
+      <option name="BINARY_OPERATION_SIGN_ON_NEXT_LINE" value="true" />
+      <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+      <option name="WRAP_LONG_LINES" value="true" />
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </codeStyleSettings>
+    <codeStyleSettings language="yaml">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
