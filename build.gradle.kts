@@ -17,7 +17,7 @@ repositories {
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib"))
-    implementation("org.jetbrains:annotations:24.0.0")
+    implementation("org.jetbrains:annotations:26.0.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("io.arrow-kt:arrow-core:1.2.4")
@@ -44,7 +44,7 @@ tasks {
         useJUnitPlatform()
     }
     wrapper {
-        gradleVersion = "8.11"
+        gradleVersion = "8.11.1"
     }
 }
 
