@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 plugins {
     idea
     id("com.github.ben-manes.versions") version "0.51.0"
-    kotlin("jvm") version "2.0.21"
-    kotlin("plugin.serialization") version "2.0.21"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 group = "ru.timakden"
