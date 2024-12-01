@@ -18,7 +18,7 @@ Advent of Code is a series of small programming puzzles for a variety of skill l
 
 MIT License
 
-Copyright (c) 2023 Denis Timakov
+Copyright (c) 2015-2024 Denis Timakov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
