@@ -4,7 +4,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 import kotlin.io.path.Path
-import kotlin.io.path.readLines
+import kotlin.io.path.readText
 import kotlin.time.measureTime
 
 /**
@@ -44,7 +44,7 @@ fun measure(block: () -> Unit) = println("Elapsed time: ${measureTime(block)}")
  * @param name the name of the file to read, excluding the file extension
  * @return a list of strings representing the lines of the file
  */
-fun readInput(name: String) = Path("src/main/kotlin/ru/timakden/aoc/$name.txt").readLines()
+fun readInput(name: String) = Path("src/main/kotlin/ru/timakden/aoc/$name.txt").readText().trim().lines()
 
 /**
  * Calculates the greatest common divisor (GCD) of two numbers.
