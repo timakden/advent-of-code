@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 
 plugins {
     idea
-    id("com.github.ben-manes.versions") version "0.51.0"
-    kotlin("jvm") version "2.1.0"
-    kotlin("plugin.serialization") version "2.1.0"
+    alias(libs.plugins.versions)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "ru.timakden"
@@ -15,21 +15,11 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("reflect"))
-    implementation(kotlin("stdlib"))
-    implementation("org.jetbrains:annotations:26.0.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    implementation("io.arrow-kt:arrow-core:1.2.4")
+    implementation(libs.bundles.kotlin)
+    implementation(libs.bundles.arrow)
+    implementation(libs.jetbrains.annotations)
 
-    testImplementation(platform("io.kotest:kotest-bom:5.9.1"))
-    testImplementation("io.kotest:kotest-assertions-core")
-    testImplementation("io.kotest:kotest-framework-datatest")
-    testImplementation("io.kotest:kotest-property")
-    testImplementation("io.kotest:kotest-runner-junit5")
-    testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
-    testImplementation("io.kotest.extensions:kotest-property-arrow:1.4.0")
-
+    testImplementation(libs.bundles.kotest)
 }
 
 kotlin {

@@ -1,0 +1,45 @@
+[versions]
+arrow = "1.2.4"
+jetbrains-annotations = "26.0.1"
+kotlin = "2.1.0"
+kotlin-coroutines = "1.9.0"
+kotlin-serialization = "1.7.3"
+kotest = "5.9.1"
+kotest-arrow = "1.4.0"
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+
+arrow-collectors = { module = "io.arrow-kt:arrow-collectors", version.ref = "arrow" }
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+arrow-eval = { module = "io.arrow-kt:arrow-eval", version.ref = "arrow" }
+arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
+
+jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
+
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-framework-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-arrow = { module = "io.kotest.extensions:kotest-assertions-arrow", version.ref = "kotest-arrow" }
+kotest-property-arrow = { module = "io.kotest.extensions:kotest-property-arrow", version.ref = "kotest-arrow" }
+
+[bundles]
+arrow = ["arrow-collectors", "arrow-core", "arrow-eval", "arrow-fx-coroutines"]
+kotlin = ["kotlin-stdlib", "kotlin-reflect", "kotlin-coroutines", "kotlin-serialization"]
+kotest = [
+    "kotest-assertions-core",
+    "kotest-framework-datatest",
+    "kotest-property",
+    "kotest-runner-junit5",
+    "kotest-assertions-arrow",
+    "kotest-property-arrow"
+]
+
+[plugins]
+versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
