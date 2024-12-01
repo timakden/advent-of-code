@@ -27,6 +27,9 @@ dependencies {
     testImplementation("io.kotest:kotest-framework-datatest")
     testImplementation("io.kotest:kotest-property")
     testImplementation("io.kotest:kotest-runner-junit5")
+    testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
+    testImplementation("io.kotest.extensions:kotest-property-arrow:1.4.0")
+
 }
 
 kotlin {
