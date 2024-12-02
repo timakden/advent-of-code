@@ -26,7 +26,7 @@ class AdventOfCode2024Spec : FunSpec({
             }
         }
 
-        context("Day 2: Day 2: Red-Nosed Reports") {
+        context("Day 2: Red-Nosed Reports") {
             val input = listOf(
                 "7 6 4 2 1",
                 "1 2 7 8 9",
