@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2024.Day01
 import ru.timakden.aoc.year2024.Day02
+import ru.timakden.aoc.year2024.Day03
 
 class AdventOfCode2024Spec : FunSpec({
     context("Year 2024") {
@@ -42,6 +43,18 @@ class AdventOfCode2024Spec : FunSpec({
             test("Part Two") {
                 val expected = 4
                 Day02.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 3: Mull It Over") {
+            val input = listOf("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))")
+            test("Part One") {
+                val expected = 161
+                Day03.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 48
+                Day03.part2(input) shouldBe expected
             }
         }
     }
