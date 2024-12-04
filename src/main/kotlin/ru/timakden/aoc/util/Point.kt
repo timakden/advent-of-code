@@ -60,6 +60,42 @@ data class Point(val x: Int = 0, val y: Int = 0) {
     fun moveUp(steps: Int = 1) = this + Point(0, steps)
 
     /**
+     * Moves the current point diagonally up and to the left by subtracting the specified number of steps
+     * from the x-coordinate and adding it to the y-coordinate, resulting in a new Point instance with updated coordinates.
+     *
+     * @param steps The number of steps to move diagonally up and left. Default value is 1.
+     * @return A new Point instance with updated coordinates.
+     */
+    fun moveUpLeft(steps: Int = 1) = this + Point(-steps, steps)
+
+    /**
+     * Moves the current point diagonally up and to the right by adding the specified number of steps
+     * to both the x-coordinate and the y-coordinate, resulting in a new Point instance with updated coordinates.
+     *
+     * @param steps The number of steps to move diagonally up and right. Default value is 1.
+     * @return A new Point instance with updated coordinates.
+     */
+    fun moveUpRight(steps: Int = 1) = this + Point(steps, steps)
+
+    /**
+     * Moves the current point diagonally down and to the left by subtracting the specified number of steps
+     * from both the x-coordinate and the y-coordinate, resulting in a new Point instance with updated coordinates.
+     *
+     * @param steps The number of steps to move diagonally down and left. Default value is 1.
+     * @return A new Point instance with updated coordinates.
+     */
+    fun moveDownLeft(steps: Int = 1) = this + Point(-steps, -steps)
+
+    /**
+     * Moves the current point diagonally down and to the right by adding the specified number of steps
+     * to the x-coordinate and subtracting it from the y-coordinate, resulting in a new Point instance with updated coordinates.
+     *
+     * @param steps The number of steps to move diagonally down and right. Default value is 1.
+     * @return A new Point instance with updated coordinates.
+     */
+    fun moveDownRight(steps: Int = 1) = this + Point(steps, -steps)
+
+    /**
      * Checks if a point is inside a polygon. Sources:
      *
      * * [Habr](https://habr.com/ru/articles/125356/)
@@ -111,16 +147,7 @@ data class Point(val x: Int = 0, val y: Int = 0) {
     companion object {
         val DOWN = Point(0, -1)
         val LEFT = Point(-1, 0)
-        /**
-         * Represents a constant Point object with coordinates (1, 0).
-         */
         val RIGHT = Point(1, 0)
-        /**
-         * Represents a point in a two-dimensional space.
-         *
-         * @property x The x-coordinate of the point.
-         * @property y The y-coordinate of the point.
-         */
         val UP = Point(0, 1)
     }
 }

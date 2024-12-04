@@ -5,6 +5,7 @@ import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2024.Day01
 import ru.timakden.aoc.year2024.Day02
 import ru.timakden.aoc.year2024.Day03
+import ru.timakden.aoc.year2024.Day04
 
 class AdventOfCode2024Spec : FunSpec({
     context("Year 2024") {
@@ -55,6 +56,29 @@ class AdventOfCode2024Spec : FunSpec({
             test("Part Two") {
                 val expected = 48
                 Day03.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 4: Ceres Search") {
+            val input = listOf(
+                "MMMSXXMASM",
+                "MSAMXMSMSA",
+                "AMXSXMAAMM",
+                "MSAMASMSMX",
+                "XMASAMXAMM",
+                "XXAMMXXAMA",
+                "SMSMSASXSS",
+                "SAXAMASAAA",
+                "MAMMMXMMMM",
+                "MXMXAXMASX"
+            )
+            test("Part One") {
+                val expected = 18
+                Day04.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 9
+                Day04.part2(input) shouldBe expected
             }
         }
     }
