@@ -17,6 +17,7 @@ arrow-collectors = { module = "io.arrow-kt:arrow-collectors", version.ref = "arr
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-eval = { module = "io.arrow-kt:arrow-eval", version.ref = "arrow" }
 arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
+arrow-functions = { module = "io.arrow-kt:arrow-functions", version.ref = "arrow" }
 
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 
@@ -28,7 +29,7 @@ kotest-assertions-arrow = { module = "io.kotest.extensions:kotest-assertions-arr
 kotest-property-arrow = { module = "io.kotest.extensions:kotest-property-arrow", version.ref = "kotest-arrow" }
 
 [bundles]
-arrow = ["arrow-collectors", "arrow-core", "arrow-eval", "arrow-fx-coroutines"]
+arrow = ["arrow-collectors", "arrow-core", "arrow-eval", "arrow-fx-coroutines", "arrow-functions"]
 kotlin = ["kotlin-stdlib", "kotlin-reflect", "kotlin-coroutines", "kotlin-serialization"]
 kotest = [
     "kotest-assertions-core",
