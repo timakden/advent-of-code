@@ -119,5 +119,28 @@ class AdventOfCode2024Spec : FunSpec({
                 Day05.part2(input) shouldBe expected
             }
         }
+
+        context("Day 6: Guard Gallivant") {
+            val input = listOf(
+                "....#.....",
+                ".........#",
+                "..........",
+                "..#.......",
+                ".......#..",
+                "..........",
+                ".#..^.....",
+                "........#.",
+                "#.........",
+                "......#..."
+            )
+            test("Part One") {
+                val expected = 41
+                Day06.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 6
+                Day06.part2(input) shouldBe expected
+            }
+        }
     }
 })
