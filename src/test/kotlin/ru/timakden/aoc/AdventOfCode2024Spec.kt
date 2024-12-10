@@ -164,5 +164,26 @@ class AdventOfCode2024Spec : FunSpec({
                 Day07.part2(input) shouldBe expected
             }
         }
+
+        context("Day 10: Hoof It") {
+            val input = listOf(
+                "89010123",
+                "78121874",
+                "87430965",
+                "96549874",
+                "45678903",
+                "32019012",
+                "01329801",
+                "10456732"
+            )
+            test("Part One") {
+                val expected = 36
+                Day10.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 81
+                Day10.part2(input) shouldBe expected
+            }
+        }
     }
 })
