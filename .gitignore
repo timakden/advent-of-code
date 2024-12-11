@@ -1,6 +1,7 @@
 .gradle
 .idea
-.kotlin/
+.kotlin
 build
+out
 src/**/*.txt
 local.properties
