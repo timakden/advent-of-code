@@ -185,5 +185,17 @@ class AdventOfCode2024Spec : FunSpec({
                 Day10.part2(input) shouldBe expected
             }
         }
+
+        context("Day 11: Plutonian Pebbles") {
+            val input = "125 17"
+            test("Part One") {
+                val expected = 55312
+                Day11.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 65601038650482
+                Day11.part2(input) shouldBe expected
+            }
+        }
     }
 })
