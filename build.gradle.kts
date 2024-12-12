@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.versions)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.google.ksp)
 }
 
 group = "ru.timakden"
@@ -18,6 +19,8 @@ dependencies {
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.arrow)
     implementation(libs.jetbrains.annotations)
+
+    ksp(libs.arrow.optics.ksp)
 
     testImplementation(libs.bundles.kotest)
 }

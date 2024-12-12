@@ -6,6 +6,7 @@ kotlin-coroutines = "1.9.0"
 kotlin-serialization = "1.7.3"
 kotest = "5.9.1"
 kotest-arrow = "1.4.0"
+google-ksp = "2.1.0-1.0.29"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -18,6 +19,8 @@ arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-eval = { module = "io.arrow-kt:arrow-eval", version.ref = "arrow" }
 arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
 arrow-functions = { module = "io.arrow-kt:arrow-functions", version.ref = "arrow" }
+arrow-optics = { module = "io.arrow-kt:arrow-optics", version.ref = "arrow" }
+arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin", version.ref = "arrow" }
 
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 
@@ -29,7 +32,14 @@ kotest-assertions-arrow = { module = "io.kotest.extensions:kotest-assertions-arr
 kotest-property-arrow = { module = "io.kotest.extensions:kotest-property-arrow", version.ref = "kotest-arrow" }
 
 [bundles]
-arrow = ["arrow-collectors", "arrow-core", "arrow-eval", "arrow-fx-coroutines", "arrow-functions"]
+arrow = [
+    "arrow-collectors",
+    "arrow-core",
+    "arrow-eval",
+    "arrow-fx-coroutines",
+    "arrow-functions",
+    "arrow-optics"
+]
 kotlin = ["kotlin-stdlib", "kotlin-reflect", "kotlin-coroutines", "kotlin-serialization"]
 kotest = [
     "kotest-assertions-core",
@@ -44,3 +54,4 @@ kotest = [
 versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
