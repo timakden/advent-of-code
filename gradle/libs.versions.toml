@@ -2,7 +2,7 @@
 arrow = "2.0.0"
 jetbrains-annotations = "26.0.1"
 kotlin = "2.1.0"
-kotlin-coroutines = "1.9.0"
+kotlin-coroutines = "1.10.0"
 kotlin-serialization = "1.7.3"
 kotest = "5.9.1"
 kotest-arrow = "1.4.0"
