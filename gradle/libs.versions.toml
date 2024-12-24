@@ -5,7 +5,7 @@ kotlin = "2.1.0"
 kotlin-coroutines = "1.10.1"
 kotlin-serialization = "1.7.3"
 kotest = "5.9.1"
-kotest-arrow = "1.4.0"
+kotest-arrow = "2.0.0"
 google-ksp = "2.1.0-1.0.29"
 
 [libraries]
