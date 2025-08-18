@@ -4,7 +4,7 @@ jetbrains-annotations = "26.0.2"
 kotlin = "2.2.10"
 kotlin-coroutines = "1.10.2"
 kotlin-serialization = "1.9.0"
-kotest = "5.9.1"
+kotest = "6.0.0"
 kotest-arrow = "2.0.0"
 google-ksp = "2.2.10-2.0.2"
 
@@ -25,7 +25,6 @@ arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin", version.ref
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-framework-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions-arrow = { module = "io.kotest.extensions:kotest-assertions-arrow", version.ref = "kotest-arrow" }
@@ -43,7 +42,6 @@ arrow = [
 kotlin = ["kotlin-stdlib", "kotlin-reflect", "kotlin-coroutines", "kotlin-serialization"]
 kotest = [
     "kotest-assertions-core",
-    "kotest-framework-datatest",
     "kotest-property",
     "kotest-runner-junit5",
     "kotest-assertions-arrow",

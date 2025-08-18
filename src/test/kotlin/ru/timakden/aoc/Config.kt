@@ -1,7 +1,8 @@
 package ru.timakden.aoc
 
 import io.kotest.core.config.AbstractProjectConfig
+import io.kotest.engine.concurrency.TestExecutionMode
 
 object Config : AbstractProjectConfig() {
-    override val parallelism = 5
+    override val testExecutionMode = TestExecutionMode.LimitedConcurrency(5)
 }
