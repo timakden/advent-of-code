@@ -1,5 +1,5 @@
 [versions]
-arrow = "2.1.2"
+arrow = "2.2.0"
 jetbrains-annotations = "26.0.2-1"
 kotlin = "2.2.21"
 kotlin-coroutines = "1.10.2"
