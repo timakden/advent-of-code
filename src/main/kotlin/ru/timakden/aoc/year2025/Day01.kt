@@ -44,9 +44,9 @@ object Day01 {
         var dial = 50
         var zeroes = 0
 
-        input.forEach { instruction ->
-            val rotation = instruction.first()
-            val distance = instruction.drop(1).toInt()
+        input.forEach {
+            val rotation = it.first()
+            val distance = it.drop(1).toInt()
 
             repeat(distance) {
                 if (rotation == 'L') {
