@@ -37,8 +37,6 @@ object Day12 {
             }
 
             is JsonPrimitive -> return json.intOrNull ?: 0
-
-            else -> return 0
         }
     }
 }
