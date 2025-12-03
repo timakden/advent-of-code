@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2025.Day01
 import ru.timakden.aoc.year2025.Day02
+import ru.timakden.aoc.year2025.Day03
 
 class AdventOfCode2025Spec : FunSpec({
     context("Year 2025") {
@@ -40,6 +41,23 @@ class AdventOfCode2025Spec : FunSpec({
             test("Part Two") {
                 val expected = 4174379265
                 Day02.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 3: Lobby") {
+            val input = listOf(
+                "987654321111111",
+                "811111111111119",
+                "234234234234278",
+                "818181911112111"
+            )
+            test("Part One") {
+                val expected = 357
+                Day03.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 3121910778619
+                Day03.part2(input) shouldBe expected
             }
         }
     }
