@@ -1,5 +1,6 @@
 package ru.timakden.aoc
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.tuple
 import io.kotest.datatest.withData
@@ -291,6 +292,56 @@ class AdventOfCodeUtilsSpec : FunSpec({
                     )
                 ) { (polygon, expected) ->
                     polygon.perimeter shouldBe expected
+                }
+            }
+        }
+
+        context("CircularListIterator") {
+            context("empty list") {
+                test("iterator.next() throws NoSuchElementException") {
+                    shouldThrow<NoSuchElementException> { emptyList<Int>().circularListIterator().next() }
+                }
+                test("iterator.hasNext() returns false") {
+                    emptyList<Int>().circularListIterator().hasNext() shouldBe false
+                }
+                test("iterator.nextIndex() returns 0") {
+                    emptyList<Int>().circularListIterator().nextIndex() shouldBe 0
+                }
+                test("iterator.previous() throws NoSuchElementException") {
+                    shouldThrow<NoSuchElementException> { emptyList<Int>().circularListIterator().previous() }
+                }
+                test("iterator.hasPrevious() returns false") {
+                    emptyList<Int>().circularListIterator().hasPrevious() shouldBe false
+                }
+                test("iterator.previousIndex() returns -1") {
+                    emptyList<Int>().circularListIterator().previousIndex() shouldBe -1
+                }
+            }
+
+            context("non-empty list") {
+                test("iterator.next() returns the next element") {
+                    listOf(1, 2, 3).circularListIterator().next() shouldBe 1
+                }
+                test("iterator.next() iterates over the list") {
+                    listOf(1, 2, 3).circularListIterator(initialIndex = 3).next() shouldBe 1
+                }
+                test("iterator.hasNext() returns true") {
+                    listOf(1, 2, 3).circularListIterator().hasNext() shouldBe true
+                }
+                test("iterator.nextIndex() returns the next index") {
+                    listOf(1, 2, 3).circularListIterator().nextIndex() shouldBe 0
+                }
+                test("iterator.previous() returns the previous element") {
+                    listOf(1, 2, 3).circularListIterator(initialIndex = 1).previous() shouldBe 1
+                }
+                test("iterator.previous() iterates over the list") {
+                    listOf(1, 2, 3).circularListIterator().previous() shouldBe 3
+                }
+                test("iterator.hasPrevious() returns true") {
+                    listOf(1, 2, 3).circularListIterator().hasPrevious() shouldBe true
+                }
+                test("iterator.previousIndex() returns the previous index") {
+                    listOf(1, 2, 3).circularListIterator().previousIndex() shouldBe 2
                 }
             }
         }
