@@ -11,23 +11,23 @@ object Day02 {
     fun main(args: Array<String>) {
         measure {
             val input = readInput("year2025/Day02")
-            println("Part One: ${part1(input)}")
-            println("Part Two: ${part2(input)}")
+            println("Part One: ${part1(input.single())}")
+            println("Part Two: ${part2(input.single())}")
         }
     }
 
-    fun part1(input: List<String>): Long {
+    fun part1(input: String): Long {
         val regex = "^(.+)\\1$".toRegex()
-        return input.single().split(',').sumOf { range ->
+        return input.split(',').sumOf { range ->
             LongRange(range.substringBefore('-').toLong(), range.substringAfter('-').toLong()).sumOf {
                 if (it.toString().matches(regex)) it else 0
             }
         }
     }
 
-    fun part2(input: List<String>): Long {
+    fun part2(input: String): Long {
         val regex = "^(.+?)\\1+$".toRegex()
-        return input.single().split(',').sumOf { range ->
+        return input.split(',').sumOf { range ->
             LongRange(range.substringBefore('-').toLong(), range.substringAfter('-').toLong()).sumOf {
                 if (it.toString().matches(regex)) it else 0
             }
