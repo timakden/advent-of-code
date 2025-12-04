@@ -180,25 +180,25 @@ object Day22 {
         }
 
         private fun nextPosition() = when (facing) {
-            DOWN -> kotlin.runCatching {
+            DOWN -> runCatching {
                 if (map[position.y + 1][position.x] in allowedTiles)
                     Point(position.x, position.y + 1)
                 else wrap()
             }.getOrDefault(wrap())
 
-            LEFT -> kotlin.runCatching {
+            LEFT -> runCatching {
                 if (map[position.y][position.x - 1] in allowedTiles)
                     Point(position.x - 1, position.y)
                 else wrap()
             }.getOrDefault(wrap())
 
-            RIGHT -> kotlin.runCatching {
+            RIGHT -> runCatching {
                 if (map[position.y][position.x + 1] in allowedTiles)
                     Point(position.x + 1, position.y)
                 else wrap()
             }.getOrDefault(wrap())
 
-            UP -> kotlin.runCatching {
+            UP -> runCatching {
                 if (map[position.y - 1][position.x] in allowedTiles)
                     Point(position.x, position.y - 1)
                 else wrap()
@@ -206,25 +206,25 @@ object Day22 {
         }
 
         private fun nextPositionCube() = when (facing) {
-            DOWN -> kotlin.runCatching {
+            DOWN -> runCatching {
                 if (map[position.y + 1][position.x] in allowedTiles)
                     Point(position.x, position.y + 1) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
-            LEFT -> kotlin.runCatching {
+            LEFT -> runCatching {
                 if (map[position.y][position.x - 1] in allowedTiles)
                     Point(position.x - 1, position.y) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
-            RIGHT -> kotlin.runCatching {
+            RIGHT -> runCatching {
                 if (map[position.y][position.x + 1] in allowedTiles)
                     Point(position.x + 1, position.y) to facing
                 else wrapCube()
             }.getOrDefault(wrapCube())
 
-            UP -> kotlin.runCatching {
+            UP -> runCatching {
                 if (map[position.y - 1][position.x] in allowedTiles)
                     Point(position.x, position.y - 1) to facing
                 else wrapCube()

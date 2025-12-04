@@ -32,17 +32,17 @@ object Day18 {
 
         matrix.forEachIndexed { i, chars ->
             chars.forEachIndexed { j, c ->
-                val neighbours = mutableListOf<Char>()
+                val neighbors = mutableListOf<Char>()
 
                 for (k in (i - 1)..(i + 1)) {
                     for (l in (j - 1)..(j + 1)) {
                         if (k == i && l == j) continue // skip the current "cell"
 
-                        neighbours += Either.catch { matrix[k][l] }.getOrElse { '.' }
+                        neighbors += Either.catch { matrix[k][l] }.getOrElse { '.' }
                     }
                 }
 
-                val count = neighbours.count { it == '#' }
+                val count = neighbors.count { it == '#' }
 
                 newMatrix[i][j] = when (c) {
                     '#' -> if (count in 2..3) '#' else '.'
