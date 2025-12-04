@@ -1,7 +1,5 @@
 package ru.timakden.aoc.year2015
 
-import arrow.core.Either
-import arrow.core.getOrElse
 import ru.timakden.aoc.util.measure
 import ru.timakden.aoc.util.readInput
 
@@ -38,7 +36,7 @@ object Day18 {
                     for (l in (j - 1)..(j + 1)) {
                         if (k == i && l == j) continue // skip the current "cell"
 
-                        neighbors += Either.catch { matrix[k][l] }.getOrElse { '.' }
+                        neighbors += runCatching { matrix[k][l] }.getOrElse { '.' }
                     }
                 }
 
