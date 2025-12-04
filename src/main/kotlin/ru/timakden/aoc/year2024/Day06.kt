@@ -76,7 +76,7 @@ object Day06 {
     private fun Array<CharArray>.findGuardPath(): Either<IllegalStateException, List<Point>> {
         var currentPosition = this.guardPosition()
         var currentDirection = Direction.fromChar(GUARD)
-        val visitedPositions = mutableListOf<Pair<Point, Direction>>(currentPosition to currentDirection)
+        val visitedPositions = mutableListOf(currentPosition to currentDirection)
 
         while (true) {
             val newPosition = when (currentDirection) {
@@ -124,7 +124,7 @@ object Day06 {
                 'v' -> DOWN
                 '<' -> LEFT
                 '>' -> RIGHT
-                else -> throw error("Invalid direction: $char")
+                else -> error("Invalid direction: $char")
             }
         }
     }
