@@ -2,10 +2,7 @@ package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import ru.timakden.aoc.year2025.Day01
-import ru.timakden.aoc.year2025.Day02
-import ru.timakden.aoc.year2025.Day03
-import ru.timakden.aoc.year2025.Day04
+import ru.timakden.aoc.year2025.*
 
 class AdventOfCode2025Spec : FunSpec({
     context("Year 2025") {
@@ -82,6 +79,30 @@ class AdventOfCode2025Spec : FunSpec({
             test("Part Two") {
                 val expected = 43
                 Day04.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 5: Cafeteria") {
+            val input = listOf(
+                "3-5",
+                "10-14",
+                "16-20",
+                "12-18",
+                "",
+                "1",
+                "5",
+                "8",
+                "11",
+                "17",
+                "32"
+            )
+            test("Part One") {
+                val expected = 3
+                Day05.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 14
+                Day05.part2(input) shouldBe expected
             }
         }
     }
