@@ -105,5 +105,23 @@ class AdventOfCode2025Spec : FunSpec({
                 Day05.part2(input) shouldBe expected
             }
         }
+
+        context("Day 6: Trash Compactor") {
+            val input = listOf(
+                "123 328  51 64 ",
+                " 45 64  387 23 ",
+                "  6 98  215 314",
+                "*   +   *   +  "
+
+            )
+            test("Part One") {
+                val expected = 4277556
+                Day06.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 3263827
+                Day06.part2(input) shouldBe expected
+            }
+        }
     }
 })
