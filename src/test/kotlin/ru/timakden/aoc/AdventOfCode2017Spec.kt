@@ -7,6 +7,7 @@ import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2017.Day01
 import ru.timakden.aoc.year2017.Day02
 import ru.timakden.aoc.year2017.Day03
+import ru.timakden.aoc.year2017.Day04
 
 class AdventOfCode2017Spec : FunSpec({
     context("Year 2025") {
@@ -81,6 +82,29 @@ class AdventOfCode2017Spec : FunSpec({
                 ) { (input, expected) ->
                     Day03.part2(input) shouldBe expected
                 }
+            }
+        }
+
+        context("Day 4: High-Entropy Passphrases") {
+            test("Part One") {
+                val input = listOf(
+                    "aa bb cc dd ee",
+                    "aa bb cc dd aa",
+                    "aa bb cc dd aaa"
+                )
+                val expected = 2
+                Day04.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val input = listOf(
+                    "abcde fghij",
+                    "abcde xyz ecdab",
+                    "a ab abc abd abf abj",
+                    "iiii oiii ooii oooi oooo",
+                    "oiii ioii iioi iiio"
+                )
+                val expected = 3
+                Day04.part2(input) shouldBe expected
             }
         }
     }
