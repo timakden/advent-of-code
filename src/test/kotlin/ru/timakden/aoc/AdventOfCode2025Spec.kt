@@ -152,5 +152,22 @@ class AdventOfCode2025Spec : FunSpec({
                 Day07.part2(input) shouldBe expected
             }
         }
+
+        context("Day 9: Movie Theater") {
+            val input = listOf(
+                "7,1",
+                "11,1",
+                "11,7",
+                "9,7",
+                "9,5",
+                "2,5",
+                "2,3",
+                "7,3"
+            )
+            test("Part One") {
+                val expected = 50
+                Day09.part1(input) shouldBe expected
+            }
+        }
     }
 })
