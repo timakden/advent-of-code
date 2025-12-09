@@ -142,6 +142,26 @@ data class Point(val x: Int = 0, val y: Int = 0) {
      */
     fun distanceTo(other: Point) = abs(x - other.x) + abs(y - other.y)
 
+    /**
+     * Computes and returns a list of all neighboring points surrounding the current point.
+     *
+     * The neighbors include:
+     * - Directly adjacent points: down, left, right, up.
+     * - Diagonal points: down-left, down-right, up-left, up-right.
+     *
+     * @return A list of points representing the neighbors of the current point.
+     */
+    fun neighbors() = listOf(
+        this + DOWN,
+        this + LEFT,
+        this + RIGHT,
+        this + UP,
+        this + DOWN_LEFT,
+        this + DOWN_RIGHT,
+        this + UP_LEFT,
+        this + UP_RIGHT
+    )
+
     override fun toString() = "($x, $y)"
 
     companion object {
@@ -149,5 +169,9 @@ data class Point(val x: Int = 0, val y: Int = 0) {
         val LEFT = Point(-1, 0)
         val RIGHT = Point(1, 0)
         val UP = Point(0, 1)
+        val DOWN_LEFT = Point(-1, -1)
+        val DOWN_RIGHT = Point(1, -1)
+        val UP_LEFT = Point(-1, 1)
+        val UP_RIGHT = Point(1, 1)
     }
 }

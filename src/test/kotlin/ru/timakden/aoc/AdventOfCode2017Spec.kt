@@ -1,9 +1,12 @@
 package ru.timakden.aoc
 
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.tuple
+import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
 import ru.timakden.aoc.year2017.Day01
 import ru.timakden.aoc.year2017.Day02
+import ru.timakden.aoc.year2017.Day03
 
 class AdventOfCode2017Spec : FunSpec({
     context("Year 2025") {
@@ -49,6 +52,35 @@ class AdventOfCode2017Spec : FunSpec({
                 )
                 val expected = 9
                 Day02.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 3: Spiral Memory") {
+            context("Part One") {
+                withData(
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(
+                        tuple("1", 0),
+                        tuple("12", 3),
+                        tuple("23", 2),
+                        tuple("1024", 31)
+                    )
+                ) { (input, expected) ->
+                    Day03.part1(input) shouldBe expected
+                }
+            }
+            context("Part Two") {
+                withData(
+                    nameFn = { "input = ${it.a}, expected = ${it.b}" },
+                    ts = listOf(
+                        tuple("100", 122),
+                        tuple("300", 304),
+                        tuple("500", 747),
+                        tuple("1000", 1968)
+                    )
+                ) { (input, expected) ->
+                    Day03.part2(input) shouldBe expected
+                }
             }
         }
     }
