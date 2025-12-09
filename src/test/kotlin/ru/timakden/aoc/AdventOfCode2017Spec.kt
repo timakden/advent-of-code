@@ -10,7 +10,7 @@ import ru.timakden.aoc.year2017.Day03
 import ru.timakden.aoc.year2017.Day04
 
 class AdventOfCode2017Spec : FunSpec({
-    context("Year 2025") {
+    context("Year 2017") {
         context("Day 1: Inverse Captcha") {
             test("Part One") {
                 val input = listOf(
