@@ -4,10 +4,7 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.tuple
 import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
-import ru.timakden.aoc.year2017.Day01
-import ru.timakden.aoc.year2017.Day02
-import ru.timakden.aoc.year2017.Day03
-import ru.timakden.aoc.year2017.Day04
+import ru.timakden.aoc.year2017.*
 
 class AdventOfCode2017Spec : FunSpec({
     context("Year 2017") {
@@ -105,6 +102,18 @@ class AdventOfCode2017Spec : FunSpec({
                 )
                 val expected = 3
                 Day04.part2(input) shouldBe expected
+            }
+        }
+
+        context("Day 5: A Maze of Twisty Trampolines, All Alike") {
+            val input = listOf("0", "3", "0", "1", "-3")
+            test("Part One") {
+                val expected = 5
+                Day05.part1(input) shouldBe expected
+            }
+            test("Part Two") {
+                val expected = 10
+                Day05.part2(input) shouldBe expected
             }
         }
     }
