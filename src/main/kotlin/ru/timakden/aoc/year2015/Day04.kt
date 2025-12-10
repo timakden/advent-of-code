@@ -19,22 +19,18 @@ object Day04 {
 
     fun part1(input: String): Long {
         var count = 0L
-        var encoded: String
 
         while (true) {
-            encoded = "$input$count".md5()
-            if (encoded.startsWith("00000")) return count
+            if ("$input$count".md5().startsWith("00000")) return count
             count++
         }
     }
 
     fun part2(input: String): Long {
         var count = 0L
-        var encoded: String
 
         while (true) {
-            encoded = "$input$count".md5()
-            if (encoded.startsWith("000000")) return count
+            if ("$input$count".md5().startsWith("000000")) return count
             count++
         }
     }
