@@ -38,7 +38,7 @@ object Day15 {
         }
 
         return boxes.entries.sumOf { (boxIdx, lenses) ->
-            lenses.foldIndexed(0.toInt()) { lensIdx, acc, (label, focalLength) ->
+            lenses.foldIndexed(0) { lensIdx, acc, (label, focalLength) ->
                 acc + ((boxIdx + 1) * (lensIdx + 1) * focalLength)
             }
         }
