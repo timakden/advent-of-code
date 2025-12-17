@@ -1,4 +1,5 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_24
+import org.gradle.api.JavaVersion.VERSION_25
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25
 
 plugins {
     idea
@@ -26,19 +27,19 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(24)
+    jvmToolchain(25)
 }
 
 java {
     toolchain {
-        targetCompatibility = JavaVersion.VERSION_24
+        targetCompatibility = VERSION_25
     }
 }
 
 tasks {
     compileKotlin {
         compilerOptions {
-            jvmTarget.set(JVM_24)
+            jvmTarget.set(JVM_25)
         }
     }
     test {

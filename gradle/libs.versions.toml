@@ -1,12 +1,12 @@
 [versions]
 arrow = "2.2.0"
 jetbrains-annotations = "26.0.2-1"
-kotlin = "2.2.21"
+kotlin = "2.3.0"
 kotlin-coroutines = "1.10.2"
 kotlin-serialization = "1.9.0"
 kotest = "6.0.7"
 kotest-arrow = "2.0.0"
-google-ksp = "2.3.3"
+google-ksp = "2.3.4"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
