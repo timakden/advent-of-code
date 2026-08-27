@@ -46,7 +46,7 @@ tasks {
         useJUnitPlatform()
     }
     wrapper {
-        gradleVersion = "9.7.0"
+        gradleVersion = "9.7.1"
     }
 }
 
