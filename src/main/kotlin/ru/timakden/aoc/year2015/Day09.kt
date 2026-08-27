@@ -26,11 +26,13 @@ object Day09 {
             mapTo(locations) { it.substringBefore(" to ") }
             mapTo(locations) { it.substringAfter(" to ").substringBefore(" = ") }
 
-            associateByTo(distances,
+            associateByTo(
+                distances,
                 { it.substringBefore(" = ").replace(" to ", "") },
                 { it.substringAfter(" = ").toInt() })
 
-            associateByTo(distances,
+            associateByTo(
+                distances,
                 { it.substringAfter(" to ").substringBefore(" = ") + it.substringBefore(" to ") },
                 { it.substringAfter(" = ").toInt() })
         }
@@ -57,11 +59,13 @@ object Day09 {
             mapTo(locations) { it.substringBefore(" to ") }
             mapTo(locations) { it.substringAfter(" to ").substringBefore(" = ") }
 
-            associateByTo(distances,
+            associateByTo(
+                distances,
                 { it.substringBefore(" = ").replace(" to ", "") },
                 { it.substringAfter(" = ").toInt() })
 
-            associateByTo(distances,
+            associateByTo(
+                distances,
                 { it.substringAfter(" to ").substringBefore(" = ") + it.substringBefore(" to ") },
                 { it.substringAfter(" = ").toInt() })
         }
