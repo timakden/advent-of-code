@@ -1,4 +1,3 @@
-
 import org.gradle.api.JavaVersion.VERSION_25
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25
 
@@ -47,7 +46,7 @@ tasks {
         useJUnitPlatform()
     }
     wrapper {
-        gradleVersion = "9.8.1"
+        gradleVersion = "9.8.2"
     }
 }
 
