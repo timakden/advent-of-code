@@ -6,7 +6,7 @@ kotlin-coroutines = "1.11.0"
 kotlin-serialization = "1.12.0"
 kotest = "6.2.6"
 kotest-arrow = "2.0.0"
-google-ksp = "2.3.12"
+google-ksp = "2.3.13"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
